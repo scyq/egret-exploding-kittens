@@ -29,7 +29,6 @@
 
 class Main extends eui.UILayer {
 
-
     protected createChildren(): void {
         super.createChildren();
 
@@ -100,7 +99,7 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected createGameScene(): void {
-        let sky = this.createBitmapByName("bg_jpg");
+        let sky = this.createBitmapByName("background_png");
         this.addChild(sky);
         let stageW = this.stage.stageWidth;
         let stageH = this.stage.stageHeight;
