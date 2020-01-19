@@ -105,3 +105,4 @@ dist
 
 # egret
 .bin-debug/
+.bin-release/
