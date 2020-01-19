@@ -4,35 +4,21 @@
  * 推荐开发者通过这种方式封装平台逻辑，以保证整体结构的稳定
  * 由于不同平台的接口形式各有不同，白鹭推荐开发者将所有接口封装为基于 Promise 的异步形式
  */
-declare interface Platform {
-
+declare interface IPlatform {
+    name: string;
     getUserInfo(): Promise<any>;
-
-    login(): Promise<any>
-
+    login(): Promise<any>;
+    relogin(): Promise<any>;
 }
-
-class DebugPlatform implements Platform {
-    async getUserInfo() {
-        return { nickName: "username" }
-    }
-    async login() {
-
-    }
-}
-
 
 if (!window.platform) {
     window.platform = new DebugPlatform();
 }
 
-
-
-declare let platform: Platform;
+declare let platform: IPlatform;
 
 declare interface Window {
-
-    platform: Platform
+    platform: IPlatform
 }
 
 

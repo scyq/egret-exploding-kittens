@@ -1,10 +1,12 @@
+// https://juejin.im/post/5cfa31fd518825035746e5b4
+
 class Http {
 
     private baseUrl: string = ''
 
     public static http: Http
 
-    public static get instance() {
+    public static get inst() {
         if (!this.http) {
             this.http = new Http()
         }

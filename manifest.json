@@ -11,9 +11,12 @@
 	],
 	"game": [
 		"bin-debug/AssetAdapter.js",
+		"bin-debug/Http.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
-		"bin-debug/Platform.js",
-		"bin-debug/ThemeAdapter.js"
+		"bin-debug/ThemeAdapter.js",
+		"bin-debug/config/Config.js",
+		"bin-debug/platform/DebugPlatform.js",
+		"bin-debug/platform/Platform.js"
 	]
 }
