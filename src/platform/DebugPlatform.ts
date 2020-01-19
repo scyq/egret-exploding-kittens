@@ -15,9 +15,9 @@ class DebugPlatform implements IPlatform {
     async login() {
         Http.inst.setBaseUrl(Config.ServerUrlDebug)
         Http.inst.get('test').then(data => {
-            console.log(data)
+            console.log(data);
         }).catch(err => {
-            console.error(err)
+            console.error(err);
         })
     }
 
