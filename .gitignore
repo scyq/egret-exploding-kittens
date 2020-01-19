@@ -104,5 +104,5 @@ dist
 .tern-port
 
 # egret
-.bin-debug/
-.template/
+bin-debug/
+bin-release/
