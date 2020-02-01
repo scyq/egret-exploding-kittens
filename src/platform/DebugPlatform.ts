@@ -13,15 +13,10 @@ class DebugPlatform implements IPlatform {
     }
 
     async login() {
-        Http.inst.setBaseUrl(Config.ServerUrlDebug)
-        Http.inst.get('test').then(data => {
-            console.log(data);
-        }).catch(err => {
-            console.error(err);
-        })
+        NetMgr.inst.connect();
     }
 
     async relogin() {
-
+        NetMgr.inst.connect();
     }
 }

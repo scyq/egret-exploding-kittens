@@ -99,10 +99,12 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected createGameScene(): void {
-        let sky = this.createBitmapByName("background_png");
+        const self = this;
+
+        const sky = this.createBitmapByName("background_png");
         this.addChild(sky);
-        let stageW = this.stage.stageWidth;
-        let stageH = this.stage.stageHeight;
+        const stageW = this.stage.stageWidth;
+        const stageH = this.stage.stageHeight;
         sky.width = stageW;
         sky.height = stageH;
 
@@ -155,7 +157,30 @@ class Main extends eui.UILayer {
         button.verticalCenter = 0;
         this.addChild(button);
         button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, this);
+
+        this.textfield.addEventListener("Hey", this.trace2, this);
+
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_BEGIN, () => {
+            self.sendMessage("message content");
+        }, this);
     }
+
+
+    private sendMessage(msg: string): void {
+        this.trace("send message: " + msg);
+        NetMgr.inst.sendMessage(msg);
+    }
+
+    private trace2(evt: egret.Event): void {
+        console.log(`evt name: ${evt.target.name}`);
+    }
+
+    private trace(msg: string): void {
+        console.log(msg);
+        this.textfield.text += "\n" + msg;
+    }
+
+
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
      * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.

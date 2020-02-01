@@ -6,17 +6,19 @@
 		"libs/modules/assetsmanager/assetsmanager.js",
 		"libs/modules/tween/tween.js",
 		"libs/modules/promise/promise.js",
-		"libs/WXCloudApi/WXCloudApi.js",
+		"libs/socket.io/socket.io.js",
 		"libs/egretmgobe/egretmgobe.js"
 	],
 	"game": [
+		"bin-debug/platform/DebugPlatform.js",
 		"bin-debug/AssetAdapter.js",
-		"bin-debug/Http.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
+		"bin-debug/Socket.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/config/Config.js",
-		"bin-debug/platform/DebugPlatform.js",
+		"bin-debug/config/TestData.js",
+		"bin-debug/net/NetMgr.js",
 		"bin-debug/platform/Platform.js"
 	]
 }
