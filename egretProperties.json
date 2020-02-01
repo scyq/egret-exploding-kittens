@@ -22,6 +22,10 @@
       "name": "promise"
     },
     {
+      "name": "socket.io",
+      "path": "./libs/socket.io"
+    },
+    {
       "name": "egretmgobe",
       "path": "./libs/egretmgobe"
     }
