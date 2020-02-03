@@ -10,15 +10,16 @@
 		"libs/egretmgobe/egretmgobe.js"
 	],
 	"game": [
-		"bin-debug/platform/DebugPlatform.js",
+		"bin-debug/config/TestData.js",
 		"bin-debug/AssetAdapter.js",
-		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
-		"bin-debug/Socket.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/config/Config.js",
-		"bin-debug/config/TestData.js",
+		"bin-debug/LoadingUI.js",
+		"bin-debug/game/GameDispatcher.js",
+		"bin-debug/game/event/EventName.js",
 		"bin-debug/net/NetMgr.js",
+		"bin-debug/platform/DebugPlatform.js",
 		"bin-debug/platform/Platform.js"
 	]
 }

@@ -158,28 +158,26 @@ class Main extends eui.UILayer {
         this.addChild(button);
         button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, this);
 
-        this.textfield.addEventListener("Hey", this.trace2, this);
-
         this.stage.addEventListener(egret.TouchEvent.TOUCH_BEGIN, () => {
             self.sendMessage("message content");
         }, this);
+
+        GameDispatcher.inst.addEventListener(EventName.TEST, this.receiveMessage, this);
     }
 
 
     private sendMessage(msg: string): void {
-        this.trace("send message: " + msg);
+        this.trace(`send message: ${msg}`);
         NetMgr.inst.sendMessage(msg);
     }
 
-    private trace2(evt: egret.Event): void {
-        console.log(`evt name: ${evt.target.name}`);
+    private receiveMessage(evt: egret.Event): void {
+        this.trace(`recieve message: ${evt.data.msg}`);
     }
 
     private trace(msg: string): void {
-        console.log(msg);
         this.textfield.text += "\n" + msg;
     }
-
 
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

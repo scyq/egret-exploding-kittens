@@ -7,4 +7,5 @@ namespace Config {
     // export const ServerUrlDebug: string = "47.101.147.182";
 
     export const debug: boolean = true;
+    export const test: boolean = true;
 }

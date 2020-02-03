@@ -20,8 +20,8 @@ class NetMgr {
             self.disconnect();
         });
 
-        this.socket.on('news', (data) => {
-            self.trace('receive message: ' + data);
+        this.socket.on('news', (msg) => {
+            self.recieveNews(msg);
         })
     }
 
@@ -35,13 +35,10 @@ class NetMgr {
 
 
     public sendMessage(msg: string): void {
-        this.trace("send message: " + msg);
         this.socket.emit("message", msg);
     }
 
-    private trace(msg: string): void {
-        console.log(msg);
-        const d = new egret.EventDispatcher();
-        // this.textfield.text += "\n" + msg;
+    public recieveNews(msg: string): void {
+        GameDispatcher.inst.dispatchEvent(new egret.Event(EventName.TEST, false, false, { 'msg': msg }));
     }
 }
