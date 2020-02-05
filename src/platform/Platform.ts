@@ -6,9 +6,10 @@
  */
 declare interface IPlatform {
     name: string;
-    getUserInfo(): Promise<any>;
-    login(): Promise<any>;
-    relogin(): Promise<any>;
+    getUserInfo(): Promise<Proto.IReqPlayerInfo>;
+    getUserList(): Promise<Proto.IReqPlayerList>;
+    login(): Promise<void>;
+    relogin(): Promise<void>;
 }
 
 if (!window.platform) {

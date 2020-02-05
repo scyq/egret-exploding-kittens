@@ -10,16 +10,18 @@
 		"libs/egretmgobe/egretmgobe.js"
 	],
 	"game": [
-		"bin-debug/config/TestData.js",
-		"bin-debug/AssetAdapter.js",
-		"bin-debug/Main.js",
-		"bin-debug/ThemeAdapter.js",
-		"bin-debug/config/Config.js",
-		"bin-debug/LoadingUI.js",
-		"bin-debug/game/GameDispatcher.js",
-		"bin-debug/game/event/EventName.js",
-		"bin-debug/net/NetMgr.js",
 		"bin-debug/platform/DebugPlatform.js",
-		"bin-debug/platform/Platform.js"
+		"bin-debug/net/proto/IReqPlayerInfo.js",
+		"bin-debug/config/FakePlayerList.js",
+		"bin-debug/event/EventName.js",
+		"bin-debug/event/GameDispatcher.js",
+		"bin-debug/net/NetMgr.js",
+		"bin-debug/config/Config.js",
+		"bin-debug/net/proto/IReqPlayerList.js",
+		"bin-debug/Main.js",
+		"bin-debug/platform/Platform.js",
+		"bin-debug/ui/AssetAdapter.js",
+		"bin-debug/ui/LoadingUI.js",
+		"bin-debug/ui/ThemeAdapter.js"
 	]
 }
