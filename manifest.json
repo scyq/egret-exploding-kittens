@@ -18,7 +18,7 @@
 		"bin-debug/net/NetMgr.js",
 		"bin-debug/config/Config.js",
 		"bin-debug/platform/Platform.js",
-		"bin-debug/proto/IReqPlayerList.js",
+		"bin-debug/proto/IReqJoinRoom.js",
 		"bin-debug/ui/AssetAdapter.js",
 		"bin-debug/ui/LoadingUI.js",
 		"bin-debug/ui/ThemeAdapter.js"

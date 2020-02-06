@@ -6,8 +6,9 @@
  */
 declare interface IPlatform {
     name: string;
+    // FIXME: change types
     getUserInfo(): Promise<Proto.IReqPlayerInfo>;
-    getUserList(): Promise<Proto.IReqPlayerList>;
+    getUserList(): Promise<Proto.IReqJoinRoom>;
     login(): Promise<void>;
     relogin(): Promise<void>;
 }

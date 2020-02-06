@@ -38,9 +38,9 @@ class NetMgr {
         this.$socket.emit("message", msg);
     }
 
-    public sendPlayerList(playerList: Proto.IReqPlayerList): void {
+    public reqJoinRoom(playerList: Proto.IReqJoinRoom): void {
         if (playerList) {
-            this.$socket.emit("playerList", playerList)
+            this.$socket.emit("joinRoom", playerList)
             console.log('send playerList');
             console.log(playerList);
         }

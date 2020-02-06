@@ -8,7 +8,7 @@ namespace TestMode {
      * -10 => 游戏结算异常
      * 100 => 游戏结束
      */
-    export const FakePlayerList: Proto.IReqPlayerList = {
+    export const FakePlayerList: Proto.IReqJoinRoom = {
         "uid": 101,
         "status": 1,                    // status = 1 参考以上结果
         "matchid": "21234123412341234", // 用后续matchId 去进行游戏结算
