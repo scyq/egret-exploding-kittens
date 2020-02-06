@@ -1,4 +1,10 @@
 {
+  "native": {
+    "path_ignore": [
+      "package.json",
+      "package-lock.json"
+    ]
+  },
   "engineVersion": "5.2.33",
   "compilerVersion": "5.2.33",
   "template": {},

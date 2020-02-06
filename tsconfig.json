@@ -13,5 +13,9 @@
     "include": [
         "src",
         "libs"
+    ],
+    "exclude": [
+        "package.json",
+        "package-lock.json"
     ]
 }
