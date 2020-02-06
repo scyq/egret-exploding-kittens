@@ -1,4 +1,4 @@
-/** 
+/**
  * 平台数据接口。
  * 由于每款游戏通常需要发布到多个平台上，所以提取出一个统一的接口用于开发者获取平台数据信息
  * 推荐开发者通过这种方式封装平台逻辑，以保证整体结构的稳定
@@ -7,8 +7,7 @@
 declare interface IPlatform {
     name: string;
     // FIXME: change types
-    getUserInfo(): Promise<Proto.IReqPlayerInfo>;
-    getUserList(): Promise<Proto.IReqJoinRoom>;
+    getUserInfo(): Promise<any>;
     login(): Promise<void>;
     relogin(): Promise<void>;
 }
@@ -20,10 +19,5 @@ if (!window.platform) {
 declare let platform: IPlatform;
 
 declare interface Window {
-    platform: IPlatform
+    platform: IPlatform;
 }
-
-
-
-
-

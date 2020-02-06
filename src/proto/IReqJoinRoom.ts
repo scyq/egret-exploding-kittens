@@ -14,7 +14,7 @@ namespace Proto {
      */
     export declare interface IReqPlayerInfo {
         uid: number;
-        type: number;    // 1 = 机器人 0 = 正常玩家
+        type: number; // 1 = 机器人 0 = 正常玩家
         avatar: string;
         gameid: number;
         mobile: string;
@@ -24,5 +24,3 @@ namespace Proto {
         preMatchId: string;
     }
 }
-
-

@@ -1,4 +1,4 @@
 class EventName {
-    public constructor() { }
+    public constructor() {}
     public static TEST: string = 'TEST';
 }

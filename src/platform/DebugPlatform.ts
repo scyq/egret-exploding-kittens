@@ -5,25 +5,11 @@
  */
 
 class DebugPlatform implements IPlatform {
-    public name: string = "debug";
+    public name: string = 'debug';
     private token: string = 'DontGG';
-    private playerList: Proto.IReqJoinRoom;
 
-    async getUserList(): Promise<Proto.IReqJoinRoom> {
-        if (Config.TestMode) {
-            // send fake data
-            console.log(`Send fake data`);
-            this.playerList = TestMode.FakePlayerList
-        } else {
-            // get data from native app
-            // playerList = YessAndroid.getBombMatchInfo();
-        }
-        NetMgr.inst.reqJoinRoom(this.playerList);
-        return this.playerList;
-    }
-
-    async getUserInfo(): Promise<Proto.IReqPlayerInfo> {
-        return this.playerList.players[0];
+    async getUserInfo(): Promise<any> {
+        return 'hey hey';
     }
 
     async login(): Promise<void> {
