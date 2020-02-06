@@ -11,15 +11,14 @@
 	],
 	"game": [
 		"bin-debug/platform/DebugPlatform.js",
-		"bin-debug/net/proto/IReqPlayerInfo.js",
+		"bin-debug/Main.js",
 		"bin-debug/config/FakePlayerList.js",
 		"bin-debug/event/EventName.js",
 		"bin-debug/event/GameDispatcher.js",
 		"bin-debug/net/NetMgr.js",
 		"bin-debug/config/Config.js",
-		"bin-debug/net/proto/IReqPlayerList.js",
-		"bin-debug/Main.js",
 		"bin-debug/platform/Platform.js",
+		"bin-debug/proto/IReqPlayerList.js",
 		"bin-debug/ui/AssetAdapter.js",
 		"bin-debug/ui/LoadingUI.js",
 		"bin-debug/ui/ThemeAdapter.js"

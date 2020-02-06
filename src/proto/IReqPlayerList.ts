@@ -1,5 +1,15 @@
 namespace Proto {
     /**
+     * 登陆玩家列表数据接口
+     */
+    export declare interface IReqPlayerList {
+        uid: number;
+        status: number;
+        matchid: string;
+        players: Proto.IReqPlayerInfo[];
+    }
+
+    /**
      * 玩家信息接口
      */
     export declare interface IReqPlayerInfo {
@@ -14,4 +24,5 @@ namespace Proto {
         preMatchId: string;
     }
 }
+
 
