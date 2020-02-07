@@ -106,3 +106,4 @@ dist
 # egret
 bin-debug/
 bin-release/
+.vscode/sftp.json
