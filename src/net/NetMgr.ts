@@ -20,7 +20,10 @@ class NetMgr {
     connect(): void {
         const self = this;
         console.log(`Socket.io Connect => ${Config.ServerUrlDebug}`);
-        this.$socket = io.connect(Config.ServerUrlDebug);
+        this.$socket = io.connect(Config.ServerUrlDebug, {
+            reconnection: true,
+            reconnectionAttempts: 10
+        });
         this.req.socket = this.$socket;
         this.registerHandles();
         this.$socket.on('disconnect', () => {
