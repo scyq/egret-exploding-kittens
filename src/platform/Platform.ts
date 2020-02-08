@@ -12,12 +12,12 @@ declare interface IPlatform {
     relogin(): Promise<void>;
 }
 
-if (!window.platform) {
-    window.platform = new DebugPlatform();
-}
-
 declare let platform: IPlatform;
 
 declare interface Window {
     platform: IPlatform;
+}
+
+if (!window.platform) {
+    window.platform = new DebugPlatform();
 }

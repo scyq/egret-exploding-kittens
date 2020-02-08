@@ -3,6 +3,10 @@
 		{
 			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,background_png,bg1_png,bg2_png,card-back_png,card-bomb_png,card-defuse_png,card-direct_png,card-draw-back_png,card-exchange_png,card-predict_png,card-reverse_png,card-shuffle_png,card-skip_png,card-take_png,exit_png,player-frame-sm_png,player-frame_png,Table_png,timer1_png,timer2_png,top-background_png",
 			"name": "preload"
+		},
+		{
+			"keys": "background_png",
+			"name": "loading"
 		}
 	],
 	"resources": [

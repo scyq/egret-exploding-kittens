@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" class="MainSkin">
+	<e:Image id="exit" source="exit_png" anchorOffsetX="-30.3" anchorOffsetY="-3.03" left="30" bottom="30"/>
+	<e:Group id="top" height="200" top="0" left="0" right="0">
+		<e:Image id="topBg" height="120" top="0" left="0" right="0" source="top-background_png" fillMode="clip" x="-169.24" y="-93.67" scaleX="1" scaleY="1" scale9Grid="30,8,314,30"/>
+		<e:List id="topList" height="120" itemRendererSkinName="skins.ButtonSkin" top="0" horizontalCenter="0">
+			<e:layout>
+				<e:HorizontalLayout horizontalAlign="right" verticalAlign="middle" gap="10"/>
+			</e:layout>
+		</e:List>
+		<e:Image id="topPlayFrame" source="player-frame-sm_png" x="255" y="36" visible="false"/>
+	</e:Group>
+	<e:Group id="center" left="0" right="0" top="0" bottom="0">
+		<e:Image id="table" source="Table_png" x="37.87" y="293.67" anchorOffsetX="0" width="564" anchorOffsetY="0" height="408" scaleX="1" scaleY="1"/>
+		<e:Image source="player-frame_png" x="190" y="664"/>
+	</e:Group>
+</e:Skin>
