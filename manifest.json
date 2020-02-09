@@ -7,7 +7,8 @@
 		"libs/modules/tween/tween.js",
 		"libs/modules/promise/promise.js",
 		"libs/socket.io/socket.io.js",
-		"libs/egretmgobe/egretmgobe.js"
+		"libs/egretmgobe/egretmgobe.js",
+		"libs/yess/yess.js"
 	],
 	"game": [
 		"bin-debug/ui/panel/UIBasePanel.js",

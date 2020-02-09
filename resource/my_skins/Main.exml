@@ -13,5 +13,11 @@
 		<e:Image id="table" source="Table_png" x="37.87" y="293.67" anchorOffsetX="0" width="564" anchorOffsetY="0" height="408" scaleX="1" scaleY="1"/>
 		<e:Image source="player-frame_png" x="190" y="664"/>
 	</e:Group>
+	<e:Group id="test" top="0" bottom="0" left="0" right="0">
+		<e:Button id="testToast" label="Toast" x="400" y="800" scaleX="1" scaleY="1"/>
+		<e:Button id="testExit" label="Exit" x="400" y="880.0000000000001" scaleX="1" scaleY="1"/>
+		<e:Button id="testBomb" label="BombEnd" x="400" y="960" scaleX="1" scaleY="1"/>
+		<e:Button id="testMatch" label="Match" x="400" y="1040" scaleX="1" scaleY="1"/>
+	</e:Group>
 	<e:Button id="exit" label="Button" bottom="30" left="30" enabled="true" skinName="BtnExit"/>
 </e:Skin>

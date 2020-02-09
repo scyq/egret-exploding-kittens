@@ -1,1 +1,12 @@
-declare function showAndroidToast(msg: string): void;
+declare var yess: YessStatic;
+
+declare module 'yess' {
+    export = yess;
+}
+
+interface YessStatic {
+    showAndroidToast(msg: string): void;
+    finishAndroidPage():void;
+    gameBombsEnd(gameResultJson:any):void;
+    getBombsMatchInfo():any;
+}

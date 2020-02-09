@@ -10,10 +10,6 @@ declare interface IPlatform {
     getUserInfo(): Promise<any>;
     login(): Promise<void>;
     relogin(): Promise<void>;
-    showToast(msg: string):void;
-    finishPage():void;
-    gameBombsEnd():void;
-    bombsMatchInfoCallback():void;
 }
 
 declare let platform: IPlatform;
