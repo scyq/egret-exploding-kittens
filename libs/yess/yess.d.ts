@@ -1,0 +1,1 @@
+declare function showAndroidToast(msg: string): void;

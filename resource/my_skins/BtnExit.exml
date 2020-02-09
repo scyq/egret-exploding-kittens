@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<e:Skin class="BtnExit" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="40" height="56">
+
+	<e:Image source="exit_png" left="0" right="0" top="0" bottom="0" includeIn="up,disabled"/>
+	<e:Image source="exit_png" left="0" right="0" bottom="2" top="2" includeIn="down" scale9Grid="0,8,40,40"/>
+
+
+</e:Skin>

@@ -23,19 +23,34 @@
 </head>
 
 <body>
-    <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
-         data-entry-class="Main"
-         data-orientation="auto"
-         data-scale-mode="showAll"
-         data-frame-rate="30"
-         data-content-width="640"
-         data-content-height="1136"
-         data-show-paint-rect="false"
-         data-multi-fingered="2"
-         data-show-fps="false" data-show-log="false"
-         data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
-    </div>
+    <div style="margin: auto;width: 100%;height: 100%;" class="egret-player" data-entry-class="Main" data-orientation="auto" data-scale-mode="showAll" data-frame-rate="30" data-content-width="640"
+data-content-height="1136" data-show-paint-rect="false" data-multi-fingered="2" data-show-fps="false" data-show-log="false"
+data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
+</div>
 <script>
+    var showAndroidToast = function (toast) {
+        console.log('showAndroidToast')
+        // document.getElementById('callbackInfo').innerHTML = 'YessAndroid.showToast(toast) 调用'
+        // YessAndroid.showToast(toast);
+    }
+
+    var finishAndroidPage = function () {
+        console.log('finishAndroidPage')
+        // document.getElementById('callbackInfo').innerHTML = 'YessAndroid.finishPage() 调用'
+        // YessAndroid.finishPage();
+    }
+
+    var gameBombsEnd = function (gameResultJson) {
+        console.log('gameBombsEnd')
+        // document.getElementById('callbackInfo').innerHTML = 'YessAndroid.gameBombsEnd() 调用'
+        // YessAndroid.gameBombsEnd(gameResultJson);
+    }
+
+    var bombsMatchInfoCallback = function (info) {
+        console.log('bombsMatchInfoCallback')
+        // document.getElementById('callbackInfo').innerHTML = 'bombsMatchInfoCallback()回调，参数：' + info
+    }
+
     var loadScript = function (list, callback) {
         var loaded = 0;
         var loadNext = function () {
@@ -78,15 +93,17 @@
              * "calculateCanvasScaleFactor": //a function return canvas scale factor
              * }
              **/
-            egret.runEgret({ renderMode: "webgl", audioType: 0, calculateCanvasScaleFactor:function(context) {
-                var backingStore = context.backingStorePixelRatio ||
-                    context.webkitBackingStorePixelRatio ||
-                    context.mozBackingStorePixelRatio ||
-                    context.msBackingStorePixelRatio ||
-                    context.oBackingStorePixelRatio ||
-                    context.backingStorePixelRatio || 1;
-                return (window.devicePixelRatio || 1) / backingStore;
-            }});
+            egret.runEgret({
+                renderMode: "webgl", audioType: 0, calculateCanvasScaleFactor: function (context) {
+                    var backingStore = context.backingStorePixelRatio ||
+                        context.webkitBackingStorePixelRatio ||
+                        context.mozBackingStorePixelRatio ||
+                        context.msBackingStorePixelRatio ||
+                        context.oBackingStorePixelRatio ||
+                        context.backingStorePixelRatio || 1;
+                    return (window.devicePixelRatio || 1) / backingStore;
+                }
+            });
         });
     });
     xhr.send(null);

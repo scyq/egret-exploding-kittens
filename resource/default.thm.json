@@ -29,6 +29,7 @@
 		"resource/eui_skins/ToggleSwitchSkin.exml",
 		"resource/eui_skins/VScrollBarSkin.exml",
 		"resource/eui_skins/VSliderSkin.exml",
+		"resource/my_skins/BtnExit.exml",
 		"resource/my_skins/Main.exml",
 		"resource/my_skins/TopPlayerItem.exml"
 	],

@@ -50,6 +50,8 @@ declare module skins{
 	class VSliderSkin extends eui.Skin{
 	}
 }
+declare class BtnExit extends eui.Skin{
+}
 declare class MainSkin extends eui.Skin{
 }
 declare class TopPlayerItem extends eui.Skin{

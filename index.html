@@ -35,6 +35,29 @@
          data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
     </div>
 <script>
+    var showAndroidToast = function (toast) {
+        console.log('showAndroidToast')
+        // document.getElementById('callbackInfo').innerHTML = 'YessAndroid.showToast(toast) 调用'
+        // YessAndroid.showToast(toast);
+    }
+
+    var finishAndroidPage = function () {
+        console.log('finishAndroidPage')
+        // document.getElementById('callbackInfo').innerHTML = 'YessAndroid.finishPage() 调用'
+        // YessAndroid.finishPage();
+    }
+
+    var gameBombsEnd = function (gameResultJson) {
+        console.log('gameBombsEnd')
+        // document.getElementById('callbackInfo').innerHTML = 'YessAndroid.gameBombsEnd() 调用'
+        // YessAndroid.gameBombsEnd(gameResultJson);
+    }
+
+    var bombsMatchInfoCallback = function (info) {
+        console.log('bombsMatchInfoCallback')
+        // document.getElementById('callbackInfo').innerHTML = 'bombsMatchInfoCallback()回调，参数：' + info
+    }
+
     var loadScript = function (list, callback) {
         var loaded = 0;
         var loadNext = function () {

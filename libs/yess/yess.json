@@ -1,0 +1,10 @@
+{
+    "name": "yess",
+    "dependence": [
+        "core"
+    ],
+    "source": "",
+    "file_list": [
+        "yess.d.ts"
+    ]
+}

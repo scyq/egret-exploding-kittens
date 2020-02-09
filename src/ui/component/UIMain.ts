@@ -2,6 +2,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
     public table: eui.Image;
     public topList: eui.List;
     public dataArray: eui.ArrayCollection = new eui.ArrayCollection();
+    public exit: eui.Button;
 
     public constructor() {
         super();
@@ -9,20 +10,24 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     protected partAdded(partName: string, instance: any): void {
-        console.log(partName);
         super.partAdded(partName, instance);
     }
 
     protected childrenCreated(): void {
         super.createChildren();
-        this.OnInit();
+        this.onInit();
     }
 
-    protected OnInit(): void {
+    protected onInit(): void {
         this.topList.itemRenderer = UITopPlayerItem;
         this.topList.dataProvider = this.dataArray;
         const dataTestArray: number[] = [0, 1, 3, 4];
         this.dataArray.replaceAll(dataTestArray)
-        console.log("aslkdjfa;lskdjf;alskdjf;lasjkdf")
+        this.exit.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onExitClick, this);
+    }
+
+    protected onExitClick() {
+        console.log('onExitClick')
+        showAndroidToast("yoyoyoyoyoyyo");
     }
 }
