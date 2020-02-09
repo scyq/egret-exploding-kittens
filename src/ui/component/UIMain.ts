@@ -59,6 +59,6 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     onTestMatch() {
-        yess.getBombsMatchInfo();
+        yess.getBombsMatchInfo("platform.getMatchInfo");
     }
 }

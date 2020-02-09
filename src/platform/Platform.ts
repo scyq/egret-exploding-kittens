@@ -10,6 +10,7 @@ declare interface IPlatform {
     getUserInfo(): Promise<any>;
     login(): Promise<void>;
     relogin(): Promise<void>;
+    getMatchInfo(info:any): void;
 }
 
 declare let platform: IPlatform;

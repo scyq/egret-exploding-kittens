@@ -8,5 +8,5 @@ interface YessStatic {
     showAndroidToast(msg: string): void;
     finishAndroidPage():void;
     gameBombsEnd(gameResultJson:any):void;
-    getBombsMatchInfo():any;
+    getBombsMatchInfo(cbName:string):void;
 }

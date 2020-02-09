@@ -19,4 +19,8 @@ class DebugPlatform implements IPlatform {
     async relogin(): Promise<void> {
         NetMgr.inst.connect();
     }
+
+    getMatchInfo(info: any): void {
+        egret.log(info);
+    }
 }
