@@ -5,7 +5,7 @@
  */
 
 class DebugPlatform implements IPlatform {
-    public name: string = 'debug';
+    name: string = 'debug';
     private token: string = 'DontGG';
 
     async getUserInfo(): Promise<any> {
@@ -20,7 +20,16 @@ class DebugPlatform implements IPlatform {
         NetMgr.inst.connect();
     }
 
-    getMatchInfo(info: any): void {
-        egret.log(info);
+    setUid(uid: number): void {
+        GameMgr.inst.setUid(uid);
+    }
+
+    setMatchInfo(strInfo: string): void {
+        const info: Native.IMatchInfo = JSON.parse(strInfo)
+        GameMgr.inst.setMatchInfo(info);
+    }
+
+    setCookie(strCookie: string): void {
+        GameMgr.inst.setCookie(strCookie);
     }
 }

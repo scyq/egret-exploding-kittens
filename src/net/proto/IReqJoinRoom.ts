@@ -5,7 +5,8 @@ namespace Proto {
     export declare interface IReqJoinRoom {
         uid: number;
         status: number;
-        matchid: string;
+        rid: string;
+        cookie: string;
         players: Proto.IReqPlayerInfo[];
     }
 
@@ -16,11 +17,8 @@ namespace Proto {
         uid: number;
         type: number; // 1 = 机器人 0 = 正常玩家
         avatar: string;
-        gameid: number;
-        mobile: string;
-        status: number;
         nickname: string;
-        matchTime: string;
-        preMatchId: string;
+        gameid: number;
+        status: number;
     }
 }

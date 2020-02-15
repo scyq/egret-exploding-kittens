@@ -18,6 +18,9 @@
 		<e:Button id="testExit" label="Exit" x="400" y="880.0000000000001" scaleX="1" scaleY="1"/>
 		<e:Button id="testBomb" label="BombEnd" x="400" y="960" scaleX="1" scaleY="1"/>
 		<e:Button id="testMatch" label="Match" x="400" y="1040" scaleX="1" scaleY="1"/>
+		<e:Button id="testCookie" label="Cookie" x="264" y="1040" scaleX="1" scaleY="1"/>
+		<e:Button id="testUid" label="UID" x="264" y="960" scaleX="1" scaleY="1"/>
+		<e:Button id="testDie" label="立即死亡" x="264" y="880" scaleX="1" scaleY="1"/>
 	</e:Group>
 	<e:Button id="exit" label="Button" bottom="30" left="30" enabled="true" skinName="BtnExit"/>
 </e:Skin>

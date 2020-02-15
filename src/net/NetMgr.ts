@@ -1,7 +1,7 @@
 class NetMgr {
     /* singleton */
     private static $mgr: NetMgr;
-    static get inst() {
+    static get inst():NetMgr {
         if (!NetMgr.$mgr) {
             NetMgr.$mgr = new NetMgr();
         }
