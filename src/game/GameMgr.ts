@@ -23,9 +23,24 @@ class GameMgr {
     private $matchInfo: Native.IMatchInfo;
     private $rid: string;
     private $uid: number;
+    private $gameid: number = Config.GameId;
 
     private $state: GameState = GameState.INIT;
     private $cookie: string;
+
+    private $loaded: boolean = false;   // scene loaded
+
+    get uid(): number {
+        return this.$uid
+    }
+
+    get rid(): string {
+        return this.$rid
+    }
+
+    get gameid(): number {
+        return this.$gameid
+    }
 
     getUid() {
         if (yess.exist) {
@@ -83,10 +98,17 @@ class GameMgr {
         }
     }
 
+    sceneLoaded() {
+        if (this.$state === GameState.INIT) {
+            this.$loaded = true;
+            this.tryInitGame();
+        }
+    }
+
     private tryInitGame() {
         egret.log('Try init game');
 
-        if (this.$state === GameState.INIT && this.$uid && this.$matchInfo && this.$cookie) {
+        if (this.$state === GameState.INIT && this.$uid && this.$matchInfo && this.$cookie && this.$loaded) {
             this.initGame();
         }
     }
@@ -105,7 +127,7 @@ class GameMgr {
             }
         }
         this.$state = GameState.READY;
-        egret.log(`GameState: ${this.$state}`);
+        this.reqJoinRoom();
     }
 
     private addRole(role: Role) {
@@ -114,8 +136,41 @@ class GameMgr {
         }
     }
 
-    showToast() {
-        yess.showAndroidToast('yoyoyuoyoyoyoyo');
+    reqJoinRoom() {
+        const players: Proto.IComPlayerInfo[] = []
+        for (const p of this.$matchInfo.players) {
+            players.push({
+                uid: p.uid,
+                type: p.type,
+                avatar: p.avatar,
+                nickname: p.nickname,
+                status: 0
+            })
+        }
+        const playerList: Proto.IReqJoinRoom = {
+            cookie: this.$cookie,
+            players,
+        }
+        NetMgr.inst.req.joinRoom(playerList);
+    }
+
+    toDie() {
+        NetMgr.inst.req.die({
+            uid: this.$uid,
+            gameid: this.$gameid,
+            rid: this.$rid
+        })
+    }
+
+    startGame() {
+        egret.log('game start')
+    }
+
+    showToast(msg?: string) {
+        if (!msg) {
+            msg = 'yess yess yess'
+        }
+        yess.showAndroidToast(msg);
     }
 
     exitGame() {
@@ -129,7 +184,7 @@ class GameMgr {
         });
     }
 
-    die() {
+    gameover() {
         egret.log('Die');
     }
 }

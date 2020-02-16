@@ -97,7 +97,7 @@ class UIMainPanel extends UIBasePanel {
 
     private sendMessage(msg: string): void {
         this.trace(`send message: ${msg}`);
-        NetMgr.inst.req.testMessage(msg);
+        NetMgr.inst.req.text(msg);
     }
 
     private receiveMessage(evt: egret.Event): void {

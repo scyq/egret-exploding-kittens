@@ -65,7 +65,8 @@ class Main extends eui.UILayer {
         // this.startAnimation(result);
         await platform.login();
         const userInfo = await platform.getUserInfo();
-        egret.log(userInfo);
+        
+        GameMgr.inst.sceneLoaded();
     }
 
     private async loadResource() {
@@ -107,5 +108,6 @@ class Main extends eui.UILayer {
     protected createGameScene(): void {
         const mainPanel = new UIMainPanel();
         this.stage.addChild(mainPanel);
+        GameMgr.inst
     }
 }

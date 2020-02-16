@@ -106,6 +106,6 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     onTestDie() {
-        GameMgr.inst.Die();
+        GameMgr.inst.toDie();
     }
 }

@@ -1,7 +1,7 @@
 class NetMgr {
     /* singleton */
     private static $mgr: NetMgr;
-    static get inst():NetMgr {
+    static get inst(): NetMgr {
         if (!NetMgr.$mgr) {
             NetMgr.$mgr = new NetMgr();
         }
@@ -19,21 +19,19 @@ class NetMgr {
 
     connect(): void {
         const self = this;
-        console.log(`Socket.io Connect => ${Config.ServerUrlDebug}`);
+        console.debug(`Socket.io Connect => ${Config.ServerUrlDebug}`);
         this.$socket = io.connect(Config.ServerUrlDebug, {
             reconnection: true,
             reconnectionAttempts: 10
         });
         this.req.socket = this.$socket;
         this.registerHandles();
-        this.$socket.on('disconnect', () => {
-            self.disconnect();
-        });
+        this.$socket.on('disconnect', self.disconnect);
     }
 
     private registerHandles(): void {
         for (const h of this.res.handles) {
-            this.$socket.on(h.msg, (msg) => {
+            this.$socket.on(h.msg, (msg: Proto.Res) => {
                 h.func(msg);
             });
         }
@@ -41,6 +39,6 @@ class NetMgr {
 
     private disconnect(): void {
         console.log(`Socket.io Disconnect => ${Config.ServerUrlDebug}`);
-        this.$socket.close();
+        // this.$socket.close();
     }
 }
