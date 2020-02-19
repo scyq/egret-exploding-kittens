@@ -72,11 +72,10 @@ class GameMgr {
         }
     }
 
-    setUid(uid: number) {
+    setUid(uid: string | number) {
         egret.log(`UID: ${uid}`);
-
         if (this.$state === GameState.INIT) {
-            this.$uid = uid;
+            this.$uid = +uid;
             this.tryInitGame();
         }
     }
@@ -155,11 +154,7 @@ class GameMgr {
     }
 
     toDie() {
-        NetMgr.inst.req.die({
-            uid: this.$uid,
-            gameid: this.$gameid,
-            rid: this.$rid
-        })
+        NetMgr.inst.req.die(true)
     }
 
     startGame() {
@@ -185,6 +180,7 @@ class GameMgr {
     }
 
     gameover() {
-        egret.log('Die');
+        egret.log('Game Over');
+        // TODO: exit game
     }
 }

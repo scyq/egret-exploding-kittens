@@ -6,7 +6,7 @@ class NetRes {
         { msg: 'text', func: this.text },
         { msg: 'joinRoom', func: this.joinRoom },
         { msg: 'startGame', func: this.startGame },
-        { msg: 'die', func: this.die },
+        { msg: 'overGame', func: this.overGame },
     ];
 
     public text(res: Proto.Res): void {
@@ -29,13 +29,13 @@ class NetRes {
         }
     }
 
-    public die(res: Proto.Res): void {
-        if (res === undefined || res.die === undefined) { return; }
+    public overGame(res: Proto.Res): void {
+        if (res === undefined || res.overGame === undefined) { return; }
 
-        for (const uid of res.die.uids) {
-            if (uid === GameMgr.inst.uid) {
-                GameMgr.inst.gameover();
-            }
+        if (res.overGame) {
+            GameMgr.inst.gameover();
+        } else {
+            egret.log('game continues')
         }
 
         // TODO: check others

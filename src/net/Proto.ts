@@ -5,14 +5,14 @@ namespace Proto {
         rid: string;
         text?: string;
         joinRoom?: IReqJoinRoom;
-        die?: IReqDie;
+        die?: boolean;
     }
 
     export declare interface Res {
         text?: string;
         startGame?: boolean;
+        overGame?: boolean;
         joinRoom?: IResJoinRoom;
-        die?: IResDie;
     }
 
     /**
@@ -26,16 +26,6 @@ namespace Proto {
     export declare interface IResJoinRoom {
         start: boolean;
         players: IComPlayerInfo[];
-    }
-
-    export declare interface IReqDie {
-        uid: number;
-        rid: string;
-        gameid: number;
-    }
-
-    export declare interface IResDie {
-        uids: number[];
     }
 
     /**

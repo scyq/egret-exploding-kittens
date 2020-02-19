@@ -29,7 +29,7 @@ class NetReq {
         egret.log('joinRoom')
     }
 
-    public die(msg: Proto.IReqDie): void {
+    public die(msg: boolean): void {
         const req: Proto.Req = this.getReq();
         req.die = msg        
         this.$socket.emit('die', req);
