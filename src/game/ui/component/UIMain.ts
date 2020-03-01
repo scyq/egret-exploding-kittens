@@ -1,18 +1,18 @@
 class UIMain extends eui.Component implements eui.UIComponent {
-    public table: eui.Image;
-    public topList: eui.List;
-    public dataArray: eui.ArrayCollection = new eui.ArrayCollection();
-    public exit: eui.Button;
+    table: eui.Image;
+    topList: eui.List;
+    dataArray: eui.ArrayCollection = new eui.ArrayCollection();
+    exit: eui.Button;
 
-    public testToast: eui.Button;
-    public testExit: eui.Button;
-    public testBomb: eui.Button;
-    public testUid: eui.Button;
-    public testMatch: eui.Button;
-    public testCookie: eui.Button;
-    public testDie: eui.Button;
+    testToast: eui.Button;
+    testExit: eui.Button;
+    testBomb: eui.Button;
+    testUid: eui.Button;
+    testMatch: eui.Button;
+    testCookie: eui.Button;
+    testDie: eui.Button;
 
-    public constructor() {
+    constructor() {
         super();
         this.skinName = 'resource/my_skins/Main.exml';
     }
@@ -27,10 +27,9 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     onInit(): void {
+        this.dataArray.replaceAll(GameMgr.inst.players);
         this.topList.itemRenderer = UITopPlayerItem;
         this.topList.dataProvider = this.dataArray;
-        const dataTestArray: number[] = [0, 1, 3, 4];
-        this.dataArray.replaceAll(dataTestArray);
         this.exit.addEventListener(
             egret.TouchEvent.TOUCH_TAP,
             this.onExitClick,
