@@ -1,16 +1,17 @@
 class Player {
-    private static $p: Player;
-    static get inst() {
-        if (!Player.$p) {
-            Player.$p = new Player();
-        }
-        return Player.$p;
-    }
-    private constructor() {}
+    public uid: number;
+    public isBot: boolean;
+    public avatar: string;
+    public status: number;
+    public nickname: string;
+    public seat: number;
 
-    private $role: Role;
-
-    set role(role: Role) {
-        this.$role = role;
+    public constructor(seat: number, player: Native.IMatchPlayer) {
+        this.seat = seat;
+        this.uid = player.uid;
+        this.isBot = player.type === 1;
+        this.avatar = player.avatar;
+        this.status = 0;
+        this.nickname = player.nickname;
     }
 }

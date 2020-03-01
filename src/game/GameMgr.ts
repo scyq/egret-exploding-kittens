@@ -18,8 +18,8 @@ class GameMgr {
         egret.log('new GameMgr()');
     }
 
-    private $roles: Role[] = [];
-    private readonly $player: Player = Player.inst;
+    private $players: Player[] = [];
+    private readonly $user: User = User.inst;
     private $matchInfo: Native.IMatchInfo;
     private $rid: string;
     private $uid: number;
@@ -40,6 +40,10 @@ class GameMgr {
 
     get gameid(): number {
         return this.$gameid
+    }
+
+    get players(): Player[] {
+        return this.$players;
     }
 
     getUid() {
@@ -85,6 +89,11 @@ class GameMgr {
 
         if (this.$state === GameState.INIT) {
             this.$matchInfo = info;
+            for (let i = 0; i < this.$matchInfo.players.length; ++i) {
+                const mip = this.$matchInfo.players[i];
+                const player = new Player(i, mip);
+                this.$players.push(player);
+            }
             this.tryInitGame();
         }
     }
@@ -106,7 +115,6 @@ class GameMgr {
 
     private tryInitGame() {
         egret.log('Try init game');
-
         if (this.$state === GameState.INIT && this.$uid && this.$matchInfo && this.$cookie && this.$loaded) {
             this.initGame();
         }
@@ -114,25 +122,19 @@ class GameMgr {
 
     private initGame() {
         egret.log('Init game');
+        for (const p of this.$players) {
+            if (p.uid === this.$uid) {
+                User.inst.player = p;
+                break;
+            }
+        }
         egret.log(JSON.stringify(this.$matchInfo));
 
         this.$rid = this.$matchInfo.matchid;
         egret.log(`rid: ${this.$rid}`)
-        for (let i = 0; i < this.$matchInfo.players.length; ++i) {
-            const role = new Role(i, this.$matchInfo.players[i]);
-            this.addRole(role);
-            if (this.$uid === role.uid) {
-                this.$player.role = this.$roles[0];
-            }
-        }
+
         this.$state = GameState.READY;
         this.reqJoinRoom();
-    }
-
-    private addRole(role: Role) {
-        if (this.$roles.length < GameMgr.MAX_PLAYER_COUNT) {
-            this.$roles.push(role);
-        }
     }
 
     reqJoinRoom() {
