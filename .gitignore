@@ -107,3 +107,5 @@ dist
 bin-debug/
 bin-release/
 .vscode/sftp.json
+.wing/
+
