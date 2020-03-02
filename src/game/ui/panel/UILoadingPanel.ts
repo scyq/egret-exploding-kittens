@@ -8,7 +8,7 @@ class UILoadingPanel extends UIBasePanel implements RES.PromiseTaskReporter {
         const stageH = this.stage.stageHeight;
 
         this.bgImg = new egret.Bitmap();
-        this.bgImg.texture = RES.getRes('background_png');
+        this.bgImg.texture = RES.getRes('Background_0_png');
         this.addChild(this.bgImg);
 
         this.bgImg.width = stageW;
