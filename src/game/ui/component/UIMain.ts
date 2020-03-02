@@ -1,8 +1,6 @@
 class UIMain extends eui.Component implements eui.UIComponent {
-    table: eui.Image;
-    topList: eui.List;
-    dataArray: eui.ArrayCollection = new eui.ArrayCollection();
     exit: eui.Button;
+
 
     testToast: eui.Button;
     testExit: eui.Button;
@@ -27,9 +25,6 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     onInit(): void {
-        this.dataArray.replaceAll(GameMgr.inst.players);
-        this.topList.itemRenderer = UITopPlayerItem;
-        this.topList.dataProvider = this.dataArray;
         this.exit.addEventListener(
             egret.TouchEvent.TOUCH_TAP,
             this.onExitClick,

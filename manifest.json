@@ -12,7 +12,7 @@
 	],
 	"game": [
 		"bin-debug/game/ui/panel/UIBasePanel.js",
-		"bin-debug/game/ui/component/UIMain.js",
+		"bin-debug/game/ui/component/UIPlayer.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/event/EventName.js",
 		"bin-debug/event/GameDispatcher.js",
@@ -22,6 +22,7 @@
 		"bin-debug/game/User.js",
 		"bin-debug/game/config/Config.js",
 		"bin-debug/game/config/MockMatchInfo.js",
+		"bin-debug/game/ui/component/UIMain.js",
 		"bin-debug/Main.js",
 		"bin-debug/game/ui/component/UITopPlayerItem.js",
 		"bin-debug/AssetAdapter.js",
