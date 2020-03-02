@@ -12,7 +12,12 @@
 		"eui.ToggleSwitch": "resource/eui_skins/ToggleSwitchSkin.exml",
 		"eui.VScrollBar": "resource/eui_skins/VScrollBarSkin.exml",
 		"eui.VSlider": "resource/eui_skins/VSliderSkin.exml",
-		"eui.ItemRenderer": "resource/eui_skins/ItemRendererSkin.exml"
+		"eui.ItemRenderer": "resource/eui_skins/ItemRendererSkin.exml",
+		"yui.BtnExit": "resource/yui_skins/BtnExit.exml",
+		"yui.BtnPlayCard": "resource/yui_skins/BtnPlayCard.exml",
+		"yui.Main": "resource/yui_skins/Main.exml",
+		"yui.Player": "resource/yui_skins/Player.exml",
+		"Avatar": "resource/yui_skins/Avatar.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -29,11 +34,12 @@
 		"resource/eui_skins/ToggleSwitchSkin.exml",
 		"resource/eui_skins/VScrollBarSkin.exml",
 		"resource/eui_skins/VSliderSkin.exml",
-		"resource/my_skins/BtnDrawCard.exml",
-		"resource/my_skins/BtnExit.exml",
-		"resource/my_skins/BtnPlayCard.exml",
-		"resource/my_skins/Main.exml",
-		"resource/my_skins/UIPlayer.exml"
+		"resource/yui_skins/Avatar.exml",
+		"resource/yui_skins/BtnDrawCard.exml",
+		"resource/yui_skins/BtnExit.exml",
+		"resource/yui_skins/BtnPlayCard.exml",
+		"resource/yui_skins/Main.exml",
+		"resource/yui_skins/Player.exml"
 	],
 	"path": "resource/default.thm.json"
 }

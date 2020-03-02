@@ -1,7 +1,6 @@
 class UIMain extends eui.Component implements eui.UIComponent {
     exit: eui.Button;
 
-
     testToast: eui.Button;
     testExit: eui.Button;
     testBomb: eui.Button;
@@ -12,7 +11,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     constructor() {
         super();
-        this.skinName = 'resource/my_skins/Main.exml';
+        this.skinName = 'yui.Main';
     }
 
     protected partAdded(partName: string, instance: any): void {

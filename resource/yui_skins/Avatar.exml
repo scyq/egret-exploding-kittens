@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="yui.Avatar" width="100" height="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="1709a7033bc" ></w:Config>
+	<e:Image id="avatar" source="Avatar_1_png" horizontalCenter="0" verticalCenter="0" height="100"/>
+	<e:Rect id="mask" fillColor="0xff0000" fillAlpha="1" anchorOffsetX="50" anchorOffsetY="50" ellipseHeight="100" ellipseWidth="100" top="0" bottom="0" left="0" right="0"/>
+</e:Skin>

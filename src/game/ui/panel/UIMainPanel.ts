@@ -5,7 +5,7 @@ class UIMainPanel extends UIBasePanel {
 
     protected onInit(): void {
         this.bgImg = new egret.Bitmap();
-        this.bgImg.texture = RES.getRes('background_png');
+        this.bgImg.texture = RES.getRes('Background_0_png');
         this.bgImg.width = this.stage.stageWidth;
         this.bgImg.height = this.stage.stageHeight;
         this.addChild(this.bgImg);

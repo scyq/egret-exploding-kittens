@@ -50,13 +50,27 @@ declare module skins{
 	class VSliderSkin extends eui.Skin{
 	}
 }
-declare class BtnDrawCard extends eui.Skin{
+declare module yui{
+	class Avatar extends eui.Skin{
+	}
 }
-declare class BtnExit extends eui.Skin{
+declare module yui{
+	class BtnDrawCard extends eui.Skin{
+	}
 }
-declare class BtnPlayCard extends eui.Skin{
+declare module yui{
+	class BtnExit extends eui.Skin{
+	}
 }
-declare class MainSkin extends eui.Skin{
+declare module yui{
+	class BtnPlayCard extends eui.Skin{
+	}
 }
-declare class UIPlayer extends eui.Skin{
+declare module yui{
+	class Main extends eui.Skin{
+	}
+}
+declare module yui{
+	class Player extends eui.Skin{
+	}
 }

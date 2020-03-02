@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" class="yui.Main">
+	<e:Image id="template" source="Game_Overview_png" top="0" bottom="-143" left="20" right="20" locked="true" visible="false"/>
+	<e:Image id="bg0" source="Background_0_png" left="0" right="0" top="0" bottom="0" locked="true"/>
+	<e:Image id="bg2" source="Background_2_lg_png" x="-396.89" y="181.78" anchorOffsetX="0" width="1433.79" anchorOffsetY="0" height="737.28" locked="true"/>
+	<e:Image id="table" source="Desk_png" anchorOffsetX="0" width="566.7" anchorOffsetY="0" height="493.94" horizontalCenter="0" verticalCenter="-25"/>
+	<e:Image id="boomPanel" source="Boom_Panel_png" x="59.2" y="519.5" anchorOffsetX="0" width="180.09" anchorOffsetY="0" height="82.24"/>
+	<e:Image id="boomPin" source="Boom_Pin_png" x="102.41" y="558.92" anchorOffsetX="5" width="10" anchorOffsetY="22" height="27"/>
+	<e:Image id="stack" source="Deck_png" x="160" y="415.42" anchorOffsetX="0" width="150" anchorOffsetY="0" height="198.8"/>
+	<e:Image id="direction" source="Direction_png" x="320" y="360" anchorOffsetX="30" width="60" anchorOffsetY="25" height="50"/>
+	<e:Group id="test" top="0" bottom="0" left="0" right="0" visible="false" locked="true">
+		<e:Button id="testToast" label="Toast" x="400" y="800" scaleX="1" scaleY="1"/>
+		<e:Button id="testExit" label="Exit" x="400" y="880" scaleX="1" scaleY="1"/>
+		<e:Button id="testBomb" label="BombEnd" x="400" y="960" scaleX="1" scaleY="1"/>
+		<e:Button id="testMatch" label="Match" x="400" y="1040" scaleX="1" scaleY="1"/>
+		<e:Button id="testCookie" label="Cookie" x="264" y="1040" scaleX="1" scaleY="1"/>
+		<e:Button id="testUid" label="UID" x="264" y="960" scaleX="1" scaleY="1"/>
+		<e:Button id="testDie" label="立即死亡" x="264" y="880" scaleX="1" scaleY="1"/>
+	</e:Group>
+	<e:Image id="fg0" source="Foreground_png" left="0" right="0" scale9Grid="0,70,413,122" bottom="0"/>
+	<e:Button id="drawCard" label="" x="173" y="665" width="126" height="56" enabled="true" skinName="yui.BtnDrawCard"/>
+	<e:Button id="playCard" label="" x="342" y="664" anchorOffsetX="0" width="126" anchorOffsetY="0" height="56" enabled="true" skinName="yui.BtnPlayCard"/>
+	<e:Button id="exit" label="Button" enabled="true" x="37.87" y="50.09" skinName="yui.BtnExit"/>
+	<e:Group id="others" width="600" height="300" verticalCenter="-277" horizontalCenter="0">
+		<ns1:UIPlayer id="player0" width="120" height="150" scaleX="1" scaleY="1" bottom="0" left="0"/>
+		<ns1:UIPlayer width="120" height="150" scaleX="1" scaleY="1" id="player1" top="0" horizontalCenter="-160"/>
+		<ns1:UIPlayer width="120" height="150" scaleX="1" scaleY="1" id="player2" horizontalCenter="0" top="0"/>
+		<ns1:UIPlayer width="120" height="150" scaleX="1" scaleY="1" horizontalCenter="160" x="50" id="player3" top="0"/>
+		<ns1:UIPlayer width="120" height="150" scaleX="1" scaleY="1" id="player4" right="0" bottom="0"/>
+	</e:Group>
+	<ns1:UIPlayer id="userAvatar" width="120" height="150" scaleX="1" scaleY="1" left="18" bottom="178"/>
+	<e:Label id="userName" text="名字名字名字名字" x="144.25" y="854" size="16" fontFamily="Microsoft YaHei" height="16" width="128"/>
+</e:Skin>
