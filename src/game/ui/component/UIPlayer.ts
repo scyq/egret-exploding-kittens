@@ -4,6 +4,8 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
     handsBg: eui.Rect;
     handsCnt: eui.Label;
     player: Player;
+    dead: eui.Rect;
+    avatarBg0: eui.Rect;
 
     constructor() {
         super();
@@ -34,11 +36,19 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
     update() {
         egret.log('update player info');
         this.updateHandsCnt();
+        this.updateDead();
     }
 
     updateHandsCnt() {
         this.handsCnt.visible = this.handsBg.visible = this.player && this.player.handsCnt >= 0;
         this.handsCnt.text = this.player ? this.player.handsCnt.toString() : ''
+    }
+
+    updateDead() {
+        if (this.player && this.player.status === PlayerState.DEAD) {
+            this.dead.visible = true;
+            this.avatarBg0.strokeColor = 0xCCCCCC
+        }
     }
 
     setAvatar(avatar: string): void {
