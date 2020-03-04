@@ -28,7 +28,8 @@ class GameMgr {
     private $state: GameState = GameState.INIT;
     private $cookie: string;
 
-    private $loaded: boolean = false;   // scene loaded
+    private $loaded: boolean = false;   // scene $loaded
+    private $uiMain: UIMain;
 
     get uid(): number {
         return this.$uid
@@ -44,6 +45,10 @@ class GameMgr {
 
     get players(): Player[] {
         return this.$players;
+    }
+
+    set uiMain(ui: UIMain) {
+        this.$uiMain = ui;
     }
 
     getUid() {
@@ -122,13 +127,18 @@ class GameMgr {
 
     private initGame() {
         egret.log('Init game');
-        for (const p of this.$players) {
-            if (p.uid === this.$uid) {
-                User.inst.player = p;
+        let userSeat = 0;
+        for (let i = 0; i < this.$players.length; i++) {
+            if (this.$players[i].uid === this.$uid) {
+                User.inst.player = this.$players[i];
+                userSeat = i;
                 break;
             }
         }
-        egret.log(JSON.stringify(this.$matchInfo));
+
+        this.$uiMain.setPlayerData(this.$players, userSeat);
+
+        // egret.log(JSON.stringify(this.$matchInfo));
 
         this.$rid = this.$matchInfo.matchid;
         egret.log(`rid: ${this.$rid}`)
@@ -185,4 +195,5 @@ class GameMgr {
         egret.log('Game Over');
         // TODO: exit game
     }
+
 }

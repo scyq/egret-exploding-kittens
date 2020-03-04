@@ -108,6 +108,5 @@ class Main extends eui.UILayer {
     protected createGameScene(): void {
         const mainPanel = new UIMainPanel();
         this.stage.addChild(mainPanel);
-        GameMgr.inst
     }
 }

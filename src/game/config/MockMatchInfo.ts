@@ -18,47 +18,47 @@ namespace TestMode {
                 type: 1, // 1 = 机器人 0 = 正常玩家
                 avatar: 'https://endaye.com/img/icon-att-01-64x64.png',
                 mobile: '11291502685',
-                nickname: 'player1',
+                nickname: '玩家1',
             },
             {
                 uid: 102,
                 type: 1,
-                avatar: 'https://endaye.com/img/icon-att-01-64x64.png',
+                avatar: 'https://endaye.com/img/icon-shield-01-64x64.png',
                 mobile: '11291502685',
-                nickname: 'player2',
+                nickname: '玩家2',
             },
             {
                 uid: 103,
                 type: 1,
-                avatar: 'https://endaye.com/img/icon-att-01-64x64.png',
+                avatar: 'https://endaye.com/img/icon-cane-01-64x64.png',
                 mobile: '11291502685',
-                nickname: 'player3',
+                nickname: '玩家3',
             },
             {
                 uid: 104,
                 type: 1,
-                avatar: 'https://endaye.com/img/icon-att-01-64x64.png',
+                avatar: 'https://endaye.com/img/icon-magic-01-64x64.png',
                 mobile: '11291502685',
-                nickname: 'player4',
+                nickname: '玩家4',
             },
             {
                 uid: 105,
                 type: 1,
                 avatar: 'https://endaye.com/img/icon-att-01-64x64.png',
                 mobile: '11291502685',
-                nickname: 'player5',
+                nickname: '玩家5',
             },
             {
                 uid: 106,
                 type: 1,
-                avatar: 'https://endaye.com/img/icon-att-01-64x64.png',
+                avatar: 'https://endaye.com/img/icon-shield-01-64x64.png',
                 mobile: '11291502685',
-                nickname: 'player6',
+                nickname: '玩家6',
             }
         ]
     };
 
-    export const MockUid: number = 101;
+    export const MockUid: number = 103;
 
     export const MockCookie: string = 'mock cookie';
 }

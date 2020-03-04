@@ -12,87 +12,9 @@ class UIMainPanel extends UIBasePanel {
 
         const uiMain: UIMain = new UIMain();
         this.addChild(uiMain);
-
-        // const self = this;
-
-        // const sky = this.createBitmapByName('background_png');
-        // this.addChild(sky);
-        // const stageW = this.stage.stageWidth;
-        // const stageH = this.stage.stageHeight;
-        // sky.width = stageW;
-        // sky.height = stageH;
-
-        // let topMask = new egret.Shape();
-        // topMask.graphics.beginFill(0x000000, 0.5);
-        // topMask.graphics.drawRect(0, 0, stageW, 172);
-        // topMask.graphics.endFill();
-        // topMask.y = 33;
-        // this.addChild(topMask);
-
-        // let icon: egret.Bitmap = this.createBitmapByName('egret_icon_png');
-        // this.addChild(icon);
-        // icon.x = 26;
-        // icon.y = 33;
-
-        // let line = new egret.Shape();
-        // line.graphics.lineStyle(2, 0xffffff);
-        // line.graphics.moveTo(0, 0);
-        // line.graphics.lineTo(0, 117);
-        // line.graphics.endFill();
-        // line.x = 172;
-        // line.y = 61;
-        // this.addChild(line);
-
-        // let colorLabel = new egret.TextField();
-        // colorLabel.textColor = 0xffffff;
-        // colorLabel.width = stageW - 172;
-        // colorLabel.textAlign = 'center';
-        // colorLabel.text = 'Hello Egret';
-        // colorLabel.size = 24;
-        // colorLabel.x = 172;
-        // colorLabel.y = 80;
-        // this.addChild(colorLabel);
-
-        // let textField = new egret.TextField();
-        // this.addChild(textField);
-        // textField.alpha = 0;
-        // textField.width = stageW - 172;
-        // textField.textAlign = egret.HorizontalAlign.CENTER;
-        // textField.size = 24;
-        // textField.textColor = 0xffffff;
-        // textField.x = 172;
-        // textField.y = 135;
-        // this.textField = textField;
-
-        // let button = new eui.Button();
-        // button.label = 'Click!';
-        // button.horizontalCenter = 0;
-        // button.verticalCenter = 0;
-        // this.addChild(button);
-        // button.addEventListener(
-        //     egret.TouchEvent.TOUCH_TAP,
-        //     this.onButtonClick,
-        //     this
-        // );
-
-        // this.stage.addEventListener(
-        //     egret.TouchEvent.TOUCH_BEGIN,
-        //     () => {
-        //         self.sendMessage('message content');
-        //     },
-        //     this
-        // );
-
-        // GameDispatcher.inst.addEventListener(
-        //     EventName.TEST,
-        //     this.receiveMessage,
-        //     this
-        // );
-
-
-
-        // const result = await RES.getResAsync('description_json');
-        // this.startAnimation(result);
+        uiMain.width = this.stage.stageWidth;
+        uiMain.height = this.stage.stageHeight;
+        GameMgr.inst.uiMain = uiMain;
     }
 
     private sendMessage(msg: string): void {

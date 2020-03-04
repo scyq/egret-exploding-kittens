@@ -8,6 +8,14 @@ class UIMain extends eui.Component implements eui.UIComponent {
     testMatch: eui.Button;
     testCookie: eui.Button;
     testDie: eui.Button;
+    player0: UIPlayer;  // self user
+    player1: UIPlayer;
+    player2: UIPlayer;
+    player3: UIPlayer;
+    player4: UIPlayer;
+    player5: UIPlayer;
+    userName: eui.Label;
+    players: UIPlayer[];
 
     constructor() {
         super();
@@ -24,16 +32,49 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     onInit(): void {
+        this.initListeners();
+
+        this.userName.visible = false;
+
+        this.players = [
+            this.player0,
+            this.player1,
+            this.player2,
+            this.player3,
+            this.player4,
+            this.player5,
+        ]
+
+        this.setDefaultAvatar();
+    }
+
+    setDefaultAvatar(): void {
+        this.player0.setAvatar('Avatar_1_png')
+        this.player1.setAvatar('Avatar_2_png')
+        this.player2.setAvatar('Avatar_3_png')
+        this.player3.setAvatar('Avatar_4_png')
+        this.player4.setAvatar('Avatar_5_png')
+        this.player5.setAvatar('Avatar_6_png')
+    }
+
+    setPlayerData(data: Player[], userSeat: number) {
+        for (let i = 0; i < this.players.length; i++) {
+            this.players[i].setPlayer(data[(i + userSeat) % data.length], i == 0);
+        }
+        this.userName.text = data[userSeat].nickname
+        this.userName.visible = true;
+    }
+
+
+    initListeners() {
         this.exit.addEventListener(
             egret.TouchEvent.TOUCH_TAP,
             this.onExitClick,
             this
         );
-        this.initTestListeners();
-    }
 
-    onExitClick() {
-        GameMgr.inst.exitGame();
+        // TODO: remove this test part
+        this.initTestListeners();
     }
 
     initTestListeners() {
@@ -73,6 +114,11 @@ class UIMain extends eui.Component implements eui.UIComponent {
             this
         );
     }
+
+    onExitClick() {
+        GameMgr.inst.exitGame();
+    }
+
 
     onTestToast() {
         GameMgr.inst.showToast();
