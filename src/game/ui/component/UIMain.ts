@@ -1,6 +1,7 @@
 class UIMain extends eui.Component implements eui.UIComponent {
     exit: eui.Button;
 
+    bg1: eui.Image;
     testToast: eui.Button;
     testExit: eui.Button;
     testBomb: eui.Button;
@@ -46,9 +47,10 @@ class UIMain extends eui.Component implements eui.UIComponent {
         ]
 
         this.setDefaultAvatar();
+        this.bgTween();
     }
 
-    setDefaultAvatar(): void {
+   private setDefaultAvatar(): void {
         this.player0.setAvatar('Avatar_1_png')
         this.player1.setAvatar('Avatar_2_png')
         this.player2.setAvatar('Avatar_3_png')
@@ -64,7 +66,6 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.userName.text = data[userSeat].nickname
         this.userName.visible = true;
     }
-
 
     initListeners() {
         this.exit.addEventListener(
@@ -113,6 +114,11 @@ class UIMain extends eui.Component implements eui.UIComponent {
             this.onTestDie,
             this
         );
+    }
+
+    private bgTween(): void {
+        const tw = egret.Tween.get(this.bg1, { loop: true });
+        tw.to({ rotation: 360 }, 30000).to({ rotation: 0 }, 0);
     }
 
     onExitClick() {
