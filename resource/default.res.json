@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,Background_1_png,Background_2_lg_png,Background_2_png,Boom_Panel_png,Boom_Pin_png,Btn_Exit_png,Card_Attack_png,Card_Boom_png,Card_Defuse_png,Card_Draw_Last_png,Card_Favor_png,Card_Predict_png,Card_Reverse_png,Card_Shuffle_png,Card_Skip_png,Card_Swap_png,Card_Xray_png,Deck_png,Desk_png,Direction_png,Game_Overview_png,Hands_Count_Bg_png,Timer_Body_png,Timer_Pin_png,Btn_Draw_Card_png,Btn_Play_Card_png,Foreground_png,Avatar_3_png,Avatar_4_png,Avatar_5_png,Avatar_6_png,Avatar_1_png,Avatar_2_png",
+			"keys": "description_json,Background_1_png,Background_2_lg_png,Background_2_png,Boom_Panel_png,Boom_Pin_png,Btn_Exit_png,Card_Attack_png,Card_Boom_png,Card_Defuse_png,Card_Draw_Last_png,Card_Favor_png,Card_Predict_png,Card_Reverse_png,Card_Shuffle_png,Card_Skip_png,Card_Swap_png,Card_Xray_png,Deck_png,Desk_png,Direction_png,Game_Overview_png,Hands_Count_Bg_png,Timer_Body_png,Timer_Pin_png,Btn_Draw_Card_png,Btn_Play_Card_png,Foreground_png,Avatar_3_png,Avatar_4_png,Avatar_5_png,Avatar_6_png,Avatar_1_png,Avatar_2_png,Card_Attack_Double_png",
 			"name": "preload"
 		},
 		{
@@ -184,6 +184,11 @@
 			"name": "Avatar_2_png",
 			"type": "image",
 			"url": "assets/texture/Avatar_2.png"
+		},
+		{
+			"name": "Card_Attack_Double_png",
+			"type": "image",
+			"url": "assets/texture/Card_Attack_Double.png"
 		}
 	]
 }
