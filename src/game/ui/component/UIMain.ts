@@ -17,6 +17,8 @@ class UIMain extends eui.Component implements eui.UIComponent {
     player5: UIPlayer;
     userName: eui.Label;
     players: UIPlayer[];
+    hands: eui.List;
+    private cardsArray: eui.ArrayCollection = new eui.ArrayCollection();
 
     constructor() {
         super();
@@ -34,9 +36,40 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     onInit(): void {
         this.initListeners();
+        this.initPlayers();
+        this.initHands();
 
         this.userName.visible = false;
 
+
+        this.bgTween();
+    }
+
+
+    setPlayerData(data: Player[], userSeat: number) {
+        for (let i = 0; i < this.players.length; i++) {
+            this.players[i].setPlayer(data[(i + userSeat) % data.length], i == 0);
+        }
+        this.userName.text = data[userSeat].nickname
+        this.userName.visible = true;
+
+        // TODO: delete
+        this.setUserHands();
+    }
+
+    setUserHands() {
+        let tmp = [
+            { img: 'Card_Attack_png' },
+            { img: 'Card_Defuse_png' },
+            { img: 'Card_Favor_png' },
+            { img: 'Card_Predict_png' },
+            { img: 'Card_Reverse_png' },
+        ];
+        this.cardsArray.replaceAll(tmp);
+        // this.hands.selectedIndex = 0;
+    }
+
+    initPlayers() {
         this.players = [
             this.player0,
             this.player1,
@@ -47,32 +80,18 @@ class UIMain extends eui.Component implements eui.UIComponent {
         ]
 
         this.setDefaultAvatar();
-        this.bgTween();
     }
 
-   private setDefaultAvatar(): void {
-        this.player0.setAvatar('Avatar_1_png')
-        this.player1.setAvatar('Avatar_2_png')
-        this.player2.setAvatar('Avatar_3_png')
-        this.player3.setAvatar('Avatar_4_png')
-        this.player4.setAvatar('Avatar_5_png')
-        this.player5.setAvatar('Avatar_6_png')
-    }
-
-    setPlayerData(data: Player[], userSeat: number) {
-        for (let i = 0; i < this.players.length; i++) {
-            this.players[i].setPlayer(data[(i + userSeat) % data.length], i == 0);
-        }
-        this.userName.text = data[userSeat].nickname
-        this.userName.visible = true;
+    initHands() {
+        this.hands.dataProvider = this.cardsArray;
+        this.hands.itemRenderer = UICardItem;
+        this.hands.allowMultipleSelection = false;
     }
 
     initListeners() {
-        this.exit.addEventListener(
-            egret.TouchEvent.TOUCH_TAP,
-            this.onExitClick,
-            this
-        );
+        this.exit.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onExitClick, this);
+        this.hands.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.onHandsSelected, this);
+
 
         // TODO: remove this test part
         this.initTestListeners();
@@ -116,9 +135,25 @@ class UIMain extends eui.Component implements eui.UIComponent {
         );
     }
 
+    private setDefaultAvatar(): void {
+        this.player0.setAvatar('Avatar_1_png')
+        this.player1.setAvatar('Avatar_2_png')
+        this.player2.setAvatar('Avatar_3_png')
+        this.player3.setAvatar('Avatar_4_png')
+        this.player4.setAvatar('Avatar_5_png')
+        this.player5.setAvatar('Avatar_6_png')
+    }
+
+
     private bgTween(): void {
         const tw = egret.Tween.get(this.bg1, { loop: true });
         tw.to({ rotation: 360 }, 30000).to({ rotation: 0 }, 0);
+    }
+
+    onHandsSelected(e: eui.PropertyEvent) {
+        GameDispatcher.inst.dispatchEvent(
+            new egret.Event(EventName.CARD_SELECT, false, false, { selectedIndex: this.hands.selectedIndex })
+        );
     }
 
     onExitClick() {

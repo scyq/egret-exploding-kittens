@@ -17,7 +17,8 @@
 		"yui.BtnPlayCard": "resource/yui_skins/BtnPlayCard.exml",
 		"yui.Main": "resource/yui_skins/Main.exml",
 		"yui.Player": "resource/yui_skins/Player.exml",
-		"Avatar": "resource/yui_skins/Avatar.exml"
+		"yui.Avatar": "resource/yui_skins/Avatar.exml",
+		"yui.CardItem": "resource/yui_skins/CardItem.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -38,6 +39,7 @@
 		"resource/yui_skins/BtnDrawCard.exml",
 		"resource/yui_skins/BtnExit.exml",
 		"resource/yui_skins/BtnPlayCard.exml",
+		"resource/yui_skins/CardItem.exml",
 		"resource/yui_skins/Main.exml",
 		"resource/yui_skins/Player.exml"
 	],

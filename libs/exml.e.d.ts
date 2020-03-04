@@ -67,6 +67,10 @@ declare module yui{
 	}
 }
 declare module yui{
+	class CardItem extends eui.Skin{
+	}
+}
+declare module yui{
 	class Main extends eui.Skin{
 	}
 }
