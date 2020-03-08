@@ -23,7 +23,7 @@ class UIAvatar extends eui.Component implements eui.UIComponent {
 		// this.setAvatarUrl('https://dss0.baidu.com/73t1bjeh1BF3odCf/it/u=3172565372,658841133&fm=85&s=3AAB6184CC020155C87FA6830300608F')
 	}
 
-	async setAvatarUrl(avatarUrl: string) {
+	setAvatarUrl(avatarUrl: string) {
 		let imgLoader = new egret.ImageLoader();
 		imgLoader.crossOrigin = "anonymous";// 跨域请求
 		imgLoader.load(avatarUrl);// 去除链接中的转义字符‘\’

@@ -18,6 +18,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
     userName: eui.Label;
     players: UIPlayer[];
     hands: eui.List;
+    stackCnt: eui.Label;
     private cardsArray: eui.ArrayCollection = new eui.ArrayCollection();
 
     constructor() {
@@ -40,7 +41,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.initHands();
 
         this.userName.visible = false;
-
+        this.stackCnt.visible = false;
 
         this.bgTween();
     }
@@ -54,17 +55,15 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.userName.visible = true;
 
         // TODO: delete
-        this.setUserHands();
+        // this.setUserHands();
     }
 
-    setUserHands() {
-        let tmp = [
-            { img: 'Card_Attack_png' },
-            { img: 'Card_Defuse_png' },
-            { img: 'Card_Favor_png' },
-            { img: 'Card_Predict_png' },
-            { img: 'Card_Reverse_png' },
-        ];
+    setUserHands(hands: Card[]) {
+        let tmp: { [img: string]: string }[] = []
+        for (const c of hands) {
+            tmp.push(CardMgr.inst.cards[c])
+        }
+
         this.cardsArray.replaceAll(tmp);
         // this.hands.selectedIndex = 0;
     }
@@ -144,6 +143,31 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.player5.setAvatar('Avatar_6_png')
     }
 
+    updateRoomInfo() {
+        this.updateHandsCnt();
+        this.updateStackCnt();
+    }
+
+    updateHandsCnt() {
+        for (let i = 0; i < this.players.length; i++) {
+            this.players[i].handsCnt.text = GameMgr.inst.players[i].handsCnt.toString();
+        }
+    }
+
+    updateStackCnt() {
+        this.stackCnt.text = `剩余${GameMgr.inst.stackCnt}张`
+    }
+
+    showHandsCnt(show: boolean = true) {
+        for (let i = 1; i < this.players.length; i++) {
+            this.players[i].handsCnt.visible = show;
+            this.players[i].handsBg.visible = show;
+        }
+    }
+
+    showStackCnt(show: boolean = true) {
+        this.stackCnt.visible = show;
+    }
 
     private bgTween(): void {
         const tw = egret.Tween.get(this.bg1, { loop: true });

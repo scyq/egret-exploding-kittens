@@ -9,8 +9,19 @@ class User {
     private constructor() {}
 
     private $player: Player;
+    private $hands: Card[] = []; // 手牌
 
     set player(player: Player) {
         this.$player = player;
+    }
+
+    get hands() {
+        return this.$hands;
+    }
+
+    set hands(hands: Card[]) {
+        if (this.$player === undefined) {return;}
+        this.$hands = hands;
+        this.$player.handsCnt = this.$hands.length;
     }
 }

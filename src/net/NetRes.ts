@@ -5,8 +5,10 @@ class NetRes {
     }[] = [
         { msg: 'text', func: this.text },
         { msg: 'joinRoom', func: this.joinRoom },
+        { msg: 'dealHands', func: this.dealHands },
         { msg: 'startGame', func: this.startGame },
         { msg: 'overGame', func: this.overGame },
+        { msg: 'roomInfo', func: this.roomInfo },
     ];
 
     public text(res: Proto.Res): void {
@@ -22,21 +24,27 @@ class NetRes {
         // TODO: update player status, start not here
     }
 
+    public dealHands(res: Proto.Res): void {
+        if (res === undefined || res.dealHands === undefined) { return; }
+        GameMgr.inst.setUserHands(res.dealHands);
+        console.log(res);
+    }
+
+    public roomInfo(res: Proto.Res): void {
+        if (res === undefined || res.roomInfo === undefined) { return; }
+        GameMgr.inst.setComRoomInfo(res.roomInfo);
+
+    }
+
     public startGame(res: Proto.Res): void {
         if (res === undefined || res.startGame === undefined) { return; }
-        if (res.startGame) {
-            GameMgr.inst.startGame();
-        }
+        GameMgr.inst.startGame();
     }
 
     public overGame(res: Proto.Res): void {
         if (res === undefined || res.overGame === undefined) { return; }
 
-        if (res.overGame) {
-            GameMgr.inst.gameover();
-        } else {
-            egret.log('game continues')
-        }
+        GameMgr.inst.gameover();
 
         // TODO: check others
     }

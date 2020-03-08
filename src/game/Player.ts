@@ -14,6 +14,7 @@ class Player {
     status: PlayerState;
     nickname: string;
     seat: number;
+    attackMark: number = 0;
     handsCnt: number = -1;
 
     constructor(seat: number, player: Native.IMatchPlayer) {

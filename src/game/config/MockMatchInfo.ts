@@ -29,7 +29,7 @@ namespace TestMode {
             },
             {
                 uid: 103,
-                type: 1,
+                type: 0,
                 avatar: 'https://endaye.com/img/icon-cane-01-64x64.png',
                 mobile: '11291502685',
                 nickname: '玩家3',

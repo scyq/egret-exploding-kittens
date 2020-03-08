@@ -3,6 +3,16 @@ enum GameState {
     READY = 1
 }
 
+// 和服务器一致
+enum RoomState {
+    SETUP = 0, // 等待玩家加入，全部玩家READY后发牌
+    DEAL = 1, // shuffle，发牌/换手牌，全部结束后游戏开始
+    PLAY = 2, // 游戏阶段
+    RESULT = 3, // 结算
+    OVER = 4, // 结束
+    DONE = 5 // 结束所有操作
+}
+
 class GameMgr {
     private static readonly MAX_PLAYER_COUNT = 6;
 
@@ -14,9 +24,7 @@ class GameMgr {
         }
         return GameMgr.$mgr;
     }
-    private constructor() {
-        egret.log('new GameMgr()');
-    }
+    private constructor() { }
 
     private $players: Player[] = [];
     private readonly $user: User = User.inst;
@@ -26,10 +34,13 @@ class GameMgr {
     private $gameid: number = Config.GameId;
 
     private $state: GameState = GameState.INIT;
+    private $roomState: RoomState = RoomState.SETUP;
     private $cookie: string;
 
     private $loaded: boolean = false;   // scene $loaded
     private $uiMain: UIMain;
+    userSeat: number = 0;
+    stackCnt: number = 0;
 
     get uid(): number {
         return this.$uid
@@ -111,6 +122,35 @@ class GameMgr {
         }
     }
 
+    setUserHands(dealHands: Proto.IResDealHands) {
+        console.log(dealHands)
+        if (dealHands.uid === this.uid) {
+            User.inst.hands = dealHands.hands;
+            console.log(User.inst.hands);
+            this.$uiMain.setUserHands(User.inst.hands)
+        }
+    }
+
+    setComRoomInfo(roomInfo: Proto.IComRoomInfo) {
+        this.$roomState = roomInfo.state;
+        this.stackCnt = roomInfo.stackCnt;
+        let tp: Player;
+        let rp: Proto.IComRoomPlayer;
+        for (let i = 0; i < this.$players.length; i++) {
+            tp = this.$players[i];
+            rp = roomInfo.players[i];
+            tp.status = rp.state;
+            tp.handsCnt = rp.handsCnt;
+            tp.attackMark = rp.attackMark;
+        }
+        console.log('setComRoomInfo')
+        console.log(roomInfo)
+        this.$uiMain.updateRoomInfo();
+        this.$uiMain.showHandsCnt();
+        this.$uiMain.showStackCnt();
+    }
+
+
     sceneLoaded() {
         if (this.$state === GameState.INIT) {
             this.$loaded = true;
@@ -127,16 +167,15 @@ class GameMgr {
 
     private initGame() {
         egret.log('Init game');
-        let userSeat = 0;
         for (let i = 0; i < this.$players.length; i++) {
             if (this.$players[i].uid === this.$uid) {
                 User.inst.player = this.$players[i];
-                userSeat = i;
+                this.userSeat = i;
                 break;
             }
         }
 
-        this.$uiMain.setPlayerData(this.$players, userSeat);
+        this.$uiMain.setPlayerData(this.$players, this.userSeat);
 
         // egret.log(JSON.stringify(this.$matchInfo));
 
@@ -171,6 +210,8 @@ class GameMgr {
 
     startGame() {
         egret.log('game start')
+        this.$uiMain.updateHandsCnt();
+        this.$uiMain.showHandsCnt(true);
     }
 
     showToast(msg?: string) {
