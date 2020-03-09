@@ -232,6 +232,22 @@ class GameMgr {
         });
     }
 
+    drawCard(uid: number, card?: Card) {
+        if (uid === User.inst.player.uid) {
+            // TODO: User draw a card
+        } else {
+            this.$uiMain.drawCard(uid);
+        }
+    }
+
+    playCard(uid: number, card?: Card) {
+        if (uid === User.inst.player.uid) {
+            // TODO: User draw a card
+        } else if (card !== undefined) {
+            this.$uiMain.playCard(uid, card);
+        }
+    }
+
     gameover() {
         egret.log('Game Over');
         // TODO: exit game

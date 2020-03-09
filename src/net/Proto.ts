@@ -16,6 +16,8 @@ namespace Proto {
         joinRoom?: IResJoinRoom;
         dealHands?: IResDealHands;
         roomInfo?: IComRoomInfo;
+        drawCard?: IComCard;
+        playCard?: IComCard;
     }
 
     /*****************************/
@@ -83,5 +85,13 @@ namespace Proto {
         online: boolean;
         handsCnt: number; // 手牌数
         attackMark: number; // 攻击标记数量
+    }
+
+    /**
+     * 出牌/抓牌
+     */
+    export declare interface IComCard {
+        uid: number;
+        card?: number;
     }
 }

@@ -11,7 +11,7 @@ enum Card {
     SKIP = 9, // 跳过 x 6
     FAVOR = 10, // 索要 x 5
     SWAP = 11, // 交换 x 5
-    DECK = -1 // 卡背
+    DECK = 12 // 卡背
 }
 
 class CardMgr {
@@ -42,5 +42,6 @@ class CardMgr {
         this.cards[Card.SKIP] = { img: 'Card_Skip_png' }
         this.cards[Card.FAVOR] = { img: 'Card_Favor_png' }
         this.cards[Card.SWAP] = { img: 'Card_Swap_png' }
+        this.cards[Card.DECK] = { img: 'Deck_png' }
     }
 }

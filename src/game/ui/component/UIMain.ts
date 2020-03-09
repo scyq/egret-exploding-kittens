@@ -19,7 +19,15 @@ class UIMain extends eui.Component implements eui.UIComponent {
     players: UIPlayer[];
     hands: eui.List;
     stackCnt: eui.Label;
+    deck: eui.Image;
+    stack: eui.Image;
+    playArea: eui.Image;
+
+    btnPlayCard: eui.Button;
+    btnDrawCard: eui.Button;
+
     private cardsArray: eui.ArrayCollection = new eui.ArrayCollection();
+    private cardSmScale = 0.5;
 
     constructor() {
         super();
@@ -53,9 +61,6 @@ class UIMain extends eui.Component implements eui.UIComponent {
         }
         this.userName.text = data[userSeat].nickname
         this.userName.visible = true;
-
-        // TODO: delete
-        // this.setUserHands();
     }
 
     setUserHands(hands: Card[]) {
@@ -150,7 +155,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     updateHandsCnt() {
         for (let i = 0; i < this.players.length; i++) {
-            this.players[i].handsCnt.text = GameMgr.inst.players[i].handsCnt.toString();
+            this.players[i].update();
         }
     }
 
@@ -168,6 +173,50 @@ class UIMain extends eui.Component implements eui.UIComponent {
     showStackCnt(show: boolean = true) {
         this.stackCnt.visible = show;
     }
+
+    drawCard(uid: number) {
+        for (const uip of this.players) {
+            if (uip.player.uid === uid) {
+                this.deck.source = RES.getRes(CardMgr.inst.cards[Card.DECK]['img'])
+                this.deck.visible = true;
+                this.deck.x = this.stack.x;
+                this.deck.y = this.stack.y;
+                this.deck.scaleX = this.stack.scaleX;
+                this.deck.scaleY = this.stack.scaleY;
+                const globalPos = uip.parent.localToGlobal(uip.x, uip.y)
+                const localPos = this.deck.parent.globalToLocal(globalPos.x, globalPos.y)
+                const x = localPos.x + this.deck.width * this.cardSmScale * .5;
+                const y = localPos.y;
+                const tw = egret.Tween.get(this.deck)
+                tw.to({ x: x, y: y, scaleX: this.cardSmScale, scaleY: this.cardSmScale }, 1000).to({ visible: false }, 0);
+                break;
+            }
+        }
+    }
+
+    playCard(uid: number, card: Card) {
+        for (const uip of this.players) {
+            if (uip.player.uid === uid) {
+                this.deck.visible = true;
+                this.deck.source = RES.getRes(CardMgr.inst.cards[Card.DECK]['img'])
+                this.deck.scaleX = this.cardSmScale;
+                this.deck.scaleY = this.cardSmScale;
+                const globalPos = uip.parent.localToGlobal(uip.x, uip.y)
+                const localPos = this.deck.parent.globalToLocal(globalPos.x, globalPos.y)
+                this.deck.x = localPos.x + this.deck.width * this.cardSmScale * .5;
+                this.deck.y = localPos.y;
+                const tw = egret.Tween.get(this.deck)
+                tw.to({ x: this.playArea.x, y: this.playArea.y, scaleX: this.playArea.scaleX, scaleY: this.playArea.scaleY }, 1000)
+                    .to({ visible: false }, 0)
+                    .call(() => {
+                        this.playArea.source = RES.getRes(CardMgr.inst.cards[card]['img'])
+                        this.playArea.visible = true;
+                    });
+                break;
+            }
+        }
+    }
+
 
     private bgTween(): void {
         const tw = egret.Tween.get(this.bg1, { loop: true });

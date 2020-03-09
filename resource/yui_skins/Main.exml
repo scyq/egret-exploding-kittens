@@ -8,11 +8,13 @@
 	<e:Image id="boomPanel" source="Boom_Panel_png" x="59.2" y="519.5" anchorOffsetX="0" width="180.09" anchorOffsetY="0" height="82.24"/>
 	<e:Image id="boomPin" source="Boom_Pin_png" x="102.41" y="558.92" anchorOffsetX="5" width="10" anchorOffsetY="22" height="27"/>
 	<e:Image id="stack" source="Deck_png" x="180" y="441.74" anchorOffsetX="0" width="120" anchorOffsetY="0" height="160"/>
+	<e:Image id="deck" source="Deck_png" x="180" y="441.74" anchorOffsetX="0" width="120" anchorOffsetY="0" height="160"/>
+	<e:Image id="playArea" source="Deck_png" x="320" y="441.74" anchorOffsetX="0" width="120" anchorOffsetY="0" height="160" visible="false" locked="true"/>
 	<e:Label id="stackCnt" text="剩余0涨" x="175.29" y="610" size="16" fontFamily="Microsoft YaHei" height="16" width="128" textAlign="center"/>
 	<e:Image id="direction" source="Direction_png" x="320" y="360" anchorOffsetX="30" width="60" anchorOffsetY="25" height="50"/>
 	<e:Image id="fg0" source="Foreground_png" left="0" right="0" scale9Grid="0,70,413,122" bottom="-49" anchorOffsetY="0" height="349"/>
-	<e:Button id="drawCard" label="" x="173" y="665" width="126" height="56" enabled="true" skinName="yui.BtnDrawCard"/>
-	<e:Button id="playCard" label="" x="342" y="664" anchorOffsetX="0" width="126" anchorOffsetY="0" height="56" enabled="true" skinName="yui.BtnPlayCard"/>
+	<e:Button id="btnDrawCard" label="" x="173" y="665" width="126" height="56" enabled="true" skinName="yui.BtnDrawCard"/>
+	<e:Button id="btnPlayCard" label="" x="342" y="664" anchorOffsetX="0" width="126" anchorOffsetY="0" height="56" enabled="true" skinName="yui.BtnPlayCard"/>
 	<e:Button id="exit" label="Button" enabled="true" x="37.87" y="50.09" skinName="yui.BtnExit"/>
 	<e:Group id="others" width="600" height="300" verticalCenter="-277" horizontalCenter="0">
 		<ns1:UIPlayer id="player1" width="120" height="150" scaleX="1" scaleY="1" bottom="0" left="0"/>

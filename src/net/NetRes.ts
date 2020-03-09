@@ -9,6 +9,8 @@ class NetRes {
         { msg: 'startGame', func: this.startGame },
         { msg: 'overGame', func: this.overGame },
         { msg: 'roomInfo', func: this.roomInfo },
+        { msg: 'drawCard', func: this.drawCard },
+        { msg: 'playCard', func: this.playCard },
     ];
 
     public text(res: Proto.Res): void {
@@ -33,7 +35,16 @@ class NetRes {
     public roomInfo(res: Proto.Res): void {
         if (res === undefined || res.roomInfo === undefined) { return; }
         GameMgr.inst.setComRoomInfo(res.roomInfo);
+    }
 
+    public drawCard(res: Proto.Res): void {
+        if (res === undefined || res.drawCard === undefined) { return; }
+        GameMgr.inst.drawCard(res.drawCard.uid, res.drawCard.card);
+    }
+
+    public playCard(res: Proto.Res): void {
+        if (res === undefined || res.playCard === undefined) { return; }
+        GameMgr.inst.playCard(res.playCard.uid, res.playCard.card);
     }
 
     public startGame(res: Proto.Res): void {
@@ -43,9 +54,7 @@ class NetRes {
 
     public overGame(res: Proto.Res): void {
         if (res === undefined || res.overGame === undefined) { return; }
-
         GameMgr.inst.gameover();
-
         // TODO: check others
     }
 }
