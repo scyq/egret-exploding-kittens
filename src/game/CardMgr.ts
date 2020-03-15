@@ -23,25 +23,25 @@ class CardMgr {
         return CardMgr.$mgr;
     }
 
-    readonly cards: { [card: number]: { [img: string]: string } } = {}
+    readonly cards: { [card: number]: { [img: string]: string } } = {};
 
     private constructor() {
         this.initCards();
     }
 
     initCards() {
-        this.cards[Card.BOOM] = { img: 'Card_Boom_png' }
-        this.cards[Card.DEFUSE] = { img: 'Card_Defuse_png' }
-        this.cards[Card.SHUFFLE] = { img: 'Card_Shuffle_png' }
-        this.cards[Card.DRAWBACK] = { img: 'Card_Draw_Last_png' }
-        this.cards[Card.ATTACK] = { img: 'Card_Attack_png' }
-        this.cards[Card.ATTACT2] = { img: 'Card_Attack_Double_png' }
-        this.cards[Card.PREDICT] = { img: 'Card_Predict_png' }
-        this.cards[Card.XRAY] = { img: 'Card_Xray_png' }
-        this.cards[Card.REVERSE] = { img: 'Card_Reverse_png' }
-        this.cards[Card.SKIP] = { img: 'Card_Skip_png' }
-        this.cards[Card.FAVOR] = { img: 'Card_Favor_png' }
-        this.cards[Card.SWAP] = { img: 'Card_Swap_png' }
-        this.cards[Card.DECK] = { img: 'Deck_png' }
+        this.cards[Card.BOOM] = { img: 'Card_Boom_png' };
+        this.cards[Card.DEFUSE] = { img: 'Card_Defuse_png' };
+        this.cards[Card.SHUFFLE] = { img: 'Card_Shuffle_png' };
+        this.cards[Card.DRAWBACK] = { img: 'Card_Draw_Last_png' };
+        this.cards[Card.ATTACK] = { img: 'Card_Attack_png' };
+        this.cards[Card.ATTACT2] = { img: 'Card_Attack_Double_png' };
+        this.cards[Card.PREDICT] = { img: 'Card_Predict_png' };
+        this.cards[Card.XRAY] = { img: 'Card_Xray_png' };
+        this.cards[Card.REVERSE] = { img: 'Card_Reverse_png' };
+        this.cards[Card.SKIP] = { img: 'Card_Skip_png' };
+        this.cards[Card.FAVOR] = { img: 'Card_Favor_png' };
+        this.cards[Card.SWAP] = { img: 'Card_Swap_png' };
+        this.cards[Card.DECK] = { img: 'Deck_png' };
     }
 }

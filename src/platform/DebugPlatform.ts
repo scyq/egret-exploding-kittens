@@ -25,7 +25,7 @@ class DebugPlatform implements IPlatform {
     }
 
     setMatchInfo(strInfo: string): void {
-        const info: Native.IMatchInfo = JSON.parse(strInfo)
+        const info: Native.IMatchInfo = JSON.parse(strInfo);
         GameMgr.inst.setMatchInfo(info);
     }
 

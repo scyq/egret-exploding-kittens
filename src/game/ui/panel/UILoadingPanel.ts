@@ -1,5 +1,4 @@
 class UILoadingPanel extends UIBasePanel implements RES.PromiseTaskReporter {
-
     private textField: egret.TextField;
     private bgImg: egret.Bitmap;
 
@@ -17,7 +16,7 @@ class UILoadingPanel extends UIBasePanel implements RES.PromiseTaskReporter {
         this.textField = new egret.TextField();
         this.addChild(this.textField);
         this.textField.width = stageW;
-        this.textField.y = stageH * .5 - 50;
+        this.textField.y = stageH * 0.5 - 50;
         this.textField.height = 100;
         this.textField.textAlign = 'center';
     }

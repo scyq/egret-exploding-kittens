@@ -1,5 +1,4 @@
 class UIMainPanel extends UIBasePanel {
-
     private textField: egret.TextField;
     private bgImg: egret.Bitmap;
 

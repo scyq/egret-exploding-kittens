@@ -28,26 +28,26 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
     setPlayer(player: Player, isUser: boolean = false): void {
         this.player = player;
         this.playerName.text = player.nickname;
-        this.seAvatarUrl(player.avatar)
+        this.seAvatarUrl(player.avatar);
         this.playerName.visible = !isUser;
         this.update();
     }
 
     update() {
-        egret.log('update player info');
         this.updateHandsCnt();
         this.updateDead();
     }
 
     updateHandsCnt() {
-        this.handsCnt.visible = this.handsBg.visible = this.player && this.player.handsCnt >= 0;
-        this.handsCnt.text = this.player ? this.player.handsCnt.toString() : ''
+        this.handsCnt.visible = this.handsBg.visible =
+            this.player && this.player.handsCnt >= 0;
+        this.handsCnt.text = this.player ? this.player.handsCnt.toString() : '';
     }
 
     updateDead() {
         if (this.player && this.player.state === PlayerState.DEAD) {
             this.dead.visible = true;
-            this.avatarBg0.strokeColor = 0xCCCCCC
+            this.avatarBg0.strokeColor = 0xcccccc;
         }
     }
 

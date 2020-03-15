@@ -1,5 +1,4 @@
 namespace Proto {
-
     export declare interface Req {
         gameid: number;
         uid: number;
@@ -40,10 +39,10 @@ namespace Proto {
         players: IComPlayerInfo[];
     }
 
-    export declare interface IReqDrawACard {    }
+    export declare interface IReqDrawACard {}
 
     export declare interface IReqPlayACard {
-        card: number;
+        cardIdx: number;
         target?: number;
     }
 

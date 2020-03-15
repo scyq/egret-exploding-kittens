@@ -24,7 +24,7 @@ class GameMgr {
         }
         return GameMgr.$mgr;
     }
-    private constructor() { }
+    private constructor() {}
 
     private $players: Player[] = [];
     private readonly $user: User = User.inst;
@@ -37,21 +37,21 @@ class GameMgr {
     private $roomState: RoomState = RoomState.SETUP;
     private $cookie: string;
 
-    private $loaded: boolean = false;   // scene $loaded
+    private $loaded: boolean = false; // scene $loaded
     private $uiMain: UIMain;
     userSeat: number = 0;
     stackCnt: number = 0;
 
     get uid(): number {
-        return this.$uid
+        return this.$uid;
     }
 
     get rid(): string {
-        return this.$rid
+        return this.$rid;
     }
 
     get gameid(): number {
-        return this.$gameid
+        return this.$gameid;
     }
 
     get players(): Player[] {
@@ -123,11 +123,9 @@ class GameMgr {
     }
 
     setUserHands(dealHands: Proto.IResDealHands) {
-        console.log(dealHands)
         if (dealHands.uid === this.uid) {
             User.inst.hands = dealHands.hands;
-            console.log(User.inst.hands);
-            this.$uiMain.setUserHands(User.inst.hands)
+            this.$uiMain.setUserHands(User.inst.hands);
         }
     }
 
@@ -143,15 +141,12 @@ class GameMgr {
             tp.handsCnt = rp.handsCnt;
             tp.attackMark = rp.attackMark;
         }
-        console.log('setComRoomInfo')
-        console.log(roomInfo)
         this.$uiMain.updateRoomInfo();
         this.$uiMain.showHandsCnt();
         this.$uiMain.showStackCnt();
 
-        this.$uiMain.userAction(User.inst.player.state === PlayerState.ACTION)
+        this.$uiMain.userAction(User.inst.player.state === PlayerState.ACTION);
     }
-
 
     sceneLoaded() {
         if (this.$state === GameState.INIT) {
@@ -162,7 +157,13 @@ class GameMgr {
 
     private tryInitGame() {
         egret.log('Try init game');
-        if (this.$state === GameState.INIT && this.$uid && this.$matchInfo && this.$cookie && this.$loaded) {
+        if (
+            this.$state === GameState.INIT &&
+            this.$uid &&
+            this.$matchInfo &&
+            this.$cookie &&
+            this.$loaded
+        ) {
             this.initGame();
         }
     }
@@ -182,14 +183,14 @@ class GameMgr {
         // egret.log(JSON.stringify(this.$matchInfo));
 
         this.$rid = this.$matchInfo.matchid;
-        egret.log(`rid: ${this.$rid}`)
+        egret.log(`rid: ${this.$rid}`);
 
         this.$state = GameState.READY;
         this.reqJoinRoom();
     }
 
     reqJoinRoom() {
-        const players: Proto.IComPlayerInfo[] = []
+        const players: Proto.IComPlayerInfo[] = [];
         for (const p of this.$matchInfo.players) {
             players.push({
                 uid: p.uid,
@@ -197,28 +198,28 @@ class GameMgr {
                 avatar: p.avatar,
                 nickname: p.nickname,
                 status: 0
-            })
+            });
         }
         const playerList: Proto.IReqJoinRoom = {
             cookie: this.$cookie,
-            players,
-        }
+            players
+        };
         NetMgr.inst.req.joinRoom(playerList);
     }
 
     toDie() {
-        NetMgr.inst.req.die(true)
+        NetMgr.inst.req.die(true);
     }
 
     startGame() {
-        egret.log('game start')
+        egret.log('game start');
         this.$uiMain.updateHandsCnt();
         this.$uiMain.showHandsCnt(true);
     }
 
     showToast(msg?: string) {
         if (!msg) {
-            msg = 'yess yess yess'
+            msg = 'yess yess yess';
         }
         yess.showAndroidToast(msg);
     }
@@ -235,8 +236,14 @@ class GameMgr {
     }
 
     drawCard(uid: number, card?: Card) {
-        if (uid === User.inst.player.uid) {
-            // TODO: User draw a card
+        if (uid === User.inst.player.uid && card !== undefined) {
+            if (card === Card.BOOM) {
+                // TODO: check defuse
+                GameMgr.inst.toDie();
+            } else {
+                User.inst.hands.push(card);
+                this.$uiMain.userDrawCard(card);
+            }
         } else {
             this.$uiMain.drawCard(uid);
         }
@@ -254,5 +261,4 @@ class GameMgr {
         egret.log('Game Over');
         // TODO: exit game
     }
-
 }
