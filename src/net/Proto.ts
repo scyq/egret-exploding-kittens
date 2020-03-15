@@ -1,4 +1,5 @@
 namespace Proto {
+
     export declare interface Req {
         gameid: number;
         uid: number;
@@ -7,6 +8,8 @@ namespace Proto {
         joinRoom?: IReqJoinRoom;
         dealDone?: boolean;
         die?: boolean;
+        drawACard?: IReqDrawACard;
+        playACard?: IReqPlayACard;
     }
 
     export declare interface Res {
@@ -36,6 +39,9 @@ namespace Proto {
         start: boolean;
         players: IComPlayerInfo[];
     }
+
+    export declare interface IReqDrawACard { }
+    export declare interface IReqPlayACard { }
 
     /*****************************/
     /***********  Res  ***********/

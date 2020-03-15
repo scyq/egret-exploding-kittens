@@ -11,7 +11,7 @@ class Player {
     uid: number;
     isBot: boolean;
     avatar: string;
-    status: PlayerState;
+    state: PlayerState;
     nickname: string;
     seat: number;
     attackMark: number = 0;
@@ -22,7 +22,7 @@ class Player {
         this.uid = player.uid;
         this.isBot = player.type === 1;
         this.avatar = player.avatar;
-        this.status = PlayerState.QUEUE;
+        this.state = PlayerState.QUEUE;
         this.nickname = player.nickname;
     }
 }

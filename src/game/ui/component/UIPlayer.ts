@@ -45,7 +45,7 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
     }
 
     updateDead() {
-        if (this.player && this.player.status === PlayerState.DEAD) {
+        if (this.player && this.player.state === PlayerState.DEAD) {
             this.dead.visible = true;
             this.avatarBg0.strokeColor = 0xCCCCCC
         }

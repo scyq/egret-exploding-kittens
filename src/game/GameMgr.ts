@@ -139,7 +139,7 @@ class GameMgr {
         for (let i = 0; i < this.$players.length; i++) {
             tp = this.$players[i];
             rp = roomInfo.players[i];
-            tp.status = rp.state;
+            tp.state = rp.state;
             tp.handsCnt = rp.handsCnt;
             tp.attackMark = rp.attackMark;
         }
@@ -148,6 +148,10 @@ class GameMgr {
         this.$uiMain.updateRoomInfo();
         this.$uiMain.showHandsCnt();
         this.$uiMain.showStackCnt();
+
+        if (User.inst.player.state === PlayerState.ACTION) {
+            
+        }
     }
 
 
