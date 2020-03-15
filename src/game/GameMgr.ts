@@ -149,9 +149,7 @@ class GameMgr {
         this.$uiMain.showHandsCnt();
         this.$uiMain.showStackCnt();
 
-        if (User.inst.player.state === PlayerState.ACTION) {
-            
-        }
+        this.$uiMain.userAction(User.inst.player.state === PlayerState.ACTION)
     }
 
 

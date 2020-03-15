@@ -20,4 +20,12 @@ class User {
         this.$hands = hands;
         this.player.handsCnt = this.$hands.length;
     }
+
+    drawACard() {
+        NetMgr.inst.req.drawACard({})
+    }
+
+    playerACard(card:Card) {
+        NetMgr.inst.req.playACard({})
+    }
 }

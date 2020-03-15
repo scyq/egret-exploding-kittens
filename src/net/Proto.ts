@@ -40,8 +40,12 @@ namespace Proto {
         players: IComPlayerInfo[];
     }
 
-    export declare interface IReqDrawACard { }
-    export declare interface IReqPlayACard { }
+    export declare interface IReqDrawACard {    }
+
+    export declare interface IReqPlayACard {
+        card: number;
+        target?: number;
+    }
 
     /*****************************/
     /***********  Res  ***********/

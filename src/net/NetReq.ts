@@ -31,7 +31,19 @@ class NetReq {
 
     public die(msg: boolean): void {
         const req: Proto.Req = this.getReq();
-        req.die = msg        
+        req.die = msg
         this.$socket.emit('die', req);
+    }
+
+    public drawACard(msg: Proto.IReqDrawACard): void {
+        const req: Proto.Req = this.getReq();
+        req.drawACard = msg
+        this.$socket.emit('drawACard', req);
+    }
+
+    public playACard(msg: Proto.IReqPlayACard): void {
+        const req: Proto.Req = this.getReq();
+        req.playACard = msg
+        this.$socket.emit('playACard', req);
     }
 }

@@ -1,5 +1,5 @@
 class UIMain extends eui.Component implements eui.UIComponent {
-    exit: eui.Button;
+    btnExit: eui.Button;
 
     bg1: eui.Image;
     testToast: eui.Button;
@@ -23,11 +23,11 @@ class UIMain extends eui.Component implements eui.UIComponent {
     stack: eui.Image;
     playArea: eui.Image;
 
-    btnPlayCard: eui.Button;
     btnDrawCard: eui.Button;
+    btnPlayCard: eui.Button;
 
-    private cardsArray: eui.ArrayCollection = new eui.ArrayCollection();
     private cardSmScale = 0.5;
+    private cardsArray: eui.ArrayCollection = new eui.ArrayCollection();
 
     constructor() {
         super();
@@ -50,6 +50,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
         this.userName.visible = false;
         this.stackCnt.visible = false;
+        this.userAction(false);
 
         this.bgTween();
     }
@@ -93,8 +94,11 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     initListeners() {
-        this.exit.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onExitClick, this);
+        this.btnExit.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnExitClick, this);
+        this.btnDrawCard.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnDrawClick, this);
+        this.btnPlayCard.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onBtnPlayClick, this)
         this.hands.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.onHandsSelected, this);
+
 
 
         // TODO: remove this test part
@@ -174,6 +178,12 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.stackCnt.visible = show;
     }
 
+    userAction(action: boolean) {
+        this.btnDrawCard.visible = action
+        this.btnPlayCard.visible = action
+    }
+
+    // 其他玩家抓牌动画
     drawCard(uid: number) {
         for (const uip of this.players) {
             if (uip.player.uid === uid) {
@@ -194,6 +204,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
         }
     }
 
+    // 其他玩家出牌动画
     playCard(uid: number, card: Card) {
         for (const uip of this.players) {
             if (uip.player.uid === uid) {
@@ -217,7 +228,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
         }
     }
 
-
+    // 背景动画
     private bgTween(): void {
         const tw = egret.Tween.get(this.bg1, { loop: true });
         tw.to({ rotation: 360 }, 30000).to({ rotation: 0 }, 0);
@@ -229,10 +240,22 @@ class UIMain extends eui.Component implements eui.UIComponent {
         );
     }
 
-    onExitClick() {
+    onBtnExitClick() {
         GameMgr.inst.exitGame();
     }
 
+    onBtnDrawClick() {
+        User.inst.drawACard();
+    }
+
+    onBtnPlayClick() {
+        if (this.hands.selectedIndex) {
+            const card = User.inst.hands[this.hands.selectedIndex]
+            if (card) {
+                User.inst.playerACard(card);
+            }
+        }
+    }
 
     onTestToast() {
         GameMgr.inst.showToast();

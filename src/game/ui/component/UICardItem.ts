@@ -21,11 +21,11 @@ class UICardItem extends eui.ItemRenderer {
 
 	private changeCard(): void {
 		this.card.source = RES.getRes(this.data.img);
-		
+
 		if (this.selected && this.scaleX < this.scaleSelected) {
-			egret.Tween.get(this).to({ scaleX: this.scaleSelected , scaleY: this.scaleSelected}, 150)
+			egret.Tween.get(this).to({ scaleX: this.scaleSelected, scaleY: this.scaleSelected }, 150)
 		} else if (!this.selected && this.scaleX > 1) {
-			egret.Tween.get(this).to({ scaleX: 1 , scaleY: 1}, 150)
+			egret.Tween.get(this).to({ scaleX: 1, scaleY: 1 }, 150)
 		}
 	}
 
