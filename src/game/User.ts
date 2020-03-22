@@ -6,7 +6,7 @@ class User {
         }
         return User.$user;
     }
-    private constructor() {}
+    private constructor() { }
 
     player: Player;
     private $hands: Card[] = []; // 手牌

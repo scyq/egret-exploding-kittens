@@ -24,7 +24,7 @@ class GameMgr {
         }
         return GameMgr.$mgr;
     }
-    private constructor() {}
+    private constructor() { }
 
     private $players: Player[] = [];
     private readonly $user: User = User.inst;
@@ -39,6 +39,7 @@ class GameMgr {
 
     private $loaded: boolean = false; // scene $loaded
     private $uiMain: UIMain;
+    clockwise: boolean = true;
     userSeat: number = 0;
     stackCnt: number = 0;
 
@@ -131,6 +132,7 @@ class GameMgr {
 
     setComRoomInfo(roomInfo: Proto.IComRoomInfo) {
         this.$roomState = roomInfo.state;
+        this.clockwise = roomInfo.clockwise;
         this.stackCnt = roomInfo.stackCnt;
         let tp: Player;
         let rp: Proto.IComRoomPlayer;
@@ -209,6 +211,10 @@ class GameMgr {
 
     toDie() {
         NetMgr.inst.req.die(true);
+    }
+
+    toWin() {
+        NetMgr.inst.req.win(true);
     }
 
     startGame() {

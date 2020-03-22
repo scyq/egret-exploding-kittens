@@ -1,7 +1,7 @@
 class NetReq {
     private $socket: SocketIOClient.Socket;
 
-    public constructor() {}
+    public constructor() { }
 
     public set socket(socket: SocketIOClient.Socket) {
         this.$socket = socket;
@@ -33,6 +33,12 @@ class NetReq {
         const req: Proto.Req = this.getReq();
         req.die = msg;
         this.$socket.emit('die', req);
+    }
+
+    public win(msg: boolean): void {
+        const req: Proto.Req = this.getReq();
+        req.win = msg;
+        this.$socket.emit('win', req);
     }
 
     public drawACard(msg: Proto.IReqDrawACard): void {

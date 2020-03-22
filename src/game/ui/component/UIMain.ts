@@ -9,6 +9,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
     testMatch: eui.Button;
     testCookie: eui.Button;
     testDie: eui.Button;
+    testWin: eui.Button;
     player0: UIPlayer; // self user
     player1: UIPlayer;
     player2: UIPlayer;
@@ -22,6 +23,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
     deck: eui.Image;
     stack: eui.Image;
     playArea: eui.Image;
+    direction: eui.Image;
 
     btnDrawCard: eui.Button;
     btnPlayCard: eui.Button;
@@ -136,6 +138,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     updateRoomInfo() {
+        this.updateDirection();
         this.updateHandsCnt();
         this.updateStackCnt();
     }
@@ -148,6 +151,10 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     updateStackCnt() {
         this.stackCnt.text = `剩余${GameMgr.inst.stackCnt}张`;
+    }
+
+    updateDirection() {
+        this.direction.scaleX = GameMgr.inst.clockwise ? -1 : 1;
     }
 
     showHandsCnt(show: boolean = true) {
@@ -318,6 +325,11 @@ class UIMain extends eui.Component implements eui.UIComponent {
             this.onTestDie,
             this
         );
+        this.testWin.addEventListener(
+            egret.TouchEvent.TOUCH_TAP,
+            this.onTestWin,
+            this
+        );
     }
 
     onTestToast() {
@@ -346,5 +358,9 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     onTestDie() {
         GameMgr.inst.toDie();
+    }
+
+    onTestWin() {
+        GameMgr.inst.toWin();
     }
 }

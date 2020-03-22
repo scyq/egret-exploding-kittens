@@ -7,6 +7,7 @@ namespace Proto {
         joinRoom?: IReqJoinRoom;
         dealDone?: boolean;
         die?: boolean;
+        win?: boolean;
         drawACard?: IReqDrawACard;
         playACard?: IReqPlayACard;
     }
@@ -39,7 +40,7 @@ namespace Proto {
         players: IComPlayerInfo[];
     }
 
-    export declare interface IReqDrawACard {}
+    export declare interface IReqDrawACard { }
 
     export declare interface IReqPlayACard {
         cardIdx: number;
@@ -81,6 +82,7 @@ namespace Proto {
     export declare interface IComRoomInfo {
         state: RoomState;
         stackCnt: number;
+        clockwise: boolean;
         players: IComRoomPlayer[];
     }
 
