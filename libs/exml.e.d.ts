@@ -55,6 +55,14 @@ declare module yui{
 	}
 }
 declare module yui{
+	class BtnCancel extends eui.Skin{
+	}
+}
+declare module yui{
+	class BtnDefuse extends eui.Skin{
+	}
+}
+declare module yui{
 	class BtnDrawCard extends eui.Skin{
 	}
 }

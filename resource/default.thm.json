@@ -36,6 +36,8 @@
 		"resource/eui_skins/VScrollBarSkin.exml",
 		"resource/eui_skins/VSliderSkin.exml",
 		"resource/yui_skins/Avatar.exml",
+		"resource/yui_skins/BtnCancel.exml",
+		"resource/yui_skins/BtnDefuse.exml",
 		"resource/yui_skins/BtnDrawCard.exml",
 		"resource/yui_skins/BtnExit.exml",
 		"resource/yui_skins/BtnPlayCard.exml",

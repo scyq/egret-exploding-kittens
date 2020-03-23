@@ -14,8 +14,8 @@
 	<e:Label id="stackCnt" text="剩余0涨" x="175.29" y="610" size="16" fontFamily="Microsoft YaHei" height="16" width="128" textAlign="center"/>
 
 	<e:Image id="fg0" source="Foreground_png" left="0" right="0" scale9Grid="0,70,413,122" bottom="-49" anchorOffsetY="0" height="349"/>
-	<e:Button id="btnDrawCard" label="" x="173" y="665" width="126" height="56" enabled="true" skinName="yui.BtnDrawCard"/>
-	<e:Button id="btnPlayCard" label="" x="342" y="664" anchorOffsetX="0" width="126" anchorOffsetY="0" height="56" enabled="true" skinName="yui.BtnPlayCard"/>
+	<e:Button id="btnDrawCard" label="" x="173" y="665" width="128" height="56" enabled="true" skinName="yui.BtnDrawCard"/>
+	<e:Button id="btnPlayCard" label="" x="342" y="664" anchorOffsetX="0" width="128" anchorOffsetY="0" height="56" enabled="true" skinName="yui.BtnPlayCard"/>
 	<e:Button id="btnExit" label="Button" enabled="true" x="37.87" y="50.09" skinName="yui.BtnExit"/>
 	<e:Group id="others" width="600" height="300" verticalCenter="-277" horizontalCenter="0" locked="true">
 		<ns1:UIPlayer id="player1" width="120" height="150" scaleX="1" scaleY="1" bottom="0" left="0"/>
@@ -47,5 +47,19 @@
 		<e:Button id="testUid" label="UID" x="100" y="100" scaleX="1" scaleY="1"/>
 		<e:Button id="testCookie" label="Cookie" x="100" y="150" scaleX="1" scaleY="1"/>
 
+	</e:Group>
+	<e:Group id="defusePop" left="0" right="0" top="0" bottom="0" visible="false" locked="true">
+		<e:Image id="frame" source="Damage_Frame_png" top="0" bottom="0" left="0" right="0" scale9Grid="48,47,48,47"/>
+		<e:Group id="gpBoom" width="400" height="600" verticalCenter="0" horizontalCenter="0">
+			<e:Image id="boomBg" source="Boom_Bg_png" x="95.85" y="268" anchorOffsetX="0" width="216.31" anchorOffsetY="0" height="148" scaleX="1" scaleY="1"/>
+			<e:Image id="boom" source="Boom_png" x="80.44" y="47.24" scaleX="1" scaleY="1"/>
+		</e:Group>
+		<e:Group id="gpBang" width="400" height="600" verticalCenter="-125" horizontalCenter="10">
+			<e:Image id="bangFire" source="Bang_Fire_png" x="4.16" y="99.13" scaleX="1" scaleY="1"/>
+			<e:Image id="bangSpark" source="Bang_Spark_png" y="96.56" x="-0.22" scaleX="1" scaleY="1"/>
+			<e:Image id="bang" source="Bang_png" x="80.44" y="264" scaleX="1" scaleY="1"/>
+		</e:Group>
+		<e:Button id="btnDefuse" label="Button" x="260" y="828.18" skinName="yui.BtnDefuse" width="128" height="56" scaleX="1" scaleY="1"/>
+		<e:Button id="btnDefuseCancel" label="" x="260" y="916.9" skinName="yui.BtnCancel" width="128" height="56"/>
 	</e:Group>
 </e:Skin>
