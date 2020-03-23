@@ -10,6 +10,7 @@ class User {
 
     player: Player;
     private $hands: Card[] = []; // 手牌
+    nextCard: Card;
 
     get hands() {
         return this.$hands;
@@ -38,5 +39,23 @@ class User {
         GameDispatcher.inst.dispatchEvent(
             new egret.Event(EventName.HANDS_REFRESH, false, false)
         );
+    }
+
+    checkNextCard() {
+        if (this.nextCard === Card.BOOM) {
+            // TODO: check defuse
+            GameMgr.inst.toDie();
+            console.log('USER_DEFUSE')
+            GameDispatcher.inst.dispatchEvent(
+                new egret.Event(EventName.USER_DEFUSE, false, false)
+            );
+        } else {
+            User.inst.hands.push(this.nextCard);
+            // this.$uiMain.userDrawCard(nextCard);
+            console.log('HANDS_REFRESH')
+            GameDispatcher.inst.dispatchEvent(
+                new egret.Event(EventName.HANDS_REFRESH, false, false)
+            );
+        }
     }
 }

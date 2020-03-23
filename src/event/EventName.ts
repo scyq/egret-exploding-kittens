@@ -3,4 +3,5 @@ class EventName {
     public static TEST: string = 'TEST';
     public static CARD_SELECT: string = 'CARD_SELECT';
     public static HANDS_REFRESH: string = 'HANDS_REFRESH';
+    public static USER_DEFUSE: string = 'USER_DEFUSE';
 }

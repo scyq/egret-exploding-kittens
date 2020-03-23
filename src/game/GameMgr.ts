@@ -243,14 +243,10 @@ class GameMgr {
 
     drawCard(uid: number, card?: Card) {
         if (uid === User.inst.player.uid && card !== undefined) {
-            if (card === Card.BOOM) {
-                // TODO: check defuse
-                GameMgr.inst.toDie();
-            } else {
-                User.inst.hands.push(card);
-                this.$uiMain.userDrawCard(card);
-            }
+            // User
+            User.inst.nextCard = card;
         } else {
+            // Others 
             this.$uiMain.drawCard(uid);
         }
     }

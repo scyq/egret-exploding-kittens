@@ -123,6 +123,11 @@ class UIMain extends eui.Component implements eui.UIComponent {
             this.onHandsRefresh,
             this
         );
+        GameDispatcher.inst.addEventListener(
+            EventName.USER_DEFUSE,
+            this.onUserDefuse,
+            this
+        );
 
         // TODO: remove this test part
         this.initTestListeners();
@@ -248,7 +253,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     // 自己抓牌
-    userDrawCard(card: Card) {
+    userDrawCardAnim() {
         // TODO: 玩家抓拍动画
         this.deck.visible = true;
         this.deck.x = this.stack.x;
@@ -271,11 +276,17 @@ class UIMain extends eui.Component implements eui.UIComponent {
         )
             .to({ visible: false }, 0)
             .call(() => {
-                console.log('HANDS_REFRESH')
-                GameDispatcher.inst.dispatchEvent(
-                    new egret.Event(EventName.HANDS_REFRESH, false, false)
-                );
+                User.inst.checkNextCard();
             })
+    }
+
+    // 自己出牌
+    userPlayCard(card: Card) {
+
+    }
+
+    showUserDefusPop() {
+        console.log('showUserDefusPop()')
     }
 
     // 背景动画
@@ -296,11 +307,16 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.setUserHands(User.inst.hands);
     }
 
+    onUserDefuse(e: eui.PropertyEvent) {
+        this.showUserDefusPop()
+    }
+
     onBtnExitClick() {
         GameMgr.inst.exitGame();
     }
 
     onBtnDrawClick() {
+        this.userDrawCardAnim()
         User.inst.drawACard();
     }
 
