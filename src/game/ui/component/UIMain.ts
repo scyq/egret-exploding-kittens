@@ -218,7 +218,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
             if (uip.player.uid === uid) {
                 this.deck.visible = true;
                 this.deck.source = RES.getRes(
-                    CardMgr.inst.cards[Card.DECK]['img']
+                    CardMgr.inst.cards[card]['img']
                 );
                 this.deck.scaleX = this.cardSmScale;
                 this.deck.scaleY = this.cardSmScale;
@@ -255,6 +255,9 @@ class UIMain extends eui.Component implements eui.UIComponent {
     // 自己抓牌
     userDrawCardAnim() {
         // TODO: 玩家抓拍动画
+        this.deck.source = RES.getRes(
+            CardMgr.inst.cards[Card.DECK]['img']
+        );
         this.deck.visible = true;
         this.deck.x = this.stack.x;
         this.deck.y = this.stack.y;

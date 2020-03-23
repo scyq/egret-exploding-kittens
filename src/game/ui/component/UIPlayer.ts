@@ -57,6 +57,9 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
                 this.bang.visible = true;
                 this.attack.visible = false;
                 this.boom.visible = false;
+            } else if (this.player.attackMark > 0) {
+                this.boom.visible = false;
+                this.attack.visible = true;
             } else if (this.player.state === PlayerState.DEFUSE) {
                 this.boom.visible = true;
                 this.bang.visible = false;
