@@ -37,7 +37,7 @@
 		</e:layout>
 	</e:List>
 	<e:Image id="deck" source="Deck_png" x="180" y="441.74" anchorOffsetX="0" width="120" anchorOffsetY="0" height="160"/>
-	<e:Group id="test" width="250" height="250" right="0" bottom="0" visible="false">
+	<e:Group id="test" width="250" height="250" right="0" bottom="0">
 		<e:Button id="testToast" label="Toast" x="0" y="50" scaleX="1" scaleY="1"/>
 		<e:Button id="testExit" label="Exit" x="0" y="0" scaleX="1" scaleY="1"/>
 		<e:Button id="testBomb" label="BombEnd" x="0" y="100" scaleX="1" scaleY="1"/>

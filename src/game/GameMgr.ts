@@ -262,5 +262,6 @@ class GameMgr {
     gameover() {
         egret.log('Game Over');
         // TODO: exit game
+        GameMgr.inst.exitGame();
     }
 }

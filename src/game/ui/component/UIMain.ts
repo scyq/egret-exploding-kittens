@@ -284,6 +284,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     // 自己出牌
     userPlayCardAnim() {
+
         const selectCard = this.hands.getChildAt(this.hands.selectedIndex) as UICardItem
         const cardImg = selectCard.card.source
         const globalPos = selectCard.parent.localToGlobal(selectCard.x, selectCard.y);
@@ -348,7 +349,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     onBtnPlayClick() {
-        if (this.hands.selectedIndex) {
+        if (this.hands.selectedIndex > -1) {
             this.userPlayCardAnim()
             User.inst.playerACard(this.hands.selectedIndex);
         }
