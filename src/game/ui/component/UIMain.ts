@@ -175,7 +175,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     userAction(action: boolean) {
         this.btnDrawCard.visible = action;
-        this.btnPlayCard.visible = action;
+        this.btnPlayCard.visible = action && User.inst.ableToPlayACard();
     }
 
     // 其他玩家抓牌动画
@@ -260,7 +260,9 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.deck.y = this.stack.y;
         this.deck.scaleX = this.stack.scaleX;
         this.deck.scaleY = this.stack.scaleY;
-        const last = this.hands.getChildAt(this.hands.numChildren - 1)
+        console.log(`index: ${User.inst.player.handsCnt - 1}`)
+        const index = Math.max(0, Math.min(this.hands.numChildren, User.inst.player.handsCnt) - 1)
+        const last = this.hands.getChildAt(User.inst.player.handsCnt - 1)
         const globalPos = last.parent.localToGlobal(last.x, last.y)
         const localPos = this.deck.parent.globalToLocal(globalPos.x, globalPos.y)
         const x = localPos.x
@@ -281,8 +283,33 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     // 自己出牌
-    userPlayCard(card: Card) {
+    userPlayCardAnim() {
+        const selectCard = this.hands.getChildAt(this.hands.selectedIndex) as UICardItem
+        const cardImg = selectCard.card.source
+        const globalPos = selectCard.parent.localToGlobal(selectCard.x, selectCard.y);
+        const localPos = this.deck.parent.globalToLocal(globalPos.x, globalPos.y)
+        this.deck.visible = true;
+        this.deck.source = cardImg;
+        this.deck.scaleX = selectCard.deck.scaleX;
+        this.deck.scaleY = selectCard.deck.scaleY;
+        this.deck.x = localPos.x;
+        this.deck.y = localPos.y;
 
+        const x = this.playArea.x;
+        const y = this.playArea.y;
+
+        const tw = egret.Tween.get(this.deck)
+        tw.to(
+            {
+                x: x,
+                y: y,
+            }, 1000
+        )
+            .to({ visible: false }, 0)
+            .call(() => {
+                this.playArea.source = cardImg;
+                this.playArea.visible = true;
+            })
     }
 
     showUserDefusPop() {
@@ -322,6 +349,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     onBtnPlayClick() {
         if (this.hands.selectedIndex) {
+            this.userPlayCardAnim()
             User.inst.playerACard(this.hands.selectedIndex);
         }
     }

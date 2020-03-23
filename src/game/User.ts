@@ -58,4 +58,13 @@ class User {
             );
         }
     }
+
+    ableToPlayACard(): boolean {
+        for (const c of this.hands) {
+            if (c != Card.DEFUSE && c != Card.BOOM) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
