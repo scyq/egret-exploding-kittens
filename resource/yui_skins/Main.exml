@@ -9,7 +9,7 @@
 	<e:Image id="boomPanel" source="Boom_Panel_png" x="59.2" y="519.5" anchorOffsetX="0" width="180.09" anchorOffsetY="0" height="82.24"/>
 	<e:Image id="boomPin" source="Boom_Pin_png" x="102.41" y="558.92" anchorOffsetX="5" width="10" anchorOffsetY="22" height="27"/>
 	<e:Image id="stack" source="Deck_png" x="180" y="441.74" anchorOffsetX="0" width="120" anchorOffsetY="0" height="160"/>
-	<e:Image id="deck" source="Deck_png" x="180" y="441.74" anchorOffsetX="0" width="120" anchorOffsetY="0" height="160"/>
+
 	<e:Image id="playArea" source="Deck_png" x="320" y="441.74" anchorOffsetX="0" width="120" anchorOffsetY="0" height="160" visible="false" locked="true"/>
 	<e:Label id="stackCnt" text="剩余0涨" x="175.29" y="610" size="16" fontFamily="Microsoft YaHei" height="16" width="128" textAlign="center"/>
 
@@ -36,15 +36,16 @@
 			<e:HorizontalLayout horizontalAlign="center" verticalAlign="bottom" gap="-50"/>
 		</e:layout>
 	</e:List>
-	<e:Group id="test" top="0" bottom="0" left="0" right="0">
-		<e:Button id="testToast" label="Toast" x="520" y="800" scaleX="1" scaleY="1"/>
-		<e:Button id="testExit" label="Exit" x="520" y="850" scaleX="1" scaleY="1"/>
-		<e:Button id="testBomb" label="BombEnd" x="520" y="900" scaleX="1" scaleY="1"/>
-		<e:Button id="testMatch" label="Match" x="520" y="950" scaleX="1" scaleY="1"/>
-		<e:Button id="testWin" label="立即胜利" x="410" y="800" scaleX="1" scaleY="1"/>
-		<e:Button id="testDie" label="立即死亡" x="410" y="850" scaleX="1" scaleY="1"/>
-		<e:Button id="testUid" label="UID" x="410" y="900" scaleX="1" scaleY="1"/>
-		<e:Button id="testCookie" label="Cookie" x="410" y="950" scaleX="1" scaleY="1"/>
+	<e:Image id="deck" source="Deck_png" x="180" y="441.74" anchorOffsetX="0" width="120" anchorOffsetY="0" height="160"/>
+	<e:Group id="test" width="250" height="250" right="0" bottom="0" visible="false">
+		<e:Button id="testToast" label="Toast" x="0" y="50" scaleX="1" scaleY="1"/>
+		<e:Button id="testExit" label="Exit" x="0" y="0" scaleX="1" scaleY="1"/>
+		<e:Button id="testBomb" label="BombEnd" x="0" y="100" scaleX="1" scaleY="1"/>
+		<e:Button id="testMatch" label="Match" x="0" y="150" scaleX="1" scaleY="1"/>
+		<e:Button id="testWin" label="立即胜利" x="100" y="0" scaleX="1" scaleY="1"/>
+		<e:Button id="testDie" label="立即死亡" x="100" y="50" scaleX="1" scaleY="1"/>
+		<e:Button id="testUid" label="UID" x="100" y="100" scaleX="1" scaleY="1"/>
+		<e:Button id="testCookie" label="Cookie" x="100" y="150" scaleX="1" scaleY="1"/>
 
 	</e:Group>
 </e:Skin>

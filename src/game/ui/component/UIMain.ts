@@ -23,7 +23,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
     deck: eui.Image;
     stack: eui.Image;
     playArea: eui.Image;
-    direction: eui.Image;
+    direction: eui.Image; ko
 
     btnDrawCard: eui.Button;
     btnPlayCard: eui.Button;
@@ -250,9 +250,32 @@ class UIMain extends eui.Component implements eui.UIComponent {
     // 自己抓牌
     userDrawCard(card: Card) {
         // TODO: 玩家抓拍动画
-        GameDispatcher.inst.dispatchEvent(
-            new egret.Event(EventName.HANDS_REFRESH, false, false)
-        );
+        this.deck.visible = true;
+        this.deck.x = this.stack.x;
+        this.deck.y = this.stack.y;
+        this.deck.scaleX = this.stack.scaleX;
+        this.deck.scaleY = this.stack.scaleY;
+        const last = this.hands.getChildAt(this.hands.numChildren - 1)
+        const globalPos = last.parent.localToGlobal(last.x, last.y)
+        const localPos = this.deck.parent.globalToLocal(globalPos.x, globalPos.y)
+        const x = localPos.x
+        const y = localPos.y
+
+        const tw = egret.Tween.get(this.deck)
+        tw.to(
+            {
+                x: x,
+                y: y,
+            },
+            1000
+        )
+            .to({ visible: false }, 0)
+            .call(() => {
+                console.log('HANDS_REFRESH')
+                GameDispatcher.inst.dispatchEvent(
+                    new egret.Event(EventName.HANDS_REFRESH, false, false)
+                );
+            })
     }
 
     // 背景动画
