@@ -1,5 +1,6 @@
 class UIMain extends eui.Component implements eui.UIComponent {
     btnExit: eui.Button;
+    gm: eui.Group;
 
     bg1: eui.Image;
     testToast: eui.Button;
@@ -171,6 +172,10 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     showStackCnt(show: boolean = true) {
         this.stackCnt.visible = show;
+    }
+
+    showGm(show: boolean) {
+        this.gm.visible = show;
     }
 
     userAction(action: boolean) {

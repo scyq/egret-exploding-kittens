@@ -1,5 +1,6 @@
 namespace Config {
     export const GameId: number = 1;
+    export const Gm: boolean = true;
 
     // net
     export const TimeOutMs: number = 5000;

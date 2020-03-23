@@ -246,6 +246,7 @@ class GameMgr {
         egret.log('game start');
         this.$uiMain.updateHandsCnt();
         this.$uiMain.showHandsCnt(true);
+        this.$uiMain.showGm(Config.Gm);
     }
 
     showToast(msg?: string) {

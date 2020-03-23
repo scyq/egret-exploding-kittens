@@ -40,7 +40,7 @@
 		</e:layout>
 	</e:List>
 	<e:Image id="favorHand" source="Hand_png" anchorOffsetX="0" width="302" anchorOffsetY="0" height="509" top="0" horizontalCenter="0" locked="true" visible="false"/>
-	<e:Group id="test" width="250" height="250" right="0" bottom="0" locked="true">
+	<e:Group id="gm" width="250" height="250" right="0" bottom="0" visible="false" locked="true">
 		<e:Button id="testToast" label="Toast" x="0" y="50" scaleX="1" scaleY="1"/>
 		<e:Button id="testExit" label="Exit" x="0" y="0" scaleX="1" scaleY="1"/>
 		<e:Button id="testBomb" label="BombEnd" x="0" y="100" scaleX="1" scaleY="1"/>
