@@ -105,6 +105,7 @@ class GameMgr {
     }
 
     gameBombsEnd(type: number, isWdh: number, gameResultJson: string) {
+        console.log(gameResultJson);
         yess.gameBombsEnd(type, isWdh, gameResultJson);
     }
 

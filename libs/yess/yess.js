@@ -31,7 +31,7 @@ yess.getUid = (cbName) => {
     }
 }
 
-yess.getBombsWdh = (cb) => {
+yess.getBombsWdh = (cbName) => {
     egret.log(`yess.getBombsWdh(${cbName})`)
     if (yess.exists) {
         YessAndroid.getBombsWdh(cbName);
@@ -51,6 +51,3 @@ yess.getCookie = (cUrl, cbName) => {
         YessAndroid.getCookie(cUrl, cbName);
     }
 }
-
-
-

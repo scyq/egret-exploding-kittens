@@ -6,6 +6,10 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
     player: Player;
     dead: eui.Rect;
     avatarBg0: eui.Rect;
+    attack: eui.Image;
+    bang: eui.Image;
+    boom: eui.Image;
+
 
     constructor() {
         super();
@@ -35,7 +39,7 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
 
     update() {
         this.updateHandsCnt();
-        this.updateDead();
+        this.updateState();
     }
 
     updateHandsCnt() {
@@ -44,10 +48,24 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
         this.handsCnt.text = this.player ? this.player.handsCnt.toString() : '';
     }
 
-    updateDead() {
-        if (this.player && this.player.state === PlayerState.DEAD) {
-            this.dead.visible = true;
-            this.avatarBg0.strokeColor = 0xcccccc;
+    updateState() {
+        if (this.player) {
+
+            if (this.player.state === PlayerState.DEAD) {
+                this.dead.visible = true;
+                this.avatarBg0.strokeColor = 0xcccccc;
+                this.bang.visible = true;
+                this.attack.visible = false;
+                this.boom.visible = false;
+            } else if (this.player.state === PlayerState.DEFUSE) {
+                this.boom.visible = true;
+                this.bang.visible = false;
+                this.attack.visible = false;
+            } else {
+                this.bang.visible = false;
+                this.attack.visible = false;
+                this.boom.visible = false;
+            }
         }
     }
 

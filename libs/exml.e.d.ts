@@ -71,7 +71,19 @@ declare module yui{
 	}
 }
 declare module yui{
+	class BtnFavor extends eui.Skin{
+	}
+}
+declare module yui{
 	class BtnPlayCard extends eui.Skin{
+	}
+}
+declare module yui{
+	class BtnPredict extends eui.Skin{
+	}
+}
+declare module yui{
+	class BtnXray extends eui.Skin{
 	}
 }
 declare module yui{
