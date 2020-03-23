@@ -59,6 +59,7 @@ namespace TestMode {
     };
 
     export const MockUid: number = 103;
+    export const MockWdh: number = -1;
 
     export const MockCookie: string = 'mock cookie';
 }

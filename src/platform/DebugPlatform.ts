@@ -24,6 +24,10 @@ class DebugPlatform implements IPlatform {
         GameMgr.inst.setUid(uid);
     }
 
+    setWdh(wdh: number): void {
+        GameMgr.inst.setWdh(wdh);
+    }
+
     setMatchInfo(strInfo: string): void {
         const info: Native.IMatchInfo = JSON.parse(strInfo);
         GameMgr.inst.setMatchInfo(info);

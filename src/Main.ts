@@ -56,6 +56,7 @@ class Main extends eui.UILayer {
 
     private async runGame() {
         GameMgr.inst.getUid();
+        GameMgr.inst.getWdh();
         GameMgr.inst.getMatchInfo();
         GameMgr.inst.getCookie();
 

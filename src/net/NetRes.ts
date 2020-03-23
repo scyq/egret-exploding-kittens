@@ -69,7 +69,7 @@ class NetRes {
         if (res === undefined || res.overGame === undefined) {
             return;
         }
-        GameMgr.inst.gameover();
+        GameMgr.inst.gameover(res.overGame);
         // TODO: check others
     }
 }

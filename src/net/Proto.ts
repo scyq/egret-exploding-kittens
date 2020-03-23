@@ -15,7 +15,7 @@ namespace Proto {
     export declare interface Res {
         text?: string;
         startGame?: boolean;
-        overGame?: boolean;
+        overGame?: number[];
         joinRoom?: IResJoinRoom;
         dealHands?: IResDealHands;
         roomInfo?: IComRoomInfo;

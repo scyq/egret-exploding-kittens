@@ -25,8 +25,9 @@ class NetReq {
     public joinRoom(msg: Proto.IReqJoinRoom): void {
         const req: Proto.Req = this.getReq();
         req.joinRoom = msg;
-        this.$socket.emit('joinRoom', req);
         egret.log('joinRoom');
+        egret.log(req.joinRoom);
+        this.$socket.emit('joinRoom', req);
     }
 
     public die(msg: boolean): void {

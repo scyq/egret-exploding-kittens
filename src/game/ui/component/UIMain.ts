@@ -409,7 +409,11 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     onTestBomb() {
-        GameMgr.inst.gameBombsEnd();
+        const rankUids: number[] = []
+        for (const p of GameMgr.inst.players) {
+            rankUids.push(p.uid);
+        }
+        GameMgr.inst.gameover(rankUids);
     }
 
     onTestUid() {

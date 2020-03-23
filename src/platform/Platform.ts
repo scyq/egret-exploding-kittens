@@ -11,6 +11,7 @@ declare interface IPlatform {
     login(): Promise<void>;
     relogin(): Promise<void>;
     setUid(uid: number): void;
+    setWdh(wdh: number): void;
     setMatchInfo?(info: any): void;
     setCookie?(strCookie: string): void;
 }

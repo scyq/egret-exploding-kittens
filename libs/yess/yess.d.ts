@@ -5,11 +5,12 @@ declare module 'yess' {
 }
 
 interface YessStatic {
-    exist: boolean;
+    exists: boolean;
     showAndroidToast(msg: string): void;
     finishAndroidPage(): void;
-    gameBombsEnd(gameResultJson: any): void;
-    getUid(cbName: string):void;
+    gameBombsEnd(type: number, isWdh: number, gameResultJson: string): void;
+    getUid(cbName: string): void;
+    getBombsWdh(cbName: string): void;
     getBombsMatchInfo(cbName: string): void;
     getCookie(cUrl: string, cbName: string): void;
 }

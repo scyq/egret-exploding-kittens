@@ -31,6 +31,7 @@ class GameMgr {
     private $matchInfo: Native.IMatchInfo;
     private $rid: string;
     private $uid: number;
+    private $wdh: number;
     private $gameid: number = Config.GameId;
 
     private $state: GameState = GameState.INIT;
@@ -64,7 +65,7 @@ class GameMgr {
     }
 
     getUid() {
-        if (yess.exist) {
+        if (yess.exists) {
             egret.log('NATIVE mode');
             yess.getUid('platform.setUid');
         } else {
@@ -73,8 +74,18 @@ class GameMgr {
         }
     }
 
+    getWdh() {
+        if (yess.exists) {
+            egret.log('NATIVE mode');
+            yess.getBombsWdh('platform.setWdh');
+        } else {
+            egret.log('TEST mode');
+            this.setWdh(TestMode.MockWdh);
+        }
+    }
+
     getMatchInfo() {
-        if (yess.exist) {
+        if (yess.exists) {
             egret.log('NATIVE mode');
             yess.getBombsMatchInfo('platform.setMatchInfo');
         } else {
@@ -84,7 +95,7 @@ class GameMgr {
     }
 
     getCookie() {
-        if (yess.exist) {
+        if (yess.exists) {
             egret.log('NATIVE mode');
             yess.getCookie('http://47.94.202.234', 'platform.setCookie');
         } else {
@@ -93,10 +104,22 @@ class GameMgr {
         }
     }
 
+    gameBombsEnd(type: number, isWdh: number, gameResultJson: string) {
+        yess.gameBombsEnd(type, isWdh, gameResultJson);
+    }
+
     setUid(uid: string | number) {
         egret.log(`UID: ${uid}`);
         if (this.$state === GameState.INIT) {
             this.$uid = +uid;
+            this.tryInitGame();
+        }
+    }
+
+    setWdh(wdh: string | number) {
+        egret.log(`WDH: ${wdh}`);
+        if (this.$state === GameState.INIT) {
+            this.$wdh = +wdh;
             this.tryInitGame();
         }
     }
@@ -162,6 +185,7 @@ class GameMgr {
         if (
             this.$state === GameState.INIT &&
             this.$uid &&
+            this.$wdh &&
             this.$matchInfo &&
             this.$cookie &&
             this.$loaded
@@ -230,15 +254,25 @@ class GameMgr {
         yess.showAndroidToast(msg);
     }
 
+    // 中途退出
     exitGame() {
-        yess.finishAndroidPage();
+        // yess.finishAndroidPage();
+        const liveUids: number[] = [];
+        for (const p of this.$players) {
+            if (p.state != PlayerState.DEAD) {
+                liveUids.push(p.uid);
+            }
+        }
+        const gameResultJson = JSON.stringify(liveUids).replace('[', '').replace(']', '');
+
+        this.gameBombsEnd(1, this.$wdh, gameResultJson)
     }
 
-    gameBombsEnd() {
-        yess.gameBombsEnd({
-            name: 'this is a test bomb end json',
-            status: 'i am dead'
-        });
+
+    gameover(rankUids: number[]) {
+        egret.log('Game Over');
+        const gameResultJson = JSON.stringify(rankUids).replace('[', '').replace(']', '');
+        GameMgr.inst.gameBombsEnd(2, this.$wdh, gameResultJson);
     }
 
     drawCard(uid: number, card?: Card) {
@@ -259,9 +293,4 @@ class GameMgr {
         }
     }
 
-    gameover() {
-        egret.log('Game Over');
-        // TODO: exit game
-        GameMgr.inst.exitGame();
-    }
 }
