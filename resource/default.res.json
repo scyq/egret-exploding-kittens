@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,Background_1_png,Background_2_lg_png,Background_2_png,Boom_Panel_png,Boom_Pin_png,Btn_Exit_png,Card_Attack_png,Card_Boom_png,Card_Defuse_png,Card_Draw_Last_png,Card_Favor_png,Card_Predict_png,Card_Reverse_png,Card_Shuffle_png,Card_Skip_png,Card_Swap_png,Card_Xray_png,Deck_png,Desk_png,Direction_png,Game_Overview_png,Hands_Count_Bg_png,Timer_Body_png,Timer_Pin_png,Btn_Draw_Card_png,Btn_Play_Card_png,Foreground_png,Avatar_3_png,Avatar_4_png,Avatar_5_png,Avatar_6_png,Avatar_1_png,Avatar_2_png,Card_Attack_Double_png,button_down_png,button_up_png,Background_0_png,Boom_png,Boom_Bg_png,Btn_Defuse_png,Btn_Cancel_png,Btn_Defuse_2_png,Pan_png,Pan_2_png,View_png,Btn_See_png,Boom_Sm_png,Bang_Sm_png,Pan_Sm_png,View_2_png,Hand_png,Bang_Spark_png,Bang_Fire_png,Bang_png,Damage_Frame_png,Bang2_png,Bang_Fire2_png,Bang_Sm2_png,Bang_Spark2_png,Boom2_png,Boom_Bg2_png,Boom_Sm2_png,Btn_Cancel2_png,Btn_Defuse2_png,Btn_Defuse_22_png,Btn_See2_png,Damage_Frame2_png,Hand2_png,Pan2_png,Pan_22_png,Pan_Sm2_png,View2_png,View_22_png",
+			"keys": "description_json,Background_1_png,Background_2_lg_png,Background_2_png,Boom_Panel_png,Boom_Pin_png,Btn_Exit_png,Card_Attack_png,Card_Boom_png,Card_Defuse_png,Card_Draw_Last_png,Card_Favor_png,Card_Predict_png,Card_Reverse_png,Card_Shuffle_png,Card_Skip_png,Card_Swap_png,Card_Xray_png,Deck_png,Desk_png,Direction_png,Game_Overview_png,Hands_Count_Bg_png,Timer_Body_png,Timer_Pin_png,Btn_Draw_Card_png,Btn_Play_Card_png,Foreground_png,Avatar_3_png,Avatar_4_png,Avatar_5_png,Avatar_6_png,Avatar_1_png,Avatar_2_png,Card_Attack_Double_png,button_down_png,button_up_png,Background_0_png,Boom_png,Boom_Bg_png,Btn_Defuse_png,Btn_Cancel_png,Btn_Defuse_2_png,Pan_png,Pan_2_png,View_png,Btn_See_png,Boom_Sm_png,Bang_Sm_png,Pan_Sm_png,View_2_png,Hand_png,Bang_Spark_png,Bang_Fire_png,Bang_png,Damage_Frame_png",
 			"name": "preload"
 		},
 		{
@@ -289,96 +289,6 @@
 			"name": "Damage_Frame_png",
 			"type": "image",
 			"url": "assets/texture/Damage_Frame.png"
-		},
-		{
-			"name": "Bang2_png",
-			"type": "image",
-			"url": "assets/texture/Bang.png"
-		},
-		{
-			"name": "Bang_Fire2_png",
-			"type": "image",
-			"url": "assets/texture/Bang_Fire.png"
-		},
-		{
-			"name": "Bang_Sm2_png",
-			"type": "image",
-			"url": "assets/texture/Bang_Sm.png"
-		},
-		{
-			"name": "Bang_Spark2_png",
-			"type": "image",
-			"url": "assets/texture/Bang_Spark.png"
-		},
-		{
-			"name": "Boom2_png",
-			"type": "image",
-			"url": "assets/texture/Boom.png"
-		},
-		{
-			"name": "Boom_Bg2_png",
-			"type": "image",
-			"url": "assets/texture/Boom_Bg.png"
-		},
-		{
-			"name": "Boom_Sm2_png",
-			"type": "image",
-			"url": "assets/texture/Boom_Sm.png"
-		},
-		{
-			"name": "Btn_Cancel2_png",
-			"type": "image",
-			"url": "assets/texture/Btn_Cancel.png"
-		},
-		{
-			"name": "Btn_Defuse2_png",
-			"type": "image",
-			"url": "assets/texture/Btn_Defuse.png"
-		},
-		{
-			"name": "Btn_Defuse_22_png",
-			"type": "image",
-			"url": "assets/texture/Btn_Defuse_2.png"
-		},
-		{
-			"name": "Btn_See2_png",
-			"type": "image",
-			"url": "assets/texture/Btn_See.png"
-		},
-		{
-			"name": "Damage_Frame2_png",
-			"type": "image",
-			"url": "assets/texture/Damage_Frame.png"
-		},
-		{
-			"name": "Hand2_png",
-			"type": "image",
-			"url": "assets/texture/Hand.png"
-		},
-		{
-			"name": "Pan2_png",
-			"type": "image",
-			"url": "assets/texture/Pan.png"
-		},
-		{
-			"name": "Pan_22_png",
-			"type": "image",
-			"url": "assets/texture/Pan_2.png"
-		},
-		{
-			"name": "Pan_Sm2_png",
-			"type": "image",
-			"url": "assets/texture/Pan_Sm.png"
-		},
-		{
-			"name": "View2_png",
-			"type": "image",
-			"url": "assets/texture/View.png"
-		},
-		{
-			"name": "View_22_png",
-			"type": "image",
-			"url": "assets/texture/View_2.png"
 		}
 	]
 }
