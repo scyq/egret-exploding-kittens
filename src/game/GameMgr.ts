@@ -229,6 +229,7 @@ class GameMgr {
         }
         const playerList: Proto.IReqJoinRoom = {
             cookie: this.$cookie,
+            wdh: this.$wdh,
             players
         };
         NetMgr.inst.req.joinRoom(playerList);

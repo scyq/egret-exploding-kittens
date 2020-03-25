@@ -10,6 +10,7 @@ namespace Config {
     // export const ServerUrlDebug: string = 'http://39.104.22.7:13002/'; // dev
     export const ServerUrlDebug: string = 'http://localhost:13002/'; // local
 
+    export const avatarBase = 'http://www.yess.space'
     export const DebugMode: boolean = true;
     export const TestMode: boolean = true;
 }

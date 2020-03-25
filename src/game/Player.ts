@@ -22,6 +22,9 @@ class Player {
         this.seat = seat;
         this.uid = player.uid;
         this.isBot = player.type === 1;
+        if (player.avatar.substr(0, 4) !== 'http') {
+            player.avatar = Config.avatarBase + player.avatar
+        }
         this.avatar = player.avatar;
         this.state = PlayerState.QUEUE;
         this.nickname = player.nickname;

@@ -32,6 +32,7 @@ namespace Proto {
      */
     export declare interface IReqJoinRoom {
         cookie: string;
+        wdh: number;
         players: IComPlayerInfo[];
     }
 
