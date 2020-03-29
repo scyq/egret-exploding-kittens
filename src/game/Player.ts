@@ -23,9 +23,9 @@ class Player {
         this.uid = player.uid;
         this.isBot = player.type === 1;
         if (player.avatar.substr(0, 4) !== 'http') {
-            player.avatar = Config.avatarBase + player.avatar
+            player.avatar = Config.avatarBase + player.avatar;
         }
-        this.avatar = player.avatar;
+        this.avatar = encodeURI(player.avatar);
         this.state = PlayerState.QUEUE;
         this.nickname = player.nickname;
     }

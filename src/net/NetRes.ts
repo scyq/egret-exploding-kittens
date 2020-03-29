@@ -4,7 +4,7 @@ class NetRes {
         func: (res: Proto.Res) => void;
     }[] = [
         { msg: 'text', func: this.text },
-        { msg: 'joinRoom', func: this.joinRoom },
+        { msg: 'err', func: this.err },
         { msg: 'dealHands', func: this.dealHands },
         { msg: 'startGame', func: this.startGame },
         { msg: 'overGame', func: this.overGame },
@@ -23,12 +23,13 @@ class NetRes {
         // );
     }
 
-    public joinRoom(res: Proto.Res): void {
-        if (res === undefined || res.joinRoom === undefined) {
+    public err(res: Proto.Res): void {
+        if (res === undefined || res.err === undefined) {
             return;
         }
-        // TODO: update player status, start not here
+        GameMgr.inst.handleError(res.err);
     }
+
 
     public dealHands(res: Proto.Res): void {
         if (res === undefined || res.dealHands === undefined) {

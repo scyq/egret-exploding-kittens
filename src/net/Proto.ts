@@ -14,9 +14,9 @@ namespace Proto {
 
     export declare interface Res {
         text?: string;
+        err?: IResError;
         startGame?: boolean;
         overGame?: number[];
-        joinRoom?: IResJoinRoom;
         dealHands?: IResDealHands;
         roomInfo?: IComRoomInfo;
         drawCard?: IComCard;
@@ -51,6 +51,12 @@ namespace Proto {
     /*****************************/
     /***********  Res  ***********/
     /*****************************/
+
+    export declare interface IResError {
+        uid: number;
+        msg: string;
+        exit: boolean;
+    }
 
     export declare interface IResDealHands {
         uid: number;

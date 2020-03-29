@@ -216,6 +216,15 @@ class GameMgr {
         this.reqJoinRoom();
     }
 
+    handleError(err: Proto.IResError) {
+        if (err.msg) {
+            this.showToast(err.msg);
+        }
+        if (err.exit) {
+            this.exitGame();
+        }
+    }
+
     reqJoinRoom() {
         const players: Proto.IComPlayerInfo[] = [];
         for (const p of this.$matchInfo.players) {
