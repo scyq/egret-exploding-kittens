@@ -7,9 +7,8 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
     dead: eui.Rect;
     avatarBg0: eui.Rect;
     attack: eui.Image;
-    bang: eui.Image;
     boom: eui.Image;
-
+    bang: eui.Image;
 
     constructor() {
         super();
@@ -43,32 +42,31 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
     }
 
     updateHandsCnt() {
-        this.handsCnt.visible = this.handsBg.visible =
-            this.player && this.player.handsCnt >= 0;
+        this.handsCnt.visible = this.handsBg.visible = this.player.state !== PlayerState.DEAD;
         this.handsCnt.text = this.player ? this.player.handsCnt.toString() : '';
     }
 
     updateState() {
-        if (this.player) {
-
-            if (this.player.state === PlayerState.DEAD) {
-                this.dead.visible = true;
-                this.avatarBg0.strokeColor = 0xcccccc;
-                this.bang.visible = true;
-                this.attack.visible = false;
-                this.boom.visible = false;
-            } else if (this.player.attackMark > 0) {
-                this.boom.visible = false;
-                this.attack.visible = true;
-            } else if (this.player.state === PlayerState.DEFUSE) {
-                this.boom.visible = true;
-                this.bang.visible = false;
-                this.attack.visible = false;
-            } else {
-                this.bang.visible = false;
-                this.attack.visible = false;
-                this.boom.visible = false;
-            }
+        // console.log(`${this.player.nickname} ${this.player.state}`)
+        if (this.player.state === PlayerState.DEFUSE) {
+            this.boom.visible = true;
+            this.bang.visible = false;
+            this.attack.visible = false;
+        } else if (this.player.state === PlayerState.DEAD) {
+            this.dead.visible = true;
+            this.avatarBg0.strokeColor = 0xcccccc;
+            this.attack.visible = false;
+            this.boom.visible = false;
+            this.bang.visible = true;
+            this.handsBg.visible = false;
+            this.handsCnt.visible = false;
+        } else if (this.player.attackMark > 0) {
+            this.boom.visible = false;
+            this.attack.visible = true;
+        } else {
+            this.bang.visible = false;
+            this.attack.visible = false;
+            this.boom.visible = false;
         }
     }
 

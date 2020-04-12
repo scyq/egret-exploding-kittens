@@ -1,6 +1,6 @@
 enum GameState {
     INIT = 0,
-    READY = 1
+    READY = 1,
 }
 
 // 和服务器一致
@@ -10,7 +10,7 @@ enum RoomState {
     PLAY = 2, // 游戏阶段
     RESULT = 3, // 结算
     OVER = 4, // 结束
-    DONE = 5 // 结束所有操作
+    DONE = 5, // 结束所有操作
 }
 
 class GameMgr {
@@ -233,13 +233,13 @@ class GameMgr {
                 type: p.type,
                 avatar: p.avatar,
                 nickname: p.nickname,
-                status: 0
+                status: 0,
             });
         }
         const playerList: Proto.IReqJoinRoom = {
             cookie: this.$cookie,
             wdh: this.$wdh,
-            players
+            players,
         };
         NetMgr.inst.req.joinRoom(playerList);
     }
@@ -256,7 +256,7 @@ class GameMgr {
         egret.log('game start');
         this.$uiMain.updateHandsCnt();
         this.$uiMain.showHandsCnt(true);
-        this.$uiMain.showGm(Config.Gm);
+        // this.$uiMain.showGm(Config.Gm);
     }
 
     showToast(msg?: string) {
@@ -275,15 +275,18 @@ class GameMgr {
                 liveUids.push(p.uid);
             }
         }
-        const gameResultJson = JSON.stringify(liveUids).replace('[', '').replace(']', '');
+        const gameResultJson = JSON.stringify(liveUids)
+            .replace('[', '')
+            .replace(']', '');
 
-        this.gameBombsEnd(1, this.$wdh, gameResultJson)
+        this.gameBombsEnd(1, this.$wdh, gameResultJson);
     }
-
 
     gameover(rankUids: number[]) {
         egret.log('Game Over');
-        const gameResultJson = JSON.stringify(rankUids).replace('[', '').replace(']', '');
+        const gameResultJson = JSON.stringify(rankUids)
+            .replace('[', '')
+            .replace(']', '');
         GameMgr.inst.gameBombsEnd(2, this.$wdh, gameResultJson);
     }
 
@@ -292,7 +295,7 @@ class GameMgr {
             // User
             User.inst.nextCard = card;
         } else {
-            // Others 
+            // Others
             this.$uiMain.drawCard(uid);
         }
     }
@@ -304,5 +307,4 @@ class GameMgr {
             this.$uiMain.playCard(uid, card);
         }
     }
-
 }

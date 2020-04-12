@@ -28,10 +28,11 @@ class User {
         NetMgr.inst.req.drawACard({});
     }
 
-    playerACard(cardIdx: number) {
+    playACard(cardIdx: number) {
+        // TODO: 选择Boom的位置
         NetMgr.inst.req.playACard({
             cardIdx,
-            target: undefined
+            target: [0],
         });
         const card = this.hands.splice(cardIdx, 1)[0];
         // TODO: card effect
@@ -41,30 +42,45 @@ class User {
         );
     }
 
+    getDefuseCard(): number {
+        for (let i = 0; i < this.hands.length; i++) {
+            if (this.hands[i] === Card.DEFUSE) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     checkNextCard() {
-        if (this.nextCard === Card.BOOM) {
-            // TODO: check defuse
-            GameMgr.inst.toDie();
-            console.log('USER_DEFUSE')
+        // GameMgr.inst.defuseBoom(false, -1);
+        if (
+            this.nextCard === Card.BOOM &&
+            this.player.state === PlayerState.DEFUSE
+        ) {
+            // GameMgr.inst.defuseBoom(true, this.getDefuseCard());
+            console.log('USER_DEFUSE');
             GameDispatcher.inst.dispatchEvent(
-                new egret.Event(EventName.USER_DEFUSE, false, false)
+                new egret.Event(EventName.USER_DEFUSE, false, false, {
+                    show: true,
+                    defuseIdx: this.getDefuseCard(),
+                })
             );
         } else {
             User.inst.hands.push(this.nextCard);
-            // this.$uiMain.userDrawCard(nextCard);
-            console.log('HANDS_REFRESH')
+            console.log('HANDS_REFRESH');
             GameDispatcher.inst.dispatchEvent(
                 new egret.Event(EventName.HANDS_REFRESH, false, false)
             );
         }
     }
 
-    ableToPlayACard(): boolean {
-        for (const c of this.hands) {
-            if (c != Card.DEFUSE && c != Card.BOOM) {
-                return true;
-            }
+    ableToPlayACard(cardIdx: number): boolean {
+        if (this.hands.length === 0 || cardIdx < 0 || cardIdx > this.hands.length - 1) {
+            return false;
+        } else if (this.hands.length === 1) {
+            return this.hands[0] !== Card.DEFUSE || this.hands[0] !== Card.BOOM;
+        } else {
+            return this.hands[cardIdx] !== Card.DEFUSE || this.hands[cardIdx] !== Card.BOOM;
         }
-        return false;
     }
 }

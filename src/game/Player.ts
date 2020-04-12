@@ -5,7 +5,7 @@ enum PlayerState {
     WAIT = 3, // 等待其他玩家行动
     ACTION = 4, // 行动阶段
     DEFUSE = 5, // 拆弹阶段
-    DEAD = 6 // 死亡
+    DEAD = 6, // 死亡
 }
 
 class Player {

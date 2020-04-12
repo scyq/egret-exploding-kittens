@@ -41,11 +41,11 @@ namespace Proto {
         players: IComPlayerInfo[];
     }
 
-    export declare interface IReqDrawACard { }
+    export declare interface IReqDrawACard {}
 
     export declare interface IReqPlayACard {
         cardIdx: number;
-        target?: number;
+        target?: number[];
     }
 
     /*****************************/
@@ -111,5 +111,6 @@ namespace Proto {
     export declare interface IComCard {
         uid: number;
         card?: number;
+        target?: number[];
     }
 }
