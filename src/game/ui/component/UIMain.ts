@@ -55,11 +55,17 @@ class UIMain extends eui.Component implements eui.UIComponent {
     // 被攻击弹窗
     gpAttack: eui.Group;
 
-    // 语言弹窗
+    // 预言定位弹窗
     gpPredict: eui.Group;
+    predictBoomSeq: eui.Label;
+    btnPredict: eui.Button;
 
     // 透视弹窗
-    gpXrap: eui.Group;
+    gpXray: eui.Group;
+    btnXray: eui.Button;
+    xrayCard1: eui.Image;
+    xrayCard2: eui.Image;
+    xrayCard3: eui.Image;
 
     boomBackOpt: number;
     boomBackOptBtns: eui.Button[];
@@ -181,11 +187,22 @@ class UIMain extends eui.Component implements eui.UIComponent {
             this.onBtnDefuseCancelClick,
             this
         );
+        this.btnPredict.addEventListener(
+            egret.TouchEvent.TOUCH_TAP,
+            this.onbtnPredictClick,
+            this
+        );
+        this.btnXray.addEventListener(
+            egret.TouchEvent.TOUCH_TAP,
+            this.onbtnXrayClick,
+            this
+        );
         this.hands.addEventListener(
             eui.ItemTapEvent.ITEM_TAP,
             this.onHandsSelected,
             this
         );
+
         for (let i = 0; i < this.boomBackOptBtns.length; i++) {
             const btn = this.boomBackOptBtns[i];
             const btnArg = i;
@@ -282,6 +299,50 @@ class UIMain extends eui.Component implements eui.UIComponent {
                 ui.player.uid !== User.inst.player.uid &&
                 ui.player.state !== PlayerState.DEAD;
             ui.showBtnAttack(show);
+        }
+    }
+
+    // 玩家看预言第几张雷
+    userPredict(show: boolean) {
+        this.gpPredict.visible = show;
+        if (!show) {
+            return;
+        }
+        if (User.inst.boomSeq > -1) {
+            this.predictBoomSeq.text = `第${User.inst.boomSeq + 1}张`;
+        } else {
+            this.gpPredict.visible = false;
+        }
+    }
+
+    // 玩家看透视三张牌
+    userXray(show: boolean) {
+        this.gpXray.visible = show;
+        if (!show) {
+            return;
+        }
+        const card3: Card[] = User.inst.card3;
+        if (card3 && card3.length > 0) {
+            if (card3[0]) {
+                this.xrayCard1.visible = true;
+                this.xrayCard1.source = CardMgr.inst.cards[card3[0]].img;
+            } else {
+                this.xrayCard1.visible = false;
+            }
+            if (card3[1]) {
+                this.xrayCard2.visible = true;
+                this.xrayCard2.source = CardMgr.inst.cards[card3[1]].img;
+            } else {
+                this.xrayCard2.visible = false;
+            }
+            if (card3[2]) {
+                this.xrayCard3.visible = true;
+                this.xrayCard3.source = CardMgr.inst.cards[card3[2]].img;
+            } else {
+                this.xrayCard3.visible = false;
+            }
+        } else {
+            this.gpXray.visible = false;
         }
     }
 
@@ -490,7 +551,11 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     onHandsRefresh(e?: eui.PropertyEvent) {
         this.setUserHands(User.inst.hands);
-        this.userAction(User.inst.player.state === PlayerState.ACTION);
+        this.userAction(
+            User.inst.player.state === PlayerState.ACTION ||
+                User.inst.player.state === PlayerState.PREDICT ||
+                User.inst.player.state === PlayerState.XRAY
+        );
     }
 
     onUserDefuse(e: eui.PropertyEvent) {
@@ -549,6 +614,16 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.gpBoom.visible = false;
         this.gpBang.visible = true;
         GameMgr.inst.toDie();
+    }
+
+    onbtnPredictClick() {
+        this.userPredict(false);
+        this.userAction(true);
+    }
+
+    onbtnXrayClick() {
+        this.userXray(false);
+        this.userAction(true);
     }
 
     /////////////// TEST ///////////////

@@ -91,6 +91,7 @@
 		<e:Image id="predictCard" source="Deck_png" width="120" height="160" horizontalCenter="0" verticalCenter="-60"/>
 		<e:Label id="predictTitle1" text="定位" horizontalCenter="0" verticalCenter="-280" bold="true" size="44" fontFamily="Microsoft YaHei" textAlign="center" verticalAlign="middle"/>
 		<e:Label id="predictTitle2" text="最近的炸弹在第几张" horizontalCenter="0" verticalCenter="-230" size="30" fontFamily="Microsoft YaHei" verticalAlign="middle" textAlign="center"/>
+		<e:Label id="predictBoomSeq" text="第0张" verticalCenter="-14" size="30" fontFamily="Microsoft YaHei" verticalAlign="middle" textAlign="center" horizontalCenter="0"/>
 		<e:Button id="btnPredict" label="看到了" x="260" y="916.9" width="128" height="56" skinName="yui.BtnGreen"/>
 		<e:Image id="predictSeee" anchorOffsetX="0" width="400" anchorOffsetY="0" height="188" verticalCenter="136" horizontalCenter="0" x="123" y="602" scaleX="1" scaleY="1" source="View_2_png"/>
 	</e:Group>

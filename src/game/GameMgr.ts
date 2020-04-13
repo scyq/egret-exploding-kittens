@@ -173,6 +173,10 @@ class GameMgr {
 
         this.$uiMain.userAction(User.inst.player.state === PlayerState.ACTION);
         this.$uiMain.userAttack(User.inst.player.state === PlayerState.ATTACK);
+        this.$uiMain.userPredict(
+            User.inst.player.state === PlayerState.PREDICT
+        );
+        this.$uiMain.userXray(User.inst.player.state === PlayerState.XRAY);
     }
 
     sceneLoaded() {

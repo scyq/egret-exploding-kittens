@@ -4,14 +4,14 @@ enum Card {
     SHUFFLE = 2, // 洗牌 x 6
     DRAWBACK = 3, // 抽底 x 6
     ATTACK = 4, // 甩锅 x 4
-    ATTACK2 = 5, // 甩锅2 x2
+    ATTACK2 = 5, // 甩锅2 x 2
     PREDICT = 6, // 预言 x 6
     XRAY = 7, // 透视 x 6
     REVERSE = 8, // 转向 x 6
     SKIP = 9, // 跳过 x 6
     FAVOR = 10, // 索要 x 5
     SWAP = 11, // 交换 x 5
-    DECK = 12 // 卡背
+    DECK = 12, // 卡背
 }
 
 class CardMgr {

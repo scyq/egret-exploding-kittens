@@ -10,7 +10,7 @@ namespace Proto {
         win?: boolean;
         drawACard?: IReqDrawACard;
         playACard?: IReqPlayACard;
-        attack?: IReqChooseTarget;
+        attack?: IComCard;
     }
 
     export declare interface Res {
@@ -22,6 +22,8 @@ namespace Proto {
         roomInfo?: IComRoomInfo;
         drawCard?: IComCard;
         playCard?: IComCard;
+        predict?: IComCard;
+        xray?: IComCard[];
     }
 
     /*****************************/

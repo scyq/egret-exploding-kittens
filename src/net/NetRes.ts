@@ -10,7 +10,9 @@ class NetRes {
         { msg: 'overGame', func: this.overGame },
         { msg: 'roomInfo', func: this.roomInfo },
         { msg: 'drawCard', func: this.drawCard },
-        { msg: 'playCard', func: this.playCard }
+        { msg: 'playCard', func: this.playCard },
+        { msg: 'predict', func: this.predict },
+        { msg: 'xray', func: this.xray },
     ];
 
     public text(res: Proto.Res): void {
@@ -30,7 +32,6 @@ class NetRes {
         GameMgr.inst.handleError(res.err);
     }
 
-
     public dealHands(res: Proto.Res): void {
         if (res === undefined || res.dealHands === undefined) {
             return;
@@ -43,6 +44,21 @@ class NetRes {
             return;
         }
         GameMgr.inst.setComRoomInfo(res.roomInfo);
+    }
+
+    public startGame(res: Proto.Res): void {
+        if (res === undefined || res.startGame === undefined) {
+            return;
+        }
+        GameMgr.inst.startGame();
+    }
+
+    public overGame(res: Proto.Res): void {
+        if (res === undefined || res.overGame === undefined) {
+            return;
+        }
+        GameMgr.inst.gameover(res.overGame);
+        // TODO: check others
     }
 
     public drawCard(res: Proto.Res): void {
@@ -59,18 +75,21 @@ class NetRes {
         GameMgr.inst.playCard(res.playCard.uid, res.playCard.card);
     }
 
-    public startGame(res: Proto.Res): void {
-        if (res === undefined || res.startGame === undefined) {
+    public predict(res: Proto.Res): void {
+        if (res === undefined || res.predict === undefined) {
             return;
         }
-        GameMgr.inst.startGame();
+        User.inst.boomSeq = res.predict.target[0];
     }
 
-    public overGame(res: Proto.Res): void {
-        if (res === undefined || res.overGame === undefined) {
+    public xray(res: Proto.Res): void {
+        if (res === undefined || res.xray === undefined) {
             return;
         }
-        GameMgr.inst.gameover(res.overGame);
-        // TODO: check others
+        const card3: Card[] = [];
+        for (let i = 0; i < res.xray.length; i++) {
+            card3.push(res.xray[i].card as Card);
+        }
+        User.inst.card3 = card3;
     }
 }

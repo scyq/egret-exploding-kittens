@@ -54,7 +54,7 @@ class NetReq {
         this.$socket.emit('playACard', req);
     }
 
-    public attack(msg: Proto.IReqChooseTarget): void {
+    public attack(msg: Proto.IComCard): void {
         const req: Proto.Req = this.getReq();
         req.attack = msg;
         this.$socket.emit('attack', req);

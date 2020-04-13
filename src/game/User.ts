@@ -12,6 +12,8 @@ class User {
     private $hands: Card[] = []; // 手牌
     prevCard: Card; // 刚刚打出的牌
     nextCard: Card; // 即将抓到的牌
+    boomSeq: number; // 预言：炸弹在第几张
+    card3: Card[]; // 透视：三张牌
 
     get hands() {
         return this.$hands;
@@ -43,6 +45,7 @@ class User {
 
     attack(uid: number) {
         NetMgr.inst.req.attack({
+            uid,
             card: this.prevCard as number,
             target: [uid],
         });
