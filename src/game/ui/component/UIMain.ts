@@ -265,6 +265,11 @@ class UIMain extends eui.Component implements eui.UIComponent {
     updateAttack() {
         // TODO: animation
         this.gpAttack.visible = this.player0.player.attackMark > 0;
+        if (this.gpAttack.visible) {
+            setTimeout(() => {
+                this.gpAttack.visible = false;
+            }, 800);
+        }
     }
 
     showHandsCnt(show: boolean = true) {
@@ -322,20 +327,22 @@ class UIMain extends eui.Component implements eui.UIComponent {
             return;
         }
         const card3: Card[] = User.inst.card3;
+        console.log(card3);
         if (card3 && card3.length > 0) {
-            if (card3[0]) {
+            if (card3.length > 0) {
                 this.xrayCard1.visible = true;
+                console.log(CardMgr.inst.cards[card3[0]].img);
                 this.xrayCard1.source = CardMgr.inst.cards[card3[0]].img;
             } else {
                 this.xrayCard1.visible = false;
             }
-            if (card3[1]) {
+            if (card3.length > 1) {
                 this.xrayCard2.visible = true;
                 this.xrayCard2.source = CardMgr.inst.cards[card3[1]].img;
             } else {
                 this.xrayCard2.visible = false;
             }
-            if (card3[2]) {
+            if (card3.length > 2) {
                 this.xrayCard3.visible = true;
                 this.xrayCard3.source = CardMgr.inst.cards[card3[2]].img;
             } else {
