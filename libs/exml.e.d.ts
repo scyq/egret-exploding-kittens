@@ -55,39 +55,23 @@ declare module yui{
 	}
 }
 declare module yui{
-	class BtnBoomOpt extends eui.Skin{
-	}
-}
-declare module yui{
-	class BtnCancel extends eui.Skin{
-	}
-}
-declare module yui{
-	class BtnDefuse extends eui.Skin{
-	}
-}
-declare module yui{
-	class BtnDrawCard extends eui.Skin{
-	}
-}
-declare module yui{
 	class BtnExit extends eui.Skin{
 	}
 }
 declare module yui{
-	class BtnFavor extends eui.Skin{
+	class BtnGreen extends eui.Skin{
 	}
 }
 declare module yui{
-	class BtnPlayCard extends eui.Skin{
+	class BtnGrey extends eui.Skin{
 	}
 }
 declare module yui{
-	class BtnPredict extends eui.Skin{
+	class BtnRed extends eui.Skin{
 	}
 }
 declare module yui{
-	class BtnXray extends eui.Skin{
+	class BtnYellow extends eui.Skin{
 	}
 }
 declare module yui{

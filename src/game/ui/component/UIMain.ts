@@ -29,20 +29,35 @@ class UIMain extends eui.Component implements eui.UIComponent {
     btnDrawCard: eui.Button;
     btnPlayCard: eui.Button;
 
+
     // 拆弹弹窗
     defusePop: eui.Group;
     defuseFrame: eui.Image;
+    defuseBg: eui.Image;
     btnDefuse: eui.Button;
+    btnDefuseDisable: eui.Button;
     btnDefuseCancel: eui.Button;
     defuseIdx: number = -1;
     gpBoom: eui.Group;
     gpBang: eui.Group;
     gpBack: eui.Group;
     gpBackOpts: eui.Group;
+    btnOptLast: eui.Button;
+    btnOpt1: eui.Button;
+    btnOpt2: eui.Button;
+    btnOpt3: eui.Button;
+    btnOpt4: eui.Button;
+    btnOpt5: eui.Button;
+    btnOpt6: eui.Button;
+    btnOpt7: eui.Button;
+    btnOpt8: eui.Button;
 
     attackPop: eui.Group;
     xrapPop: eui.Group;
     predictPop: eui.Group;
+
+    boomBackOpt: number;
+    boomBackOptBtns: eui.Button[];
 
     private cardSmScale = 0.5;
     private cardsArray: eui.ArrayCollection = new eui.ArrayCollection();
@@ -62,9 +77,10 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     onInit(): void {
-        this.initListeners();
         this.initPlayers();
         this.initHands();
+        this.initBoomBackOpts();
+        this.initListeners();
 
         this.userName.visible = false;
         this.stackCnt.visible = false;
@@ -94,7 +110,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
         // this.hands.selectedIndex = 0;
     }
 
-    initPlayers() {
+    private initPlayers() {
         this.players = [
             this.player0,
             this.player1,
@@ -107,13 +123,27 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.setDefaultAvatar();
     }
 
-    initHands() {
+    private initHands() {
         this.hands.dataProvider = this.cardsArray;
         this.hands.itemRenderer = UICardItem;
         this.hands.allowMultipleSelection = false;
     }
 
-    initListeners() {
+    private initBoomBackOpts() {
+        this.boomBackOptBtns = [
+            this.btnOptLast,
+            this.btnOpt1,
+            this.btnOpt2,
+            this.btnOpt3,
+            this.btnOpt4,
+            this.btnOpt5,
+            this.btnOpt6,
+            this.btnOpt7,
+            this.btnOpt8,
+        ];
+    }
+
+    private initListeners() {
         this.btnExit.addEventListener(
             egret.TouchEvent.TOUCH_TAP,
             this.onBtnExitClick,
@@ -144,6 +174,15 @@ class UIMain extends eui.Component implements eui.UIComponent {
             this.onHandsSelected,
             this
         );
+        for (let i = 0; i < this.boomBackOptBtns.length; i++) {
+            const btn = this.boomBackOptBtns[i];
+            const btnArg = i;
+            btn.addEventListener(
+                egret.TouchEvent.TOUCH_TAP,
+                this.onBtnDefuseOptClick.bind(this, btnArg),
+                this
+            );
+        }
         GameDispatcher.inst.addEventListener(
             EventName.CHECK_NEXT_CARD,
             this.onHandsRefresh,
@@ -210,18 +249,21 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     userAction(action: boolean) {
         this.btnDrawCard.visible = action;
-        this.btnPlayCard.visible = action && User.inst.ableToPlayACard(this.hands.selectedIndex);
+        this.btnPlayCard.visible =
+            action && User.inst.ableToPlayACard(this.hands.selectedIndex);
     }
 
     showDefusePop(show: boolean, defuseIdx: number) {
+        this.defuseBg.visible = false;
         this.defusePop.visible = show;
         this.defuseFrame.visible = true;
         this.gpBoom.visible = true;
         this.gpBang.visible = false;
         this.gpBack.visible = false;
-        // TODO: 改颜色，不是改显示
         this.defuseIdx = defuseIdx;
+        egret.log(`this.defuseIdx = ${this.defuseIdx}`);
         this.btnDefuse.visible = this.defuseIdx > -1;
+        this.btnDefuseDisable.visible = this.defuseIdx < 0;
     }
 
     // 其他玩家抓牌动画
@@ -419,16 +461,23 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     onBtnDefuseClick() {
         if (this.defuseIdx > -1) {
-            //this.hands.selectedIndex = this.defuseIdx;
-            //this.userPlayCardAnim()
-            //User.inst.playACard(this.defuseIdx);
+            this.hands.selectedIndex = this.defuseIdx;
+
             this.gpBang.visible = false;
             this.gpBoom.visible = false;
             this.gpBack.visible = true;
             this.defuseFrame.visible = false;
+            this.defuseBg.visible = true;
         }
+    }
 
+    onBtnDefuseOptClick(opt: number) {
+        egret.log(`炸弹放回选项为${opt}`);
+        const pos = opt === 0 ? GameMgr.inst.stackCnt - 1 : opt - 1;
+        egret.log(`将炸弹放到${pos}位置`);
         this.showDefusePop(false, -1);
+        this.userPlayCardAnim();
+        User.inst.playACard(this.defuseIdx, [pos]);
     }
 
     onBtnDefuseCancelClick() {

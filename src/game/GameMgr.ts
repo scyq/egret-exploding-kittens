@@ -24,7 +24,7 @@ class GameMgr {
         }
         return GameMgr.$mgr;
     }
-    private constructor() { }
+    private constructor() {}
 
     private $players: Player[] = [];
     private readonly $user: User = User.inst;
