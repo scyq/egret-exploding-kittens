@@ -15,6 +15,7 @@
 
 	<e:Image id="fg0" source="Foreground_png" left="0" right="0" scale9Grid="0,70,413,122" bottom="-49" anchorOffsetY="0" height="349"/>
 	<e:Button id="btnDrawCard" label="摸牌" x="173" y="665" width="128" height="56" enabled="true" skinName="yui.BtnYellow"/>
+	<e:Button id="btnPlayCardDisable" label="出牌" x="342" y="664" anchorOffsetX="0" width="128" anchorOffsetY="0" height="56" enabled="true" skinName="yui.BtnGrey"/>
 	<e:Button id="btnPlayCard" label="出牌" x="342" y="664" anchorOffsetX="0" width="128" anchorOffsetY="0" height="56" enabled="true" skinName="yui.BtnGreen"/>
 	<e:Button id="btnExit" label="Button" enabled="true" x="37.87" y="50.09" skinName="yui.BtnExit"/>
 	<e:Group id="others" width="600" height="300" verticalCenter="-277" horizontalCenter="0" locked="true">

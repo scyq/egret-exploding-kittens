@@ -28,6 +28,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     btnDrawCard: eui.Button;
     btnPlayCard: eui.Button;
+    btnPlayCardDisable: eui.Button;
 
     // 拆弹弹窗
     defusePop: eui.Group;
@@ -248,6 +249,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     userAction(action: boolean) {
         this.btnDrawCard.visible = action;
+        this.btnPlayCardDisable.visible = action;
         this.btnPlayCard.visible =
             action && User.inst.ableToPlayACard(this.hands.selectedIndex);
     }
