@@ -28,11 +28,11 @@ class User {
         NetMgr.inst.req.drawACard({});
     }
 
-    playACard(cardIdx: number) {
+    playACard(cardIdx: number, target?:number[]) {
         // TODO: 选择Boom的位置
         NetMgr.inst.req.playACard({
             cardIdx,
-            target: [0],
+            target: target,
         });
         const card = this.hands.splice(cardIdx, 1)[0];
         // TODO: card effect

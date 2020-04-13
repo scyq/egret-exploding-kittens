@@ -31,11 +31,14 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     // 拆弹弹窗
     defusePop: eui.Group;
+    defuseFrame: eui.Image;
     btnDefuse: eui.Button;
     btnDefuseCancel: eui.Button;
     defuseIdx: number = -1;
     gpBoom: eui.Group;
     gpBang: eui.Group;
+    gpBack: eui.Group;
+    gpBackOpts: eui.Group;
 
     attackPop: eui.Group;
     xrapPop: eui.Group;
@@ -212,8 +215,10 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     showDefusePop(show: boolean, defuseIdx: number) {
         this.defusePop.visible = show;
+        this.defuseFrame.visible = true;
         this.gpBoom.visible = true;
         this.gpBang.visible = false;
+        this.gpBack.visible = false;
         // TODO: 改颜色，不是改显示
         this.defuseIdx = defuseIdx;
         this.btnDefuse.visible = this.defuseIdx > -1;
@@ -414,9 +419,13 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     onBtnDefuseClick() {
         if (this.defuseIdx > -1) {
-            this.hands.selectedIndex = this.defuseIdx;
-            this.userPlayCardAnim()
-            User.inst.playACard(this.defuseIdx);
+            //this.hands.selectedIndex = this.defuseIdx;
+            //this.userPlayCardAnim()
+            //User.inst.playACard(this.defuseIdx);
+            this.gpBang.visible = false;
+            this.gpBoom.visible = false;
+            this.gpBack.visible = true;
+            this.defuseFrame.visible = false;
         }
 
         this.showDefusePop(false, -1);

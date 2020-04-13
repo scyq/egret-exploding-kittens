@@ -51,19 +51,33 @@
 		<e:Button id="testCookie" label="Cookie" x="100" y="150" scaleX="1" scaleY="1"/>
 
 	</e:Group>
-	<e:Group id="defusePop" left="0" right="0" top="0" bottom="0" visible="false">
+	<e:Group id="defusePop" left="0" right="0" top="0" bottom="0" visible="false" locked="true">
 		<e:Image id="defuseFrame" source="Damage_Frame_png" top="0" bottom="0" left="0" right="0" scale9Grid="48,47,48,47"/>
-		<e:Group id="gpBoom" width="400" height="600" verticalCenter="0" horizontalCenter="0">
+		<e:Group id="gpBoom" width="400" height="600" verticalCenter="0" horizontalCenter="0" visible="false">
 			<e:Image id="boomBg" source="Boom_Bg_png" x="95.85" y="268" anchorOffsetX="0" width="216.31" anchorOffsetY="0" height="148" scaleX="1" scaleY="1"/>
 			<e:Image id="boom" source="Boom_png" x="80.44" y="47.24" scaleX="1" scaleY="1"/>
+			<e:Button id="btnDefuse" label="Button" x="140" y="560.18" skinName="yui.BtnDefuse" width="128" height="56" scaleX="1" scaleY="1"/>
+			<e:Button id="btnDefuseCancel" label="" x="140" y="648.9" skinName="yui.BtnCancel" width="128" height="56" scaleX="1" scaleY="1"/>
 		</e:Group>
 		<e:Group id="gpBang" width="400" height="600" verticalCenter="-125" horizontalCenter="10" visible="false">
 			<e:Image id="bangFire" source="Bang_Fire_png" x="4.16" y="99.13" scaleX="1" scaleY="1"/>
 			<e:Image id="bangSpark" source="Bang_Spark_png" y="96.56" x="-0.22" scaleX="1" scaleY="1"/>
 			<e:Image id="bang" source="Bang_png" x="80.44" y="264" scaleX="1" scaleY="1"/>
 		</e:Group>
-		<e:Button id="btnDefuse" label="Button" x="260" y="828.18" skinName="yui.BtnDefuse" width="128" height="56" scaleX="1" scaleY="1"/>
-		<e:Button id="btnDefuseCancel" label="" x="260" y="916.9" skinName="yui.BtnCancel" width="128" height="56"/>
+		<e:Group id="gpBack" width="320" height="480" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0" verticalCenter="0">
+			<e:Label id="boomBackTitle" text="选择炸弹牌放回的位置" scaleX="1" scaleY="1" top="0" horizontalCenter="0"/>
+			<e:Group id="gpBackOpts" width="240" height="480" horizontalCenter="0" verticalCenter="40">
+				<e:Button id="btnOptLast" label="最后一张" y="0" skinName="yui.BtnBoomOpt" horizontalCenter="0"/>
+				<e:Button id="btnOpt1" label="第1张" y="50" skinName="yui.BtnBoomOpt" horizontalCenter="0"/>
+				<e:Button id="btnOpt2" label="第2张" y="101" skinName="yui.BtnBoomOpt" horizontalCenter="0"/>
+				<e:Button id="btnOpt3" label="第3张" y="150" skinName="yui.BtnBoomOpt" horizontalCenter="0"/>
+				<e:Button id="btnOpt4" label="第4张" y="200" skinName="yui.BtnBoomOpt" horizontalCenter="0"/>
+				<e:Button id="btnOpt5" label="第5张" y="250" skinName="yui.BtnBoomOpt" horizontalCenter="0"/>
+				<e:Button id="btnOpt6" label="第6张" y="300" skinName="yui.BtnBoomOpt" horizontalCenter="0"/>
+				<e:Button id="btnOpt7" label="第7张" y="350" skinName="yui.BtnBoomOpt" horizontalCenter="0"/>
+				<e:Button id="btnOpt8" label="第8张" y="400" skinName="yui.BtnBoomOpt" horizontalCenter="0"/>
+			</e:Group>
+		</e:Group>
 	</e:Group>
 	<e:Group id="attackPop" left="0" right="0" top="0" bottom="0" visible="false" locked="true">
 		<e:Image id="pan2" source="Pan_2_png" verticalCenter="-10" horizontalCenter="6"/>
