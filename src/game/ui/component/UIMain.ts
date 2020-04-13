@@ -29,7 +29,6 @@ class UIMain extends eui.Component implements eui.UIComponent {
     btnDrawCard: eui.Button;
     btnPlayCard: eui.Button;
 
-
     // 拆弹弹窗
     defusePop: eui.Group;
     defuseFrame: eui.Image;
@@ -253,14 +252,14 @@ class UIMain extends eui.Component implements eui.UIComponent {
             action && User.inst.ableToPlayACard(this.hands.selectedIndex);
     }
 
-    showDefusePop(show: boolean, defuseIdx: number) {
+    showDefusePop(show: boolean, defuseIdx?: number) {
         this.defuseBg.visible = false;
         this.defusePop.visible = show;
         this.defuseFrame.visible = true;
         this.gpBoom.visible = true;
         this.gpBang.visible = false;
         this.gpBack.visible = false;
-        this.defuseIdx = defuseIdx;
+        this.defuseIdx = defuseIdx === undefined ? this.defuseIdx : defuseIdx;
         egret.log(`this.defuseIdx = ${this.defuseIdx}`);
         this.btnDefuse.visible = this.defuseIdx > -1;
         this.btnDefuseDisable.visible = this.defuseIdx < 0;
@@ -439,7 +438,6 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     onUserDefuse(e: eui.PropertyEvent) {
-        //TODO: 参数
         this.showDefusePop(e.data.show, e.data.defuseIdx);
     }
 
@@ -468,16 +466,24 @@ class UIMain extends eui.Component implements eui.UIComponent {
             this.gpBack.visible = true;
             this.defuseFrame.visible = false;
             this.defuseBg.visible = true;
+            for (let i = 0; i < this.boomBackOptBtns.length; i++) {
+                this.boomBackOptBtns[i].visible =
+                    i === 0 || i - 1 < GameMgr.inst.stackCnt;
+            }
         }
     }
 
     onBtnDefuseOptClick(opt: number) {
+        egret.log(`Defuse的手牌位置${this.defuseIdx}`);
         egret.log(`炸弹放回选项为${opt}`);
-        const pos = opt === 0 ? GameMgr.inst.stackCnt - 1 : opt - 1;
+        const pos =
+            opt === 0 ? Math.max(GameMgr.inst.stackCnt - 1, 0) : opt - 1;
         egret.log(`将炸弹放到${pos}位置`);
-        this.showDefusePop(false, -1);
-        this.userPlayCardAnim();
-        User.inst.playACard(this.defuseIdx, [pos]);
+        this.showDefusePop(false, this.defuseIdx);
+        if (this.defuseIdx > -1) {
+            this.userPlayCardAnim();
+            User.inst.playACard(this.defuseIdx, [pos]);
+        }
     }
 
     onBtnDefuseCancelClick() {

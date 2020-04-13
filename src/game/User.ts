@@ -29,13 +29,11 @@ class User {
     }
 
     playACard(cardIdx: number, target?:number[]) {
-        // TODO: 选择Boom的位置
         NetMgr.inst.req.playACard({
             cardIdx,
             target: target,
         });
         const card = this.hands.splice(cardIdx, 1)[0];
-        // TODO: card effect
 
         GameDispatcher.inst.dispatchEvent(
             new egret.Event(EventName.HANDS_REFRESH, false, false)
