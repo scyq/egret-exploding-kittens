@@ -5,7 +5,12 @@ enum PlayerState {
     WAIT = 3, // 等待其他玩家行动
     ACTION = 4, // 行动阶段
     DEFUSE = 5, // 拆弹阶段
-    DEAD = 6, // 死亡
+    ATTACK = 6, // 选择攻击对象
+    PREDICT = 7, // 看预言牌阶段
+    XRAY = 8, // 看透视牌阶段
+    FAVOR_1 = 9, // 选择索要对象
+    FAVOR_2 = 10, // 选择给出的牌
+    DEAD = 11, // 死亡
 }
 
 class Player {

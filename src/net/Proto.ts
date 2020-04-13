@@ -10,6 +10,7 @@ namespace Proto {
         win?: boolean;
         drawACard?: IReqDrawACard;
         playACard?: IReqPlayACard;
+        attack?: IReqChooseTarget;
     }
 
     export declare interface Res {
@@ -45,6 +46,11 @@ namespace Proto {
 
     export declare interface IReqPlayACard {
         cardIdx: number;
+        target?: number[];
+    }
+
+    export declare interface IReqChooseTarget {
+        card: number;
         target?: number[];
     }
 

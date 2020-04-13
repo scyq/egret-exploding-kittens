@@ -172,6 +172,7 @@ class GameMgr {
         this.$uiMain.showStackCnt();
 
         this.$uiMain.userAction(User.inst.player.state === PlayerState.ACTION);
+        this.$uiMain.userAttack(User.inst.player.state === PlayerState.ATTACK);
     }
 
     sceneLoaded() {

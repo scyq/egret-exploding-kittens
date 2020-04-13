@@ -10,6 +10,10 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
     boom: eui.Image;
     bang: eui.Image;
 
+    uiMain: UIMain;
+
+    btnAttack: eui.Button;
+
     constructor() {
         super();
         this.skinName = 'yui.Player';
@@ -26,6 +30,15 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
 
     onInit(): void {
         this.handsCnt.visible = this.handsBg.visible = this.playerName.visible = false;
+        this.initListeners();
+    }
+
+    private initListeners(): void {
+        this.btnAttack.addEventListener(
+            egret.TouchEvent.TOUCH_TAP,
+            this.onBtnAttackClick,
+            this
+        );
     }
 
     setPlayer(player: Player, isUser: boolean = false): void {
@@ -36,17 +49,18 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
         this.update();
     }
 
-    update() {
+    update(): void {
         this.updateHandsCnt();
         this.updateState();
     }
 
-    updateHandsCnt() {
-        this.handsCnt.visible = this.handsBg.visible = this.player.state !== PlayerState.DEAD;
+    updateHandsCnt(): void {
+        this.handsCnt.visible = this.handsBg.visible =
+            this.player.state !== PlayerState.DEAD;
         this.handsCnt.text = this.player ? this.player.handsCnt.toString() : '';
     }
 
-    updateState() {
+    updateState(): void {
         // console.log(`${this.player.nickname} ${this.player.state}`)
         if (this.player.state === PlayerState.DEFUSE) {
             this.boom.visible = true;
@@ -70,6 +84,10 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
         }
     }
 
+    showBtnAttack(show: boolean): void {
+        this.btnAttack.visible = show;
+    }
+
     setAvatar(avatar: string): void {
         this.avatar.setAvatar(avatar);
     }
@@ -80,5 +98,12 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
 
     setHandsCnt(handsCnt: number): void {
         this.handsCnt.text = handsCnt.toString();
+    }
+
+    onBtnAttackClick(): void {
+        User.inst.attack(this.player.uid);
+        if (this.uiMain) {
+            this.uiMain.userAttack(false);
+        }
     }
 }

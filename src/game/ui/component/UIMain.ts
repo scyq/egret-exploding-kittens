@@ -59,6 +59,8 @@ class UIMain extends eui.Component implements eui.UIComponent {
     boomBackOpt: number;
     boomBackOptBtns: eui.Button[];
 
+    deckTween: any;
+
     private cardSmScale = 0.5;
     private cardsArray: eui.ArrayCollection = new eui.ArrayCollection();
 
@@ -119,6 +121,10 @@ class UIMain extends eui.Component implements eui.UIComponent {
             this.player4,
             this.player5,
         ];
+
+        for (let i = 0; i < this.players.length; i++) {
+            this.players[i].uiMain = this;
+        }
 
         this.setDefaultAvatar();
     }
@@ -247,6 +253,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.gm.visible = show;
     }
 
+    // 玩家行动
     userAction(action: boolean) {
         this.btnDrawCard.visible = action;
         this.btnPlayCardDisable.visible = action;
@@ -254,7 +261,20 @@ class UIMain extends eui.Component implements eui.UIComponent {
             action && User.inst.ableToPlayACard(this.hands.selectedIndex);
     }
 
-    showDefusePop(show: boolean, defuseIdx?: number) {
+    // 玩家选择攻击目标
+    userAttack(attack: boolean) {
+        for (let i = 0; i < this.players.length; i++) {
+            const ui = this.players[i];
+            const show =
+                attack &&
+                ui.player.uid !== User.inst.player.uid &&
+                ui.player.state !== PlayerState.DEAD;
+            ui.showBtnAttack(show);
+        }
+    }
+
+    // 玩家拆弹
+    userDefuse(show: boolean, defuseIdx?: number) {
         this.defuseBg.visible = false;
         this.defusePop.visible = show;
         this.defuseFrame.visible = true;
@@ -286,16 +306,22 @@ class UIMain extends eui.Component implements eui.UIComponent {
                 );
                 const x = localPos.x + this.deck.width * this.cardSmScale * 0.5;
                 const y = localPos.y;
-                const tw = egret.Tween.get(this.deck);
-                tw.to(
-                    {
-                        x: x,
-                        y: y,
-                        scaleX: this.cardSmScale,
-                        scaleY: this.cardSmScale,
-                    },
-                    1000
-                ).to({ visible: false }, 0);
+
+                if (this.deckTween) {
+                    egret.Tween.removeTweens(this.deckTween);
+                }
+                this.deckTween = egret.Tween.get(this.deck);
+                this.deckTween
+                    .to(
+                        {
+                            x: x,
+                            y: y,
+                            scaleX: this.cardSmScale,
+                            scaleY: this.cardSmScale,
+                        },
+                        1000
+                    )
+                    .to({ visible: false }, 0);
                 break;
             }
         }
@@ -317,16 +343,20 @@ class UIMain extends eui.Component implements eui.UIComponent {
                 this.deck.x =
                     localPos.x + this.deck.width * this.cardSmScale * 0.5;
                 this.deck.y = localPos.y;
-                const tw = egret.Tween.get(this.deck);
-                tw.to(
-                    {
-                        x: this.playArea.x,
-                        y: this.playArea.y,
-                        scaleX: this.playArea.scaleX,
-                        scaleY: this.playArea.scaleY,
-                    },
-                    1000
-                )
+                if (this.deckTween) {
+                    egret.Tween.removeTweens(this.deckTween);
+                }
+                this.deckTween = egret.Tween.get(this.deck);
+                this.deckTween
+                    .to(
+                        {
+                            x: this.playArea.x,
+                            y: this.playArea.y,
+                            scaleX: this.playArea.scaleX,
+                            scaleY: this.playArea.scaleY,
+                        },
+                        1000
+                    )
                     .to({ visible: false }, 0)
                     .call(() => {
                         this.playArea.source = RES.getRes(
@@ -362,14 +392,18 @@ class UIMain extends eui.Component implements eui.UIComponent {
         const x = localPos.x;
         const y = localPos.y;
 
-        const tw = egret.Tween.get(this.deck);
-        tw.to(
-            {
-                x: x,
-                y: y,
-            },
-            1000
-        )
+        if (this.deckTween) {
+            egret.Tween.removeTweens(this.deckTween);
+        }
+        this.deckTween = egret.Tween.get(this.deck);
+        this.deckTween
+            .to(
+                {
+                    x: x,
+                    y: y,
+                },
+                1000
+            )
             .to({ visible: false }, 0)
             .call(() => {
                 User.inst.checkNextCard();
@@ -400,14 +434,18 @@ class UIMain extends eui.Component implements eui.UIComponent {
         const x = this.playArea.x;
         const y = this.playArea.y;
 
-        const tw = egret.Tween.get(this.deck);
-        tw.to(
-            {
-                x: x,
-                y: y,
-            },
-            1000
-        )
+        if (this.deckTween) {
+            egret.Tween.removeTweens(this.deckTween);
+        }
+        this.deckTween = egret.Tween.get(this.deck);
+        this.deckTween
+            .to(
+                {
+                    x: x,
+                    y: y,
+                },
+                1000
+            )
             .to({ visible: false }, 0)
             .call(() => {
                 this.playArea.source = cardImg;
@@ -431,16 +469,16 @@ class UIMain extends eui.Component implements eui.UIComponent {
 
     onCheckNextCard(e: eui.PropertyEvent) {
         // 检查下一个张牌，关闭所有的pop弹窗
-        this.showDefusePop(false, -1);
+        this.userDefuse(false, -1);
     }
 
-    onHandsRefresh(e: eui.PropertyEvent) {
+    onHandsRefresh(e?: eui.PropertyEvent) {
         this.setUserHands(User.inst.hands);
         this.userAction(User.inst.player.state === PlayerState.ACTION);
     }
 
     onUserDefuse(e: eui.PropertyEvent) {
-        this.showDefusePop(e.data.show, e.data.defuseIdx);
+        this.userDefuse(e.data.show, e.data.defuseIdx);
     }
 
     onBtnExitClick() {
@@ -456,6 +494,8 @@ class UIMain extends eui.Component implements eui.UIComponent {
         if (this.hands.selectedIndex > -1) {
             this.userPlayCardAnim();
             User.inst.playACard(this.hands.selectedIndex);
+            this.hands.selectedIndex = undefined;
+            this.onHandsRefresh()
         }
     }
 
@@ -481,7 +521,7 @@ class UIMain extends eui.Component implements eui.UIComponent {
         const pos =
             opt === 0 ? Math.max(GameMgr.inst.stackCnt - 1, 0) : opt - 1;
         egret.log(`将炸弹放到${pos}位置`);
-        this.showDefusePop(false, this.defuseIdx);
+        this.userDefuse(false, this.defuseIdx);
         if (this.defuseIdx > -1) {
             this.userPlayCardAnim();
             User.inst.playACard(this.defuseIdx, [pos]);

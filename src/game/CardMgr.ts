@@ -4,7 +4,7 @@ enum Card {
     SHUFFLE = 2, // 洗牌 x 6
     DRAWBACK = 3, // 抽底 x 6
     ATTACK = 4, // 甩锅 x 4
-    ATTACT2 = 5, // 甩锅2 x2
+    ATTACK2 = 5, // 甩锅2 x2
     PREDICT = 6, // 预言 x 6
     XRAY = 7, // 透视 x 6
     REVERSE = 8, // 转向 x 6
@@ -35,7 +35,7 @@ class CardMgr {
         this.cards[Card.SHUFFLE] = { img: 'Card_Shuffle_png' };
         this.cards[Card.DRAWBACK] = { img: 'Card_Draw_Last_png' };
         this.cards[Card.ATTACK] = { img: 'Card_Attack_png' };
-        this.cards[Card.ATTACT2] = { img: 'Card_Attack_Double_png' };
+        this.cards[Card.ATTACK2] = { img: 'Card_Attack_Double_png' };
         this.cards[Card.PREDICT] = { img: 'Card_Predict_png' };
         this.cards[Card.XRAY] = { img: 'Card_Xray_png' };
         this.cards[Card.REVERSE] = { img: 'Card_Reverse_png' };

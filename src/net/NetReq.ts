@@ -1,7 +1,7 @@
 class NetReq {
     private $socket: SocketIOClient.Socket;
 
-    public constructor() { }
+    public constructor() {}
 
     public set socket(socket: SocketIOClient.Socket) {
         this.$socket = socket;
@@ -11,7 +11,7 @@ class NetReq {
         const req: Proto.Req = {
             gameid: GameMgr.inst.gameid,
             uid: GameMgr.inst.uid,
-            rid: GameMgr.inst.rid
+            rid: GameMgr.inst.rid,
         };
         return req;
     }
@@ -52,5 +52,11 @@ class NetReq {
         const req: Proto.Req = this.getReq();
         req.playACard = msg;
         this.$socket.emit('playACard', req);
+    }
+
+    public attack(msg: Proto.IReqChooseTarget): void {
+        const req: Proto.Req = this.getReq();
+        req.attack = msg;
+        this.$socket.emit('attack', req);
     }
 }
