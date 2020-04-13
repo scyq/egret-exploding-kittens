@@ -14,8 +14,8 @@
 	<e:Label id="stackCnt" text="剩余0涨" x="175.29" y="610" size="16" fontFamily="Microsoft YaHei" height="16" width="128" textAlign="center"/>
 
 	<e:Image id="fg0" source="Foreground_png" left="0" right="0" scale9Grid="0,70,413,122" bottom="-49" anchorOffsetY="0" height="349"/>
-	<e:Button id="btnDrawCard" label="" x="173" y="665" width="128" height="56" enabled="true" skinName="yui.BtnDrawCard"/>
-	<e:Button id="btnPlayCard" label="" x="342" y="664" anchorOffsetX="0" width="128" anchorOffsetY="0" height="56" enabled="true" skinName="yui.BtnPlayCard"/>
+	<e:Button id="btnDrawCard" label="摸牌" x="173" y="665" width="128" height="56" enabled="true" skinName="yui.BtnYellow"/>
+	<e:Button id="btnPlayCard" label="出牌" x="342" y="664" anchorOffsetX="0" width="128" anchorOffsetY="0" height="56" enabled="true" skinName="yui.BtnGreen"/>
 	<e:Button id="btnExit" label="Button" enabled="true" x="37.87" y="50.09" skinName="yui.BtnExit"/>
 	<e:Group id="others" width="600" height="300" verticalCenter="-277" horizontalCenter="0" locked="true">
 		<ns1:UIPlayer id="player1" width="120" height="150" scaleX="1" scaleY="1" bottom="0" left="0"/>
@@ -39,8 +39,8 @@
 		<e:HorizontalLayout horizontalAlign="center" verticalAlign="bottom" gap="-50"/>
 		</e:layout>
 	</e:List>
-	<e:Image id="favorHand" source="Hand_png" anchorOffsetX="0" width="302" anchorOffsetY="0" height="509" top="0" horizontalCenter="0" locked="true" visible="false"/>
-	<e:Group id="gm" width="250" height="250" right="0" bottom="0" locked="true" visible="false">
+	<e:Image id="favorHand" source="Hand_png" anchorOffsetX="0" width="302" anchorOffsetY="0" height="509" top="0" horizontalCenter="0" visible="false" locked="true"/>
+	<e:Group id="gm" width="250" height="250" right="0" bottom="0" visible="false" locked="true">
 		<e:Button id="testToast" label="Toast" x="0" y="50" scaleX="1" scaleY="1"/>
 		<e:Button id="testExit" label="Exit" x="0" y="0" scaleX="1" scaleY="1"/>
 		<e:Button id="testBomb" label="BombEnd" x="0" y="100" scaleX="1" scaleY="1"/>
@@ -56,18 +56,19 @@
 		<e:Group id="gpBoom" width="400" height="600" verticalCenter="0" horizontalCenter="0" visible="false">
 			<e:Image id="boomBg" source="Boom_Bg_png" x="95.85" y="268" anchorOffsetX="0" width="216.31" anchorOffsetY="0" height="148" scaleX="1" scaleY="1"/>
 			<e:Image id="boom" source="Boom_png" x="80.44" y="47.24" scaleX="1" scaleY="1"/>
-			<e:Button id="btnDefuse" label="Button" x="140" y="560.18" skinName="yui.BtnDefuse" width="128" height="56" scaleX="1" scaleY="1"/>
-			<e:Button id="btnDefuseCancel" label="" x="140" y="648.9" skinName="yui.BtnCancel" width="128" height="56" scaleX="1" scaleY="1"/>
+			<e:Button id="btnDefuse" label="Button" x="140" y="560" skinName="yui.BtnDefuse" width="128" height="56" scaleX="1" scaleY="1"/>
+			<e:Button id="btnDefuseDisable" label="拆除" x="140" y="560" width="128" height="56" scaleX="1" scaleY="1" skinName="yui.BtnGrey"/>
+			<e:Button id="btnDefuseCancel" label="取消" x="140" y="648.9" skinName="yui.BtnCancel" width="128" height="56" scaleX="1" scaleY="1"/>
 		</e:Group>
 		<e:Group id="gpBang" width="400" height="600" verticalCenter="-125" horizontalCenter="10" visible="false">
 			<e:Image id="bangFire" source="Bang_Fire_png" x="4.16" y="99.13" scaleX="1" scaleY="1"/>
 			<e:Image id="bangSpark" source="Bang_Spark_png" y="96.56" x="-0.22" scaleX="1" scaleY="1"/>
 			<e:Image id="bang" source="Bang_png" x="80.44" y="264" scaleX="1" scaleY="1"/>
 		</e:Group>
-		<e:Group id="gpBack" width="320" height="480" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0" verticalCenter="0">
-			<e:Label id="boomBackTitle" text="选择炸弹牌放回的位置" scaleX="1" scaleY="1" top="0" horizontalCenter="0"/>
-			<e:Group id="gpBackOpts" width="240" height="480" horizontalCenter="0" verticalCenter="40">
-				<e:Button id="btnOptLast" label="最后一张" y="0" skinName="yui.BtnBoomOpt" horizontalCenter="0"/>
+		<e:Group id="gpBack" width="320" height="480" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0" verticalCenter="0" visible="false" locked="true">
+			<e:Label id="boomBackTitle" text="选择炸弹牌放回的位置" scaleX="1" scaleY="1" top="0" horizontalCenter="0" fontFamily="Microsoft YaHei" bold="true"/>
+			<e:Group id="gpBackOpts" width="240" height="480" horizontalCenter="0" verticalCenter="60">
+				<e:Button id="btnOptLast" label="最下面" y="0" skinName="yui.BtnBoomOpt" horizontalCenter="0" width="86"/>
 				<e:Button id="btnOpt1" label="第1张" y="50" skinName="yui.BtnBoomOpt" horizontalCenter="0"/>
 				<e:Button id="btnOpt2" label="第2张" y="101" skinName="yui.BtnBoomOpt" horizontalCenter="0"/>
 				<e:Button id="btnOpt3" label="第3张" y="150" skinName="yui.BtnBoomOpt" horizontalCenter="0"/>
@@ -83,7 +84,7 @@
 		<e:Image id="pan2" source="Pan_2_png" verticalCenter="-10" horizontalCenter="6"/>
 		<e:Image id="pan" source="Pan_png" verticalCenter="-66" horizontalCenter="-18"/>
 	</e:Group>
-	<e:Group id="xrayPop" left="0" right="0" top="0" bottom="0" visible="false" locked="true">
+	<e:Group id="xrayPop" left="0" right="0" top="0" bottom="0" locked="true" visible="false">
 		<e:Image id="xrayFrame" source="Damage_Frame_png" top="-50" bottom="-50" left="-50" right="-50" scale9Grid="48,47,48,47"/>
 		<e:Group id="gpXrayCards" width="400" height="600" verticalCenter="0" horizontalCenter="0">
 			<e:Image id="xrayCard1" source="Deck_png" width="120" height="160" horizontalCenter="-160" verticalCenter="-60"/>
@@ -93,14 +94,14 @@
 		<e:Label id="xrayTitle1" text="透视" horizontalCenter="0" verticalCenter="-280" bold="true" size="44" fontFamily="Microsoft YaHei" textAlign="center" verticalAlign="middle"/>
 		<e:Label id="xrayTitle2" text="牌堆顶的3张牌" horizontalCenter="0" verticalCenter="-230" size="30" fontFamily="Microsoft YaHei" verticalAlign="middle" textAlign="center"/>
 		<e:Image id="xraySee" source="View_png" anchorOffsetX="0" width="400" anchorOffsetY="0" height="200" verticalCenter="148" horizontalCenter="0"/>
-		<e:Button id="btnXray" label="" x="260" y="916.9" width="128" height="56" skinName="yui.BtnXray"/>
+		<e:Button id="btnXray" label="看到了" x="260" y="916.9" width="128" height="56" skinName="yui.BtnGreen"/>
 	</e:Group>
-	<e:Group id="predictPop" left="0" right="0" top="0" bottom="0" visible="false" locked="true">
+	<e:Group id="predictPop" left="0" right="0" top="0" bottom="0" locked="true" visible="false">
 		<e:Image id="predictFrame" source="Damage_Frame_png" top="-50" bottom="-50" left="-50" right="-50" scale9Grid="48,47,48,47"/>
 		<e:Image id="predictCard" source="Deck_png" width="120" height="160" horizontalCenter="0" verticalCenter="-60"/>
 		<e:Label id="predictTitle1" text="定位" horizontalCenter="0" verticalCenter="-280" bold="true" size="44" fontFamily="Microsoft YaHei" textAlign="center" verticalAlign="middle"/>
 		<e:Label id="predictTitle2" text="最近的炸弹在第几张" horizontalCenter="0" verticalCenter="-230" size="30" fontFamily="Microsoft YaHei" verticalAlign="middle" textAlign="center"/>
-		<e:Button id="btnPredict" label="" x="260" y="916.9" width="128" height="56" skinName="yui.BtnPredict"/>
+		<e:Button id="btnPredict" label="看到了" x="260" y="916.9" width="128" height="56" skinName="yui.BtnGreen"/>
 		<e:Image id="predictSeee" anchorOffsetX="0" width="400" anchorOffsetY="0" height="188" verticalCenter="136" horizontalCenter="0" x="123" y="602" scaleX="1" scaleY="1" source="View_2_png"/>
 	</e:Group>
 </e:Skin>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<e:Skin class="yui.BtnGrey" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui"
+        width="86" height="38">
+	<e:Image id="up" left="0" right="0" top="0" bottom="0" includeIn="up,disabled"  source="Btn_Grey_png"/>
+	<e:Image id="down" left="2" right="2" bottom="2" top="2" includeIn="down"  source="Btn_Grey_png"/>
+	<e:Label id="labelDisplay" top="8" bottom="8" left="8" right="8" size="20" verticalAlign="middle" textAlign="center" text="摸牌" fontFamily="Microsoft YaHei" bold="true" textColor="0x888888"/>
+</e:Skin>
