@@ -24,7 +24,7 @@ class GameMgr {
         }
         return GameMgr.$mgr;
     }
-    private constructor() {}
+    private constructor() { }
 
     private $players: Player[] = [];
     private readonly $user: User = User.inst;
@@ -106,7 +106,7 @@ class GameMgr {
 
     gameBombsEnd(type: number, isWdh: number, gameResultJson: string) {
         console.log(gameResultJson);
-        yess.gameBombsEnd(type, isWdh, gameResultJson);
+        // yess.gameBombsEnd(type, isWdh, gameResultJson);
     }
 
     setUid(uid: string | number) {
@@ -166,6 +166,9 @@ class GameMgr {
             tp.state = rp.state;
             tp.handsCnt = rp.handsCnt;
             tp.attackMark = rp.attackMark;
+            if (tp.uid === User.inst.player.uid && tp.state === PlayerState.DEAD) {
+                NetMgr.inst.disconnect();
+            }
         }
         this.$uiMain.updateRoomInfo();
         this.$uiMain.showHandsCnt();
@@ -289,10 +292,11 @@ class GameMgr {
 
     gameover(rankUids: number[]) {
         egret.log('Game Over');
+        NetMgr.inst.disconnect();
         const gameResultJson = JSON.stringify(rankUids)
             .replace('[', '')
             .replace(']', '');
-        GameMgr.inst.gameBombsEnd(2, this.$wdh, gameResultJson);
+        this.gameBombsEnd(2, this.$wdh, gameResultJson);
     }
 
     drawCard(uid: number, card?: Card) {

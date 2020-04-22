@@ -617,7 +617,6 @@ class UIMain extends eui.Component implements eui.UIComponent {
     }
 
     onBtnDefuseCancelClick() {
-        // TODO: 爆炸动画
         this.gpBoom.visible = false;
         this.gpBang.visible = true;
         GameMgr.inst.toDie();

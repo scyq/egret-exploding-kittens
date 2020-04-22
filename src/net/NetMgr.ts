@@ -37,8 +37,8 @@ class NetMgr {
         }
     }
 
-    private disconnect(): void {
+    disconnect(): void {
         console.log(`Socket.io Disconnect => ${Config.ServerUrlDebug}`);
-        // this.$socket.close();
+        this.$socket.close();
     }
 }
