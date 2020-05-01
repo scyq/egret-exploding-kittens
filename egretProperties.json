@@ -1,43 +1,43 @@
 {
-  "native": {
-    "path_ignore": [
-      "package.json",
-      "package-lock.json"
-    ]
-  },
-  "engineVersion": "5.2.33",
-  "compilerVersion": "5.2.33",
-  "template": {},
-  "target": {
-    "current": "web"
-  },
-  "modules": [
-    {
-      "name": "egret"
-    },
-    {
-      "name": "eui"
-    },
-    {
-      "name": "assetsmanager"
-    },
-    {
-      "name": "tween"
-    },
-    {
-      "name": "promise"
-    },
-    {
-      "name": "socket.io",
-      "path": "./libs/socket.io"
-    },
-    {
-      "name": "egretmgobe",
-      "path": "./libs/egretmgobe"
-    },
-    {
-      "name": "yess",
-      "path": "./libs/yess"
-    }
-  ]
+	"native": {
+		"path_ignore": [
+			"package.json",
+			"package-lock.json"
+		]
+	},
+	"engineVersion": "5.3.5",
+	"compilerVersion": "5.3.5",
+	"template": {},
+	"target": {
+		"current": "web"
+	},
+	"modules": [
+		{
+			"name": "egret"
+		},
+		{
+			"name": "eui"
+		},
+		{
+			"name": "assetsmanager"
+		},
+		{
+			"name": "tween"
+		},
+		{
+			"name": "promise"
+		},
+		{
+			"name": "socket.io",
+			"path": "./libs/socket.io"
+		},
+		{
+			"name": "egretmgobe",
+			"path": "./libs/egretmgobe"
+		},
+		{
+			"name": "yess",
+			"path": "./libs/yess"
+		}
+	]
 }
