@@ -1,43 +1,51 @@
 {
-	"native": {
-		"path_ignore": [
-			"package.json",
-			"package-lock.json"
+		"native": {
+				"path_ignore": [
+						"package.json",
+						"package-lock.json"
+				]
+		},
+		"engineVersion": "5.3.5",
+		"compilerVersion": "5.3.5",
+		"template": {},
+		"target": {
+				"current": "web"
+		},
+		"modules": [
+				{
+						"name": "egret"
+				},
+				{
+						"name": "eui"
+				},
+				{
+						"name": "assetsmanager"
+				},
+				{
+						"name": "tween"
+				},
+				{
+						"name": "promise"
+				},
+				{
+						"name": "socket.io",
+						"path": "./libs/socket.io"
+				},
+				{
+						"name": "egretmgobe",
+						"path": "./libs/egretmgobe"
+				},
+				{
+						"name": "yess",
+						"path": "./libs/yess"
+				},
+				{
+						"name": "protobuf-library",
+						"path": "protobuf/library"
+				},
+				{
+						"name": "protobuf-bundles",
+						"path": "protobuf/bundles"
+				}
 		]
-	},
-	"engineVersion": "5.3.5",
-	"compilerVersion": "5.3.5",
-	"template": {},
-	"target": {
-		"current": "web"
-	},
-	"modules": [
-		{
-			"name": "egret"
-		},
-		{
-			"name": "eui"
-		},
-		{
-			"name": "assetsmanager"
-		},
-		{
-			"name": "tween"
-		},
-		{
-			"name": "promise"
-		},
-		{
-			"name": "socket.io",
-			"path": "./libs/socket.io"
-		},
-		{
-			"name": "egretmgobe",
-			"path": "./libs/egretmgobe"
-		},
-		{
-			"name": "yess",
-			"path": "./libs/yess"
-		}
-	]
 }
