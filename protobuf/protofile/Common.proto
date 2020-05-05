@@ -1,0 +1,31 @@
+syntax = "proto3";
+option java_package = "com.yess.gameprotocol.protobuf";
+option java_outer_classname = "Common";
+
+// 玩家
+message PlayerInfo {
+    uint32 uid = 1;
+    bool isBot = 2;
+    string name = 3;
+    uint32 state = 4;
+    bool alive = 5;
+    string avatar = 6;
+    uint32 handsCnt = 7; // 手牌数
+    uint32 attackMark = 8; // 攻击标记数量
+}
+
+// 房间
+message RoomInfo {
+    string no = 1; // 房间编号
+    uint32 state = 2;
+    int32 stackCnt = 3;
+    bool clockwise = 4;
+    repeated PlayerInfo players = 5;
+}
+
+// 卡牌
+message Card {
+    uint32 uid = 1;
+    uint32 card = 2;
+    repeated uint32 target = 3;
+}

@@ -135,7 +135,7 @@ class GameMgr {
                 const player = new Player(i, mip);
                 this.$players.push(player);
             }
-            this.tryInitGame();
+            // this.tryInitGame();
         }
     }
 

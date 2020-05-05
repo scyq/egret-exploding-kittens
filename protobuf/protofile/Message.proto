@@ -1,0 +1,24 @@
+syntax = "proto3";
+option java_package = "com.yess.gameprotocol.protobuf";
+option java_outer_classname = "MessageBase";
+import "Common.proto";
+import "JoinRoom.proto";
+
+message Message {
+    string requestId = 1;
+    CommandType cmd = 2;
+    string content = 3;
+    enum CommandType {
+        NORMAL = 0; //常规业务消息
+        HEARTBEAT_REQUEST = 1; //客户端心跳消息
+        HEARTBEAT_RESPONSE = 2; //服务端心跳消息
+        JOIN_ROOM = 3;
+        TEST = 4;
+    }
+
+    // 子类作为父类的 optional 字段。从 100 开始记数
+    oneof extension {
+        JoinRoomRequest joinRoomReq = 101;
+        JoinRoomResponse joinRoomResp = 102;
+    }
+}

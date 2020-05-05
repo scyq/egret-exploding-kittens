@@ -8,7 +8,9 @@
 		"libs/modules/promise/promise.js",
 		"libs/socket.io/socket.io.js",
 		"libs/egretmgobe/egretmgobe.js",
-		"libs/yess/yess.js"
+		"libs/yess/yess.js",
+		"protobuf/library/protobuf-library.js",
+		"protobuf/bundles/protobuf-bundles.js"
 	],
 	"game": [
 		"bin-debug/game/ui/panel/UIBasePanel.js",
