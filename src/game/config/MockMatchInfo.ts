@@ -11,7 +11,8 @@ namespace TestMode {
     export const MockMatchInfo: Native.IMatchInfo = {
         // uid: 101,
         status: 1, // status = 1 参考以上结果
-        matchid: '21234123412341234', // 用后续matchId 去进行游戏结算
+        // matchid: Math.floor(Math.random() * Math.floor(999999)).toString(), // 用后续matchId 去进行游戏结算
+        matchid: "000000", // 用后续matchId 去进行游戏结算
         players: [
             {
                 uid: 101,
