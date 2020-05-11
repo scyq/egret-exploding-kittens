@@ -67,7 +67,6 @@ class User {
     }
 
     favor(uid: number) {
-        console.log(uid)
         NetMgr.inst.req.favor({
             uid,
             card: this.prevCard as number,
