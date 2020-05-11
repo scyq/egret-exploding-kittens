@@ -67,8 +67,14 @@ class UIMain extends eui.Component implements eui.UIComponent {
     xrayCard2: eui.Image;
     xrayCard3: eui.Image;
 
+    // 爆炸
     boomBackOpt: number;
     boomBackOptBtns: eui.Button[];
+
+    // 索要 
+    favorBg: eui.Image;
+    favorHand: eui.Image;
+    btnGiveCard: eui.Button;
 
     deckTween: any;
     attackTween: any;
@@ -175,6 +181,11 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.btnPlayCard.addEventListener(
             egret.TouchEvent.TOUCH_TAP,
             this.onBtnPlayClick,
+            this
+        );
+        this.btnGiveCard.addEventListener(
+            egret.TouchEvent.TOUCH_TAP,
+            this.onBtnGiveClick,
             this
         );
         this.btnDefuse.addEventListener(
@@ -307,6 +318,38 @@ class UIMain extends eui.Component implements eui.UIComponent {
         }
     }
 
+    // 玩家选择索要目标
+    userFavor(favor: boolean) {
+        for (let i = 0; i < this.players.length; i++) {
+            const ui = this.players[i];
+            const show =
+                favor &&
+                ui.player.uid !== User.inst.player.uid &&
+                ui.player.state !== PlayerState.DEAD;
+            ui.showBtnFavor(show);
+        }
+    }
+
+    // 玩家给出索要的牌
+    userFavorGive(favorGive: boolean) {
+        this.favorBg.visible = favorGive;
+        this.favorHand.visible = favorGive;
+        this.btnGiveCard.visible = favorGive;
+    }
+
+    // 玩家选择交换目标
+    userSwap(swap: boolean) {
+        for (let i = 0; i < this.players.length; i++) {
+            const ui = this.players[i];
+            const show =
+                swap &&
+                ui.player.uid !== User.inst.player.uid &&
+                ui.player.state !== PlayerState.DEAD;
+            ui.showBtnSwap(show);
+        }
+    }
+
+
     // 玩家看预言第几张雷
     userPredict(show: boolean) {
         this.gpPredict.visible = show;
@@ -394,13 +437,13 @@ class UIMain extends eui.Component implements eui.UIComponent {
                 this.deckTween = egret.Tween.get(this.deck);
                 this.deckTween
                     .to(
-                        {
-                            x: x,
-                            y: y,
-                            scaleX: this.cardSmScale,
-                            scaleY: this.cardSmScale,
-                        },
-                        1000
+                    {
+                        x: x,
+                        y: y,
+                        scaleX: this.cardSmScale,
+                        scaleY: this.cardSmScale,
+                    },
+                    1000
                     )
                     .to({ visible: false }, 0);
                 break;
@@ -432,13 +475,13 @@ class UIMain extends eui.Component implements eui.UIComponent {
                 this.deckTween = egret.Tween.get(this.deck);
                 this.deckTween
                     .to(
-                        {
-                            x: this.playArea.x,
-                            y: this.playArea.y,
-                            scaleX: this.playArea.scaleX,
-                            scaleY: this.playArea.scaleY,
-                        },
-                        1000
+                    {
+                        x: this.playArea.x,
+                        y: this.playArea.y,
+                        scaleX: this.playArea.scaleX,
+                        scaleY: this.playArea.scaleY,
+                    },
+                    1000
                     )
                     .to({ visible: false }, 0)
                     .call(() => {
@@ -481,11 +524,11 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.deckTween = egret.Tween.get(this.deck);
         this.deckTween
             .to(
-                {
-                    x: x,
-                    y: y,
-                },
-                1000
+            {
+                x: x,
+                y: y,
+            },
+            1000
             )
             .to({ visible: false }, 0)
             .call(() => {
@@ -524,11 +567,11 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.deckTween = egret.Tween.get(this.deck);
         this.deckTween
             .to(
-                {
-                    x: x,
-                    y: y,
-                },
-                1000
+            {
+                x: x,
+                y: y,
+            },
+            1000
             )
             .to({ visible: false }, 0)
             .call(() => {
@@ -560,8 +603,8 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.setUserHands(User.inst.hands);
         this.userAction(
             User.inst.player.state === PlayerState.ACTION ||
-                User.inst.player.state === PlayerState.PREDICT ||
-                User.inst.player.state === PlayerState.XRAY
+            User.inst.player.state === PlayerState.PREDICT ||
+            User.inst.player.state === PlayerState.XRAY
         );
     }
 
@@ -583,6 +626,16 @@ class UIMain extends eui.Component implements eui.UIComponent {
             this.userPlayCardAnim();
             User.inst.playACard(this.hands.selectedIndex);
             this.hands.selectedIndex = undefined;
+            this.onHandsRefresh();
+        }
+    }
+
+    onBtnGiveClick() {
+        if (this.hands.selectedIndex > -1) {
+            // TODO: Play animation
+            User.inst.giveACard(this.hands.selectedIndex);
+            this.hands.selectedIndex = undefined;
+            this.userFavorGive(false)
             this.onHandsRefresh();
         }
     }

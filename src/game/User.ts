@@ -6,7 +6,7 @@ class User {
         }
         return User.$user;
     }
-    private constructor() {}
+    private constructor() { }
 
     player: Player;
     private $hands: Card[] = []; // 手牌
@@ -43,12 +43,51 @@ class User {
         );
     }
 
+    giveACard(cardIdx: number, target?: number[]) {
+        const uid = GameMgr.inst.findFavor1().uid;
+        NetMgr.inst.req.giveACard({
+            cardIdx,
+            target: [uid],
+        });
+
+        // TODO: Animation here
+        setTimeout(() => {
+            GameDispatcher.inst.dispatchEvent(
+                new egret.Event(EventName.HANDS_REFRESH, false, false)
+            );
+        }, 300);
+    }
+
     attack(uid: number) {
         NetMgr.inst.req.attack({
             uid,
             card: this.prevCard as number,
             target: [uid],
         });
+    }
+
+    favor(uid: number) {
+        console.log(uid)
+        NetMgr.inst.req.favor({
+            uid,
+            card: this.prevCard as number,
+            target: [uid],
+        })
+    }
+
+    swap(uid: number) {
+        NetMgr.inst.req.swap({
+            uid,
+            card: this.prevCard as number,
+            target: [uid],
+        })
+
+        // TODO: Animation here
+        setTimeout(() => {
+            GameDispatcher.inst.dispatchEvent(
+                new egret.Event(EventName.HANDS_REFRESH, false, false)
+            );
+        }, 300);
     }
 
     getDefuseCard(): number {

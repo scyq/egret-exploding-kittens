@@ -66,7 +66,7 @@ class Main extends eui.UILayer {
         // this.startAnimation(result);
         await platform.login();
         const userInfo = await platform.getUserInfo();
-        
+
         GameMgr.inst.sceneLoaded();
     }
 

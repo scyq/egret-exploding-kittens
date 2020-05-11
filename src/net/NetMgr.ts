@@ -18,7 +18,6 @@ class NetMgr {
     }
 
     connect(): void {
-        const self = this;
         console.debug(`Socket.io Connect => ${Config.ServerUrlDebug}`);
         this.$socket = io.connect(Config.ServerUrlDebug, {
             reconnection: true,
@@ -26,7 +25,7 @@ class NetMgr {
         });
         this.req.socket = this.$socket;
         this.registerHandles();
-        this.$socket.on('disconnect', self.disconnect);
+        this.$socket.on('disconnect', this.disconnect);
     }
 
     private registerHandles(): void {
@@ -39,6 +38,5 @@ class NetMgr {
 
     disconnect(): void {
         console.log(`Socket.io Disconnect => ${Config.ServerUrlDebug}`);
-        this.$socket.close();
     }
 }

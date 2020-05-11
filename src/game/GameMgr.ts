@@ -166,6 +166,9 @@ class GameMgr {
             tp.state = rp.state;
             tp.handsCnt = rp.handsCnt;
             tp.attackMark = rp.attackMark;
+            if (tp.uid === User.inst.player.uid) {
+                User.inst.hands = rp.hands;
+            }
             if (tp.uid === User.inst.player.uid && tp.state === PlayerState.DEAD) {
                 NetMgr.inst.disconnect();
             }
@@ -176,6 +179,9 @@ class GameMgr {
 
         this.$uiMain.userAction(User.inst.player.state === PlayerState.ACTION);
         this.$uiMain.userAttack(User.inst.player.state === PlayerState.ATTACK);
+        this.$uiMain.userFavor(User.inst.player.state === PlayerState.FAVOR_1);
+        this.$uiMain.userFavorGive(User.inst.player.state === PlayerState.FAVOR_2);
+        this.$uiMain.userSwap(User.inst.player.state === PlayerState.SWAP);
         this.$uiMain.userPredict(
             User.inst.player.state === PlayerState.PREDICT
         );
@@ -315,5 +321,18 @@ class GameMgr {
         } else if (card !== undefined) {
             this.$uiMain.playCard(uid, card);
         }
+    }
+
+    /**
+     * 找到当前FAVOR_1状态的玩家
+     */
+    findFavor1(): Player {
+        let tp = User.inst.player;
+        for (let i = 0; i < this.$players.length; i++) {
+            const tp = this.$players[i].state = PlayerState.FAVOR_1;
+            break;
+        }
+        return tp;
+
     }
 }

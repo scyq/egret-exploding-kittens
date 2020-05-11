@@ -10,7 +10,8 @@ enum PlayerState {
     XRAY = 8, // 看透视牌阶段
     FAVOR_1 = 9, // 选择索要对象
     FAVOR_2 = 10, // 选择给出的牌
-    DEAD = 11, // 死亡
+    SWAP = 11, // 选择交换的玩家
+    DEAD = 12, // 死亡
 }
 
 class Player {

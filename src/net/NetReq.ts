@@ -1,7 +1,7 @@
 class NetReq {
     private $socket: SocketIOClient.Socket;
 
-    public constructor() {}
+    public constructor() { }
 
     public set socket(socket: SocketIOClient.Socket) {
         this.$socket = socket;
@@ -54,9 +54,27 @@ class NetReq {
         this.$socket.emit('playACard', req);
     }
 
+    public giveACard(msg: Proto.IReqGiveACard): void {
+        const req: Proto.Req = this.getReq();
+        req.giveACard = msg;
+        this.$socket.emit('giveACard', req);
+    }
+
     public attack(msg: Proto.IComCard): void {
         const req: Proto.Req = this.getReq();
         req.attack = msg;
         this.$socket.emit('attack', req);
+    }
+
+    public favor(msg: Proto.IComCard): void {
+        const req: Proto.Req = this.getReq();
+        req.favor = msg;
+        this.$socket.emit('favor', req);
+    }
+
+    public swap(msg: Proto.IComCard): void {
+        const req: Proto.Req = this.getReq();
+        req.swap = msg;
+        this.$socket.emit('swap', req);
     }
 }
