@@ -962,8 +962,8 @@ declare namespace JoinRoom {
     }
 }
 
-/** Namespace Message. */
-declare namespace Message {
+/** Namespace Msg. */
+declare namespace Msg {
 
     /** Properties of a Message. */
     interface IMessage {
@@ -972,7 +972,7 @@ declare namespace Message {
         requestId?: (string|null);
 
         /** Message cmd */
-        cmd?: (Message.Message.CommandType|null);
+        cmd?: (Msg.Message.CommandType|null);
 
         /** Message content */
         content?: (string|null);
@@ -1012,13 +1012,13 @@ declare namespace Message {
          * Constructs a new Message.
          * @param [properties] Properties to set
          */
-        constructor(properties?: Message.IMessage);
+        constructor(properties?: Msg.IMessage);
 
         /** Message requestId. */
         public requestId: string;
 
         /** Message cmd. */
-        public cmd: Message.Message.CommandType;
+        public cmd: Msg.Message.CommandType;
 
         /** Message content. */
         public content: string;
@@ -1058,23 +1058,23 @@ declare namespace Message {
          * @param [properties] Properties to set
          * @returns Message instance
          */
-        public static create(properties?: Message.IMessage): Message.Message;
+        public static create(properties?: Msg.IMessage): Msg.Message;
 
         /**
-         * Encodes the specified Message message. Does not implicitly {@link Message.Message.verify|verify} messages.
+         * Encodes the specified Message message. Does not implicitly {@link Msg.Message.verify|verify} messages.
          * @param message Message message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encode(message: Message.IMessage, writer?: protobuf.Writer): protobuf.Writer;
+        public static encode(message: Msg.IMessage, writer?: protobuf.Writer): protobuf.Writer;
 
         /**
-         * Encodes the specified Message message, length delimited. Does not implicitly {@link Message.Message.verify|verify} messages.
+         * Encodes the specified Message message, length delimited. Does not implicitly {@link Msg.Message.verify|verify} messages.
          * @param message Message message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encodeDelimited(message: Message.IMessage, writer?: protobuf.Writer): protobuf.Writer;
+        public static encodeDelimited(message: Msg.IMessage, writer?: protobuf.Writer): protobuf.Writer;
 
         /**
          * Decodes a Message message from the specified reader or buffer.
@@ -1084,7 +1084,7 @@ declare namespace Message {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): Message.Message;
+        public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): Msg.Message;
 
         /**
          * Decodes a Message message from the specified reader or buffer, length delimited.
@@ -1093,7 +1093,7 @@ declare namespace Message {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): Message.Message;
+        public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): Msg.Message;
 
         /**
          * Verifies a Message message.

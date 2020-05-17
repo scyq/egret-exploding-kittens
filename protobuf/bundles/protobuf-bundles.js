@@ -2158,23 +2158,23 @@ $root.JoinRoom = (function() {
     return JoinRoom;
 })();
 
-$root.Message = (function() {
+$root.Msg = (function() {
 
     /**
-     * Namespace Message.
-     * @exports Message
+     * Namespace Msg.
+     * @exports Msg
      * @namespace
      */
-    var Message = {};
+    var Msg = {};
 
-    Message.Message = (function() {
+    Msg.Message = (function() {
 
         /**
          * Properties of a Message.
-         * @memberof Message
+         * @memberof Msg
          * @interface IMessage
          * @property {string|null} [requestId] Message requestId
-         * @property {Message.Message.CommandType|null} [cmd] Message cmd
+         * @property {Msg.Message.CommandType|null} [cmd] Message cmd
          * @property {string|null} [content] Message content
          * @property {JoinRoom.IJoinRoomRequest|null} [joinRoomReq] Message joinRoomReq
          * @property {JoinRoom.IJoinRoomResponse|null} [joinRoomResp] Message joinRoomResp
@@ -2189,11 +2189,11 @@ $root.Message = (function() {
 
         /**
          * Constructs a new Message.
-         * @memberof Message
+         * @memberof Msg
          * @classdesc Represents a Message.
          * @implements IMessage
          * @constructor
-         * @param {Message.IMessage=} [properties] Properties to set
+         * @param {Msg.IMessage=} [properties] Properties to set
          */
         function Message(properties) {
             if (properties)
@@ -2205,15 +2205,15 @@ $root.Message = (function() {
         /**
          * Message requestId.
          * @member {string} requestId
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @instance
          */
         Message.prototype.requestId = "";
 
         /**
          * Message cmd.
-         * @member {Message.Message.CommandType} cmd
-         * @memberof Message.Message
+         * @member {Msg.Message.CommandType} cmd
+         * @memberof Msg.Message
          * @instance
          */
         Message.prototype.cmd = 0;
@@ -2221,7 +2221,7 @@ $root.Message = (function() {
         /**
          * Message content.
          * @member {string} content
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @instance
          */
         Message.prototype.content = "";
@@ -2229,7 +2229,7 @@ $root.Message = (function() {
         /**
          * Message joinRoomReq.
          * @member {JoinRoom.IJoinRoomRequest|null|undefined} joinRoomReq
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @instance
          */
         Message.prototype.joinRoomReq = null;
@@ -2237,7 +2237,7 @@ $root.Message = (function() {
         /**
          * Message joinRoomResp.
          * @member {JoinRoom.IJoinRoomResponse|null|undefined} joinRoomResp
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @instance
          */
         Message.prototype.joinRoomResp = null;
@@ -2245,7 +2245,7 @@ $root.Message = (function() {
         /**
          * Message adjustCardReq.
          * @member {AdjustCard.IAdjustCardRequest|null|undefined} adjustCardReq
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @instance
          */
         Message.prototype.adjustCardReq = null;
@@ -2253,7 +2253,7 @@ $root.Message = (function() {
         /**
          * Message adjustCardResp.
          * @member {AdjustCard.IAdjustCardResponse|null|undefined} adjustCardResp
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @instance
          */
         Message.prototype.adjustCardResp = null;
@@ -2261,7 +2261,7 @@ $root.Message = (function() {
         /**
          * Message roomInfo.
          * @member {Common.IRoomInfo|null|undefined} roomInfo
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @instance
          */
         Message.prototype.roomInfo = null;
@@ -2269,7 +2269,7 @@ $root.Message = (function() {
         /**
          * Message pickCardReq.
          * @member {PickCard.IPickCardRequest|null|undefined} pickCardReq
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @instance
          */
         Message.prototype.pickCardReq = null;
@@ -2277,7 +2277,7 @@ $root.Message = (function() {
         /**
          * Message getCardInfo.
          * @member {Common.IGetCard|null|undefined} getCardInfo
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @instance
          */
         Message.prototype.getCardInfo = null;
@@ -2285,7 +2285,7 @@ $root.Message = (function() {
         /**
          * Message clearBoomReq.
          * @member {ClearBoom.IClearBoomRequest|null|undefined} clearBoomReq
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @instance
          */
         Message.prototype.clearBoomReq = null;
@@ -2293,7 +2293,7 @@ $root.Message = (function() {
         /**
          * Message releaseCardReq.
          * @member {ReleaseCard.IReleaseCardRequest|null|undefined} releaseCardReq
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @instance
          */
         Message.prototype.releaseCardReq = null;
@@ -2304,7 +2304,7 @@ $root.Message = (function() {
         /**
          * Message extension.
          * @member {"joinRoomReq"|"joinRoomResp"|"adjustCardReq"|"adjustCardResp"|"roomInfo"|"pickCardReq"|"getCardInfo"|"clearBoomReq"|"releaseCardReq"|undefined} extension
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @instance
          */
         Object.defineProperty(Message.prototype, "extension", {
@@ -2315,21 +2315,21 @@ $root.Message = (function() {
         /**
          * Creates a new Message instance using the specified properties.
          * @function create
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @static
-         * @param {Message.IMessage=} [properties] Properties to set
-         * @returns {Message.Message} Message instance
+         * @param {Msg.IMessage=} [properties] Properties to set
+         * @returns {Msg.Message} Message instance
          */
         Message.create = function create(properties) {
             return new Message(properties);
         };
 
         /**
-         * Encodes the specified Message message. Does not implicitly {@link Message.Message.verify|verify} messages.
+         * Encodes the specified Message message. Does not implicitly {@link Msg.Message.verify|verify} messages.
          * @function encode
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @static
-         * @param {Message.IMessage} message Message message or plain object to encode
+         * @param {Msg.IMessage} message Message message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -2364,11 +2364,11 @@ $root.Message = (function() {
         };
 
         /**
-         * Encodes the specified Message message, length delimited. Does not implicitly {@link Message.Message.verify|verify} messages.
+         * Encodes the specified Message message, length delimited. Does not implicitly {@link Msg.Message.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @static
-         * @param {Message.IMessage} message Message message or plain object to encode
+         * @param {Msg.IMessage} message Message message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
@@ -2379,18 +2379,18 @@ $root.Message = (function() {
         /**
          * Decodes a Message message from the specified reader or buffer.
          * @function decode
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {Message.Message} Message
+         * @returns {Msg.Message} Message
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
         Message.decode = function decode(reader, length) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Message.Message();
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Msg.Message();
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
@@ -2441,10 +2441,10 @@ $root.Message = (function() {
         /**
          * Decodes a Message message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {Message.Message} Message
+         * @returns {Msg.Message} Message
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
@@ -2457,7 +2457,7 @@ $root.Message = (function() {
         /**
          * Verifies a Message message.
          * @function verify
-         * @memberof Message.Message
+         * @memberof Msg.Message
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
@@ -2582,7 +2582,7 @@ $root.Message = (function() {
 
         /**
          * CommandType enum.
-         * @name Message.Message.CommandType
+         * @name Msg.Message.CommandType
          * @enum {number}
          * @property {number} NORMAL=0 NORMAL value
          * @property {number} HEARTBEAT_REQUEST=1 HEARTBEAT_REQUEST value
@@ -2615,7 +2615,7 @@ $root.Message = (function() {
         return Message;
     })();
 
-    return Message;
+    return Msg;
 })();
 
 $root.PickCard = (function() {
