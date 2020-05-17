@@ -10,22 +10,45 @@ message PlayerInfo {
     uint32 state = 4;
     bool alive = 5;
     string avatar = 6;
-    uint32 handsCnt = 7; // 手牌数
-    uint32 attackMark = 8; // 攻击标记数量
+    HandsInfo handsInfo = 7;
+    uint32 countDownTime = 8; // 当前操作倒计时 ms
+    string buff = 9; // 甩锅、索要等
 }
 
 // 房间
 message RoomInfo {
     string no = 1; // 房间编号
     uint32 state = 2;
-    int32 stackCnt = 3;
-    bool clockwise = 4;
+    int32 stackCount = 3; // 牌堆剩余数量
+    bool clockwise = 4; //
     repeated PlayerInfo players = 5;
+    DeckInfo deckInfo = 8;
+}
+
+// 牌堆信息
+message DeckInfo {
+    int32 leftCount = 1; // 剩余张数
+    int32 hit = 2; // 炸弹命中率
+    string buff = 3; // buff
 }
 
 // 卡牌
-message Card {
-    uint32 uid = 1;
-    uint32 card = 2;
-    repeated uint32 target = 3;
+message CardInfo {
+    uint32 id = 1;
+    string name = 2;
+    string icon = 3;
+}
+
+// 玩家手牌
+message HandsInfo {
+    uint32 uid = 1; // 玩家id
+    repeated CardInfo cardInfos = 2;
+    uint32 mulliganCnt = 3; // 剩余交换手牌次数
+    uint64 mulliganExpireTime = 4; // 调度手牌过期时间
+}
+
+// 获得N张卡牌
+message GetCard {
+    uint32 userId = 1;
+    repeated CardInfo newCard = 2;
 }

@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_package = "com.yess.gameprotocol.protobuf";
+option java_outer_classname = "ClearBoom";
+
+message ClearBoomRequest {
+    uint32 userId = 1;
+    string roomNo = 2;
+    uint32 returnPos = 3; // 放回牌堆位置
+}

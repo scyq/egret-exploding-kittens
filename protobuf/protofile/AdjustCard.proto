@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package = "com.yess.gameprotocol.protobuf";
+option java_outer_classname = "AdjustCard";
+
+import "Common.proto";
+
+message AdjustCardRequest {
+    // 用户id
+    uint32 userId = 1;
+    string roomNo = 2;
+}
+
+message AdjustCardResponse {
+    string content = 1;
+    HandsInfo handsInfo = 2; // 手牌信息
+}

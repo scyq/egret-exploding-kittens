@@ -1,0 +1,10 @@
+syntax = "proto3";
+option java_package = "com.yess.gameprotocol.protobuf";
+option java_outer_classname = "ReleaseCard";
+
+message ReleaseCardRequest {
+    uint32 userId = 1;
+    string roomNo = 2;
+    uint32 cardId = 3;
+    uint32 targetId = 4; // 卡牌技能影响目标玩家 id
+}

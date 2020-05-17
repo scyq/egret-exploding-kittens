@@ -19,5 +19,5 @@ message JoinRoomRequest {
 
 message JoinRoomResponse {
     string content = 1;
-    RoomInfo roomInfo = 2; // 加入的房间信息
+    RoomInfo roomInfo = 2;
 }
