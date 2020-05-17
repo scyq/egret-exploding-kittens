@@ -1,5 +1,5 @@
 syntax = "proto3";
-package Message;
+package Msg;
 option java_package = "com.yess.gameprotocol.protobuf";
 option java_outer_classname = "MessageBase";
 import "Common.proto";
