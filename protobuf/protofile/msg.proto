@@ -1,14 +1,13 @@
 syntax = "proto3";
 package Msg;
+import "common.proto";
+import "join_room.proto";
+import "adjust_card.proto";
+import "pick_card.proto";
+import "clear_boom.proto";
+import "release_card.proto";
 option java_package = "com.yess.gameprotocol.protobuf";
 option java_outer_classname = "MessageBase";
-import "Common.proto";
-import "JoinRoom.proto";
-import "AdjustCard.proto";
-import "PickCard.proto";
-import "ClearBoom.proto";
-import "ReleaseCard.proto";
-
 
 message Message {
     string requestId = 1;

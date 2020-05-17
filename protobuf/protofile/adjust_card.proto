@@ -1,9 +1,8 @@
 syntax = "proto3";
 package AdjustCard;
+import "common.proto";
 option java_package = "com.yess.gameprotocol.protobuf";
 option java_outer_classname = "AdjustCard";
-
-import "Common.proto";
 
 message AdjustCardRequest {
     // 用户id
