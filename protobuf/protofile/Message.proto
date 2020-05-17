@@ -1,4 +1,5 @@
 syntax = "proto3";
+package Message;
 option java_package = "com.yess.gameprotocol.protobuf";
 option java_outer_classname = "MessageBase";
 import "Common.proto";
@@ -7,6 +8,7 @@ import "AdjustCard.proto";
 import "PickCard.proto";
 import "ClearBoom.proto";
 import "ReleaseCard.proto";
+
 
 message Message {
     string requestId = 1;

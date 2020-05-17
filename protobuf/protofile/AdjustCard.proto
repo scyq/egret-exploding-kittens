@@ -1,4 +1,5 @@
 syntax = "proto3";
+package AdjustCard;
 option java_package = "com.yess.gameprotocol.protobuf";
 option java_outer_classname = "AdjustCard";
 
