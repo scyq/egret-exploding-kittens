@@ -234,22 +234,29 @@ class GameMgr {
     }
 
     reqJoinRoom() {
-        const players: Proto.IComPlayerInfo[] = [];
+        const players: Common.IPlayerInfo[] = [];
         for (const p of this.$matchInfo.players) {
             players.push({
                 uid: p.uid,
-                type: p.type,
+                isBot: p.type == 0,
+                name: p.nickname,
+                state: 0,
+                alive: true,
                 avatar: p.avatar,
-                nickname: p.nickname,
-                status: 0,
+                handsInfo: null,
+                countDownTime: null,
+                buff: null,
             });
         }
-        const playerList: Proto.IReqJoinRoom = {
+        const joinRoomData: JoinRoom.IJoinRoomRequest = {
             cookie: this.$cookie,
             wdh: this.$wdh,
             players,
+            gameId: this.$gameid,
+            roomNo: this.$rid,
+            uid: this.$uid,
         };
-        NetMgr.inst.req.joinRoom(playerList);
+        NetMgr.inst.req.joinRoom(joinRoomData);
     }
 
     toDie() {

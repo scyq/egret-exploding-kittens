@@ -15,6 +15,10 @@ class NetRes {
         { msg: 'xray', func: this.xray },
     ];
 
+    public joinRoom(data) {
+        // TODO:
+    }
+
     public text(res: Proto.Res): void {
         if (res === undefined || res.text === undefined) {
             return;
@@ -26,70 +30,70 @@ class NetRes {
     }
 
     public err(res: Proto.Res): void {
-        if (res === undefined || res.err === undefined) {
-            return;
-        }
-        GameMgr.inst.handleError(res.err);
+        // if (res === undefined || res.err === undefined) {
+        //     return;
+        // }
+        // GameMgr.inst.handleError(res.err);
     }
 
     public dealHands(res: Proto.Res): void {
-        if (res === undefined || res.dealHands === undefined) {
-            return;
-        }
-        GameMgr.inst.setUserHands(res.dealHands);
+        // if (res === undefined || res.dealHands === undefined) {
+        //     return;
+        // }
+        // GameMgr.inst.setUserHands(res.dealHands);
     }
 
     public roomInfo(res: Proto.Res): void {
-        if (res === undefined || res.roomInfo === undefined) {
-            return;
-        }
-        GameMgr.inst.setComRoomInfo(res.roomInfo);
+        // if (res === undefined || res.roomInfo === undefined) {
+        //     return;
+        // }
+        // GameMgr.inst.setComRoomInfo(res.roomInfo);
     }
 
     public startGame(res: Proto.Res): void {
-        if (res === undefined || res.startGame === undefined) {
-            return;
-        }
-        GameMgr.inst.startGame();
+        // if (res === undefined || res.startGame === undefined) {
+        //     return;
+        // }
+        // GameMgr.inst.startGame();
     }
 
     public overGame(res: Proto.Res): void {
-        if (res === undefined || res.overGame === undefined) {
-            return;
-        }
-        GameMgr.inst.gameover(res.overGame);
+        // if (res === undefined || res.overGame === undefined) {
+        //     return;
+        // }
+        // GameMgr.inst.gameover(res.overGame);
         // TODO: check others
     }
 
     public drawCard(res: Proto.Res): void {
-        if (res === undefined || res.drawCard === undefined) {
-            return;
-        }
-        GameMgr.inst.drawCard(res.drawCard.uid, res.drawCard.card);
+        // if (res === undefined || res.drawCard === undefined) {
+        //     return;
+        // }
+        // GameMgr.inst.drawCard(res.drawCard.uid, res.drawCard.card);
     }
 
     public playCard(res: Proto.Res): void {
-        if (res === undefined || res.playCard === undefined) {
-            return;
-        }
-        GameMgr.inst.playCard(res.playCard.uid, res.playCard.card);
+        // if (res === undefined || res.playCard === undefined) {
+        //     return;
+        // }
+        // GameMgr.inst.playCard(res.playCard.uid, res.playCard.card);
     }
 
     public predict(res: Proto.Res): void {
-        if (res === undefined || res.predict === undefined) {
-            return;
-        }
-        User.inst.boomSeq = res.predict.target[0];
+        // if (res === undefined || res.predict === undefined) {
+        //     return;
+        // }
+        // User.inst.boomSeq = res.predict.target[0];
     }
 
     public xray(res: Proto.Res): void {
-        if (res === undefined || res.xray === undefined) {
-            return;
-        }
-        const card3: Card[] = [];
-        for (let i = 0; i < res.xray.length; i++) {
-            card3.push(res.xray[i].card as Card);
-        }
-        User.inst.card3 = card3;
+        // if (res === undefined || res.xray === undefined) {
+        //     return;
+        // }
+        // const card3: Card[] = [];
+        // for (let i = 0; i < res.xray.length; i++) {
+        //     card3.push(res.xray[i].card as Card);
+        // }
+        // User.inst.card3 = card3;
     }
 }
