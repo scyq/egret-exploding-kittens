@@ -256,7 +256,7 @@ class GameMgr {
             roomNo: this.$rid,
             uid: this.$uid,
         };
-        // NetMgr.inst.req.joinRoom(joinRoomData);
+        NetMgr.inst.req.joinRoom(joinRoomData);
     }
 
     toDie() {
