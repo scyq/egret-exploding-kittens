@@ -16,6 +16,7 @@ class NetMgr {
 
     private constructor() {
         this.$socket = new egret.WebSocket();
+        this.$socket.type = egret.WebSocket.TYPE_BINARY;
         this.initSocketListeners();
 
         this.req = new NetReq();
@@ -26,10 +27,13 @@ class NetMgr {
         egret.log('initSocketListeners')
         this.$socket.addEventListener(egret.Event.CONNECT, this.onSocketOpen, this);
         this.$socket.addEventListener(egret.ProgressEvent.SOCKET_DATA, this.onReceiveMessage, this);
+        this.$socket.addEventListener(egret.Event.CLOSE, this.onSocketClose, this);
+        this.$socket.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onReceiveMessage, this);
     }
 
     connect(): void {
         if (this.isConnected) {
+            egret.warn("Socket has connected, don't need re-connect");
             // TODO:
         } else {
             const url = Config.NetServerConfig.url;
@@ -51,8 +55,16 @@ class NetMgr {
     }
 
     private onSocketOpen(): void {
-        egret.log('onSocketOpen')
+        egret.log('onSocketOpen onSocketOpen onSocketOpen onSocketOpen')
         this.isConnected = true;
+    }
+
+    private onSocketError(e: egret.Event): void {
+        egret.log('onSocketError onSocketError onSocketError onSocketError')
+    }
+
+    private onSocketClose(e: egret.Event): void {
+        egret.log('onSocketClose onSocketClose onSocketClose onSocketClose')
     }
 
     private onReceiveMessage(e: egret.ProgressEvent): void {
@@ -64,6 +76,7 @@ class NetMgr {
         console.log(msg);
         // TODO: NetRes...
     }
+
 
     private connectTo(url: string, port: number, secured: boolean = false): void {
         if (secured) {
