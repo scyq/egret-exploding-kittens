@@ -16,6 +16,7 @@ class NetMgr {
 
     private constructor() {
         this.$socket = new egret.WebSocket();
+        this.$socket.type = egret.WebSocket.TYPE_BINARY;
         this.initSocketListeners();
 
         this.req = new NetReq();
@@ -24,8 +25,10 @@ class NetMgr {
 
     private initSocketListeners() {
         egret.log('initSocketListeners')
-        this.$socket.addEventListener(egret.Event.CONNECT, this.onSocketOpen, this);
         this.$socket.addEventListener(egret.ProgressEvent.SOCKET_DATA, this.onReceiveMessage, this);
+        this.$socket.addEventListener(egret.Event.CONNECT, this.onSocketOpen, this);
+        this.$socket.addEventListener(egret.Event.CLOSE, this.onSocketClose, this);
+        this.$socket.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onSocketError, this);
     }
 
     connect(): void {
@@ -53,6 +56,14 @@ class NetMgr {
     private onSocketOpen(): void {
         egret.log('onSocketOpen')
         this.isConnected = true;
+    }
+
+    private onSocketClose(): void {
+        egret.log('onSocketClose')
+    }
+
+    private onSocketError(): void {
+        egret.log('onSocketError')
     }
 
     private onReceiveMessage(e: egret.ProgressEvent): void {
