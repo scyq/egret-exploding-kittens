@@ -56,13 +56,14 @@ class NetMgr {
     private onSocketOpen(): void {
         egret.log('onSocketOpen')
         this.isConnected = true;
+        GameMgr.inst.tryInitGame();
     }
 
     private onSocketClose(): void {
         egret.log('onSocketClose')
     }
 
-    private onSocketError(): void {
+    private onSocketError(e: egret.IOErrorEvent): void {
         egret.log('onSocketError')
     }
 

@@ -189,7 +189,7 @@ class GameMgr {
         }
     }
 
-    private tryInitGame() {
+    tryInitGame() {
         egret.log('Try init game');
         if (
             this.$state === GameState.INIT &&
@@ -197,7 +197,8 @@ class GameMgr {
             this.$wdh &&
             this.$matchInfo &&
             this.$cookie &&
-            this.$loaded
+            this.$loaded && 
+            NetMgr.inst.isConnected
         ) {
             this.initGame();
         }
