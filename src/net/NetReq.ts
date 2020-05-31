@@ -8,8 +8,13 @@ class NetReq {
         let createInstance
         let sendData = new JoinRoom.JoinRoomRequest(data);
         let sendByte: Uint8Array = JoinRoom.JoinRoomRequest.encode(sendData).finish();
-        let byteArray = new egret.ByteArray(sendByte)
-        this.$socket.writeBytes(byteArray);
+        let buf = new egret.ByteArray()
+        buf.writeByte(1);
+        buf.writeShort(0);
+        buf.writeInt(3)
+        buf.writeBytes(new egret.ByteArray(sendByte), 7);
+
+        this.$socket.writeBytes(buf);
         this.$socket.flush();
     }
 
