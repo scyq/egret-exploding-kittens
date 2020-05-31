@@ -5,14 +5,21 @@ class NetReq {
 
     // testJoinRoomReq() {
     joinRoom(data: JoinRoom.IJoinRoomRequest): void {
-        let createInstance
-        let sendData = new JoinRoom.JoinRoomRequest(data);
-        let sendByte: Uint8Array = JoinRoom.JoinRoomRequest.encode(sendData).finish();
+        let msg: Msg.IMessage = {
+            requestId: Math.floor(Math.random() * Math.floor(99999)).toString(),
+            cmd: Msg.Message.CommandType.JOIN_ROOM,
+            content: "Join Room",
+            joinRoomReq: data
+        };
+        let sendData = new Msg.Message(msg);
+        let sendByte: Uint8Array = Msg.Message.encode(sendData).finish();
+        let dataBytes = new egret.ByteArray(sendByte);
+
         let buf = new egret.ByteArray()
         buf.writeByte(1);
-        buf.writeShort(0);
+        buf.writeShort(dataBytes.length + 4);
         buf.writeInt(3)
-        buf.writeBytes(new egret.ByteArray(sendByte), 7);
+        buf.writeBytes(dataBytes);
 
         this.$socket.writeBytes(buf);
         this.$socket.flush();
