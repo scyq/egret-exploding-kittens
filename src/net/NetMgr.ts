@@ -42,15 +42,6 @@ class NetMgr {
             this.connectTo(url, port, secured);
         }
         this.req.socket = this.$socket;
-        // const self = this;
-        // console.debug(`WebSocket Connect => ${Config.ServerUrlDebug}`);
-        // this.$socket = io.connect(Config.ServerUrlDebug, {
-        //     reconnection: true,
-        //     reconnectionAttempts: 10
-        // });
-        // this.req.socket = this.$socket;
-        // this.registerHandles();
-        // this.$socket.on('disconnect', self.disconnect);
     }
 
     private onSocketOpen(): void {
@@ -72,9 +63,8 @@ class NetMgr {
         const byte: egret.ByteArray = new egret.ByteArray();
         this.$socket.readBytes(byte);
         const reader = new protobuf.Reader(byte.bytes);
-        const msg = JoinRoom.JoinRoomResponse.decode(reader);
-        console.log(msg);
-        // TODO: NetRes...
+        const msg = Msg.Message.decode(reader);
+        this.res.response(msg);
     }
 
     private connectTo(url: string, port: number, secured: boolean = false): void {

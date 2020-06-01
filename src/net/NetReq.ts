@@ -3,27 +3,6 @@ class NetReq {
 
     constructor() { }
 
-    // testJoinRoomReq() {
-    joinRoom(data: JoinRoom.IJoinRoomRequest): void {
-        let msg: Msg.IMessage = {
-            requestId: Math.floor(Math.random() * Math.floor(99999)).toString(),
-            cmd: Msg.Message.CommandType.JOIN_ROOM,
-            content: "Join Room",
-            joinRoomReq: data
-        };
-        let sendData = new Msg.Message(msg);
-        let sendByte: Uint8Array = Msg.Message.encode(sendData).finish();
-        let dataBytes = new egret.ByteArray(sendByte);
-
-        let buf = new egret.ByteArray()
-        buf.writeByte(1);
-        buf.writeShort(dataBytes.length + 4);
-        buf.writeInt(3)
-        buf.writeBytes(dataBytes);
-
-        this.$socket.writeBytes(buf);
-        this.$socket.flush();
-    }
 
     set socket(socket: egret.WebSocket) {
         this.$socket = socket;
@@ -38,10 +17,30 @@ class NetReq {
         return req;
     }
 
-    text(msg: string): void {
-        // const req: Proto.Req = this.getReq();
-        // req.text = msg;
-        // this.$socket.emit('text', req);
+    private request(msg: Msg.IMessage): void {
+        let sendData = new Msg.Message(msg);
+        let sendByte: Uint8Array = Msg.Message.encode(sendData).finish();
+        let dataBytes = new egret.ByteArray(sendByte);
+
+        let buf = new egret.ByteArray()
+        buf.writeByte(1);
+        buf.writeShort(dataBytes.length + 4);
+        buf.writeInt(3)
+        buf.writeBytes(dataBytes);
+
+        this.$socket.writeBytes(buf);
+        this.$socket.flush();
+    }
+
+    // testJoinRoomReq() {
+    joinRoom(data: JoinRoom.IJoinRoomRequest): void {
+        let msg: Msg.IMessage = {
+            requestId: Math.floor(Math.random() * Math.floor(99999)).toString(),
+            cmd: Msg.Message.CommandType.JOIN_ROOM,
+            content: "Join Room",
+            joinRoomReq: data
+        };
+        this.request(msg);
     }
 
     // joinRoom(msg: Proto.IReqJoinRoom): void {

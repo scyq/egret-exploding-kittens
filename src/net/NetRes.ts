@@ -1,25 +1,40 @@
 class NetRes {
-    public readonly handles: {
-        msg: string;
-        func: (res: Proto.Res) => void;
+    private readonly handles: {
+        msgType: Msg.Message.CommandType;
+        func: any;
     }[] = [
-        { msg: 'text', func: this.text },
-        { msg: 'err', func: this.err },
-        { msg: 'dealHands', func: this.dealHands },
-        { msg: 'startGame', func: this.startGame },
-        { msg: 'overGame', func: this.overGame },
-        { msg: 'roomInfo', func: this.roomInfo },
-        { msg: 'drawCard', func: this.drawCard },
-        { msg: 'playCard', func: this.playCard },
-        { msg: 'predict', func: this.predict },
-        { msg: 'xray', func: this.xray },
+        { msgType: Msg.Message.CommandType.NORMAL, func: this.text },
+        { msgType: Msg.Message.CommandType.HEARTBEAT_RESPONSE, func: this.dealHands },
+        { msgType: Msg.Message.CommandType.JOIN_ROOM, func: this.startGame },
+        { msgType: Msg.Message.CommandType.HANDS_UPDATE, func: this.overGame },
+        { msgType: Msg.Message.CommandType.ADJUST_CARD, func: this.roomInfo },
+        { msgType: Msg.Message.CommandType.ROOM_UPDATE, func: this.drawCard },
+        { msgType: Msg.Message.CommandType.PICK, func: this.playCard },
+        { msgType: Msg.Message.CommandType.RELEASE, func: this.predict },
+        { msgType: Msg.Message.CommandType.CLEAR_BOOM, func: this.xray },
+        { msgType: Msg.Message.CommandType.TEST, func: this.xray },
     ];
 
-    public joinRoom(data) {
-        // TODO:
+    response(msg: Msg.IMessage) {
+        console.log("NetMgr.inst.response()")
+        console.log(msg);
+
     }
 
-    public text(res: Proto.Res): void {
+    joinRoom(joinRoomResp: JoinRoom.JoinRoomResponse) {
+
+    }
+
+    HEARTBEAT_RESPONSE
+
+    adjustCardResp() { }
+
+    roomInfo() { }
+
+    getCardInfo() { }
+
+
+    text(res: Proto.Res): void {
         if (res === undefined || res.text === undefined) {
             return;
         }
@@ -29,35 +44,35 @@ class NetRes {
         // );
     }
 
-    public err(res: Proto.Res): void {
+    err(res: Proto.Res): void {
         // if (res === undefined || res.err === undefined) {
         //     return;
         // }
         // GameMgr.inst.handleError(res.err);
     }
 
-    public dealHands(res: Proto.Res): void {
+    dealHands(res: Proto.Res): void {
         // if (res === undefined || res.dealHands === undefined) {
         //     return;
         // }
         // GameMgr.inst.setUserHands(res.dealHands);
     }
 
-    public roomInfo(res: Proto.Res): void {
+    roomInfo(res: Proto.Res): void {
         // if (res === undefined || res.roomInfo === undefined) {
         //     return;
         // }
         // GameMgr.inst.setComRoomInfo(res.roomInfo);
     }
 
-    public startGame(res: Proto.Res): void {
+    startGame(res: Proto.Res): void {
         // if (res === undefined || res.startGame === undefined) {
         //     return;
         // }
         // GameMgr.inst.startGame();
     }
 
-    public overGame(res: Proto.Res): void {
+    overGame(res: Proto.Res): void {
         // if (res === undefined || res.overGame === undefined) {
         //     return;
         // }
@@ -65,28 +80,28 @@ class NetRes {
         // TODO: check others
     }
 
-    public drawCard(res: Proto.Res): void {
+    drawCard(res: Proto.Res): void {
         // if (res === undefined || res.drawCard === undefined) {
         //     return;
         // }
         // GameMgr.inst.drawCard(res.drawCard.uid, res.drawCard.card);
     }
 
-    public playCard(res: Proto.Res): void {
+    playCard(res: Proto.Res): void {
         // if (res === undefined || res.playCard === undefined) {
         //     return;
         // }
         // GameMgr.inst.playCard(res.playCard.uid, res.playCard.card);
     }
 
-    public predict(res: Proto.Res): void {
+    predict(res: Proto.Res): void {
         // if (res === undefined || res.predict === undefined) {
         //     return;
         // }
         // User.inst.boomSeq = res.predict.target[0];
     }
 
-    public xray(res: Proto.Res): void {
+    xray(res: Proto.Res): void {
         // if (res === undefined || res.xray === undefined) {
         //     return;
         // }
