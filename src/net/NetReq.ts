@@ -18,7 +18,6 @@ class NetReq {
     }
 
     private request(msg: Msg.IMessage): void {
-        console.log('123123123123123123123123123123')
         let sendData = new Msg.Message(msg);
         let sendByte: Uint8Array = Msg.Message.encode(sendData).finish();
         let dataBytes = new egret.ByteArray(sendByte);
@@ -30,7 +29,7 @@ class NetReq {
         buf.writeBytes(dataBytes);
 
         this.$socket.writeBytes(buf);
-        // this.$socket.flush();
+        this.$socket.flush();
     }
 
     // testJoinRoomReq() {

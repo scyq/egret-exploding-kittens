@@ -28,7 +28,7 @@ namespace Config {
     export const NetServerConfig: INetServerConfig =
         {
             url: "47.93.86.15",
-            port: 8082,
+            port: 8083,
             secured: false,
         };
 

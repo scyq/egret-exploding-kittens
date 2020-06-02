@@ -106,7 +106,7 @@ class GameMgr {
 
     gameBombsEnd(type: number, isWdh: number, gameResultJson: string) {
         console.log(gameResultJson);
-        // yess.gameBombsEnd(type, isWdh, gameResultJson);
+        yess.gameBombsEnd(type, isWdh, gameResultJson);
     }
 
     setUid(uid: string | number) {
@@ -197,8 +197,8 @@ class GameMgr {
             this.$wdh &&
             this.$matchInfo &&
             this.$cookie &&
-            this.$loaded && 
-true//            NetMgr.inst.isConnected
+            this.$loaded &&
+            NetMgr.inst.isConnected
         ) {
             this.initGame();
         }

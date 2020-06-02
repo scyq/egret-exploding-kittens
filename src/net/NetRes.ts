@@ -1,7 +1,7 @@
 class NetRes {
-    private readonly handles: {
+    private readonly handlers: {
         msgType: Msg.Message.CommandType;
-        func: any;
+        func: (msg: Msg.IMessage) => void;
     }[] = [
         { msgType: Msg.Message.CommandType.NORMAL, func: this.text },
         { msgType: Msg.Message.CommandType.HEARTBEAT_RESPONSE, func: this.dealHands },
@@ -18,22 +18,31 @@ class NetRes {
     response(msg: Msg.IMessage) {
         console.log("NetMgr.inst.response()")
         console.log(msg);
-
+        this.handlers[msg.cmd].func(msg);
     }
 
-    joinRoom(joinRoomResp: JoinRoom.JoinRoomResponse) {
-
+    joinRoom(msg: Msg.IMessage) {
+        if (msg.joinRoomResp) {
+            console.log(msg.joinRoomReq)
+        }
     }
 
-
-    adjustCard(adjustCardResp: AdjustCard.AdjustCardResponse) { }
-
-    roomInfo(roomInfo: Common.RoomInfo) {
-
+    adjustCard(msg: Msg.IMessage) {
+        if (msg.adjustCardResp) {
+            console.log(msg.adjustCardReq);
+        }
     }
 
-    getCard(getCardInfo: Common.GetCard) {
+    roomInfo(msg: Msg.IMessage) {
+        if (msg.roomInfo) {
+            console.log(msg.roomInfo);
+        }
+    }
 
+    getCard(msg: Msg.IMessage) {
+        if (msg.getCardInfo) {
+            console.log(msg.getCardInfo);
+        }
     }
 
 

@@ -59,16 +59,13 @@ class NetMgr {
     }
 
     private onReceiveMessage(e: egret.ProgressEvent): void {
-        // egret.log('onReceiveMessage')
-        // const buf: egret.ByteArray = new egret.ByteArray();
-        //  this.$socket.readBytes(buf);
-        //  buf.readByte();
-        //  buf.readBytes(buf.bytes.length - 4)
-         
-        // const reader = new protobuf.Reader(byte.bytes);
-        // reader
-        // const msg = Msg.Message.decode(reader);
-        // this.res.response(msg);
+        egret.log('onReceiveMessage')
+        const buf: egret.ByteArray = new egret.ByteArray();
+        this.$socket.readBytes(buf, 7);
+
+        const reader = new protobuf.Reader(buf.bytes);
+        const msg = Msg.Message.decode(reader);
+        this.res.response(msg);
     }
 
     private connectTo(url: string, port: number, secured: boolean = false): void {
