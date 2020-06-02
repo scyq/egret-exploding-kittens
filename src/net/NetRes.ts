@@ -25,13 +25,16 @@ class NetRes {
 
     }
 
-    HEARTBEAT_RESPONSE
 
-    adjustCardResp() { }
+    adjustCard(adjustCardResp: AdjustCard.AdjustCardResponse) { }
 
-    roomInfo() { }
+    roomInfo(roomInfo: Common.RoomInfo) {
 
-    getCardInfo() { }
+    }
+
+    getCard(getCardInfo: Common.GetCard) {
+
+    }
 
 
     text(res: Proto.Res): void {
@@ -58,12 +61,12 @@ class NetRes {
         // GameMgr.inst.setUserHands(res.dealHands);
     }
 
-    roomInfo(res: Proto.Res): void {
-        // if (res === undefined || res.roomInfo === undefined) {
-        //     return;
-        // }
-        // GameMgr.inst.setComRoomInfo(res.roomInfo);
-    }
+    // roomInfo(res: Proto.Res): void {
+    //     // if (res === undefined || res.roomInfo === undefined) {
+    //     //     return;
+    //     // }
+    //     // GameMgr.inst.setComRoomInfo(res.roomInfo);
+    // }
 
     startGame(res: Proto.Res): void {
         // if (res === undefined || res.startGame === undefined) {

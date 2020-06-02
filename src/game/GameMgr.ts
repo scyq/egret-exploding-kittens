@@ -198,7 +198,7 @@ class GameMgr {
             this.$matchInfo &&
             this.$cookie &&
             this.$loaded && 
-            NetMgr.inst.isConnected
+true//            NetMgr.inst.isConnected
         ) {
             this.initGame();
         }
