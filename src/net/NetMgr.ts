@@ -66,7 +66,7 @@ class NetMgr {
         const length = buf.readShort();
         const cmd = buf.readInt();
         const data = new egret.ByteArray
-        buf.readBytes(data, 0, length);
+        buf.readBytes(data, 0, length - 4);
 
         const reader = new protobuf.Reader(data.bytes);
 
