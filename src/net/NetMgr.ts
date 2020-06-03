@@ -61,9 +61,15 @@ class NetMgr {
     private onReceiveMessage(e: egret.ProgressEvent): void {
         egret.log('onReceiveMessage')
         const buf: egret.ByteArray = new egret.ByteArray();
-        this.$socket.readBytes(buf, 7);
+        this.$socket.readBytes(buf);
+        buf.readByte();
+        const length = buf.readShort();
+        const cmd = buf.readInt();
+        const data = new egret.ByteArray
+        buf.readBytes(data, 0, length);
 
-        const reader = new protobuf.Reader(buf.bytes);
+        const reader = new protobuf.Reader(data.bytes);
+
         const msg = Msg.Message.decode(reader);
         this.res.response(msg);
     }
