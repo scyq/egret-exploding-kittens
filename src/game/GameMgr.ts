@@ -128,6 +128,7 @@ class GameMgr {
     setMatchInfo(info: Native.IMatchInfo) {
         egret.log(`GameState: ${this.$state}`);
 
+
         if (this.$state === GameState.INIT) {
             this.$matchInfo = info;
             for (let i = 0; i < this.$matchInfo.players.length; ++i) {
@@ -135,7 +136,7 @@ class GameMgr {
                 const player = new Player(i, mip);
                 this.$players.push(player);
             }
-            // this.tryInitGame();
+            this.tryInitGame();
         }
     }
 
@@ -206,6 +207,9 @@ class GameMgr {
 
     private initGame() {
         egret.log('Init game');
+
+        NetMgr.inst.setUidAndRid(this.$uid, this.$rid);
+
         for (let i = 0; i < this.$players.length; i++) {
             if (this.$players[i].uid === this.$uid) {
                 User.inst.player = this.$players[i];
@@ -234,7 +238,7 @@ class GameMgr {
         }
     }
 
-    reqJoinRoom() {
+    private reqJoinRoom() {
         const players: Common.IPlayerInfo[] = [];
         for (const p of this.$matchInfo.players) {
             players.push({
@@ -242,11 +246,9 @@ class GameMgr {
                 isBot: p.type == 0,
                 name: p.nickname,
                 state: 0,
-                alive: true,
                 avatar: p.avatar,
                 handsInfo: null,
                 countDownTime: null,
-                buff: null,
             });
         }
         const joinRoomData: JoinRoom.IJoinRoomRequest = {
@@ -254,18 +256,14 @@ class GameMgr {
             wdh: this.$wdh,
             players,
             gameId: this.$gameid,
-            roomNo: this.$rid,
-            uid: this.$uid,
         };
         NetMgr.inst.req.joinRoom(joinRoomData);
     }
 
     toDie() {
-        NetMgr.inst.req.die(true);
     }
 
     toWin() {
-        NetMgr.inst.req.win(true);
     }
 
     startGame() {

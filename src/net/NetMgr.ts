@@ -23,12 +23,17 @@ class NetMgr {
         this.res = new NetRes();
     }
 
-    private initSocketListeners() {
+    private initSocketListeners(): void {
         egret.log('initSocketListeners')
         this.$socket.addEventListener(egret.ProgressEvent.SOCKET_DATA, this.onReceiveMessage, this);
         this.$socket.addEventListener(egret.Event.CONNECT, this.onSocketOpen, this);
         this.$socket.addEventListener(egret.Event.CLOSE, this.onSocketClose, this);
         this.$socket.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onSocketError, this);
+    }
+
+    setUidAndRid(uid: number, rid: string): void {
+        this.req.userId = uid;
+        this.req.roomNo = rid;
     }
 
     connect(): void {

@@ -1,20 +1,20 @@
 class NetReq {
     private $socket: egret.WebSocket
+    private $userid: number;
+    private $roomNo: string;
 
     constructor() { }
 
+    set userId(uid: number) {
+        this.$userid = uid;
+    }
+
+    set roomNo(rid: string) {
+        this.$roomNo = rid;
+    }
 
     set socket(socket: egret.WebSocket) {
         this.$socket = socket;
-    }
-
-    private getReq() {
-        const req: Proto.Req = {
-            gameid: GameMgr.inst.gameid,
-            uid: GameMgr.inst.uid,
-            rid: GameMgr.inst.rid,
-        };
-        return req;
     }
 
     private request(msg: Msg.IMessage): void {
@@ -36,50 +36,50 @@ class NetReq {
         return Math.floor(Math.random() * Math.floor(99999)).toString();
     }
 
-    heartBeat(): void {
-        let msg: Msg.IMessage = {
+    private getMsg(): Msg.IMessage {
+        return {
             requestId: this.genRequestId(),
-            cmd: Msg.Message.CommandType.HEARTBEAT_REQ,
-            content: "HEARTBEAT_REQ",
+            userId: this.userId,
+            roomNo: this.$roomNo,
+            content: 'VOID'
         };
+    }
+
+    heartBeat(): void {
+        const msg: Msg.IMessage = this.getMsg();
+        msg.cmd = Msg.Message.CommandType.HEARTBEAT_REQ;
+        msg.content = "HEARTBEAT_REQ";
         this.request(msg);
     }
 
     joinRoom(data: JoinRoom.IJoinRoomRequest): void {
-        let msg: Msg.IMessage = {
-            requestId: this.genRequestId(),
-            cmd: Msg.Message.CommandType.JOIN_ROOM_REQ,
-            content: "JOIN_ROOM_REQ",
-            joinRoomReq: data
-        };
+        const msg: Msg.IMessage = this.getMsg();
+        msg.cmd = Msg.Message.CommandType.JOIN_ROOM_REQ;
+        msg.content = "JOIN_ROOM_REQ";
+        msg.joinRoomReq = data;
         this.request(msg);
     }
 
     adjustCard(): void {
-        let msg: Msg.IMessage = {
-            requestId: this.genRequestId(),
-            cmd: Msg.Message.CommandType.ADJUST_CARD_REQ,
-            content: "ADJUST_CARD_REQ",
-        };
+        const msg: Msg.IMessage = this.getMsg();
+        msg.cmd = Msg.Message.CommandType.ADJUST_CARD_REQ;
+        msg.content = "ADJUST_CARD_REQ";
         this.request(msg);
     }
 
 
     pickCard(): void {
-        let msg: Msg.IMessage = {
-            requestId: this.genRequestId(),
-            cmd: Msg.Message.CommandType.PICK_CARD_REQ,
-            content: "PICK_CARD_REQ",
-        };
+        const msg: Msg.IMessage = this.getMsg();
+        msg.cmd = Msg.Message.CommandType.PICK_CARD_REQ;
+        msg.content = "PICK_CARD_REQ";
         this.request(msg);
     }
 
     releaseCard(data: JoinRoom.IJoinRoomRequest): void {
-        let msg: Msg.IMessage = {
-            requestId: this.genRequestId(),
-            cmd: Msg.Message.CommandType.RELEASE_CARD_REQ,
-            content: "RELEASE_CARD_REQ",
-        };
+        const msg: Msg.IMessage = this.getMsg();
+        msg.cmd = Msg.Message.CommandType.RELEASE_CARD_REQ;
+        msg.content = "RELEASE_CARD_REQ";
+        msg.releaseCardReq = data;
         this.request(msg);
     }
 }
