@@ -1,5 +1,4 @@
 syntax = "proto3";
-package Common;
 
 option java_package = "com.yess.gameprotocol.protobuf";
 option java_outer_classname = "Common";
@@ -8,49 +7,48 @@ option java_outer_classname = "Common";
 message PlayerInfo {
     uint32 uid = 1;
     bool isBot = 2;
-    string name = 3;
-    uint32 state = 4;
-    bool alive = 5;
-    string avatar = 6;
-    HandsInfo handsInfo = 7;
-    uint32 countDownTime = 8; // 当前操作倒计时 ms
-    string buff = 9; // 甩锅、索要等
+    uint32 state = 3;
+    string name = 4; // 可选
+    string avatar = 5; // 可选
+    HandsInfo handsInfo = 6; // 手牌信息, JoinRoom 不需要 可选
+    uint32 countDownTime = 7; // 当前操作倒计时 ms 可选
 }
 
 // 房间
 message RoomInfo {
     string no = 1; // 房间编号
-    uint32 state = 2;
-    int32 stackCount = 3; // 牌堆剩余数量
-    bool clockwise = 4; //
-    repeated PlayerInfo players = 5;
-    DeckInfo deckInfo = 8;
+    uint32 state = 2; // 房间状态
+    bool clockwise = 3; // 出牌方向 true 右边， false: 左边
+    repeated PlayerInfo players = 4; // 玩家信息
+    DeckInfo deckInfo = 5; // 牌堆信息
 }
 
 // 牌堆信息
 message DeckInfo {
-    int32 leftCount = 1; // 剩余张数
-    int32 hit = 2; // 炸弹命中率
-    string buff = 3; // buff
-}
-
-// 卡牌
-message CardInfo {
-    uint32 id = 1;
-    string name = 2;
-    string icon = 3;
+    uint32 leftCount = 1; // 剩余张数
+    uint32 leftBoomCount = 2; // 剩余炸弹数量
 }
 
 // 玩家手牌
 message HandsInfo {
-    uint32 uid = 1; // 玩家id
-    repeated CardInfo cardInfos = 2;
-    uint32 mulliganCnt = 3; // 剩余交换手牌次数
-    uint64 mulliganExpireTime = 4; // 调度手牌过期时间
+    repeated uint32 cardIds = 1; // 玩家手牌
+    uint32 mulliganCnt = 2; // 剩余手牌调度次数
+    uint64 mulliganExpireTime = 3; // 调度手牌过期时间 ms
 }
 
-// 获得N张卡牌
-message GetCard {
-    uint32 userId = 1;
-    repeated CardInfo newCard = 2;
+enum ErrorType {
+    ROOM_GAME_STARTED = 0; // 房间游戏开启中
+    ROOM_PLAYER_IS_FULL = 1; // 房间人数已满
+    ADJUST_HANDS_FAIL = 2; // 调整手牌失败
+}
+
+message Error {
+    // 错误类型，待定
+    ErrorType type = 1;
+    // 错误描述
+    string msg = 2; // 可选
+}
+
+message GameRankingInfo {
+   repeated uint32 ranking = 1;
 }

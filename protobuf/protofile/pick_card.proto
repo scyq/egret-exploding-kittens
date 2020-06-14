@@ -1,9 +1,0 @@
-syntax = "proto3";
-package PickCard;
-option java_package = "com.yess.gameprotocol.protobuf";
-option java_outer_classname = "PickCard";
-
-message PickCardRequest {
-    uint32 userId = 1;
-    string roomNo = 2;
-}

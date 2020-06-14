@@ -1,10 +1,9 @@
 syntax = "proto3";
-package ClearBoom;
+
 option java_package = "com.yess.gameprotocol.protobuf";
 option java_outer_classname = "ClearBoom";
 
 message ClearBoomRequest {
-    uint32 userId = 1;
-    string roomNo = 2;
-    uint32 returnPos = 3; // 放回牌堆位置
+    bool defuse = 1; // true: 拆除, false: 放弃拆除，直接死亡
+    uint32 returnPos = 2; // 放回牌堆位置
 }
