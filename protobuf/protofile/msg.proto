@@ -1,4 +1,5 @@
 syntax = "proto3";
+package Msg;
 
 import "common.proto";
 import "join_room.proto";

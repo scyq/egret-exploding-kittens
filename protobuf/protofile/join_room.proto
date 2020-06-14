@@ -1,4 +1,5 @@
 syntax = "proto3";
+package JoinRoom;
 
 import "common.proto";
 option java_package = "com.yess.gameprotocol.protobuf";
