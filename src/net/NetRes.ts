@@ -3,16 +3,11 @@ class NetRes {
         msgType: Msg.Message.CommandType;
         func: (msg: Msg.IMessage) => void;
     }[] = [
-        { msgType: Msg.Message.CommandType.NORMAL, func: this.text },
-        { msgType: Msg.Message.CommandType.HEARTBEAT_RESPONSE, func: this.dealHands },
-        { msgType: Msg.Message.CommandType.JOIN_ROOM, func: this.startGame },
-        { msgType: Msg.Message.CommandType.HANDS_UPDATE, func: this.overGame },
-        { msgType: Msg.Message.CommandType.ADJUST_CARD, func: this.roomInfo },
-        { msgType: Msg.Message.CommandType.ROOM_UPDATE, func: this.drawCard },
-        { msgType: Msg.Message.CommandType.PICK, func: this.playCard },
-        { msgType: Msg.Message.CommandType.RELEASE, func: this.predict },
-        { msgType: Msg.Message.CommandType.CLEAR_BOOM, func: this.xray },
-        { msgType: Msg.Message.CommandType.TEST, func: this.xray },
+        { msgType: Msg.Message.CommandType.HEARTBEAT_RESP, func: this.heartBeat },
+        { msgType: Msg.Message.CommandType.RELEASE_CARD_RESP, func: this.releaseCard },
+        { msgType: Msg.Message.CommandType.ROOM_INFO_NTF, func: this.roomInfo },
+        { msgType: Msg.Message.CommandType.GAME_RANK_NTF, func: this.gameRank },
+        { msgType: Msg.Message.CommandType.ERROR, func: this.error },
     ];
 
     response(msg: Msg.IMessage) {
@@ -21,106 +16,32 @@ class NetRes {
         this.handlers[msg.cmd].func(msg);
     }
 
-    joinRoom(msg: Msg.IMessage) {
-        if (msg.joinRoomResp) {
-            console.log(msg.joinRoomReq)
-        }
+    heartBeat(msg: Msg.IMessage) {
+        egret.log('HEARTBEAT_RESP')
     }
 
-    adjustCard(msg: Msg.IMessage) {
-        if (msg.adjustCardResp) {
-            console.log(msg.adjustCardReq);
+    releaseCard(msg: Msg.IMessage) {
+        if (msg.releaseCardResp) {
+            console.log(msg.releaseCardResp);
         }
     }
 
     roomInfo(msg: Msg.IMessage) {
-        if (msg.roomInfo) {
-            console.log(msg.roomInfo);
+        if (msg.roomInfoNtf) {
+            console.log(msg.roomInfoNtf);
         }
     }
 
-    getCard(msg: Msg.IMessage) {
-        if (msg.getCardInfo) {
-            console.log(msg.getCardInfo);
+    gameRank(msg: Msg.IMessage) {
+        if (msg.gameRankingNtf) {
+            egret.log(msg.gameRankingNtf);
         }
     }
 
 
-    text(res: Proto.Res): void {
-        if (res === undefined || res.text === undefined) {
-            return;
+    error(msg: Msg.IMessage) {
+        if (msg.err) {
+            egret.log(msg.err);
         }
-        egret.log(res.text);
-        // GameDispatcher.inst.dispatchEvent(
-        //     new egret.Event(EventName.TEST, false, false, { msg: res.text })
-        // );
-    }
-
-    err(res: Proto.Res): void {
-        // if (res === undefined || res.err === undefined) {
-        //     return;
-        // }
-        // GameMgr.inst.handleError(res.err);
-    }
-
-    dealHands(res: Proto.Res): void {
-        // if (res === undefined || res.dealHands === undefined) {
-        //     return;
-        // }
-        // GameMgr.inst.setUserHands(res.dealHands);
-    }
-
-    // roomInfo(res: Proto.Res): void {
-    //     // if (res === undefined || res.roomInfo === undefined) {
-    //     //     return;
-    //     // }
-    //     // GameMgr.inst.setComRoomInfo(res.roomInfo);
-    // }
-
-    startGame(res: Proto.Res): void {
-        // if (res === undefined || res.startGame === undefined) {
-        //     return;
-        // }
-        // GameMgr.inst.startGame();
-    }
-
-    overGame(res: Proto.Res): void {
-        // if (res === undefined || res.overGame === undefined) {
-        //     return;
-        // }
-        // GameMgr.inst.gameover(res.overGame);
-        // TODO: check others
-    }
-
-    drawCard(res: Proto.Res): void {
-        // if (res === undefined || res.drawCard === undefined) {
-        //     return;
-        // }
-        // GameMgr.inst.drawCard(res.drawCard.uid, res.drawCard.card);
-    }
-
-    playCard(res: Proto.Res): void {
-        // if (res === undefined || res.playCard === undefined) {
-        //     return;
-        // }
-        // GameMgr.inst.playCard(res.playCard.uid, res.playCard.card);
-    }
-
-    predict(res: Proto.Res): void {
-        // if (res === undefined || res.predict === undefined) {
-        //     return;
-        // }
-        // User.inst.boomSeq = res.predict.target[0];
-    }
-
-    xray(res: Proto.Res): void {
-        // if (res === undefined || res.xray === undefined) {
-        //     return;
-        // }
-        // const card3: Card[] = [];
-        // for (let i = 0; i < res.xray.length; i++) {
-        //     card3.push(res.xray[i].card as Card);
-        // }
-        // User.inst.card3 = card3;
     }
 }

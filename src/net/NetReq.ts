@@ -32,54 +32,54 @@ class NetReq {
         this.$socket.flush();
     }
 
-    // testJoinRoomReq() {
+    private genRequestId(): string {
+        return Math.floor(Math.random() * Math.floor(99999)).toString();
+    }
+
+    heartBeat(): void {
+        let msg: Msg.IMessage = {
+            requestId: this.genRequestId(),
+            cmd: Msg.Message.CommandType.HEARTBEAT_REQ,
+            content: "HEARTBEAT_REQ",
+        };
+        this.request(msg);
+    }
+
     joinRoom(data: JoinRoom.IJoinRoomRequest): void {
         let msg: Msg.IMessage = {
-            requestId: Math.floor(Math.random() * Math.floor(99999)).toString(),
-            cmd: Msg.Message.CommandType.JOIN_ROOM,
-            content: "Join Room",
+            requestId: this.genRequestId(),
+            cmd: Msg.Message.CommandType.JOIN_ROOM_REQ,
+            content: "JOIN_ROOM_REQ",
             joinRoomReq: data
         };
         this.request(msg);
     }
 
-
-    text(msg: string): void { }
-    // joinRoom(msg: Proto.IReqJoinRoom): void {
-    //     // const req: Proto.Req = this.getReq();
-    //     // req.joinRoom = msg;
-    //     // egret.log('joinRoom');
-    //     // egret.log(req.joinRoom);
-    //     // this.$socket.emit('joinRoom', req);
-    // }
-
-    die(msg: boolean): void {
-        // const req: Proto.Req = this.getReq();
-        // req.die = msg;
-        // this.$socket.emit('die', req);
+    adjustCard(): void {
+        let msg: Msg.IMessage = {
+            requestId: this.genRequestId(),
+            cmd: Msg.Message.CommandType.ADJUST_CARD_REQ,
+            content: "ADJUST_CARD_REQ",
+        };
+        this.request(msg);
     }
 
-    win(msg: boolean): void {
-        // const req: Proto.Req = this.getReq();
-        // req.win = msg;
-        // this.$socket.emit('win', req);
+
+    pickCard(): void {
+        let msg: Msg.IMessage = {
+            requestId: this.genRequestId(),
+            cmd: Msg.Message.CommandType.PICK_CARD_REQ,
+            content: "PICK_CARD_REQ",
+        };
+        this.request(msg);
     }
 
-    drawACard(msg: Proto.IReqDrawACard): void {
-        // const req: Proto.Req = this.getReq();
-        // req.drawACard = msg;
-        // this.$socket.emit('drawACard', req);
-    }
-
-    playACard(msg: Proto.IReqPlayACard): void {
-        // const req: Proto.Req = this.getReq();
-        // req.playACard = msg;
-        // this.$socket.emit('playACard', req);
-    }
-
-    attack(msg: Proto.IComCard): void {
-        // const req: Proto.Req = this.getReq();
-        // req.attack = msg;
-        // this.$socket.emit('attack', req);
+    releaseCard(data: JoinRoom.IJoinRoomRequest): void {
+        let msg: Msg.IMessage = {
+            requestId: this.genRequestId(),
+            cmd: Msg.Message.CommandType.RELEASE_CARD_REQ,
+            content: "RELEASE_CARD_REQ",
+        };
+        this.request(msg);
     }
 }
