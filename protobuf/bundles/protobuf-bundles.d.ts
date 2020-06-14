@@ -1,153 +1,77 @@
 type Long = protobuf.Long;
-// DO NOT EDIT! This is a generated file. Edit the JSDoc in src/*.js instead and run 'npm run types'.
 
-/** Namespace AdjustCard. */
-declare namespace AdjustCard {
+/** Namespace ClearBoom. */
+declare namespace ClearBoom {
 
-    /** Properties of an AdjustCardRequest. */
-    interface IAdjustCardRequest {
+    /** Properties of a ClearBoomRequest. */
+    interface IClearBoomRequest {
 
-        /** AdjustCardRequest userId */
-        userId?: (number|null);
+        /** ClearBoomRequest defuse */
+        defuse?: (boolean|null);
 
-        /** AdjustCardRequest roomNo */
-        roomNo?: (string|null);
+        /** ClearBoomRequest returnPos */
+        returnPos?: (number|null);
     }
 
-    /** Represents an AdjustCardRequest. */
-    class AdjustCardRequest implements IAdjustCardRequest {
+    /** Represents a ClearBoomRequest. */
+    class ClearBoomRequest implements IClearBoomRequest {
 
         /**
-         * Constructs a new AdjustCardRequest.
+         * Constructs a new ClearBoomRequest.
          * @param [properties] Properties to set
          */
-        constructor(properties?: AdjustCard.IAdjustCardRequest);
+        constructor(properties?: ClearBoom.IClearBoomRequest);
 
-        /** AdjustCardRequest userId. */
-        public userId: number;
+        /** ClearBoomRequest defuse. */
+        public defuse: boolean;
 
-        /** AdjustCardRequest roomNo. */
-        public roomNo: string;
+        /** ClearBoomRequest returnPos. */
+        public returnPos: number;
 
         /**
-         * Creates a new AdjustCardRequest instance using the specified properties.
+         * Creates a new ClearBoomRequest instance using the specified properties.
          * @param [properties] Properties to set
-         * @returns AdjustCardRequest instance
+         * @returns ClearBoomRequest instance
          */
-        public static create(properties?: AdjustCard.IAdjustCardRequest): AdjustCard.AdjustCardRequest;
+        public static create(properties?: ClearBoom.IClearBoomRequest): ClearBoom.ClearBoomRequest;
 
         /**
-         * Encodes the specified AdjustCardRequest message. Does not implicitly {@link AdjustCard.AdjustCardRequest.verify|verify} messages.
-         * @param message AdjustCardRequest message or plain object to encode
+         * Encodes the specified ClearBoomRequest message. Does not implicitly {@link ClearBoom.ClearBoomRequest.verify|verify} messages.
+         * @param message ClearBoomRequest message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encode(message: AdjustCard.IAdjustCardRequest, writer?: protobuf.Writer): protobuf.Writer;
+        public static encode(message: ClearBoom.IClearBoomRequest, writer?: protobuf.Writer): protobuf.Writer;
 
         /**
-         * Encodes the specified AdjustCardRequest message, length delimited. Does not implicitly {@link AdjustCard.AdjustCardRequest.verify|verify} messages.
-         * @param message AdjustCardRequest message or plain object to encode
+         * Encodes the specified ClearBoomRequest message, length delimited. Does not implicitly {@link ClearBoom.ClearBoomRequest.verify|verify} messages.
+         * @param message ClearBoomRequest message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encodeDelimited(message: AdjustCard.IAdjustCardRequest, writer?: protobuf.Writer): protobuf.Writer;
+        public static encodeDelimited(message: ClearBoom.IClearBoomRequest, writer?: protobuf.Writer): protobuf.Writer;
 
         /**
-         * Decodes an AdjustCardRequest message from the specified reader or buffer.
+         * Decodes a ClearBoomRequest message from the specified reader or buffer.
          * @param reader Reader or buffer to decode from
          * @param [length] Message length if known beforehand
-         * @returns AdjustCardRequest
+         * @returns ClearBoomRequest
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): AdjustCard.AdjustCardRequest;
+        public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): ClearBoom.ClearBoomRequest;
 
         /**
-         * Decodes an AdjustCardRequest message from the specified reader or buffer, length delimited.
+         * Decodes a ClearBoomRequest message from the specified reader or buffer, length delimited.
          * @param reader Reader or buffer to decode from
-         * @returns AdjustCardRequest
+         * @returns ClearBoomRequest
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): AdjustCard.AdjustCardRequest;
+        public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): ClearBoom.ClearBoomRequest;
 
         /**
-         * Verifies an AdjustCardRequest message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        public static verify(message: { [k: string]: any }): (string|null);
-    }
-
-    /** Properties of an AdjustCardResponse. */
-    interface IAdjustCardResponse {
-
-        /** AdjustCardResponse content */
-        content?: (string|null);
-
-        /** AdjustCardResponse handsInfo */
-        handsInfo?: (Common.IHandsInfo|null);
-    }
-
-    /** Represents an AdjustCardResponse. */
-    class AdjustCardResponse implements IAdjustCardResponse {
-
-        /**
-         * Constructs a new AdjustCardResponse.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: AdjustCard.IAdjustCardResponse);
-
-        /** AdjustCardResponse content. */
-        public content: string;
-
-        /** AdjustCardResponse handsInfo. */
-        public handsInfo?: (Common.IHandsInfo|null);
-
-        /**
-         * Creates a new AdjustCardResponse instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns AdjustCardResponse instance
-         */
-        public static create(properties?: AdjustCard.IAdjustCardResponse): AdjustCard.AdjustCardResponse;
-
-        /**
-         * Encodes the specified AdjustCardResponse message. Does not implicitly {@link AdjustCard.AdjustCardResponse.verify|verify} messages.
-         * @param message AdjustCardResponse message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encode(message: AdjustCard.IAdjustCardResponse, writer?: protobuf.Writer): protobuf.Writer;
-
-        /**
-         * Encodes the specified AdjustCardResponse message, length delimited. Does not implicitly {@link AdjustCard.AdjustCardResponse.verify|verify} messages.
-         * @param message AdjustCardResponse message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encodeDelimited(message: AdjustCard.IAdjustCardResponse, writer?: protobuf.Writer): protobuf.Writer;
-
-        /**
-         * Decodes an AdjustCardResponse message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns AdjustCardResponse
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): AdjustCard.AdjustCardResponse;
-
-        /**
-         * Decodes an AdjustCardResponse message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns AdjustCardResponse
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): AdjustCard.AdjustCardResponse;
-
-        /**
-         * Verifies an AdjustCardResponse message.
+         * Verifies a ClearBoomRequest message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
@@ -167,14 +91,11 @@ declare namespace Common {
         /** PlayerInfo isBot */
         isBot?: (boolean|null);
 
-        /** PlayerInfo name */
-        name?: (string|null);
-
         /** PlayerInfo state */
         state?: (number|null);
 
-        /** PlayerInfo alive */
-        alive?: (boolean|null);
+        /** PlayerInfo name */
+        name?: (string|null);
 
         /** PlayerInfo avatar */
         avatar?: (string|null);
@@ -184,9 +105,6 @@ declare namespace Common {
 
         /** PlayerInfo countDownTime */
         countDownTime?: (number|null);
-
-        /** PlayerInfo buff */
-        buff?: (string|null);
     }
 
     /** Represents a PlayerInfo. */
@@ -204,14 +122,11 @@ declare namespace Common {
         /** PlayerInfo isBot. */
         public isBot: boolean;
 
-        /** PlayerInfo name. */
-        public name: string;
-
         /** PlayerInfo state. */
         public state: number;
 
-        /** PlayerInfo alive. */
-        public alive: boolean;
+        /** PlayerInfo name. */
+        public name: string;
 
         /** PlayerInfo avatar. */
         public avatar: string;
@@ -221,9 +136,6 @@ declare namespace Common {
 
         /** PlayerInfo countDownTime. */
         public countDownTime: number;
-
-        /** PlayerInfo buff. */
-        public buff: string;
 
         /**
          * Creates a new PlayerInfo instance using the specified properties.
@@ -284,9 +196,6 @@ declare namespace Common {
         /** RoomInfo state */
         state?: (number|null);
 
-        /** RoomInfo stackCount */
-        stackCount?: (number|null);
-
         /** RoomInfo clockwise */
         clockwise?: (boolean|null);
 
@@ -311,9 +220,6 @@ declare namespace Common {
 
         /** RoomInfo state. */
         public state: number;
-
-        /** RoomInfo stackCount. */
-        public stackCount: number;
 
         /** RoomInfo clockwise. */
         public clockwise: boolean;
@@ -380,11 +286,8 @@ declare namespace Common {
         /** DeckInfo leftCount */
         leftCount?: (number|null);
 
-        /** DeckInfo hit */
-        hit?: (number|null);
-
-        /** DeckInfo buff */
-        buff?: (string|null);
+        /** DeckInfo leftBoomCount */
+        leftBoomCount?: (number|null);
     }
 
     /** Represents a DeckInfo. */
@@ -399,11 +302,8 @@ declare namespace Common {
         /** DeckInfo leftCount. */
         public leftCount: number;
 
-        /** DeckInfo hit. */
-        public hit: number;
-
-        /** DeckInfo buff. */
-        public buff: string;
+        /** DeckInfo leftBoomCount. */
+        public leftBoomCount: number;
 
         /**
          * Creates a new DeckInfo instance using the specified properties.
@@ -455,95 +355,11 @@ declare namespace Common {
         public static verify(message: { [k: string]: any }): (string|null);
     }
 
-    /** Properties of a CardInfo. */
-    interface ICardInfo {
-
-        /** CardInfo id */
-        id?: (number|null);
-
-        /** CardInfo name */
-        name?: (string|null);
-
-        /** CardInfo icon */
-        icon?: (string|null);
-    }
-
-    /** Represents a CardInfo. */
-    class CardInfo implements ICardInfo {
-
-        /**
-         * Constructs a new CardInfo.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: Common.ICardInfo);
-
-        /** CardInfo id. */
-        public id: number;
-
-        /** CardInfo name. */
-        public name: string;
-
-        /** CardInfo icon. */
-        public icon: string;
-
-        /**
-         * Creates a new CardInfo instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns CardInfo instance
-         */
-        public static create(properties?: Common.ICardInfo): Common.CardInfo;
-
-        /**
-         * Encodes the specified CardInfo message. Does not implicitly {@link Common.CardInfo.verify|verify} messages.
-         * @param message CardInfo message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encode(message: Common.ICardInfo, writer?: protobuf.Writer): protobuf.Writer;
-
-        /**
-         * Encodes the specified CardInfo message, length delimited. Does not implicitly {@link Common.CardInfo.verify|verify} messages.
-         * @param message CardInfo message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encodeDelimited(message: Common.ICardInfo, writer?: protobuf.Writer): protobuf.Writer;
-
-        /**
-         * Decodes a CardInfo message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns CardInfo
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): Common.CardInfo;
-
-        /**
-         * Decodes a CardInfo message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns CardInfo
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): Common.CardInfo;
-
-        /**
-         * Verifies a CardInfo message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        public static verify(message: { [k: string]: any }): (string|null);
-    }
-
     /** Properties of a HandsInfo. */
     interface IHandsInfo {
 
-        /** HandsInfo uid */
-        uid?: (number|null);
-
-        /** HandsInfo cardInfos */
-        cardInfos?: (Common.ICardInfo[]|null);
+        /** HandsInfo cardIds */
+        cardIds?: (number[]|null);
 
         /** HandsInfo mulliganCnt */
         mulliganCnt?: (number|null);
@@ -561,11 +377,8 @@ declare namespace Common {
          */
         constructor(properties?: Common.IHandsInfo);
 
-        /** HandsInfo uid. */
-        public uid: number;
-
-        /** HandsInfo cardInfos. */
-        public cardInfos: Common.ICardInfo[];
+        /** HandsInfo cardIds. */
+        public cardIds: number[];
 
         /** HandsInfo mulliganCnt. */
         public mulliganCnt: number;
@@ -623,160 +436,151 @@ declare namespace Common {
         public static verify(message: { [k: string]: any }): (string|null);
     }
 
-    /** Properties of a GetCard. */
-    interface IGetCard {
-
-        /** GetCard userId */
-        userId?: (number|null);
-
-        /** GetCard newCard */
-        newCard?: (Common.ICardInfo[]|null);
+    /** ErrorType enum. */
+    enum ErrorType {
+        ROOM_GAME_STARTED = 0,
+        ROOM_PLAYER_IS_FULL = 1,
+        ADJUST_HANDS_FAIL = 2
     }
 
-    /** Represents a GetCard. */
-    class GetCard implements IGetCard {
+    /** Properties of an Error. */
+    interface IError {
+
+        /** Error type */
+        type?: (Common.ErrorType|null);
+
+        /** Error msg */
+        msg?: (string|null);
+    }
+
+    /** Represents an Error. */
+    class Error implements IError {
 
         /**
-         * Constructs a new GetCard.
+         * Constructs a new Error.
          * @param [properties] Properties to set
          */
-        constructor(properties?: Common.IGetCard);
+        constructor(properties?: Common.IError);
 
-        /** GetCard userId. */
-        public userId: number;
+        /** Error type. */
+        public type: Common.ErrorType;
 
-        /** GetCard newCard. */
-        public newCard: Common.ICardInfo[];
+        /** Error msg. */
+        public msg: string;
 
         /**
-         * Creates a new GetCard instance using the specified properties.
+         * Creates a new Error instance using the specified properties.
          * @param [properties] Properties to set
-         * @returns GetCard instance
+         * @returns Error instance
          */
-        public static create(properties?: Common.IGetCard): Common.GetCard;
+        public static create(properties?: Common.IError): Common.Error;
 
         /**
-         * Encodes the specified GetCard message. Does not implicitly {@link Common.GetCard.verify|verify} messages.
-         * @param message GetCard message or plain object to encode
+         * Encodes the specified Error message. Does not implicitly {@link Common.Error.verify|verify} messages.
+         * @param message Error message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encode(message: Common.IGetCard, writer?: protobuf.Writer): protobuf.Writer;
+        public static encode(message: Common.IError, writer?: protobuf.Writer): protobuf.Writer;
 
         /**
-         * Encodes the specified GetCard message, length delimited. Does not implicitly {@link Common.GetCard.verify|verify} messages.
-         * @param message GetCard message or plain object to encode
+         * Encodes the specified Error message, length delimited. Does not implicitly {@link Common.Error.verify|verify} messages.
+         * @param message Error message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encodeDelimited(message: Common.IGetCard, writer?: protobuf.Writer): protobuf.Writer;
+        public static encodeDelimited(message: Common.IError, writer?: protobuf.Writer): protobuf.Writer;
 
         /**
-         * Decodes a GetCard message from the specified reader or buffer.
+         * Decodes an Error message from the specified reader or buffer.
          * @param reader Reader or buffer to decode from
          * @param [length] Message length if known beforehand
-         * @returns GetCard
+         * @returns Error
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): Common.GetCard;
+        public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): Common.Error;
 
         /**
-         * Decodes a GetCard message from the specified reader or buffer, length delimited.
+         * Decodes an Error message from the specified reader or buffer, length delimited.
          * @param reader Reader or buffer to decode from
-         * @returns GetCard
+         * @returns Error
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): Common.GetCard;
+        public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): Common.Error;
 
         /**
-         * Verifies a GetCard message.
+         * Verifies an Error message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
         public static verify(message: { [k: string]: any }): (string|null);
     }
-}
 
-/** Namespace ClearBoom. */
-declare namespace ClearBoom {
+    /** Properties of a GameRankingInfo. */
+    interface IGameRankingInfo {
 
-    /** Properties of a ClearBoomRequest. */
-    interface IClearBoomRequest {
-
-        /** ClearBoomRequest userId */
-        userId?: (number|null);
-
-        /** ClearBoomRequest roomNo */
-        roomNo?: (string|null);
-
-        /** ClearBoomRequest returnPos */
-        returnPos?: (number|null);
+        /** GameRankingInfo ranking */
+        ranking?: (number[]|null);
     }
 
-    /** Represents a ClearBoomRequest. */
-    class ClearBoomRequest implements IClearBoomRequest {
+    /** Represents a GameRankingInfo. */
+    class GameRankingInfo implements IGameRankingInfo {
 
         /**
-         * Constructs a new ClearBoomRequest.
+         * Constructs a new GameRankingInfo.
          * @param [properties] Properties to set
          */
-        constructor(properties?: ClearBoom.IClearBoomRequest);
+        constructor(properties?: Common.IGameRankingInfo);
 
-        /** ClearBoomRequest userId. */
-        public userId: number;
-
-        /** ClearBoomRequest roomNo. */
-        public roomNo: string;
-
-        /** ClearBoomRequest returnPos. */
-        public returnPos: number;
+        /** GameRankingInfo ranking. */
+        public ranking: number[];
 
         /**
-         * Creates a new ClearBoomRequest instance using the specified properties.
+         * Creates a new GameRankingInfo instance using the specified properties.
          * @param [properties] Properties to set
-         * @returns ClearBoomRequest instance
+         * @returns GameRankingInfo instance
          */
-        public static create(properties?: ClearBoom.IClearBoomRequest): ClearBoom.ClearBoomRequest;
+        public static create(properties?: Common.IGameRankingInfo): Common.GameRankingInfo;
 
         /**
-         * Encodes the specified ClearBoomRequest message. Does not implicitly {@link ClearBoom.ClearBoomRequest.verify|verify} messages.
-         * @param message ClearBoomRequest message or plain object to encode
+         * Encodes the specified GameRankingInfo message. Does not implicitly {@link Common.GameRankingInfo.verify|verify} messages.
+         * @param message GameRankingInfo message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encode(message: ClearBoom.IClearBoomRequest, writer?: protobuf.Writer): protobuf.Writer;
+        public static encode(message: Common.IGameRankingInfo, writer?: protobuf.Writer): protobuf.Writer;
 
         /**
-         * Encodes the specified ClearBoomRequest message, length delimited. Does not implicitly {@link ClearBoom.ClearBoomRequest.verify|verify} messages.
-         * @param message ClearBoomRequest message or plain object to encode
+         * Encodes the specified GameRankingInfo message, length delimited. Does not implicitly {@link Common.GameRankingInfo.verify|verify} messages.
+         * @param message GameRankingInfo message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encodeDelimited(message: ClearBoom.IClearBoomRequest, writer?: protobuf.Writer): protobuf.Writer;
+        public static encodeDelimited(message: Common.IGameRankingInfo, writer?: protobuf.Writer): protobuf.Writer;
 
         /**
-         * Decodes a ClearBoomRequest message from the specified reader or buffer.
+         * Decodes a GameRankingInfo message from the specified reader or buffer.
          * @param reader Reader or buffer to decode from
          * @param [length] Message length if known beforehand
-         * @returns ClearBoomRequest
+         * @returns GameRankingInfo
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): ClearBoom.ClearBoomRequest;
+        public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): Common.GameRankingInfo;
 
         /**
-         * Decodes a ClearBoomRequest message from the specified reader or buffer, length delimited.
+         * Decodes a GameRankingInfo message from the specified reader or buffer, length delimited.
          * @param reader Reader or buffer to decode from
-         * @returns ClearBoomRequest
+         * @returns GameRankingInfo
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): ClearBoom.ClearBoomRequest;
+        public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): Common.GameRankingInfo;
 
         /**
-         * Verifies a ClearBoomRequest message.
+         * Verifies a GameRankingInfo message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
@@ -801,12 +605,6 @@ declare namespace JoinRoom {
 
         /** JoinRoomRequest gameId */
         gameId?: (number|null);
-
-        /** JoinRoomRequest roomNo */
-        roomNo?: (string|null);
-
-        /** JoinRoomRequest uid */
-        uid?: (number|null);
     }
 
     /** Represents a JoinRoomRequest. */
@@ -829,12 +627,6 @@ declare namespace JoinRoom {
 
         /** JoinRoomRequest gameId. */
         public gameId: number;
-
-        /** JoinRoomRequest roomNo. */
-        public roomNo: string;
-
-        /** JoinRoomRequest uid. */
-        public uid: number;
 
         /**
          * Creates a new JoinRoomRequest instance using the specified properties.
@@ -885,81 +677,6 @@ declare namespace JoinRoom {
          */
         public static verify(message: { [k: string]: any }): (string|null);
     }
-
-    /** Properties of a JoinRoomResponse. */
-    interface IJoinRoomResponse {
-
-        /** JoinRoomResponse content */
-        content?: (string|null);
-
-        /** JoinRoomResponse roomInfo */
-        roomInfo?: (Common.IRoomInfo|null);
-    }
-
-    /** Represents a JoinRoomResponse. */
-    class JoinRoomResponse implements IJoinRoomResponse {
-
-        /**
-         * Constructs a new JoinRoomResponse.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: JoinRoom.IJoinRoomResponse);
-
-        /** JoinRoomResponse content. */
-        public content: string;
-
-        /** JoinRoomResponse roomInfo. */
-        public roomInfo?: (Common.IRoomInfo|null);
-
-        /**
-         * Creates a new JoinRoomResponse instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns JoinRoomResponse instance
-         */
-        public static create(properties?: JoinRoom.IJoinRoomResponse): JoinRoom.JoinRoomResponse;
-
-        /**
-         * Encodes the specified JoinRoomResponse message. Does not implicitly {@link JoinRoom.JoinRoomResponse.verify|verify} messages.
-         * @param message JoinRoomResponse message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encode(message: JoinRoom.IJoinRoomResponse, writer?: protobuf.Writer): protobuf.Writer;
-
-        /**
-         * Encodes the specified JoinRoomResponse message, length delimited. Does not implicitly {@link JoinRoom.JoinRoomResponse.verify|verify} messages.
-         * @param message JoinRoomResponse message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encodeDelimited(message: JoinRoom.IJoinRoomResponse, writer?: protobuf.Writer): protobuf.Writer;
-
-        /**
-         * Decodes a JoinRoomResponse message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns JoinRoomResponse
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): JoinRoom.JoinRoomResponse;
-
-        /**
-         * Decodes a JoinRoomResponse message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns JoinRoomResponse
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): JoinRoom.JoinRoomResponse;
-
-        /**
-         * Verifies a JoinRoomResponse message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        public static verify(message: { [k: string]: any }): (string|null);
-    }
 }
 
 /** Namespace Msg. */
@@ -971,38 +688,38 @@ declare namespace Msg {
         /** Message requestId */
         requestId?: (string|null);
 
-        /** Message cmd */
-        cmd?: (Msg.Message.CommandType|null);
+        /** Message userId */
+        userId?: (number|null);
+
+        /** Message roomNo */
+        roomNo?: (string|null);
 
         /** Message content */
         content?: (string|null);
 
+        /** Message cmd */
+        cmd?: (Msg.Message.CommandType|null);
+
         /** Message joinRoomReq */
         joinRoomReq?: (JoinRoom.IJoinRoomRequest|null);
-
-        /** Message joinRoomResp */
-        joinRoomResp?: (JoinRoom.IJoinRoomResponse|null);
-
-        /** Message adjustCardReq */
-        adjustCardReq?: (AdjustCard.IAdjustCardRequest|null);
-
-        /** Message adjustCardResp */
-        adjustCardResp?: (AdjustCard.IAdjustCardResponse|null);
-
-        /** Message roomInfo */
-        roomInfo?: (Common.IRoomInfo|null);
-
-        /** Message pickCardReq */
-        pickCardReq?: (PickCard.IPickCardRequest|null);
-
-        /** Message getCardInfo */
-        getCardInfo?: (Common.IGetCard|null);
 
         /** Message clearBoomReq */
         clearBoomReq?: (ClearBoom.IClearBoomRequest|null);
 
         /** Message releaseCardReq */
         releaseCardReq?: (ReleaseCard.IReleaseCardRequest|null);
+
+        /** Message releaseCardResp */
+        releaseCardResp?: (ReleaseCard.IReleaseCardResponese|null);
+
+        /** Message roomInfoNtf */
+        roomInfoNtf?: (Common.IRoomInfo|null);
+
+        /** Message gameRankingNtf */
+        gameRankingNtf?: (Common.IGameRankingInfo|null);
+
+        /** Message err */
+        err?: (Common.IError|null);
     }
 
     /** Represents a Message. */
@@ -1017,32 +734,20 @@ declare namespace Msg {
         /** Message requestId. */
         public requestId: string;
 
-        /** Message cmd. */
-        public cmd: Msg.Message.CommandType;
+        /** Message userId. */
+        public userId: number;
+
+        /** Message roomNo. */
+        public roomNo: string;
 
         /** Message content. */
         public content: string;
 
+        /** Message cmd. */
+        public cmd: Msg.Message.CommandType;
+
         /** Message joinRoomReq. */
         public joinRoomReq?: (JoinRoom.IJoinRoomRequest|null);
-
-        /** Message joinRoomResp. */
-        public joinRoomResp?: (JoinRoom.IJoinRoomResponse|null);
-
-        /** Message adjustCardReq. */
-        public adjustCardReq?: (AdjustCard.IAdjustCardRequest|null);
-
-        /** Message adjustCardResp. */
-        public adjustCardResp?: (AdjustCard.IAdjustCardResponse|null);
-
-        /** Message roomInfo. */
-        public roomInfo?: (Common.IRoomInfo|null);
-
-        /** Message pickCardReq. */
-        public pickCardReq?: (PickCard.IPickCardRequest|null);
-
-        /** Message getCardInfo. */
-        public getCardInfo?: (Common.IGetCard|null);
 
         /** Message clearBoomReq. */
         public clearBoomReq?: (ClearBoom.IClearBoomRequest|null);
@@ -1050,8 +755,20 @@ declare namespace Msg {
         /** Message releaseCardReq. */
         public releaseCardReq?: (ReleaseCard.IReleaseCardRequest|null);
 
+        /** Message releaseCardResp. */
+        public releaseCardResp?: (ReleaseCard.IReleaseCardResponese|null);
+
+        /** Message roomInfoNtf. */
+        public roomInfoNtf?: (Common.IRoomInfo|null);
+
+        /** Message gameRankingNtf. */
+        public gameRankingNtf?: (Common.IGameRankingInfo|null);
+
+        /** Message err. */
+        public err?: (Common.IError|null);
+
         /** Message extension. */
-        public extension?: ("joinRoomReq"|"joinRoomResp"|"adjustCardReq"|"adjustCardResp"|"roomInfo"|"pickCardReq"|"getCardInfo"|"clearBoomReq"|"releaseCardReq");
+        public extension?: ("joinRoomReq"|"clearBoomReq"|"releaseCardReq"|"releaseCardResp"|"roomInfoNtf"|"gameRankingNtf"|"err");
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -1107,97 +824,17 @@ declare namespace Msg {
 
         /** CommandType enum. */
         enum CommandType {
-            NORMAL = 0,
-            HEARTBEAT_REQUEST = 1,
-            HEARTBEAT_RESPONSE = 2,
-            JOIN_ROOM = 3,
-            HANDS_UPDATE = 4,
-            ADJUST_CARD = 5,
-            ROOM_UPDATE = 6,
-            PICK = 7,
-            RELEASE = 8,
-            CLEAR_BOOM = 9,
-            TEST = 100
+            HEARTBEAT_REQ = 0,
+            HEARTBEAT_RESP = 1,
+            JOIN_ROOM_REQ = 2,
+            ADJUST_CARD_REQ = 3,
+            PICK_CARD_REQ = 4,
+            RELEASE_CARD_REQ = 5,
+            RELEASE_CARD_RESP = 6,
+            ROOM_INFO_NTF = 7,
+            GAME_RANK_NTF = 8,
+            ERROR = 9
         }
-    }
-}
-
-/** Namespace PickCard. */
-declare namespace PickCard {
-
-    /** Properties of a PickCardRequest. */
-    interface IPickCardRequest {
-
-        /** PickCardRequest userId */
-        userId?: (number|null);
-
-        /** PickCardRequest roomNo */
-        roomNo?: (string|null);
-    }
-
-    /** Represents a PickCardRequest. */
-    class PickCardRequest implements IPickCardRequest {
-
-        /**
-         * Constructs a new PickCardRequest.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: PickCard.IPickCardRequest);
-
-        /** PickCardRequest userId. */
-        public userId: number;
-
-        /** PickCardRequest roomNo. */
-        public roomNo: string;
-
-        /**
-         * Creates a new PickCardRequest instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns PickCardRequest instance
-         */
-        public static create(properties?: PickCard.IPickCardRequest): PickCard.PickCardRequest;
-
-        /**
-         * Encodes the specified PickCardRequest message. Does not implicitly {@link PickCard.PickCardRequest.verify|verify} messages.
-         * @param message PickCardRequest message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encode(message: PickCard.IPickCardRequest, writer?: protobuf.Writer): protobuf.Writer;
-
-        /**
-         * Encodes the specified PickCardRequest message, length delimited. Does not implicitly {@link PickCard.PickCardRequest.verify|verify} messages.
-         * @param message PickCardRequest message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encodeDelimited(message: PickCard.IPickCardRequest, writer?: protobuf.Writer): protobuf.Writer;
-
-        /**
-         * Decodes a PickCardRequest message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns PickCardRequest
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): PickCard.PickCardRequest;
-
-        /**
-         * Decodes a PickCardRequest message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns PickCardRequest
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): PickCard.PickCardRequest;
-
-        /**
-         * Verifies a PickCardRequest message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        public static verify(message: { [k: string]: any }): (string|null);
     }
 }
 
@@ -1206,12 +843,6 @@ declare namespace ReleaseCard {
 
     /** Properties of a ReleaseCardRequest. */
     interface IReleaseCardRequest {
-
-        /** ReleaseCardRequest userId */
-        userId?: (number|null);
-
-        /** ReleaseCardRequest roomNo */
-        roomNo?: (string|null);
 
         /** ReleaseCardRequest cardId */
         cardId?: (number|null);
@@ -1228,12 +859,6 @@ declare namespace ReleaseCard {
          * @param [properties] Properties to set
          */
         constructor(properties?: ReleaseCard.IReleaseCardRequest);
-
-        /** ReleaseCardRequest userId. */
-        public userId: number;
-
-        /** ReleaseCardRequest roomNo. */
-        public roomNo: string;
 
         /** ReleaseCardRequest cardId. */
         public cardId: number;
@@ -1285,6 +910,81 @@ declare namespace ReleaseCard {
 
         /**
          * Verifies a ReleaseCardRequest message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+    }
+
+    /** Properties of a ReleaseCardResponese. */
+    interface IReleaseCardResponese {
+
+        /** ReleaseCardResponese predictIndex */
+        predictIndex?: (number|null);
+
+        /** ReleaseCardResponese xrayCards */
+        xrayCards?: (number[]|null);
+    }
+
+    /** Represents a ReleaseCardResponese. */
+    class ReleaseCardResponese implements IReleaseCardResponese {
+
+        /**
+         * Constructs a new ReleaseCardResponese.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: ReleaseCard.IReleaseCardResponese);
+
+        /** ReleaseCardResponese predictIndex. */
+        public predictIndex: number;
+
+        /** ReleaseCardResponese xrayCards. */
+        public xrayCards: number[];
+
+        /**
+         * Creates a new ReleaseCardResponese instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ReleaseCardResponese instance
+         */
+        public static create(properties?: ReleaseCard.IReleaseCardResponese): ReleaseCard.ReleaseCardResponese;
+
+        /**
+         * Encodes the specified ReleaseCardResponese message. Does not implicitly {@link ReleaseCard.ReleaseCardResponese.verify|verify} messages.
+         * @param message ReleaseCardResponese message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: ReleaseCard.IReleaseCardResponese, writer?: protobuf.Writer): protobuf.Writer;
+
+        /**
+         * Encodes the specified ReleaseCardResponese message, length delimited. Does not implicitly {@link ReleaseCard.ReleaseCardResponese.verify|verify} messages.
+         * @param message ReleaseCardResponese message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: ReleaseCard.IReleaseCardResponese, writer?: protobuf.Writer): protobuf.Writer;
+
+        /**
+         * Decodes a ReleaseCardResponese message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ReleaseCardResponese
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): ReleaseCard.ReleaseCardResponese;
+
+        /**
+         * Decodes a ReleaseCardResponese message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ReleaseCardResponese
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): ReleaseCard.ReleaseCardResponese;
+
+        /**
+         * Verifies a ReleaseCardResponese message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */

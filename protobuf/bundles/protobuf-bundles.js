@@ -6,34 +6,34 @@ var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.ut
 // Exported root namespace
 var $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
-$root.AdjustCard = (function() {
+$root.ClearBoom = (function() {
 
     /**
-     * Namespace AdjustCard.
-     * @exports AdjustCard
+     * Namespace ClearBoom.
+     * @exports ClearBoom
      * @namespace
      */
-    var AdjustCard = {};
+    var ClearBoom = {};
 
-    AdjustCard.AdjustCardRequest = (function() {
+    ClearBoom.ClearBoomRequest = (function() {
 
         /**
-         * Properties of an AdjustCardRequest.
-         * @memberof AdjustCard
-         * @interface IAdjustCardRequest
-         * @property {number|null} [userId] AdjustCardRequest userId
-         * @property {string|null} [roomNo] AdjustCardRequest roomNo
+         * Properties of a ClearBoomRequest.
+         * @memberof ClearBoom
+         * @interface IClearBoomRequest
+         * @property {boolean|null} [defuse] ClearBoomRequest defuse
+         * @property {number|null} [returnPos] ClearBoomRequest returnPos
          */
 
         /**
-         * Constructs a new AdjustCardRequest.
-         * @memberof AdjustCard
-         * @classdesc Represents an AdjustCardRequest.
-         * @implements IAdjustCardRequest
+         * Constructs a new ClearBoomRequest.
+         * @memberof ClearBoom
+         * @classdesc Represents a ClearBoomRequest.
+         * @implements IClearBoomRequest
          * @constructor
-         * @param {AdjustCard.IAdjustCardRequest=} [properties] Properties to set
+         * @param {ClearBoom.IClearBoomRequest=} [properties] Properties to set
          */
-        function AdjustCardRequest(properties) {
+        function ClearBoomRequest(properties) {
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -41,88 +41,88 @@ $root.AdjustCard = (function() {
         }
 
         /**
-         * AdjustCardRequest userId.
-         * @member {number} userId
-         * @memberof AdjustCard.AdjustCardRequest
+         * ClearBoomRequest defuse.
+         * @member {boolean} defuse
+         * @memberof ClearBoom.ClearBoomRequest
          * @instance
          */
-        AdjustCardRequest.prototype.userId = 0;
+        ClearBoomRequest.prototype.defuse = false;
 
         /**
-         * AdjustCardRequest roomNo.
-         * @member {string} roomNo
-         * @memberof AdjustCard.AdjustCardRequest
+         * ClearBoomRequest returnPos.
+         * @member {number} returnPos
+         * @memberof ClearBoom.ClearBoomRequest
          * @instance
          */
-        AdjustCardRequest.prototype.roomNo = "";
+        ClearBoomRequest.prototype.returnPos = 0;
 
         /**
-         * Creates a new AdjustCardRequest instance using the specified properties.
+         * Creates a new ClearBoomRequest instance using the specified properties.
          * @function create
-         * @memberof AdjustCard.AdjustCardRequest
+         * @memberof ClearBoom.ClearBoomRequest
          * @static
-         * @param {AdjustCard.IAdjustCardRequest=} [properties] Properties to set
-         * @returns {AdjustCard.AdjustCardRequest} AdjustCardRequest instance
+         * @param {ClearBoom.IClearBoomRequest=} [properties] Properties to set
+         * @returns {ClearBoom.ClearBoomRequest} ClearBoomRequest instance
          */
-        AdjustCardRequest.create = function create(properties) {
-            return new AdjustCardRequest(properties);
+        ClearBoomRequest.create = function create(properties) {
+            return new ClearBoomRequest(properties);
         };
 
         /**
-         * Encodes the specified AdjustCardRequest message. Does not implicitly {@link AdjustCard.AdjustCardRequest.verify|verify} messages.
+         * Encodes the specified ClearBoomRequest message. Does not implicitly {@link ClearBoom.ClearBoomRequest.verify|verify} messages.
          * @function encode
-         * @memberof AdjustCard.AdjustCardRequest
+         * @memberof ClearBoom.ClearBoomRequest
          * @static
-         * @param {AdjustCard.IAdjustCardRequest} message AdjustCardRequest message or plain object to encode
+         * @param {ClearBoom.IClearBoomRequest} message ClearBoomRequest message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        AdjustCardRequest.encode = function encode(message, writer) {
+        ClearBoomRequest.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.userId);
-            if (message.roomNo != null && Object.hasOwnProperty.call(message, "roomNo"))
-                writer.uint32(/* id 2, wireType 2 =*/18).string(message.roomNo);
+            if (message.defuse != null && message.hasOwnProperty("defuse"))
+                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.defuse);
+            if (message.returnPos != null && message.hasOwnProperty("returnPos"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.returnPos);
             return writer;
         };
 
         /**
-         * Encodes the specified AdjustCardRequest message, length delimited. Does not implicitly {@link AdjustCard.AdjustCardRequest.verify|verify} messages.
+         * Encodes the specified ClearBoomRequest message, length delimited. Does not implicitly {@link ClearBoom.ClearBoomRequest.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof AdjustCard.AdjustCardRequest
+         * @memberof ClearBoom.ClearBoomRequest
          * @static
-         * @param {AdjustCard.IAdjustCardRequest} message AdjustCardRequest message or plain object to encode
+         * @param {ClearBoom.IClearBoomRequest} message ClearBoomRequest message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        AdjustCardRequest.encodeDelimited = function encodeDelimited(message, writer) {
+        ClearBoomRequest.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
 
         /**
-         * Decodes an AdjustCardRequest message from the specified reader or buffer.
+         * Decodes a ClearBoomRequest message from the specified reader or buffer.
          * @function decode
-         * @memberof AdjustCard.AdjustCardRequest
+         * @memberof ClearBoom.ClearBoomRequest
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {AdjustCard.AdjustCardRequest} AdjustCardRequest
+         * @returns {ClearBoom.ClearBoomRequest} ClearBoomRequest
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        AdjustCardRequest.decode = function decode(reader, length) {
+        ClearBoomRequest.decode = function decode(reader, length) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AdjustCard.AdjustCardRequest();
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ClearBoom.ClearBoomRequest();
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
-                    message.userId = reader.uint32();
+                    message.defuse = reader.bool();
                     break;
                 case 2:
-                    message.roomNo = reader.string();
+                    message.returnPos = reader.uint32();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -133,203 +133,45 @@ $root.AdjustCard = (function() {
         };
 
         /**
-         * Decodes an AdjustCardRequest message from the specified reader or buffer, length delimited.
+         * Decodes a ClearBoomRequest message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof AdjustCard.AdjustCardRequest
+         * @memberof ClearBoom.ClearBoomRequest
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {AdjustCard.AdjustCardRequest} AdjustCardRequest
+         * @returns {ClearBoom.ClearBoomRequest} ClearBoomRequest
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        AdjustCardRequest.decodeDelimited = function decodeDelimited(reader) {
+        ClearBoomRequest.decodeDelimited = function decodeDelimited(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
 
         /**
-         * Verifies an AdjustCardRequest message.
+         * Verifies a ClearBoomRequest message.
          * @function verify
-         * @memberof AdjustCard.AdjustCardRequest
+         * @memberof ClearBoom.ClearBoomRequest
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
          */
-        AdjustCardRequest.verify = function verify(message) {
+        ClearBoomRequest.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
-            if (message.userId != null && message.hasOwnProperty("userId"))
-                if (!$util.isInteger(message.userId))
-                    return "userId: integer expected";
-            if (message.roomNo != null && message.hasOwnProperty("roomNo"))
-                if (!$util.isString(message.roomNo))
-                    return "roomNo: string expected";
+            if (message.defuse != null && message.hasOwnProperty("defuse"))
+                if (typeof message.defuse !== "boolean")
+                    return "defuse: boolean expected";
+            if (message.returnPos != null && message.hasOwnProperty("returnPos"))
+                if (!$util.isInteger(message.returnPos))
+                    return "returnPos: integer expected";
             return null;
         };
 
-        return AdjustCardRequest;
+        return ClearBoomRequest;
     })();
 
-    AdjustCard.AdjustCardResponse = (function() {
-
-        /**
-         * Properties of an AdjustCardResponse.
-         * @memberof AdjustCard
-         * @interface IAdjustCardResponse
-         * @property {string|null} [content] AdjustCardResponse content
-         * @property {Common.IHandsInfo|null} [handsInfo] AdjustCardResponse handsInfo
-         */
-
-        /**
-         * Constructs a new AdjustCardResponse.
-         * @memberof AdjustCard
-         * @classdesc Represents an AdjustCardResponse.
-         * @implements IAdjustCardResponse
-         * @constructor
-         * @param {AdjustCard.IAdjustCardResponse=} [properties] Properties to set
-         */
-        function AdjustCardResponse(properties) {
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * AdjustCardResponse content.
-         * @member {string} content
-         * @memberof AdjustCard.AdjustCardResponse
-         * @instance
-         */
-        AdjustCardResponse.prototype.content = "";
-
-        /**
-         * AdjustCardResponse handsInfo.
-         * @member {Common.IHandsInfo|null|undefined} handsInfo
-         * @memberof AdjustCard.AdjustCardResponse
-         * @instance
-         */
-        AdjustCardResponse.prototype.handsInfo = null;
-
-        /**
-         * Creates a new AdjustCardResponse instance using the specified properties.
-         * @function create
-         * @memberof AdjustCard.AdjustCardResponse
-         * @static
-         * @param {AdjustCard.IAdjustCardResponse=} [properties] Properties to set
-         * @returns {AdjustCard.AdjustCardResponse} AdjustCardResponse instance
-         */
-        AdjustCardResponse.create = function create(properties) {
-            return new AdjustCardResponse(properties);
-        };
-
-        /**
-         * Encodes the specified AdjustCardResponse message. Does not implicitly {@link AdjustCard.AdjustCardResponse.verify|verify} messages.
-         * @function encode
-         * @memberof AdjustCard.AdjustCardResponse
-         * @static
-         * @param {AdjustCard.IAdjustCardResponse} message AdjustCardResponse message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        AdjustCardResponse.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.content != null && Object.hasOwnProperty.call(message, "content"))
-                writer.uint32(/* id 1, wireType 2 =*/10).string(message.content);
-            if (message.handsInfo != null && Object.hasOwnProperty.call(message, "handsInfo"))
-                $root.Common.HandsInfo.encode(message.handsInfo, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            return writer;
-        };
-
-        /**
-         * Encodes the specified AdjustCardResponse message, length delimited. Does not implicitly {@link AdjustCard.AdjustCardResponse.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof AdjustCard.AdjustCardResponse
-         * @static
-         * @param {AdjustCard.IAdjustCardResponse} message AdjustCardResponse message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        AdjustCardResponse.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes an AdjustCardResponse message from the specified reader or buffer.
-         * @function decode
-         * @memberof AdjustCard.AdjustCardResponse
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {AdjustCard.AdjustCardResponse} AdjustCardResponse
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        AdjustCardResponse.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AdjustCard.AdjustCardResponse();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                case 1:
-                    message.content = reader.string();
-                    break;
-                case 2:
-                    message.handsInfo = $root.Common.HandsInfo.decode(reader, reader.uint32());
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes an AdjustCardResponse message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof AdjustCard.AdjustCardResponse
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {AdjustCard.AdjustCardResponse} AdjustCardResponse
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        AdjustCardResponse.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies an AdjustCardResponse message.
-         * @function verify
-         * @memberof AdjustCard.AdjustCardResponse
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        AdjustCardResponse.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.content != null && message.hasOwnProperty("content"))
-                if (!$util.isString(message.content))
-                    return "content: string expected";
-            if (message.handsInfo != null && message.hasOwnProperty("handsInfo")) {
-                var error = $root.Common.HandsInfo.verify(message.handsInfo);
-                if (error)
-                    return "handsInfo." + error;
-            }
-            return null;
-        };
-
-        return AdjustCardResponse;
-    })();
-
-    return AdjustCard;
+    return ClearBoom;
 })();
 
 $root.Common = (function() {
@@ -349,13 +191,11 @@ $root.Common = (function() {
          * @interface IPlayerInfo
          * @property {number|null} [uid] PlayerInfo uid
          * @property {boolean|null} [isBot] PlayerInfo isBot
-         * @property {string|null} [name] PlayerInfo name
          * @property {number|null} [state] PlayerInfo state
-         * @property {boolean|null} [alive] PlayerInfo alive
+         * @property {string|null} [name] PlayerInfo name
          * @property {string|null} [avatar] PlayerInfo avatar
          * @property {Common.IHandsInfo|null} [handsInfo] PlayerInfo handsInfo
          * @property {number|null} [countDownTime] PlayerInfo countDownTime
-         * @property {string|null} [buff] PlayerInfo buff
          */
 
         /**
@@ -390,14 +230,6 @@ $root.Common = (function() {
         PlayerInfo.prototype.isBot = false;
 
         /**
-         * PlayerInfo name.
-         * @member {string} name
-         * @memberof Common.PlayerInfo
-         * @instance
-         */
-        PlayerInfo.prototype.name = "";
-
-        /**
          * PlayerInfo state.
          * @member {number} state
          * @memberof Common.PlayerInfo
@@ -406,12 +238,12 @@ $root.Common = (function() {
         PlayerInfo.prototype.state = 0;
 
         /**
-         * PlayerInfo alive.
-         * @member {boolean} alive
+         * PlayerInfo name.
+         * @member {string} name
          * @memberof Common.PlayerInfo
          * @instance
          */
-        PlayerInfo.prototype.alive = false;
+        PlayerInfo.prototype.name = "";
 
         /**
          * PlayerInfo avatar.
@@ -438,14 +270,6 @@ $root.Common = (function() {
         PlayerInfo.prototype.countDownTime = 0;
 
         /**
-         * PlayerInfo buff.
-         * @member {string} buff
-         * @memberof Common.PlayerInfo
-         * @instance
-         */
-        PlayerInfo.prototype.buff = "";
-
-        /**
          * Creates a new PlayerInfo instance using the specified properties.
          * @function create
          * @memberof Common.PlayerInfo
@@ -469,24 +293,20 @@ $root.Common = (function() {
         PlayerInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.uid != null && Object.hasOwnProperty.call(message, "uid"))
+            if (message.uid != null && message.hasOwnProperty("uid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.uid);
-            if (message.isBot != null && Object.hasOwnProperty.call(message, "isBot"))
+            if (message.isBot != null && message.hasOwnProperty("isBot"))
                 writer.uint32(/* id 2, wireType 0 =*/16).bool(message.isBot);
-            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                writer.uint32(/* id 3, wireType 2 =*/26).string(message.name);
-            if (message.state != null && Object.hasOwnProperty.call(message, "state"))
-                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.state);
-            if (message.alive != null && Object.hasOwnProperty.call(message, "alive"))
-                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.alive);
-            if (message.avatar != null && Object.hasOwnProperty.call(message, "avatar"))
-                writer.uint32(/* id 6, wireType 2 =*/50).string(message.avatar);
-            if (message.handsInfo != null && Object.hasOwnProperty.call(message, "handsInfo"))
-                $root.Common.HandsInfo.encode(message.handsInfo, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
-            if (message.countDownTime != null && Object.hasOwnProperty.call(message, "countDownTime"))
-                writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.countDownTime);
-            if (message.buff != null && Object.hasOwnProperty.call(message, "buff"))
-                writer.uint32(/* id 9, wireType 2 =*/74).string(message.buff);
+            if (message.state != null && message.hasOwnProperty("state"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.state);
+            if (message.name != null && message.hasOwnProperty("name"))
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.name);
+            if (message.avatar != null && message.hasOwnProperty("avatar"))
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.avatar);
+            if (message.handsInfo != null && message.hasOwnProperty("handsInfo"))
+                $root.Common.HandsInfo.encode(message.handsInfo, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
+            if (message.countDownTime != null && message.hasOwnProperty("countDownTime"))
+                writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.countDownTime);
             return writer;
         };
 
@@ -528,25 +348,19 @@ $root.Common = (function() {
                     message.isBot = reader.bool();
                     break;
                 case 3:
-                    message.name = reader.string();
-                    break;
-                case 4:
                     message.state = reader.uint32();
                     break;
-                case 5:
-                    message.alive = reader.bool();
+                case 4:
+                    message.name = reader.string();
                     break;
-                case 6:
+                case 5:
                     message.avatar = reader.string();
                     break;
-                case 7:
+                case 6:
                     message.handsInfo = $root.Common.HandsInfo.decode(reader, reader.uint32());
                     break;
-                case 8:
+                case 7:
                     message.countDownTime = reader.uint32();
-                    break;
-                case 9:
-                    message.buff = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -589,15 +403,12 @@ $root.Common = (function() {
             if (message.isBot != null && message.hasOwnProperty("isBot"))
                 if (typeof message.isBot !== "boolean")
                     return "isBot: boolean expected";
-            if (message.name != null && message.hasOwnProperty("name"))
-                if (!$util.isString(message.name))
-                    return "name: string expected";
             if (message.state != null && message.hasOwnProperty("state"))
                 if (!$util.isInteger(message.state))
                     return "state: integer expected";
-            if (message.alive != null && message.hasOwnProperty("alive"))
-                if (typeof message.alive !== "boolean")
-                    return "alive: boolean expected";
+            if (message.name != null && message.hasOwnProperty("name"))
+                if (!$util.isString(message.name))
+                    return "name: string expected";
             if (message.avatar != null && message.hasOwnProperty("avatar"))
                 if (!$util.isString(message.avatar))
                     return "avatar: string expected";
@@ -609,9 +420,6 @@ $root.Common = (function() {
             if (message.countDownTime != null && message.hasOwnProperty("countDownTime"))
                 if (!$util.isInteger(message.countDownTime))
                     return "countDownTime: integer expected";
-            if (message.buff != null && message.hasOwnProperty("buff"))
-                if (!$util.isString(message.buff))
-                    return "buff: string expected";
             return null;
         };
 
@@ -626,7 +434,6 @@ $root.Common = (function() {
          * @interface IRoomInfo
          * @property {string|null} [no] RoomInfo no
          * @property {number|null} [state] RoomInfo state
-         * @property {number|null} [stackCount] RoomInfo stackCount
          * @property {boolean|null} [clockwise] RoomInfo clockwise
          * @property {Array.<Common.IPlayerInfo>|null} [players] RoomInfo players
          * @property {Common.IDeckInfo|null} [deckInfo] RoomInfo deckInfo
@@ -663,14 +470,6 @@ $root.Common = (function() {
          * @instance
          */
         RoomInfo.prototype.state = 0;
-
-        /**
-         * RoomInfo stackCount.
-         * @member {number} stackCount
-         * @memberof Common.RoomInfo
-         * @instance
-         */
-        RoomInfo.prototype.stackCount = 0;
 
         /**
          * RoomInfo clockwise.
@@ -720,19 +519,17 @@ $root.Common = (function() {
         RoomInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.no != null && Object.hasOwnProperty.call(message, "no"))
+            if (message.no != null && message.hasOwnProperty("no"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.no);
-            if (message.state != null && Object.hasOwnProperty.call(message, "state"))
+            if (message.state != null && message.hasOwnProperty("state"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.state);
-            if (message.stackCount != null && Object.hasOwnProperty.call(message, "stackCount"))
-                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.stackCount);
-            if (message.clockwise != null && Object.hasOwnProperty.call(message, "clockwise"))
-                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.clockwise);
+            if (message.clockwise != null && message.hasOwnProperty("clockwise"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.clockwise);
             if (message.players != null && message.players.length)
                 for (var i = 0; i < message.players.length; ++i)
-                    $root.Common.PlayerInfo.encode(message.players[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
-            if (message.deckInfo != null && Object.hasOwnProperty.call(message, "deckInfo"))
-                $root.Common.DeckInfo.encode(message.deckInfo, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
+                    $root.Common.PlayerInfo.encode(message.players[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+            if (message.deckInfo != null && message.hasOwnProperty("deckInfo"))
+                $root.Common.DeckInfo.encode(message.deckInfo, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
             return writer;
         };
 
@@ -774,17 +571,14 @@ $root.Common = (function() {
                     message.state = reader.uint32();
                     break;
                 case 3:
-                    message.stackCount = reader.int32();
-                    break;
-                case 4:
                     message.clockwise = reader.bool();
                     break;
-                case 5:
+                case 4:
                     if (!(message.players && message.players.length))
                         message.players = [];
                     message.players.push($root.Common.PlayerInfo.decode(reader, reader.uint32()));
                     break;
-                case 8:
+                case 5:
                     message.deckInfo = $root.Common.DeckInfo.decode(reader, reader.uint32());
                     break;
                 default:
@@ -828,9 +622,6 @@ $root.Common = (function() {
             if (message.state != null && message.hasOwnProperty("state"))
                 if (!$util.isInteger(message.state))
                     return "state: integer expected";
-            if (message.stackCount != null && message.hasOwnProperty("stackCount"))
-                if (!$util.isInteger(message.stackCount))
-                    return "stackCount: integer expected";
             if (message.clockwise != null && message.hasOwnProperty("clockwise"))
                 if (typeof message.clockwise !== "boolean")
                     return "clockwise: boolean expected";
@@ -861,8 +652,7 @@ $root.Common = (function() {
          * @memberof Common
          * @interface IDeckInfo
          * @property {number|null} [leftCount] DeckInfo leftCount
-         * @property {number|null} [hit] DeckInfo hit
-         * @property {string|null} [buff] DeckInfo buff
+         * @property {number|null} [leftBoomCount] DeckInfo leftBoomCount
          */
 
         /**
@@ -889,20 +679,12 @@ $root.Common = (function() {
         DeckInfo.prototype.leftCount = 0;
 
         /**
-         * DeckInfo hit.
-         * @member {number} hit
+         * DeckInfo leftBoomCount.
+         * @member {number} leftBoomCount
          * @memberof Common.DeckInfo
          * @instance
          */
-        DeckInfo.prototype.hit = 0;
-
-        /**
-         * DeckInfo buff.
-         * @member {string} buff
-         * @memberof Common.DeckInfo
-         * @instance
-         */
-        DeckInfo.prototype.buff = "";
+        DeckInfo.prototype.leftBoomCount = 0;
 
         /**
          * Creates a new DeckInfo instance using the specified properties.
@@ -928,12 +710,10 @@ $root.Common = (function() {
         DeckInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.leftCount != null && Object.hasOwnProperty.call(message, "leftCount"))
-                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.leftCount);
-            if (message.hit != null && Object.hasOwnProperty.call(message, "hit"))
-                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.hit);
-            if (message.buff != null && Object.hasOwnProperty.call(message, "buff"))
-                writer.uint32(/* id 3, wireType 2 =*/26).string(message.buff);
+            if (message.leftCount != null && message.hasOwnProperty("leftCount"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.leftCount);
+            if (message.leftBoomCount != null && message.hasOwnProperty("leftBoomCount"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.leftBoomCount);
             return writer;
         };
 
@@ -969,13 +749,10 @@ $root.Common = (function() {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
-                    message.leftCount = reader.int32();
+                    message.leftCount = reader.uint32();
                     break;
                 case 2:
-                    message.hit = reader.int32();
-                    break;
-                case 3:
-                    message.buff = reader.string();
+                    message.leftBoomCount = reader.uint32();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1015,189 +792,13 @@ $root.Common = (function() {
             if (message.leftCount != null && message.hasOwnProperty("leftCount"))
                 if (!$util.isInteger(message.leftCount))
                     return "leftCount: integer expected";
-            if (message.hit != null && message.hasOwnProperty("hit"))
-                if (!$util.isInteger(message.hit))
-                    return "hit: integer expected";
-            if (message.buff != null && message.hasOwnProperty("buff"))
-                if (!$util.isString(message.buff))
-                    return "buff: string expected";
+            if (message.leftBoomCount != null && message.hasOwnProperty("leftBoomCount"))
+                if (!$util.isInteger(message.leftBoomCount))
+                    return "leftBoomCount: integer expected";
             return null;
         };
 
         return DeckInfo;
-    })();
-
-    Common.CardInfo = (function() {
-
-        /**
-         * Properties of a CardInfo.
-         * @memberof Common
-         * @interface ICardInfo
-         * @property {number|null} [id] CardInfo id
-         * @property {string|null} [name] CardInfo name
-         * @property {string|null} [icon] CardInfo icon
-         */
-
-        /**
-         * Constructs a new CardInfo.
-         * @memberof Common
-         * @classdesc Represents a CardInfo.
-         * @implements ICardInfo
-         * @constructor
-         * @param {Common.ICardInfo=} [properties] Properties to set
-         */
-        function CardInfo(properties) {
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * CardInfo id.
-         * @member {number} id
-         * @memberof Common.CardInfo
-         * @instance
-         */
-        CardInfo.prototype.id = 0;
-
-        /**
-         * CardInfo name.
-         * @member {string} name
-         * @memberof Common.CardInfo
-         * @instance
-         */
-        CardInfo.prototype.name = "";
-
-        /**
-         * CardInfo icon.
-         * @member {string} icon
-         * @memberof Common.CardInfo
-         * @instance
-         */
-        CardInfo.prototype.icon = "";
-
-        /**
-         * Creates a new CardInfo instance using the specified properties.
-         * @function create
-         * @memberof Common.CardInfo
-         * @static
-         * @param {Common.ICardInfo=} [properties] Properties to set
-         * @returns {Common.CardInfo} CardInfo instance
-         */
-        CardInfo.create = function create(properties) {
-            return new CardInfo(properties);
-        };
-
-        /**
-         * Encodes the specified CardInfo message. Does not implicitly {@link Common.CardInfo.verify|verify} messages.
-         * @function encode
-         * @memberof Common.CardInfo
-         * @static
-         * @param {Common.ICardInfo} message CardInfo message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CardInfo.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.id != null && Object.hasOwnProperty.call(message, "id"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.id);
-            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
-            if (message.icon != null && Object.hasOwnProperty.call(message, "icon"))
-                writer.uint32(/* id 3, wireType 2 =*/26).string(message.icon);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified CardInfo message, length delimited. Does not implicitly {@link Common.CardInfo.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof Common.CardInfo
-         * @static
-         * @param {Common.ICardInfo} message CardInfo message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        CardInfo.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a CardInfo message from the specified reader or buffer.
-         * @function decode
-         * @memberof Common.CardInfo
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {Common.CardInfo} CardInfo
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CardInfo.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Common.CardInfo();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                case 1:
-                    message.id = reader.uint32();
-                    break;
-                case 2:
-                    message.name = reader.string();
-                    break;
-                case 3:
-                    message.icon = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a CardInfo message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof Common.CardInfo
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {Common.CardInfo} CardInfo
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        CardInfo.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a CardInfo message.
-         * @function verify
-         * @memberof Common.CardInfo
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        CardInfo.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.id != null && message.hasOwnProperty("id"))
-                if (!$util.isInteger(message.id))
-                    return "id: integer expected";
-            if (message.name != null && message.hasOwnProperty("name"))
-                if (!$util.isString(message.name))
-                    return "name: string expected";
-            if (message.icon != null && message.hasOwnProperty("icon"))
-                if (!$util.isString(message.icon))
-                    return "icon: string expected";
-            return null;
-        };
-
-        return CardInfo;
     })();
 
     Common.HandsInfo = (function() {
@@ -1206,8 +807,7 @@ $root.Common = (function() {
          * Properties of a HandsInfo.
          * @memberof Common
          * @interface IHandsInfo
-         * @property {number|null} [uid] HandsInfo uid
-         * @property {Array.<Common.ICardInfo>|null} [cardInfos] HandsInfo cardInfos
+         * @property {Array.<number>|null} [cardIds] HandsInfo cardIds
          * @property {number|null} [mulliganCnt] HandsInfo mulliganCnt
          * @property {number|Long|null} [mulliganExpireTime] HandsInfo mulliganExpireTime
          */
@@ -1221,7 +821,7 @@ $root.Common = (function() {
          * @param {Common.IHandsInfo=} [properties] Properties to set
          */
         function HandsInfo(properties) {
-            this.cardInfos = [];
+            this.cardIds = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -1229,20 +829,12 @@ $root.Common = (function() {
         }
 
         /**
-         * HandsInfo uid.
-         * @member {number} uid
+         * HandsInfo cardIds.
+         * @member {Array.<number>} cardIds
          * @memberof Common.HandsInfo
          * @instance
          */
-        HandsInfo.prototype.uid = 0;
-
-        /**
-         * HandsInfo cardInfos.
-         * @member {Array.<Common.ICardInfo>} cardInfos
-         * @memberof Common.HandsInfo
-         * @instance
-         */
-        HandsInfo.prototype.cardInfos = $util.emptyArray;
+        HandsInfo.prototype.cardIds = $util.emptyArray;
 
         /**
          * HandsInfo mulliganCnt.
@@ -1284,15 +876,16 @@ $root.Common = (function() {
         HandsInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.uid != null && Object.hasOwnProperty.call(message, "uid"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.uid);
-            if (message.cardInfos != null && message.cardInfos.length)
-                for (var i = 0; i < message.cardInfos.length; ++i)
-                    $root.Common.CardInfo.encode(message.cardInfos[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.mulliganCnt != null && Object.hasOwnProperty.call(message, "mulliganCnt"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.mulliganCnt);
-            if (message.mulliganExpireTime != null && Object.hasOwnProperty.call(message, "mulliganExpireTime"))
-                writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.mulliganExpireTime);
+            if (message.cardIds != null && message.cardIds.length) {
+                writer.uint32(/* id 1, wireType 2 =*/10).fork();
+                for (var i = 0; i < message.cardIds.length; ++i)
+                    writer.uint32(message.cardIds[i]);
+                writer.ldelim();
+            }
+            if (message.mulliganCnt != null && message.hasOwnProperty("mulliganCnt"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.mulliganCnt);
+            if (message.mulliganExpireTime != null && message.hasOwnProperty("mulliganExpireTime"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.mulliganExpireTime);
             return writer;
         };
 
@@ -1328,17 +921,19 @@ $root.Common = (function() {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
-                    message.uid = reader.uint32();
+                    if (!(message.cardIds && message.cardIds.length))
+                        message.cardIds = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.cardIds.push(reader.uint32());
+                    } else
+                        message.cardIds.push(reader.uint32());
                     break;
                 case 2:
-                    if (!(message.cardInfos && message.cardInfos.length))
-                        message.cardInfos = [];
-                    message.cardInfos.push($root.Common.CardInfo.decode(reader, reader.uint32()));
-                    break;
-                case 3:
                     message.mulliganCnt = reader.uint32();
                     break;
-                case 4:
+                case 3:
                     message.mulliganExpireTime = reader.uint64();
                     break;
                 default:
@@ -1376,17 +971,12 @@ $root.Common = (function() {
         HandsInfo.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
-            if (message.uid != null && message.hasOwnProperty("uid"))
-                if (!$util.isInteger(message.uid))
-                    return "uid: integer expected";
-            if (message.cardInfos != null && message.hasOwnProperty("cardInfos")) {
-                if (!Array.isArray(message.cardInfos))
-                    return "cardInfos: array expected";
-                for (var i = 0; i < message.cardInfos.length; ++i) {
-                    var error = $root.Common.CardInfo.verify(message.cardInfos[i]);
-                    if (error)
-                        return "cardInfos." + error;
-                }
+            if (message.cardIds != null && message.hasOwnProperty("cardIds")) {
+                if (!Array.isArray(message.cardIds))
+                    return "cardIds: array expected";
+                for (var i = 0; i < message.cardIds.length; ++i)
+                    if (!$util.isInteger(message.cardIds[i]))
+                        return "cardIds: integer[] expected";
             }
             if (message.mulliganCnt != null && message.hasOwnProperty("mulliganCnt"))
                 if (!$util.isInteger(message.mulliganCnt))
@@ -1400,26 +990,41 @@ $root.Common = (function() {
         return HandsInfo;
     })();
 
-    Common.GetCard = (function() {
+    /**
+     * ErrorType enum.
+     * @name Common.ErrorType
+     * @enum {string}
+     * @property {number} ROOM_GAME_STARTED=0 ROOM_GAME_STARTED value
+     * @property {number} ROOM_PLAYER_IS_FULL=1 ROOM_PLAYER_IS_FULL value
+     * @property {number} ADJUST_HANDS_FAIL=2 ADJUST_HANDS_FAIL value
+     */
+    Common.ErrorType = (function() {
+        var valuesById = {}, values = Object.create(valuesById);
+        values[valuesById[0] = "ROOM_GAME_STARTED"] = 0;
+        values[valuesById[1] = "ROOM_PLAYER_IS_FULL"] = 1;
+        values[valuesById[2] = "ADJUST_HANDS_FAIL"] = 2;
+        return values;
+    })();
+
+    Common.Error = (function() {
 
         /**
-         * Properties of a GetCard.
+         * Properties of an Error.
          * @memberof Common
-         * @interface IGetCard
-         * @property {number|null} [userId] GetCard userId
-         * @property {Array.<Common.ICardInfo>|null} [newCard] GetCard newCard
+         * @interface IError
+         * @property {Common.ErrorType|null} [type] Error type
+         * @property {string|null} [msg] Error msg
          */
 
         /**
-         * Constructs a new GetCard.
+         * Constructs a new Error.
          * @memberof Common
-         * @classdesc Represents a GetCard.
-         * @implements IGetCard
+         * @classdesc Represents an Error.
+         * @implements IError
          * @constructor
-         * @param {Common.IGetCard=} [properties] Properties to set
+         * @param {Common.IError=} [properties] Properties to set
          */
-        function GetCard(properties) {
-            this.newCard = [];
+        function Error(properties) {
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -1427,91 +1032,88 @@ $root.Common = (function() {
         }
 
         /**
-         * GetCard userId.
-         * @member {number} userId
-         * @memberof Common.GetCard
+         * Error type.
+         * @member {Common.ErrorType} type
+         * @memberof Common.Error
          * @instance
          */
-        GetCard.prototype.userId = 0;
+        Error.prototype.type = 0;
 
         /**
-         * GetCard newCard.
-         * @member {Array.<Common.ICardInfo>} newCard
-         * @memberof Common.GetCard
+         * Error msg.
+         * @member {string} msg
+         * @memberof Common.Error
          * @instance
          */
-        GetCard.prototype.newCard = $util.emptyArray;
+        Error.prototype.msg = "";
 
         /**
-         * Creates a new GetCard instance using the specified properties.
+         * Creates a new Error instance using the specified properties.
          * @function create
-         * @memberof Common.GetCard
+         * @memberof Common.Error
          * @static
-         * @param {Common.IGetCard=} [properties] Properties to set
-         * @returns {Common.GetCard} GetCard instance
+         * @param {Common.IError=} [properties] Properties to set
+         * @returns {Common.Error} Error instance
          */
-        GetCard.create = function create(properties) {
-            return new GetCard(properties);
+        Error.create = function create(properties) {
+            return new Error(properties);
         };
 
         /**
-         * Encodes the specified GetCard message. Does not implicitly {@link Common.GetCard.verify|verify} messages.
+         * Encodes the specified Error message. Does not implicitly {@link Common.Error.verify|verify} messages.
          * @function encode
-         * @memberof Common.GetCard
+         * @memberof Common.Error
          * @static
-         * @param {Common.IGetCard} message GetCard message or plain object to encode
+         * @param {Common.IError} message Error message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        GetCard.encode = function encode(message, writer) {
+        Error.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.userId);
-            if (message.newCard != null && message.newCard.length)
-                for (var i = 0; i < message.newCard.length; ++i)
-                    $root.Common.CardInfo.encode(message.newCard[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            if (message.type != null && message.hasOwnProperty("type"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.type);
+            if (message.msg != null && message.hasOwnProperty("msg"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.msg);
             return writer;
         };
 
         /**
-         * Encodes the specified GetCard message, length delimited. Does not implicitly {@link Common.GetCard.verify|verify} messages.
+         * Encodes the specified Error message, length delimited. Does not implicitly {@link Common.Error.verify|verify} messages.
          * @function encodeDelimited
-         * @memberof Common.GetCard
+         * @memberof Common.Error
          * @static
-         * @param {Common.IGetCard} message GetCard message or plain object to encode
+         * @param {Common.IError} message Error message or plain object to encode
          * @param {$protobuf.Writer} [writer] Writer to encode to
          * @returns {$protobuf.Writer} Writer
          */
-        GetCard.encodeDelimited = function encodeDelimited(message, writer) {
+        Error.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
         };
 
         /**
-         * Decodes a GetCard message from the specified reader or buffer.
+         * Decodes an Error message from the specified reader or buffer.
          * @function decode
-         * @memberof Common.GetCard
+         * @memberof Common.Error
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
-         * @returns {Common.GetCard} GetCard
+         * @returns {Common.Error} Error
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        GetCard.decode = function decode(reader, length) {
+        Error.decode = function decode(reader, length) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Common.GetCard();
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Common.Error();
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
-                    message.userId = reader.uint32();
+                    message.type = reader.int32();
                     break;
                 case 2:
-                    if (!(message.newCard && message.newCard.length))
-                        message.newCard = [];
-                    message.newCard.push($root.Common.CardInfo.decode(reader, reader.uint32()));
+                    message.msg = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1522,236 +1124,206 @@ $root.Common = (function() {
         };
 
         /**
-         * Decodes a GetCard message from the specified reader or buffer, length delimited.
+         * Decodes an Error message from the specified reader or buffer, length delimited.
          * @function decodeDelimited
-         * @memberof Common.GetCard
+         * @memberof Common.Error
          * @static
          * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {Common.GetCard} GetCard
+         * @returns {Common.Error} Error
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        GetCard.decodeDelimited = function decodeDelimited(reader) {
+        Error.decodeDelimited = function decodeDelimited(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
             return this.decode(reader, reader.uint32());
         };
 
         /**
-         * Verifies a GetCard message.
+         * Verifies an Error message.
          * @function verify
-         * @memberof Common.GetCard
+         * @memberof Common.Error
          * @static
          * @param {Object.<string,*>} message Plain object to verify
          * @returns {string|null} `null` if valid, otherwise the reason why it is not
          */
-        GetCard.verify = function verify(message) {
+        Error.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
-            if (message.userId != null && message.hasOwnProperty("userId"))
-                if (!$util.isInteger(message.userId))
-                    return "userId: integer expected";
-            if (message.newCard != null && message.hasOwnProperty("newCard")) {
-                if (!Array.isArray(message.newCard))
-                    return "newCard: array expected";
-                for (var i = 0; i < message.newCard.length; ++i) {
-                    var error = $root.Common.CardInfo.verify(message.newCard[i]);
-                    if (error)
-                        return "newCard." + error;
+            if (message.type != null && message.hasOwnProperty("type"))
+                switch (message.type) {
+                default:
+                    return "type: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                    break;
                 }
+            if (message.msg != null && message.hasOwnProperty("msg"))
+                if (!$util.isString(message.msg))
+                    return "msg: string expected";
+            return null;
+        };
+
+        return Error;
+    })();
+
+    Common.GameRankingInfo = (function() {
+
+        /**
+         * Properties of a GameRankingInfo.
+         * @memberof Common
+         * @interface IGameRankingInfo
+         * @property {Array.<number>|null} [ranking] GameRankingInfo ranking
+         */
+
+        /**
+         * Constructs a new GameRankingInfo.
+         * @memberof Common
+         * @classdesc Represents a GameRankingInfo.
+         * @implements IGameRankingInfo
+         * @constructor
+         * @param {Common.IGameRankingInfo=} [properties] Properties to set
+         */
+        function GameRankingInfo(properties) {
+            this.ranking = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * GameRankingInfo ranking.
+         * @member {Array.<number>} ranking
+         * @memberof Common.GameRankingInfo
+         * @instance
+         */
+        GameRankingInfo.prototype.ranking = $util.emptyArray;
+
+        /**
+         * Creates a new GameRankingInfo instance using the specified properties.
+         * @function create
+         * @memberof Common.GameRankingInfo
+         * @static
+         * @param {Common.IGameRankingInfo=} [properties] Properties to set
+         * @returns {Common.GameRankingInfo} GameRankingInfo instance
+         */
+        GameRankingInfo.create = function create(properties) {
+            return new GameRankingInfo(properties);
+        };
+
+        /**
+         * Encodes the specified GameRankingInfo message. Does not implicitly {@link Common.GameRankingInfo.verify|verify} messages.
+         * @function encode
+         * @memberof Common.GameRankingInfo
+         * @static
+         * @param {Common.IGameRankingInfo} message GameRankingInfo message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GameRankingInfo.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.ranking != null && message.ranking.length) {
+                writer.uint32(/* id 1, wireType 2 =*/10).fork();
+                for (var i = 0; i < message.ranking.length; ++i)
+                    writer.uint32(message.ranking[i]);
+                writer.ldelim();
+            }
+            return writer;
+        };
+
+        /**
+         * Encodes the specified GameRankingInfo message, length delimited. Does not implicitly {@link Common.GameRankingInfo.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof Common.GameRankingInfo
+         * @static
+         * @param {Common.IGameRankingInfo} message GameRankingInfo message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GameRankingInfo.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a GameRankingInfo message from the specified reader or buffer.
+         * @function decode
+         * @memberof Common.GameRankingInfo
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {Common.GameRankingInfo} GameRankingInfo
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GameRankingInfo.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Common.GameRankingInfo();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    if (!(message.ranking && message.ranking.length))
+                        message.ranking = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.ranking.push(reader.uint32());
+                    } else
+                        message.ranking.push(reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a GameRankingInfo message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof Common.GameRankingInfo
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {Common.GameRankingInfo} GameRankingInfo
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GameRankingInfo.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a GameRankingInfo message.
+         * @function verify
+         * @memberof Common.GameRankingInfo
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        GameRankingInfo.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.ranking != null && message.hasOwnProperty("ranking")) {
+                if (!Array.isArray(message.ranking))
+                    return "ranking: array expected";
+                for (var i = 0; i < message.ranking.length; ++i)
+                    if (!$util.isInteger(message.ranking[i]))
+                        return "ranking: integer[] expected";
             }
             return null;
         };
 
-        return GetCard;
+        return GameRankingInfo;
     })();
 
     return Common;
-})();
-
-$root.ClearBoom = (function() {
-
-    /**
-     * Namespace ClearBoom.
-     * @exports ClearBoom
-     * @namespace
-     */
-    var ClearBoom = {};
-
-    ClearBoom.ClearBoomRequest = (function() {
-
-        /**
-         * Properties of a ClearBoomRequest.
-         * @memberof ClearBoom
-         * @interface IClearBoomRequest
-         * @property {number|null} [userId] ClearBoomRequest userId
-         * @property {string|null} [roomNo] ClearBoomRequest roomNo
-         * @property {number|null} [returnPos] ClearBoomRequest returnPos
-         */
-
-        /**
-         * Constructs a new ClearBoomRequest.
-         * @memberof ClearBoom
-         * @classdesc Represents a ClearBoomRequest.
-         * @implements IClearBoomRequest
-         * @constructor
-         * @param {ClearBoom.IClearBoomRequest=} [properties] Properties to set
-         */
-        function ClearBoomRequest(properties) {
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * ClearBoomRequest userId.
-         * @member {number} userId
-         * @memberof ClearBoom.ClearBoomRequest
-         * @instance
-         */
-        ClearBoomRequest.prototype.userId = 0;
-
-        /**
-         * ClearBoomRequest roomNo.
-         * @member {string} roomNo
-         * @memberof ClearBoom.ClearBoomRequest
-         * @instance
-         */
-        ClearBoomRequest.prototype.roomNo = "";
-
-        /**
-         * ClearBoomRequest returnPos.
-         * @member {number} returnPos
-         * @memberof ClearBoom.ClearBoomRequest
-         * @instance
-         */
-        ClearBoomRequest.prototype.returnPos = 0;
-
-        /**
-         * Creates a new ClearBoomRequest instance using the specified properties.
-         * @function create
-         * @memberof ClearBoom.ClearBoomRequest
-         * @static
-         * @param {ClearBoom.IClearBoomRequest=} [properties] Properties to set
-         * @returns {ClearBoom.ClearBoomRequest} ClearBoomRequest instance
-         */
-        ClearBoomRequest.create = function create(properties) {
-            return new ClearBoomRequest(properties);
-        };
-
-        /**
-         * Encodes the specified ClearBoomRequest message. Does not implicitly {@link ClearBoom.ClearBoomRequest.verify|verify} messages.
-         * @function encode
-         * @memberof ClearBoom.ClearBoomRequest
-         * @static
-         * @param {ClearBoom.IClearBoomRequest} message ClearBoomRequest message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        ClearBoomRequest.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.userId);
-            if (message.roomNo != null && Object.hasOwnProperty.call(message, "roomNo"))
-                writer.uint32(/* id 2, wireType 2 =*/18).string(message.roomNo);
-            if (message.returnPos != null && Object.hasOwnProperty.call(message, "returnPos"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.returnPos);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified ClearBoomRequest message, length delimited. Does not implicitly {@link ClearBoom.ClearBoomRequest.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof ClearBoom.ClearBoomRequest
-         * @static
-         * @param {ClearBoom.IClearBoomRequest} message ClearBoomRequest message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        ClearBoomRequest.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a ClearBoomRequest message from the specified reader or buffer.
-         * @function decode
-         * @memberof ClearBoom.ClearBoomRequest
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {ClearBoom.ClearBoomRequest} ClearBoomRequest
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        ClearBoomRequest.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ClearBoom.ClearBoomRequest();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                case 1:
-                    message.userId = reader.uint32();
-                    break;
-                case 2:
-                    message.roomNo = reader.string();
-                    break;
-                case 3:
-                    message.returnPos = reader.uint32();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a ClearBoomRequest message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof ClearBoom.ClearBoomRequest
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {ClearBoom.ClearBoomRequest} ClearBoomRequest
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        ClearBoomRequest.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a ClearBoomRequest message.
-         * @function verify
-         * @memberof ClearBoom.ClearBoomRequest
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        ClearBoomRequest.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.userId != null && message.hasOwnProperty("userId"))
-                if (!$util.isInteger(message.userId))
-                    return "userId: integer expected";
-            if (message.roomNo != null && message.hasOwnProperty("roomNo"))
-                if (!$util.isString(message.roomNo))
-                    return "roomNo: string expected";
-            if (message.returnPos != null && message.hasOwnProperty("returnPos"))
-                if (!$util.isInteger(message.returnPos))
-                    return "returnPos: integer expected";
-            return null;
-        };
-
-        return ClearBoomRequest;
-    })();
-
-    return ClearBoom;
 })();
 
 $root.JoinRoom = (function() {
@@ -1773,8 +1345,6 @@ $root.JoinRoom = (function() {
          * @property {number|null} [wdh] JoinRoomRequest wdh
          * @property {Array.<Common.IPlayerInfo>|null} [players] JoinRoomRequest players
          * @property {number|null} [gameId] JoinRoomRequest gameId
-         * @property {string|null} [roomNo] JoinRoomRequest roomNo
-         * @property {number|null} [uid] JoinRoomRequest uid
          */
 
         /**
@@ -1826,22 +1396,6 @@ $root.JoinRoom = (function() {
         JoinRoomRequest.prototype.gameId = 0;
 
         /**
-         * JoinRoomRequest roomNo.
-         * @member {string} roomNo
-         * @memberof JoinRoom.JoinRoomRequest
-         * @instance
-         */
-        JoinRoomRequest.prototype.roomNo = "";
-
-        /**
-         * JoinRoomRequest uid.
-         * @member {number} uid
-         * @memberof JoinRoom.JoinRoomRequest
-         * @instance
-         */
-        JoinRoomRequest.prototype.uid = 0;
-
-        /**
          * Creates a new JoinRoomRequest instance using the specified properties.
          * @function create
          * @memberof JoinRoom.JoinRoomRequest
@@ -1865,19 +1419,15 @@ $root.JoinRoom = (function() {
         JoinRoomRequest.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.cookie != null && Object.hasOwnProperty.call(message, "cookie"))
+            if (message.cookie != null && message.hasOwnProperty("cookie"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.cookie);
-            if (message.wdh != null && Object.hasOwnProperty.call(message, "wdh"))
+            if (message.wdh != null && message.hasOwnProperty("wdh"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.wdh);
             if (message.players != null && message.players.length)
                 for (var i = 0; i < message.players.length; ++i)
                     $root.Common.PlayerInfo.encode(message.players[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-            if (message.gameId != null && Object.hasOwnProperty.call(message, "gameId"))
+            if (message.gameId != null && message.hasOwnProperty("gameId"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.gameId);
-            if (message.roomNo != null && Object.hasOwnProperty.call(message, "roomNo"))
-                writer.uint32(/* id 5, wireType 2 =*/42).string(message.roomNo);
-            if (message.uid != null && Object.hasOwnProperty.call(message, "uid"))
-                writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.uid);
             return writer;
         };
 
@@ -1925,12 +1475,6 @@ $root.JoinRoom = (function() {
                     break;
                 case 4:
                     message.gameId = reader.uint32();
-                    break;
-                case 5:
-                    message.roomNo = reader.string();
-                    break;
-                case 6:
-                    message.uid = reader.uint32();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1985,174 +1529,10 @@ $root.JoinRoom = (function() {
             if (message.gameId != null && message.hasOwnProperty("gameId"))
                 if (!$util.isInteger(message.gameId))
                     return "gameId: integer expected";
-            if (message.roomNo != null && message.hasOwnProperty("roomNo"))
-                if (!$util.isString(message.roomNo))
-                    return "roomNo: string expected";
-            if (message.uid != null && message.hasOwnProperty("uid"))
-                if (!$util.isInteger(message.uid))
-                    return "uid: integer expected";
             return null;
         };
 
         return JoinRoomRequest;
-    })();
-
-    JoinRoom.JoinRoomResponse = (function() {
-
-        /**
-         * Properties of a JoinRoomResponse.
-         * @memberof JoinRoom
-         * @interface IJoinRoomResponse
-         * @property {string|null} [content] JoinRoomResponse content
-         * @property {Common.IRoomInfo|null} [roomInfo] JoinRoomResponse roomInfo
-         */
-
-        /**
-         * Constructs a new JoinRoomResponse.
-         * @memberof JoinRoom
-         * @classdesc Represents a JoinRoomResponse.
-         * @implements IJoinRoomResponse
-         * @constructor
-         * @param {JoinRoom.IJoinRoomResponse=} [properties] Properties to set
-         */
-        function JoinRoomResponse(properties) {
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * JoinRoomResponse content.
-         * @member {string} content
-         * @memberof JoinRoom.JoinRoomResponse
-         * @instance
-         */
-        JoinRoomResponse.prototype.content = "";
-
-        /**
-         * JoinRoomResponse roomInfo.
-         * @member {Common.IRoomInfo|null|undefined} roomInfo
-         * @memberof JoinRoom.JoinRoomResponse
-         * @instance
-         */
-        JoinRoomResponse.prototype.roomInfo = null;
-
-        /**
-         * Creates a new JoinRoomResponse instance using the specified properties.
-         * @function create
-         * @memberof JoinRoom.JoinRoomResponse
-         * @static
-         * @param {JoinRoom.IJoinRoomResponse=} [properties] Properties to set
-         * @returns {JoinRoom.JoinRoomResponse} JoinRoomResponse instance
-         */
-        JoinRoomResponse.create = function create(properties) {
-            return new JoinRoomResponse(properties);
-        };
-
-        /**
-         * Encodes the specified JoinRoomResponse message. Does not implicitly {@link JoinRoom.JoinRoomResponse.verify|verify} messages.
-         * @function encode
-         * @memberof JoinRoom.JoinRoomResponse
-         * @static
-         * @param {JoinRoom.IJoinRoomResponse} message JoinRoomResponse message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        JoinRoomResponse.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.content != null && Object.hasOwnProperty.call(message, "content"))
-                writer.uint32(/* id 1, wireType 2 =*/10).string(message.content);
-            if (message.roomInfo != null && Object.hasOwnProperty.call(message, "roomInfo"))
-                $root.Common.RoomInfo.encode(message.roomInfo, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            return writer;
-        };
-
-        /**
-         * Encodes the specified JoinRoomResponse message, length delimited. Does not implicitly {@link JoinRoom.JoinRoomResponse.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof JoinRoom.JoinRoomResponse
-         * @static
-         * @param {JoinRoom.IJoinRoomResponse} message JoinRoomResponse message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        JoinRoomResponse.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a JoinRoomResponse message from the specified reader or buffer.
-         * @function decode
-         * @memberof JoinRoom.JoinRoomResponse
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {JoinRoom.JoinRoomResponse} JoinRoomResponse
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        JoinRoomResponse.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.JoinRoom.JoinRoomResponse();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                case 1:
-                    message.content = reader.string();
-                    break;
-                case 2:
-                    message.roomInfo = $root.Common.RoomInfo.decode(reader, reader.uint32());
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a JoinRoomResponse message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof JoinRoom.JoinRoomResponse
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {JoinRoom.JoinRoomResponse} JoinRoomResponse
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        JoinRoomResponse.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a JoinRoomResponse message.
-         * @function verify
-         * @memberof JoinRoom.JoinRoomResponse
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        JoinRoomResponse.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.content != null && message.hasOwnProperty("content"))
-                if (!$util.isString(message.content))
-                    return "content: string expected";
-            if (message.roomInfo != null && message.hasOwnProperty("roomInfo")) {
-                var error = $root.Common.RoomInfo.verify(message.roomInfo);
-                if (error)
-                    return "roomInfo." + error;
-            }
-            return null;
-        };
-
-        return JoinRoomResponse;
     })();
 
     return JoinRoom;
@@ -2174,17 +1554,17 @@ $root.Msg = (function() {
          * @memberof Msg
          * @interface IMessage
          * @property {string|null} [requestId] Message requestId
-         * @property {Msg.Message.CommandType|null} [cmd] Message cmd
+         * @property {number|null} [userId] Message userId
+         * @property {string|null} [roomNo] Message roomNo
          * @property {string|null} [content] Message content
+         * @property {Msg.Message.CommandType|null} [cmd] Message cmd
          * @property {JoinRoom.IJoinRoomRequest|null} [joinRoomReq] Message joinRoomReq
-         * @property {JoinRoom.IJoinRoomResponse|null} [joinRoomResp] Message joinRoomResp
-         * @property {AdjustCard.IAdjustCardRequest|null} [adjustCardReq] Message adjustCardReq
-         * @property {AdjustCard.IAdjustCardResponse|null} [adjustCardResp] Message adjustCardResp
-         * @property {Common.IRoomInfo|null} [roomInfo] Message roomInfo
-         * @property {PickCard.IPickCardRequest|null} [pickCardReq] Message pickCardReq
-         * @property {Common.IGetCard|null} [getCardInfo] Message getCardInfo
          * @property {ClearBoom.IClearBoomRequest|null} [clearBoomReq] Message clearBoomReq
          * @property {ReleaseCard.IReleaseCardRequest|null} [releaseCardReq] Message releaseCardReq
+         * @property {ReleaseCard.IReleaseCardResponese|null} [releaseCardResp] Message releaseCardResp
+         * @property {Common.IRoomInfo|null} [roomInfoNtf] Message roomInfoNtf
+         * @property {Common.IGameRankingInfo|null} [gameRankingNtf] Message gameRankingNtf
+         * @property {Common.IError|null} [err] Message err
          */
 
         /**
@@ -2211,12 +1591,20 @@ $root.Msg = (function() {
         Message.prototype.requestId = "";
 
         /**
-         * Message cmd.
-         * @member {Msg.Message.CommandType} cmd
+         * Message userId.
+         * @member {number} userId
          * @memberof Msg.Message
          * @instance
          */
-        Message.prototype.cmd = 0;
+        Message.prototype.userId = 0;
+
+        /**
+         * Message roomNo.
+         * @member {string} roomNo
+         * @memberof Msg.Message
+         * @instance
+         */
+        Message.prototype.roomNo = "";
 
         /**
          * Message content.
@@ -2227,60 +1615,20 @@ $root.Msg = (function() {
         Message.prototype.content = "";
 
         /**
+         * Message cmd.
+         * @member {Msg.Message.CommandType} cmd
+         * @memberof Msg.Message
+         * @instance
+         */
+        Message.prototype.cmd = 0;
+
+        /**
          * Message joinRoomReq.
          * @member {JoinRoom.IJoinRoomRequest|null|undefined} joinRoomReq
          * @memberof Msg.Message
          * @instance
          */
         Message.prototype.joinRoomReq = null;
-
-        /**
-         * Message joinRoomResp.
-         * @member {JoinRoom.IJoinRoomResponse|null|undefined} joinRoomResp
-         * @memberof Msg.Message
-         * @instance
-         */
-        Message.prototype.joinRoomResp = null;
-
-        /**
-         * Message adjustCardReq.
-         * @member {AdjustCard.IAdjustCardRequest|null|undefined} adjustCardReq
-         * @memberof Msg.Message
-         * @instance
-         */
-        Message.prototype.adjustCardReq = null;
-
-        /**
-         * Message adjustCardResp.
-         * @member {AdjustCard.IAdjustCardResponse|null|undefined} adjustCardResp
-         * @memberof Msg.Message
-         * @instance
-         */
-        Message.prototype.adjustCardResp = null;
-
-        /**
-         * Message roomInfo.
-         * @member {Common.IRoomInfo|null|undefined} roomInfo
-         * @memberof Msg.Message
-         * @instance
-         */
-        Message.prototype.roomInfo = null;
-
-        /**
-         * Message pickCardReq.
-         * @member {PickCard.IPickCardRequest|null|undefined} pickCardReq
-         * @memberof Msg.Message
-         * @instance
-         */
-        Message.prototype.pickCardReq = null;
-
-        /**
-         * Message getCardInfo.
-         * @member {Common.IGetCard|null|undefined} getCardInfo
-         * @memberof Msg.Message
-         * @instance
-         */
-        Message.prototype.getCardInfo = null;
 
         /**
          * Message clearBoomReq.
@@ -2298,17 +1646,49 @@ $root.Msg = (function() {
          */
         Message.prototype.releaseCardReq = null;
 
+        /**
+         * Message releaseCardResp.
+         * @member {ReleaseCard.IReleaseCardResponese|null|undefined} releaseCardResp
+         * @memberof Msg.Message
+         * @instance
+         */
+        Message.prototype.releaseCardResp = null;
+
+        /**
+         * Message roomInfoNtf.
+         * @member {Common.IRoomInfo|null|undefined} roomInfoNtf
+         * @memberof Msg.Message
+         * @instance
+         */
+        Message.prototype.roomInfoNtf = null;
+
+        /**
+         * Message gameRankingNtf.
+         * @member {Common.IGameRankingInfo|null|undefined} gameRankingNtf
+         * @memberof Msg.Message
+         * @instance
+         */
+        Message.prototype.gameRankingNtf = null;
+
+        /**
+         * Message err.
+         * @member {Common.IError|null|undefined} err
+         * @memberof Msg.Message
+         * @instance
+         */
+        Message.prototype.err = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
         /**
          * Message extension.
-         * @member {"joinRoomReq"|"joinRoomResp"|"adjustCardReq"|"adjustCardResp"|"roomInfo"|"pickCardReq"|"getCardInfo"|"clearBoomReq"|"releaseCardReq"|undefined} extension
+         * @member {"joinRoomReq"|"clearBoomReq"|"releaseCardReq"|"releaseCardResp"|"roomInfoNtf"|"gameRankingNtf"|"err"|undefined} extension
          * @memberof Msg.Message
          * @instance
          */
         Object.defineProperty(Message.prototype, "extension", {
-            get: $util.oneOfGetter($oneOfFields = ["joinRoomReq", "joinRoomResp", "adjustCardReq", "adjustCardResp", "roomInfo", "pickCardReq", "getCardInfo", "clearBoomReq", "releaseCardReq"]),
+            get: $util.oneOfGetter($oneOfFields = ["joinRoomReq", "clearBoomReq", "releaseCardReq", "releaseCardResp", "roomInfoNtf", "gameRankingNtf", "err"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -2336,30 +1716,30 @@ $root.Msg = (function() {
         Message.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.requestId != null && Object.hasOwnProperty.call(message, "requestId"))
+            if (message.requestId != null && message.hasOwnProperty("requestId"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.requestId);
-            if (message.cmd != null && Object.hasOwnProperty.call(message, "cmd"))
-                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.cmd);
-            if (message.content != null && Object.hasOwnProperty.call(message, "content"))
-                writer.uint32(/* id 3, wireType 2 =*/26).string(message.content);
-            if (message.joinRoomReq != null && Object.hasOwnProperty.call(message, "joinRoomReq"))
+            if (message.userId != null && message.hasOwnProperty("userId"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.userId);
+            if (message.roomNo != null && message.hasOwnProperty("roomNo"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.roomNo);
+            if (message.content != null && message.hasOwnProperty("content"))
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.content);
+            if (message.cmd != null && message.hasOwnProperty("cmd"))
+                writer.uint32(/* id 5, wireType 0 =*/40).int32(message.cmd);
+            if (message.joinRoomReq != null && message.hasOwnProperty("joinRoomReq"))
                 $root.JoinRoom.JoinRoomRequest.encode(message.joinRoomReq, writer.uint32(/* id 101, wireType 2 =*/810).fork()).ldelim();
-            if (message.joinRoomResp != null && Object.hasOwnProperty.call(message, "joinRoomResp"))
-                $root.JoinRoom.JoinRoomResponse.encode(message.joinRoomResp, writer.uint32(/* id 102, wireType 2 =*/818).fork()).ldelim();
-            if (message.adjustCardReq != null && Object.hasOwnProperty.call(message, "adjustCardReq"))
-                $root.AdjustCard.AdjustCardRequest.encode(message.adjustCardReq, writer.uint32(/* id 103, wireType 2 =*/826).fork()).ldelim();
-            if (message.adjustCardResp != null && Object.hasOwnProperty.call(message, "adjustCardResp"))
-                $root.AdjustCard.AdjustCardResponse.encode(message.adjustCardResp, writer.uint32(/* id 104, wireType 2 =*/834).fork()).ldelim();
-            if (message.roomInfo != null && Object.hasOwnProperty.call(message, "roomInfo"))
-                $root.Common.RoomInfo.encode(message.roomInfo, writer.uint32(/* id 105, wireType 2 =*/842).fork()).ldelim();
-            if (message.pickCardReq != null && Object.hasOwnProperty.call(message, "pickCardReq"))
-                $root.PickCard.PickCardRequest.encode(message.pickCardReq, writer.uint32(/* id 106, wireType 2 =*/850).fork()).ldelim();
-            if (message.getCardInfo != null && Object.hasOwnProperty.call(message, "getCardInfo"))
-                $root.Common.GetCard.encode(message.getCardInfo, writer.uint32(/* id 107, wireType 2 =*/858).fork()).ldelim();
-            if (message.clearBoomReq != null && Object.hasOwnProperty.call(message, "clearBoomReq"))
+            if (message.clearBoomReq != null && message.hasOwnProperty("clearBoomReq"))
                 $root.ClearBoom.ClearBoomRequest.encode(message.clearBoomReq, writer.uint32(/* id 108, wireType 2 =*/866).fork()).ldelim();
-            if (message.releaseCardReq != null && Object.hasOwnProperty.call(message, "releaseCardReq"))
+            if (message.releaseCardReq != null && message.hasOwnProperty("releaseCardReq"))
                 $root.ReleaseCard.ReleaseCardRequest.encode(message.releaseCardReq, writer.uint32(/* id 109, wireType 2 =*/874).fork()).ldelim();
+            if (message.releaseCardResp != null && message.hasOwnProperty("releaseCardResp"))
+                $root.ReleaseCard.ReleaseCardResponese.encode(message.releaseCardResp, writer.uint32(/* id 110, wireType 2 =*/882).fork()).ldelim();
+            if (message.roomInfoNtf != null && message.hasOwnProperty("roomInfoNtf"))
+                $root.Common.RoomInfo.encode(message.roomInfoNtf, writer.uint32(/* id 201, wireType 2 =*/1610).fork()).ldelim();
+            if (message.gameRankingNtf != null && message.hasOwnProperty("gameRankingNtf"))
+                $root.Common.GameRankingInfo.encode(message.gameRankingNtf, writer.uint32(/* id 202, wireType 2 =*/1618).fork()).ldelim();
+            if (message.err != null && message.hasOwnProperty("err"))
+                $root.Common.Error.encode(message.err, writer.uint32(/* id 300, wireType 2 =*/2402).fork()).ldelim();
             return writer;
         };
 
@@ -2398,37 +1778,37 @@ $root.Msg = (function() {
                     message.requestId = reader.string();
                     break;
                 case 2:
-                    message.cmd = reader.int32();
+                    message.userId = reader.uint32();
                     break;
                 case 3:
+                    message.roomNo = reader.string();
+                    break;
+                case 4:
                     message.content = reader.string();
+                    break;
+                case 5:
+                    message.cmd = reader.int32();
                     break;
                 case 101:
                     message.joinRoomReq = $root.JoinRoom.JoinRoomRequest.decode(reader, reader.uint32());
-                    break;
-                case 102:
-                    message.joinRoomResp = $root.JoinRoom.JoinRoomResponse.decode(reader, reader.uint32());
-                    break;
-                case 103:
-                    message.adjustCardReq = $root.AdjustCard.AdjustCardRequest.decode(reader, reader.uint32());
-                    break;
-                case 104:
-                    message.adjustCardResp = $root.AdjustCard.AdjustCardResponse.decode(reader, reader.uint32());
-                    break;
-                case 105:
-                    message.roomInfo = $root.Common.RoomInfo.decode(reader, reader.uint32());
-                    break;
-                case 106:
-                    message.pickCardReq = $root.PickCard.PickCardRequest.decode(reader, reader.uint32());
-                    break;
-                case 107:
-                    message.getCardInfo = $root.Common.GetCard.decode(reader, reader.uint32());
                     break;
                 case 108:
                     message.clearBoomReq = $root.ClearBoom.ClearBoomRequest.decode(reader, reader.uint32());
                     break;
                 case 109:
                     message.releaseCardReq = $root.ReleaseCard.ReleaseCardRequest.decode(reader, reader.uint32());
+                    break;
+                case 110:
+                    message.releaseCardResp = $root.ReleaseCard.ReleaseCardResponese.decode(reader, reader.uint32());
+                    break;
+                case 201:
+                    message.roomInfoNtf = $root.Common.RoomInfo.decode(reader, reader.uint32());
+                    break;
+                case 202:
+                    message.gameRankingNtf = $root.Common.GameRankingInfo.decode(reader, reader.uint32());
+                    break;
+                case 300:
+                    message.err = $root.Common.Error.decode(reader, reader.uint32());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -2469,6 +1849,15 @@ $root.Msg = (function() {
             if (message.requestId != null && message.hasOwnProperty("requestId"))
                 if (!$util.isString(message.requestId))
                     return "requestId: string expected";
+            if (message.userId != null && message.hasOwnProperty("userId"))
+                if (!$util.isInteger(message.userId))
+                    return "userId: integer expected";
+            if (message.roomNo != null && message.hasOwnProperty("roomNo"))
+                if (!$util.isString(message.roomNo))
+                    return "roomNo: string expected";
+            if (message.content != null && message.hasOwnProperty("content"))
+                if (!$util.isString(message.content))
+                    return "content: string expected";
             if (message.cmd != null && message.hasOwnProperty("cmd"))
                 switch (message.cmd) {
                 default:
@@ -2483,78 +1872,14 @@ $root.Msg = (function() {
                 case 7:
                 case 8:
                 case 9:
-                case 100:
                     break;
                 }
-            if (message.content != null && message.hasOwnProperty("content"))
-                if (!$util.isString(message.content))
-                    return "content: string expected";
             if (message.joinRoomReq != null && message.hasOwnProperty("joinRoomReq")) {
                 properties.extension = 1;
                 {
                     var error = $root.JoinRoom.JoinRoomRequest.verify(message.joinRoomReq);
                     if (error)
                         return "joinRoomReq." + error;
-                }
-            }
-            if (message.joinRoomResp != null && message.hasOwnProperty("joinRoomResp")) {
-                if (properties.extension === 1)
-                    return "extension: multiple values";
-                properties.extension = 1;
-                {
-                    var error = $root.JoinRoom.JoinRoomResponse.verify(message.joinRoomResp);
-                    if (error)
-                        return "joinRoomResp." + error;
-                }
-            }
-            if (message.adjustCardReq != null && message.hasOwnProperty("adjustCardReq")) {
-                if (properties.extension === 1)
-                    return "extension: multiple values";
-                properties.extension = 1;
-                {
-                    var error = $root.AdjustCard.AdjustCardRequest.verify(message.adjustCardReq);
-                    if (error)
-                        return "adjustCardReq." + error;
-                }
-            }
-            if (message.adjustCardResp != null && message.hasOwnProperty("adjustCardResp")) {
-                if (properties.extension === 1)
-                    return "extension: multiple values";
-                properties.extension = 1;
-                {
-                    var error = $root.AdjustCard.AdjustCardResponse.verify(message.adjustCardResp);
-                    if (error)
-                        return "adjustCardResp." + error;
-                }
-            }
-            if (message.roomInfo != null && message.hasOwnProperty("roomInfo")) {
-                if (properties.extension === 1)
-                    return "extension: multiple values";
-                properties.extension = 1;
-                {
-                    var error = $root.Common.RoomInfo.verify(message.roomInfo);
-                    if (error)
-                        return "roomInfo." + error;
-                }
-            }
-            if (message.pickCardReq != null && message.hasOwnProperty("pickCardReq")) {
-                if (properties.extension === 1)
-                    return "extension: multiple values";
-                properties.extension = 1;
-                {
-                    var error = $root.PickCard.PickCardRequest.verify(message.pickCardReq);
-                    if (error)
-                        return "pickCardReq." + error;
-                }
-            }
-            if (message.getCardInfo != null && message.hasOwnProperty("getCardInfo")) {
-                if (properties.extension === 1)
-                    return "extension: multiple values";
-                properties.extension = 1;
-                {
-                    var error = $root.Common.GetCard.verify(message.getCardInfo);
-                    if (error)
-                        return "getCardInfo." + error;
                 }
             }
             if (message.clearBoomReq != null && message.hasOwnProperty("clearBoomReq")) {
@@ -2577,38 +1902,76 @@ $root.Msg = (function() {
                         return "releaseCardReq." + error;
                 }
             }
+            if (message.releaseCardResp != null && message.hasOwnProperty("releaseCardResp")) {
+                if (properties.extension === 1)
+                    return "extension: multiple values";
+                properties.extension = 1;
+                {
+                    var error = $root.ReleaseCard.ReleaseCardResponese.verify(message.releaseCardResp);
+                    if (error)
+                        return "releaseCardResp." + error;
+                }
+            }
+            if (message.roomInfoNtf != null && message.hasOwnProperty("roomInfoNtf")) {
+                if (properties.extension === 1)
+                    return "extension: multiple values";
+                properties.extension = 1;
+                {
+                    var error = $root.Common.RoomInfo.verify(message.roomInfoNtf);
+                    if (error)
+                        return "roomInfoNtf." + error;
+                }
+            }
+            if (message.gameRankingNtf != null && message.hasOwnProperty("gameRankingNtf")) {
+                if (properties.extension === 1)
+                    return "extension: multiple values";
+                properties.extension = 1;
+                {
+                    var error = $root.Common.GameRankingInfo.verify(message.gameRankingNtf);
+                    if (error)
+                        return "gameRankingNtf." + error;
+                }
+            }
+            if (message.err != null && message.hasOwnProperty("err")) {
+                if (properties.extension === 1)
+                    return "extension: multiple values";
+                properties.extension = 1;
+                {
+                    var error = $root.Common.Error.verify(message.err);
+                    if (error)
+                        return "err." + error;
+                }
+            }
             return null;
         };
 
         /**
          * CommandType enum.
          * @name Msg.Message.CommandType
-         * @enum {number}
-         * @property {number} NORMAL=0 NORMAL value
-         * @property {number} HEARTBEAT_REQUEST=1 HEARTBEAT_REQUEST value
-         * @property {number} HEARTBEAT_RESPONSE=2 HEARTBEAT_RESPONSE value
-         * @property {number} JOIN_ROOM=3 JOIN_ROOM value
-         * @property {number} HANDS_UPDATE=4 HANDS_UPDATE value
-         * @property {number} ADJUST_CARD=5 ADJUST_CARD value
-         * @property {number} ROOM_UPDATE=6 ROOM_UPDATE value
-         * @property {number} PICK=7 PICK value
-         * @property {number} RELEASE=8 RELEASE value
-         * @property {number} CLEAR_BOOM=9 CLEAR_BOOM value
-         * @property {number} TEST=100 TEST value
+         * @enum {string}
+         * @property {number} HEARTBEAT_REQ=0 HEARTBEAT_REQ value
+         * @property {number} HEARTBEAT_RESP=1 HEARTBEAT_RESP value
+         * @property {number} JOIN_ROOM_REQ=2 JOIN_ROOM_REQ value
+         * @property {number} ADJUST_CARD_REQ=3 ADJUST_CARD_REQ value
+         * @property {number} PICK_CARD_REQ=4 PICK_CARD_REQ value
+         * @property {number} RELEASE_CARD_REQ=5 RELEASE_CARD_REQ value
+         * @property {number} RELEASE_CARD_RESP=6 RELEASE_CARD_RESP value
+         * @property {number} ROOM_INFO_NTF=7 ROOM_INFO_NTF value
+         * @property {number} GAME_RANK_NTF=8 GAME_RANK_NTF value
+         * @property {number} ERROR=9 ERROR value
          */
         Message.CommandType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
-            values[valuesById[0] = "NORMAL"] = 0;
-            values[valuesById[1] = "HEARTBEAT_REQUEST"] = 1;
-            values[valuesById[2] = "HEARTBEAT_RESPONSE"] = 2;
-            values[valuesById[3] = "JOIN_ROOM"] = 3;
-            values[valuesById[4] = "HANDS_UPDATE"] = 4;
-            values[valuesById[5] = "ADJUST_CARD"] = 5;
-            values[valuesById[6] = "ROOM_UPDATE"] = 6;
-            values[valuesById[7] = "PICK"] = 7;
-            values[valuesById[8] = "RELEASE"] = 8;
-            values[valuesById[9] = "CLEAR_BOOM"] = 9;
-            values[valuesById[100] = "TEST"] = 100;
+            values[valuesById[0] = "HEARTBEAT_REQ"] = 0;
+            values[valuesById[1] = "HEARTBEAT_RESP"] = 1;
+            values[valuesById[2] = "JOIN_ROOM_REQ"] = 2;
+            values[valuesById[3] = "ADJUST_CARD_REQ"] = 3;
+            values[valuesById[4] = "PICK_CARD_REQ"] = 4;
+            values[valuesById[5] = "RELEASE_CARD_REQ"] = 5;
+            values[valuesById[6] = "RELEASE_CARD_RESP"] = 6;
+            values[valuesById[7] = "ROOM_INFO_NTF"] = 7;
+            values[valuesById[8] = "GAME_RANK_NTF"] = 8;
+            values[valuesById[9] = "ERROR"] = 9;
             return values;
         })();
 
@@ -2616,174 +1979,6 @@ $root.Msg = (function() {
     })();
 
     return Msg;
-})();
-
-$root.PickCard = (function() {
-
-    /**
-     * Namespace PickCard.
-     * @exports PickCard
-     * @namespace
-     */
-    var PickCard = {};
-
-    PickCard.PickCardRequest = (function() {
-
-        /**
-         * Properties of a PickCardRequest.
-         * @memberof PickCard
-         * @interface IPickCardRequest
-         * @property {number|null} [userId] PickCardRequest userId
-         * @property {string|null} [roomNo] PickCardRequest roomNo
-         */
-
-        /**
-         * Constructs a new PickCardRequest.
-         * @memberof PickCard
-         * @classdesc Represents a PickCardRequest.
-         * @implements IPickCardRequest
-         * @constructor
-         * @param {PickCard.IPickCardRequest=} [properties] Properties to set
-         */
-        function PickCardRequest(properties) {
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * PickCardRequest userId.
-         * @member {number} userId
-         * @memberof PickCard.PickCardRequest
-         * @instance
-         */
-        PickCardRequest.prototype.userId = 0;
-
-        /**
-         * PickCardRequest roomNo.
-         * @member {string} roomNo
-         * @memberof PickCard.PickCardRequest
-         * @instance
-         */
-        PickCardRequest.prototype.roomNo = "";
-
-        /**
-         * Creates a new PickCardRequest instance using the specified properties.
-         * @function create
-         * @memberof PickCard.PickCardRequest
-         * @static
-         * @param {PickCard.IPickCardRequest=} [properties] Properties to set
-         * @returns {PickCard.PickCardRequest} PickCardRequest instance
-         */
-        PickCardRequest.create = function create(properties) {
-            return new PickCardRequest(properties);
-        };
-
-        /**
-         * Encodes the specified PickCardRequest message. Does not implicitly {@link PickCard.PickCardRequest.verify|verify} messages.
-         * @function encode
-         * @memberof PickCard.PickCardRequest
-         * @static
-         * @param {PickCard.IPickCardRequest} message PickCardRequest message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        PickCardRequest.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.userId);
-            if (message.roomNo != null && Object.hasOwnProperty.call(message, "roomNo"))
-                writer.uint32(/* id 2, wireType 2 =*/18).string(message.roomNo);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified PickCardRequest message, length delimited. Does not implicitly {@link PickCard.PickCardRequest.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof PickCard.PickCardRequest
-         * @static
-         * @param {PickCard.IPickCardRequest} message PickCardRequest message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        PickCardRequest.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a PickCardRequest message from the specified reader or buffer.
-         * @function decode
-         * @memberof PickCard.PickCardRequest
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {PickCard.PickCardRequest} PickCardRequest
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        PickCardRequest.decode = function decode(reader, length) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.PickCard.PickCardRequest();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                switch (tag >>> 3) {
-                case 1:
-                    message.userId = reader.uint32();
-                    break;
-                case 2:
-                    message.roomNo = reader.string();
-                    break;
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a PickCardRequest message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof PickCard.PickCardRequest
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {PickCard.PickCardRequest} PickCardRequest
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        PickCardRequest.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a PickCardRequest message.
-         * @function verify
-         * @memberof PickCard.PickCardRequest
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        PickCardRequest.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.userId != null && message.hasOwnProperty("userId"))
-                if (!$util.isInteger(message.userId))
-                    return "userId: integer expected";
-            if (message.roomNo != null && message.hasOwnProperty("roomNo"))
-                if (!$util.isString(message.roomNo))
-                    return "roomNo: string expected";
-            return null;
-        };
-
-        return PickCardRequest;
-    })();
-
-    return PickCard;
 })();
 
 $root.ReleaseCard = (function() {
@@ -2801,8 +1996,6 @@ $root.ReleaseCard = (function() {
          * Properties of a ReleaseCardRequest.
          * @memberof ReleaseCard
          * @interface IReleaseCardRequest
-         * @property {number|null} [userId] ReleaseCardRequest userId
-         * @property {string|null} [roomNo] ReleaseCardRequest roomNo
          * @property {number|null} [cardId] ReleaseCardRequest cardId
          * @property {number|null} [targetId] ReleaseCardRequest targetId
          */
@@ -2821,22 +2014,6 @@ $root.ReleaseCard = (function() {
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
-
-        /**
-         * ReleaseCardRequest userId.
-         * @member {number} userId
-         * @memberof ReleaseCard.ReleaseCardRequest
-         * @instance
-         */
-        ReleaseCardRequest.prototype.userId = 0;
-
-        /**
-         * ReleaseCardRequest roomNo.
-         * @member {string} roomNo
-         * @memberof ReleaseCard.ReleaseCardRequest
-         * @instance
-         */
-        ReleaseCardRequest.prototype.roomNo = "";
 
         /**
          * ReleaseCardRequest cardId.
@@ -2878,14 +2055,10 @@ $root.ReleaseCard = (function() {
         ReleaseCardRequest.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.userId);
-            if (message.roomNo != null && Object.hasOwnProperty.call(message, "roomNo"))
-                writer.uint32(/* id 2, wireType 2 =*/18).string(message.roomNo);
-            if (message.cardId != null && Object.hasOwnProperty.call(message, "cardId"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.cardId);
-            if (message.targetId != null && Object.hasOwnProperty.call(message, "targetId"))
-                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.targetId);
+            if (message.cardId != null && message.hasOwnProperty("cardId"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.cardId);
+            if (message.targetId != null && message.hasOwnProperty("targetId"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.targetId);
             return writer;
         };
 
@@ -2921,15 +2094,9 @@ $root.ReleaseCard = (function() {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
-                    message.userId = reader.uint32();
-                    break;
-                case 2:
-                    message.roomNo = reader.string();
-                    break;
-                case 3:
                     message.cardId = reader.uint32();
                     break;
-                case 4:
+                case 2:
                     message.targetId = reader.uint32();
                     break;
                 default:
@@ -2967,12 +2134,6 @@ $root.ReleaseCard = (function() {
         ReleaseCardRequest.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
-            if (message.userId != null && message.hasOwnProperty("userId"))
-                if (!$util.isInteger(message.userId))
-                    return "userId: integer expected";
-            if (message.roomNo != null && message.hasOwnProperty("roomNo"))
-                if (!$util.isString(message.roomNo))
-                    return "roomNo: string expected";
             if (message.cardId != null && message.hasOwnProperty("cardId"))
                 if (!$util.isInteger(message.cardId))
                     return "cardId: integer expected";
@@ -2983,6 +2144,178 @@ $root.ReleaseCard = (function() {
         };
 
         return ReleaseCardRequest;
+    })();
+
+    ReleaseCard.ReleaseCardResponese = (function() {
+
+        /**
+         * Properties of a ReleaseCardResponese.
+         * @memberof ReleaseCard
+         * @interface IReleaseCardResponese
+         * @property {number|null} [predictIndex] ReleaseCardResponese predictIndex
+         * @property {Array.<number>|null} [xrayCards] ReleaseCardResponese xrayCards
+         */
+
+        /**
+         * Constructs a new ReleaseCardResponese.
+         * @memberof ReleaseCard
+         * @classdesc Represents a ReleaseCardResponese.
+         * @implements IReleaseCardResponese
+         * @constructor
+         * @param {ReleaseCard.IReleaseCardResponese=} [properties] Properties to set
+         */
+        function ReleaseCardResponese(properties) {
+            this.xrayCards = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ReleaseCardResponese predictIndex.
+         * @member {number} predictIndex
+         * @memberof ReleaseCard.ReleaseCardResponese
+         * @instance
+         */
+        ReleaseCardResponese.prototype.predictIndex = 0;
+
+        /**
+         * ReleaseCardResponese xrayCards.
+         * @member {Array.<number>} xrayCards
+         * @memberof ReleaseCard.ReleaseCardResponese
+         * @instance
+         */
+        ReleaseCardResponese.prototype.xrayCards = $util.emptyArray;
+
+        /**
+         * Creates a new ReleaseCardResponese instance using the specified properties.
+         * @function create
+         * @memberof ReleaseCard.ReleaseCardResponese
+         * @static
+         * @param {ReleaseCard.IReleaseCardResponese=} [properties] Properties to set
+         * @returns {ReleaseCard.ReleaseCardResponese} ReleaseCardResponese instance
+         */
+        ReleaseCardResponese.create = function create(properties) {
+            return new ReleaseCardResponese(properties);
+        };
+
+        /**
+         * Encodes the specified ReleaseCardResponese message. Does not implicitly {@link ReleaseCard.ReleaseCardResponese.verify|verify} messages.
+         * @function encode
+         * @memberof ReleaseCard.ReleaseCardResponese
+         * @static
+         * @param {ReleaseCard.IReleaseCardResponese} message ReleaseCardResponese message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ReleaseCardResponese.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.predictIndex != null && message.hasOwnProperty("predictIndex"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.predictIndex);
+            if (message.xrayCards != null && message.xrayCards.length) {
+                writer.uint32(/* id 2, wireType 2 =*/18).fork();
+                for (var i = 0; i < message.xrayCards.length; ++i)
+                    writer.uint32(message.xrayCards[i]);
+                writer.ldelim();
+            }
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ReleaseCardResponese message, length delimited. Does not implicitly {@link ReleaseCard.ReleaseCardResponese.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof ReleaseCard.ReleaseCardResponese
+         * @static
+         * @param {ReleaseCard.IReleaseCardResponese} message ReleaseCardResponese message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ReleaseCardResponese.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ReleaseCardResponese message from the specified reader or buffer.
+         * @function decode
+         * @memberof ReleaseCard.ReleaseCardResponese
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {ReleaseCard.ReleaseCardResponese} ReleaseCardResponese
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ReleaseCardResponese.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ReleaseCard.ReleaseCardResponese();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.predictIndex = reader.uint32();
+                    break;
+                case 2:
+                    if (!(message.xrayCards && message.xrayCards.length))
+                        message.xrayCards = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.xrayCards.push(reader.uint32());
+                    } else
+                        message.xrayCards.push(reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ReleaseCardResponese message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof ReleaseCard.ReleaseCardResponese
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {ReleaseCard.ReleaseCardResponese} ReleaseCardResponese
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ReleaseCardResponese.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ReleaseCardResponese message.
+         * @function verify
+         * @memberof ReleaseCard.ReleaseCardResponese
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ReleaseCardResponese.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.predictIndex != null && message.hasOwnProperty("predictIndex"))
+                if (!$util.isInteger(message.predictIndex))
+                    return "predictIndex: integer expected";
+            if (message.xrayCards != null && message.hasOwnProperty("xrayCards")) {
+                if (!Array.isArray(message.xrayCards))
+                    return "xrayCards: array expected";
+                for (var i = 0; i < message.xrayCards.length; ++i)
+                    if (!$util.isInteger(message.xrayCards[i]))
+                        return "xrayCards: integer[] expected";
+            }
+            return null;
+        };
+
+        return ReleaseCardResponese;
     })();
 
     return ReleaseCard;
