@@ -14,6 +14,10 @@ class NetMgr {
     req: NetReq;
     res: NetRes;
 
+    // 心跳
+    private hbTimerId: number;
+    private hbTime = 10000;
+
     private constructor() {
         this.$socket = new egret.WebSocket();
         this.$socket.type = egret.WebSocket.TYPE_BINARY;
@@ -52,7 +56,19 @@ class NetMgr {
     private onSocketOpen(): void {
         egret.log('onSocketOpen')
         this.isConnected = true;
+        this.startHeartBeat();
         GameMgr.inst.tryInitGame();
+    }
+
+    private startHeartBeat(): void {
+        egret.log('startHeartBeat')
+        if (this.hbTimerId) {
+            clearInterval(this.hbTimerId);
+            this.hbTimerId
+        }
+        this.hbTimerId = setImmediate(() => {
+            this.req.heartBeat();
+        }, this.hbTime)
     }
 
     private onSocketClose(): void {

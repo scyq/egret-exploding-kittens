@@ -11,8 +11,7 @@ class NetRes {
     ];
 
     response(msg: Msg.IMessage) {
-        console.log("NetMgr.inst.response()")
-        console.log(msg);
+        egret.log(`res: ${msg.content}`);
         this.handlers[msg.cmd].func(msg);
     }
 
