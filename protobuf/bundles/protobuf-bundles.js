@@ -21,7 +21,7 @@ $root.ClearBoom = (function() {
          * Properties of a ClearBoomRequest.
          * @memberof ClearBoom
          * @interface IClearBoomRequest
-         * @property {boolean|null} [defuse] ClearBoomRequest defuse
+         * @property {number|null} [defuse] ClearBoomRequest defuse
          * @property {number|null} [returnPos] ClearBoomRequest returnPos
          */
 
@@ -42,11 +42,11 @@ $root.ClearBoom = (function() {
 
         /**
          * ClearBoomRequest defuse.
-         * @member {boolean} defuse
+         * @member {number} defuse
          * @memberof ClearBoom.ClearBoomRequest
          * @instance
          */
-        ClearBoomRequest.prototype.defuse = false;
+        ClearBoomRequest.prototype.defuse = 0;
 
         /**
          * ClearBoomRequest returnPos.
@@ -80,9 +80,9 @@ $root.ClearBoom = (function() {
         ClearBoomRequest.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.defuse != null && message.hasOwnProperty("defuse"))
-                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.defuse);
-            if (message.returnPos != null && message.hasOwnProperty("returnPos"))
+            if (message.defuse != null && Object.hasOwnProperty.call(message, "defuse"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.defuse);
+            if (message.returnPos != null && Object.hasOwnProperty.call(message, "returnPos"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.returnPos);
             return writer;
         };
@@ -119,7 +119,7 @@ $root.ClearBoom = (function() {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
-                    message.defuse = reader.bool();
+                    message.defuse = reader.uint32();
                     break;
                 case 2:
                     message.returnPos = reader.uint32();
@@ -160,8 +160,8 @@ $root.ClearBoom = (function() {
             if (typeof message !== "object" || message === null)
                 return "object expected";
             if (message.defuse != null && message.hasOwnProperty("defuse"))
-                if (typeof message.defuse !== "boolean")
-                    return "defuse: boolean expected";
+                if (!$util.isInteger(message.defuse))
+                    return "defuse: integer expected";
             if (message.returnPos != null && message.hasOwnProperty("returnPos"))
                 if (!$util.isInteger(message.returnPos))
                     return "returnPos: integer expected";
@@ -190,12 +190,13 @@ $root.Common = (function() {
          * @memberof Common
          * @interface IPlayerInfo
          * @property {number|null} [uid] PlayerInfo uid
-         * @property {boolean|null} [isBot] PlayerInfo isBot
+         * @property {number|null} [isBot] PlayerInfo isBot
          * @property {number|null} [state] PlayerInfo state
          * @property {string|null} [name] PlayerInfo name
          * @property {string|null} [avatar] PlayerInfo avatar
          * @property {Common.IHandsInfo|null} [handsInfo] PlayerInfo handsInfo
          * @property {number|null} [countDownTime] PlayerInfo countDownTime
+         * @property {number|null} [attackMark] PlayerInfo attackMark
          */
 
         /**
@@ -223,11 +224,11 @@ $root.Common = (function() {
 
         /**
          * PlayerInfo isBot.
-         * @member {boolean} isBot
+         * @member {number} isBot
          * @memberof Common.PlayerInfo
          * @instance
          */
-        PlayerInfo.prototype.isBot = false;
+        PlayerInfo.prototype.isBot = 0;
 
         /**
          * PlayerInfo state.
@@ -270,6 +271,14 @@ $root.Common = (function() {
         PlayerInfo.prototype.countDownTime = 0;
 
         /**
+         * PlayerInfo attackMark.
+         * @member {number} attackMark
+         * @memberof Common.PlayerInfo
+         * @instance
+         */
+        PlayerInfo.prototype.attackMark = 0;
+
+        /**
          * Creates a new PlayerInfo instance using the specified properties.
          * @function create
          * @memberof Common.PlayerInfo
@@ -293,20 +302,22 @@ $root.Common = (function() {
         PlayerInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.uid != null && message.hasOwnProperty("uid"))
+            if (message.uid != null && Object.hasOwnProperty.call(message, "uid"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.uid);
-            if (message.isBot != null && message.hasOwnProperty("isBot"))
-                writer.uint32(/* id 2, wireType 0 =*/16).bool(message.isBot);
-            if (message.state != null && message.hasOwnProperty("state"))
+            if (message.isBot != null && Object.hasOwnProperty.call(message, "isBot"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.isBot);
+            if (message.state != null && Object.hasOwnProperty.call(message, "state"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.state);
-            if (message.name != null && message.hasOwnProperty("name"))
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                 writer.uint32(/* id 4, wireType 2 =*/34).string(message.name);
-            if (message.avatar != null && message.hasOwnProperty("avatar"))
+            if (message.avatar != null && Object.hasOwnProperty.call(message, "avatar"))
                 writer.uint32(/* id 5, wireType 2 =*/42).string(message.avatar);
-            if (message.handsInfo != null && message.hasOwnProperty("handsInfo"))
+            if (message.handsInfo != null && Object.hasOwnProperty.call(message, "handsInfo"))
                 $root.Common.HandsInfo.encode(message.handsInfo, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
-            if (message.countDownTime != null && message.hasOwnProperty("countDownTime"))
+            if (message.countDownTime != null && Object.hasOwnProperty.call(message, "countDownTime"))
                 writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.countDownTime);
+            if (message.attackMark != null && Object.hasOwnProperty.call(message, "attackMark"))
+                writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.attackMark);
             return writer;
         };
 
@@ -345,7 +356,7 @@ $root.Common = (function() {
                     message.uid = reader.uint32();
                     break;
                 case 2:
-                    message.isBot = reader.bool();
+                    message.isBot = reader.uint32();
                     break;
                 case 3:
                     message.state = reader.uint32();
@@ -361,6 +372,9 @@ $root.Common = (function() {
                     break;
                 case 7:
                     message.countDownTime = reader.uint32();
+                    break;
+                case 8:
+                    message.attackMark = reader.uint32();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -401,8 +415,8 @@ $root.Common = (function() {
                 if (!$util.isInteger(message.uid))
                     return "uid: integer expected";
             if (message.isBot != null && message.hasOwnProperty("isBot"))
-                if (typeof message.isBot !== "boolean")
-                    return "isBot: boolean expected";
+                if (!$util.isInteger(message.isBot))
+                    return "isBot: integer expected";
             if (message.state != null && message.hasOwnProperty("state"))
                 if (!$util.isInteger(message.state))
                     return "state: integer expected";
@@ -420,6 +434,9 @@ $root.Common = (function() {
             if (message.countDownTime != null && message.hasOwnProperty("countDownTime"))
                 if (!$util.isInteger(message.countDownTime))
                     return "countDownTime: integer expected";
+            if (message.attackMark != null && message.hasOwnProperty("attackMark"))
+                if (!$util.isInteger(message.attackMark))
+                    return "attackMark: integer expected";
             return null;
         };
 
@@ -434,7 +451,7 @@ $root.Common = (function() {
          * @interface IRoomInfo
          * @property {string|null} [no] RoomInfo no
          * @property {number|null} [state] RoomInfo state
-         * @property {boolean|null} [clockwise] RoomInfo clockwise
+         * @property {number|null} [clockwise] RoomInfo clockwise
          * @property {Array.<Common.IPlayerInfo>|null} [players] RoomInfo players
          * @property {Common.IDeckInfo|null} [deckInfo] RoomInfo deckInfo
          */
@@ -473,11 +490,11 @@ $root.Common = (function() {
 
         /**
          * RoomInfo clockwise.
-         * @member {boolean} clockwise
+         * @member {number} clockwise
          * @memberof Common.RoomInfo
          * @instance
          */
-        RoomInfo.prototype.clockwise = false;
+        RoomInfo.prototype.clockwise = 0;
 
         /**
          * RoomInfo players.
@@ -519,16 +536,16 @@ $root.Common = (function() {
         RoomInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.no != null && message.hasOwnProperty("no"))
+            if (message.no != null && Object.hasOwnProperty.call(message, "no"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.no);
-            if (message.state != null && message.hasOwnProperty("state"))
+            if (message.state != null && Object.hasOwnProperty.call(message, "state"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.state);
-            if (message.clockwise != null && message.hasOwnProperty("clockwise"))
-                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.clockwise);
+            if (message.clockwise != null && Object.hasOwnProperty.call(message, "clockwise"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.clockwise);
             if (message.players != null && message.players.length)
                 for (var i = 0; i < message.players.length; ++i)
                     $root.Common.PlayerInfo.encode(message.players[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
-            if (message.deckInfo != null && message.hasOwnProperty("deckInfo"))
+            if (message.deckInfo != null && Object.hasOwnProperty.call(message, "deckInfo"))
                 $root.Common.DeckInfo.encode(message.deckInfo, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
             return writer;
         };
@@ -571,7 +588,7 @@ $root.Common = (function() {
                     message.state = reader.uint32();
                     break;
                 case 3:
-                    message.clockwise = reader.bool();
+                    message.clockwise = reader.uint32();
                     break;
                 case 4:
                     if (!(message.players && message.players.length))
@@ -623,8 +640,8 @@ $root.Common = (function() {
                 if (!$util.isInteger(message.state))
                     return "state: integer expected";
             if (message.clockwise != null && message.hasOwnProperty("clockwise"))
-                if (typeof message.clockwise !== "boolean")
-                    return "clockwise: boolean expected";
+                if (!$util.isInteger(message.clockwise))
+                    return "clockwise: integer expected";
             if (message.players != null && message.hasOwnProperty("players")) {
                 if (!Array.isArray(message.players))
                     return "players: array expected";
@@ -710,9 +727,9 @@ $root.Common = (function() {
         DeckInfo.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.leftCount != null && message.hasOwnProperty("leftCount"))
+            if (message.leftCount != null && Object.hasOwnProperty.call(message, "leftCount"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.leftCount);
-            if (message.leftBoomCount != null && message.hasOwnProperty("leftBoomCount"))
+            if (message.leftBoomCount != null && Object.hasOwnProperty.call(message, "leftBoomCount"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.leftBoomCount);
             return writer;
         };
@@ -882,9 +899,9 @@ $root.Common = (function() {
                     writer.uint32(message.cardIds[i]);
                 writer.ldelim();
             }
-            if (message.mulliganCnt != null && message.hasOwnProperty("mulliganCnt"))
+            if (message.mulliganCnt != null && Object.hasOwnProperty.call(message, "mulliganCnt"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.mulliganCnt);
-            if (message.mulliganExpireTime != null && message.hasOwnProperty("mulliganExpireTime"))
+            if (message.mulliganExpireTime != null && Object.hasOwnProperty.call(message, "mulliganExpireTime"))
                 writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.mulliganExpireTime);
             return writer;
         };
@@ -993,7 +1010,7 @@ $root.Common = (function() {
     /**
      * ErrorType enum.
      * @name Common.ErrorType
-     * @enum {string}
+     * @enum {number}
      * @property {number} ROOM_GAME_STARTED=0 ROOM_GAME_STARTED value
      * @property {number} ROOM_PLAYER_IS_FULL=1 ROOM_PLAYER_IS_FULL value
      * @property {number} ADJUST_HANDS_FAIL=2 ADJUST_HANDS_FAIL value
@@ -1073,9 +1090,9 @@ $root.Common = (function() {
         Error.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.type != null && message.hasOwnProperty("type"))
+            if (message.type != null && Object.hasOwnProperty.call(message, "type"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.type);
-            if (message.msg != null && message.hasOwnProperty("msg"))
+            if (message.msg != null && Object.hasOwnProperty.call(message, "msg"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.msg);
             return writer;
         };
@@ -1422,14 +1439,14 @@ $root.JoinRoom = (function() {
         JoinRoomRequest.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.cookie != null && message.hasOwnProperty("cookie"))
+            if (message.cookie != null && Object.hasOwnProperty.call(message, "cookie"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.cookie);
-            if (message.wdh != null && message.hasOwnProperty("wdh"))
+            if (message.wdh != null && Object.hasOwnProperty.call(message, "wdh"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.wdh);
             if (message.players != null && message.players.length)
                 for (var i = 0; i < message.players.length; ++i)
                     $root.Common.PlayerInfo.encode(message.players[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-            if (message.gameId != null && message.hasOwnProperty("gameId"))
+            if (message.gameId != null && Object.hasOwnProperty.call(message, "gameId"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.gameId);
             return writer;
         };
@@ -1719,29 +1736,29 @@ $root.Msg = (function() {
         Message.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.requestId != null && message.hasOwnProperty("requestId"))
+            if (message.requestId != null && Object.hasOwnProperty.call(message, "requestId"))
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.requestId);
-            if (message.userId != null && message.hasOwnProperty("userId"))
+            if (message.userId != null && Object.hasOwnProperty.call(message, "userId"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.userId);
-            if (message.roomNo != null && message.hasOwnProperty("roomNo"))
+            if (message.roomNo != null && Object.hasOwnProperty.call(message, "roomNo"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.roomNo);
-            if (message.content != null && message.hasOwnProperty("content"))
+            if (message.content != null && Object.hasOwnProperty.call(message, "content"))
                 writer.uint32(/* id 4, wireType 2 =*/34).string(message.content);
-            if (message.cmd != null && message.hasOwnProperty("cmd"))
+            if (message.cmd != null && Object.hasOwnProperty.call(message, "cmd"))
                 writer.uint32(/* id 5, wireType 0 =*/40).int32(message.cmd);
-            if (message.joinRoomReq != null && message.hasOwnProperty("joinRoomReq"))
+            if (message.joinRoomReq != null && Object.hasOwnProperty.call(message, "joinRoomReq"))
                 $root.JoinRoom.JoinRoomRequest.encode(message.joinRoomReq, writer.uint32(/* id 101, wireType 2 =*/810).fork()).ldelim();
-            if (message.clearBoomReq != null && message.hasOwnProperty("clearBoomReq"))
+            if (message.clearBoomReq != null && Object.hasOwnProperty.call(message, "clearBoomReq"))
                 $root.ClearBoom.ClearBoomRequest.encode(message.clearBoomReq, writer.uint32(/* id 108, wireType 2 =*/866).fork()).ldelim();
-            if (message.releaseCardReq != null && message.hasOwnProperty("releaseCardReq"))
+            if (message.releaseCardReq != null && Object.hasOwnProperty.call(message, "releaseCardReq"))
                 $root.ReleaseCard.ReleaseCardRequest.encode(message.releaseCardReq, writer.uint32(/* id 109, wireType 2 =*/874).fork()).ldelim();
-            if (message.releaseCardResp != null && message.hasOwnProperty("releaseCardResp"))
+            if (message.releaseCardResp != null && Object.hasOwnProperty.call(message, "releaseCardResp"))
                 $root.ReleaseCard.ReleaseCardResponese.encode(message.releaseCardResp, writer.uint32(/* id 110, wireType 2 =*/882).fork()).ldelim();
-            if (message.roomInfoNtf != null && message.hasOwnProperty("roomInfoNtf"))
+            if (message.roomInfoNtf != null && Object.hasOwnProperty.call(message, "roomInfoNtf"))
                 $root.Common.RoomInfo.encode(message.roomInfoNtf, writer.uint32(/* id 201, wireType 2 =*/1610).fork()).ldelim();
-            if (message.gameRankingNtf != null && message.hasOwnProperty("gameRankingNtf"))
+            if (message.gameRankingNtf != null && Object.hasOwnProperty.call(message, "gameRankingNtf"))
                 $root.Common.GameRankingInfo.encode(message.gameRankingNtf, writer.uint32(/* id 202, wireType 2 =*/1618).fork()).ldelim();
-            if (message.err != null && message.hasOwnProperty("err"))
+            if (message.err != null && Object.hasOwnProperty.call(message, "err"))
                 $root.Common.Error.encode(message.err, writer.uint32(/* id 300, wireType 2 =*/2402).fork()).ldelim();
             return writer;
         };
@@ -1951,7 +1968,7 @@ $root.Msg = (function() {
         /**
          * CommandType enum.
          * @name Msg.Message.CommandType
-         * @enum {string}
+         * @enum {number}
          * @property {number} HEARTBEAT_REQ=0 HEARTBEAT_REQ value
          * @property {number} HEARTBEAT_RESP=1 HEARTBEAT_RESP value
          * @property {number} JOIN_ROOM_REQ=2 JOIN_ROOM_REQ value
@@ -2001,6 +2018,7 @@ $root.ReleaseCard = (function() {
          * @interface IReleaseCardRequest
          * @property {number|null} [cardId] ReleaseCardRequest cardId
          * @property {number|null} [targetId] ReleaseCardRequest targetId
+         * @property {number|null} [favorPush] ReleaseCardRequest favorPush
          */
 
         /**
@@ -2035,6 +2053,14 @@ $root.ReleaseCard = (function() {
         ReleaseCardRequest.prototype.targetId = 0;
 
         /**
+         * ReleaseCardRequest favorPush.
+         * @member {number} favorPush
+         * @memberof ReleaseCard.ReleaseCardRequest
+         * @instance
+         */
+        ReleaseCardRequest.prototype.favorPush = 0;
+
+        /**
          * Creates a new ReleaseCardRequest instance using the specified properties.
          * @function create
          * @memberof ReleaseCard.ReleaseCardRequest
@@ -2058,10 +2084,12 @@ $root.ReleaseCard = (function() {
         ReleaseCardRequest.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.cardId != null && message.hasOwnProperty("cardId"))
+            if (message.cardId != null && Object.hasOwnProperty.call(message, "cardId"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.cardId);
-            if (message.targetId != null && message.hasOwnProperty("targetId"))
+            if (message.targetId != null && Object.hasOwnProperty.call(message, "targetId"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.targetId);
+            if (message.favorPush != null && Object.hasOwnProperty.call(message, "favorPush"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.favorPush);
             return writer;
         };
 
@@ -2101,6 +2129,9 @@ $root.ReleaseCard = (function() {
                     break;
                 case 2:
                     message.targetId = reader.uint32();
+                    break;
+                case 3:
+                    message.favorPush = reader.uint32();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -2143,6 +2174,9 @@ $root.ReleaseCard = (function() {
             if (message.targetId != null && message.hasOwnProperty("targetId"))
                 if (!$util.isInteger(message.targetId))
                     return "targetId: integer expected";
+            if (message.favorPush != null && message.hasOwnProperty("favorPush"))
+                if (!$util.isInteger(message.favorPush))
+                    return "favorPush: integer expected";
             return null;
         };
 
@@ -2215,7 +2249,7 @@ $root.ReleaseCard = (function() {
         ReleaseCardResponese.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.predictIndex != null && message.hasOwnProperty("predictIndex"))
+            if (message.predictIndex != null && Object.hasOwnProperty.call(message, "predictIndex"))
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.predictIndex);
             if (message.xrayCards != null && message.xrayCards.length) {
                 writer.uint32(/* id 2, wireType 2 =*/18).fork();

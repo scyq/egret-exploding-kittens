@@ -8,7 +8,7 @@ declare namespace ClearBoom {
     interface IClearBoomRequest {
 
         /** ClearBoomRequest defuse */
-        defuse?: (boolean|null);
+        defuse?: (number|null);
 
         /** ClearBoomRequest returnPos */
         returnPos?: (number|null);
@@ -24,7 +24,7 @@ declare namespace ClearBoom {
         constructor(properties?: ClearBoom.IClearBoomRequest);
 
         /** ClearBoomRequest defuse. */
-        public defuse: boolean;
+        public defuse: number;
 
         /** ClearBoomRequest returnPos. */
         public returnPos: number;
@@ -90,7 +90,7 @@ declare namespace Common {
         uid?: (number|null);
 
         /** PlayerInfo isBot */
-        isBot?: (boolean|null);
+        isBot?: (number|null);
 
         /** PlayerInfo state */
         state?: (number|null);
@@ -106,6 +106,9 @@ declare namespace Common {
 
         /** PlayerInfo countDownTime */
         countDownTime?: (number|null);
+
+        /** PlayerInfo attackMark */
+        attackMark?: (number|null);
     }
 
     /** Represents a PlayerInfo. */
@@ -121,7 +124,7 @@ declare namespace Common {
         public uid: number;
 
         /** PlayerInfo isBot. */
-        public isBot: boolean;
+        public isBot: number;
 
         /** PlayerInfo state. */
         public state: number;
@@ -137,6 +140,9 @@ declare namespace Common {
 
         /** PlayerInfo countDownTime. */
         public countDownTime: number;
+
+        /** PlayerInfo attackMark. */
+        public attackMark: number;
 
         /**
          * Creates a new PlayerInfo instance using the specified properties.
@@ -198,7 +204,7 @@ declare namespace Common {
         state?: (number|null);
 
         /** RoomInfo clockwise */
-        clockwise?: (boolean|null);
+        clockwise?: (number|null);
 
         /** RoomInfo players */
         players?: (Common.IPlayerInfo[]|null);
@@ -223,7 +229,7 @@ declare namespace Common {
         public state: number;
 
         /** RoomInfo clockwise. */
-        public clockwise: boolean;
+        public clockwise: number;
 
         /** RoomInfo players. */
         public players: Common.IPlayerInfo[];
@@ -851,6 +857,9 @@ declare namespace ReleaseCard {
 
         /** ReleaseCardRequest targetId */
         targetId?: (number|null);
+
+        /** ReleaseCardRequest favorPush */
+        favorPush?: (number|null);
     }
 
     /** Represents a ReleaseCardRequest. */
@@ -867,6 +876,9 @@ declare namespace ReleaseCard {
 
         /** ReleaseCardRequest targetId. */
         public targetId: number;
+
+        /** ReleaseCardRequest favorPush. */
+        public favorPush: number;
 
         /**
          * Creates a new ReleaseCardRequest instance using the specified properties.
