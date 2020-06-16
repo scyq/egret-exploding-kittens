@@ -1,4 +1,5 @@
 type Long = protobuf.Long;
+// DO NOT EDIT! This is a generated file. Edit the JSDoc in src/*.js instead and run 'npm run types'.
 
 /** Namespace ClearBoom. */
 declare namespace ClearBoom {
@@ -440,7 +441,8 @@ declare namespace Common {
     enum ErrorType {
         ROOM_GAME_STARTED = 0,
         ROOM_PLAYER_IS_FULL = 1,
-        ADJUST_HANDS_FAIL = 2
+        ADJUST_HANDS_FAIL = 2,
+        RELEASE_CARD_FAIL = 3
     }
 
     /** Properties of an Error. */

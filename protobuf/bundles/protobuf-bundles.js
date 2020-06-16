@@ -997,12 +997,14 @@ $root.Common = (function() {
      * @property {number} ROOM_GAME_STARTED=0 ROOM_GAME_STARTED value
      * @property {number} ROOM_PLAYER_IS_FULL=1 ROOM_PLAYER_IS_FULL value
      * @property {number} ADJUST_HANDS_FAIL=2 ADJUST_HANDS_FAIL value
+     * @property {number} RELEASE_CARD_FAIL=3 RELEASE_CARD_FAIL value
      */
     Common.ErrorType = (function() {
         var valuesById = {}, values = Object.create(valuesById);
         values[valuesById[0] = "ROOM_GAME_STARTED"] = 0;
         values[valuesById[1] = "ROOM_PLAYER_IS_FULL"] = 1;
         values[valuesById[2] = "ADJUST_HANDS_FAIL"] = 2;
+        values[valuesById[3] = "RELEASE_CARD_FAIL"] = 3;
         return values;
     })();
 
@@ -1157,6 +1159,7 @@ $root.Common = (function() {
                 case 0:
                 case 1:
                 case 2:
+                case 3:
                     break;
                 }
             if (message.msg != null && message.hasOwnProperty("msg"))
