@@ -238,8 +238,6 @@ class GameMgr {
     private initGame() {
         egret.log('Init game');
 
-        NetMgr.inst.setUidAndRid(this.$uid, this.$rid);
-
         for (let i = 0; i < this.$players.length; i++) {
             if (this.$players[i].uid === this.$uid) {
                 User.inst.player = this.$players[i];
@@ -256,6 +254,7 @@ class GameMgr {
         egret.log(`rid: ${this.$rid}`);
 
         this.$state = GameState.READY;
+        NetMgr.inst.setUidAndRid(this.$uid, this.$rid);
         this.reqJoinRoom();
     }
 

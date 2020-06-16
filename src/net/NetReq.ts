@@ -1,12 +1,12 @@
 class NetReq {
     private $socket: egret.WebSocket
-    private $userid: number;
+    private $userId: number;
     private $roomNo: string;
 
     constructor() { }
 
     set userId(uid: number) {
-        this.$userid = uid;
+        this.$userId = uid;
     }
 
     set roomNo(rid: string) {
@@ -40,7 +40,7 @@ class NetReq {
     private getMsg(): Msg.IMessage {
         return {
             requestId: this.genRequestId(),
-            userId: this.userId,
+            userId: this.$userId,
             roomNo: this.$roomNo,
             content: 'VOID'
         };
@@ -58,6 +58,7 @@ class NetReq {
         msg.cmd = Msg.Message.CommandType.JOIN_ROOM_REQ;
         msg.content = "JOIN_ROOM_REQ";
         msg.joinRoomReq = data;
+        console.log(msg)
         this.request(msg);
     }
 

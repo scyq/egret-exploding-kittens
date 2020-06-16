@@ -40,6 +40,7 @@ class NetMgr {
     setUidAndRid(uid: number, rid: string): void {
         this.req.userId = uid;
         this.req.roomNo = rid;
+        // egret.log(`setUidAndRid(${uid}, ${rid})`);
     }
 
     connect(): void {
@@ -94,7 +95,6 @@ class NetMgr {
         const reader = new protobuf.Reader(data.bytes);
 
         const msg = Msg.Message.decode(reader);
-        console.log(msg);
         this.res.response(msg);
     }
 
