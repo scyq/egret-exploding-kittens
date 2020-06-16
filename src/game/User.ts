@@ -6,7 +6,7 @@ class User {
         }
         return User.$user;
     }
-    private constructor() {}
+    private constructor() { }
 
     player: Player;
     private $hands: Card[] = []; // 手牌
@@ -28,13 +28,14 @@ class User {
     }
 
     drawACard() {
-        NetMgr.inst.req.drawACard({});
+        NetMgr.inst.req.pickCard();
     }
 
-    playACard(cardIdx: number, target?: number[]) {
-        NetMgr.inst.req.playACard({
-            cardIdx,
-            target: target,
+    playACard(cardIdx: number, target?: number) {
+        const card = this.$hands[cardIdx];
+        NetMgr.inst.req.releaseCard({
+            cardId: card,
+            targetId: target,
         });
         this.prevCard = this.hands.splice(cardIdx, 1)[0];
 
@@ -44,10 +45,9 @@ class User {
     }
 
     attack(uid: number) {
-        NetMgr.inst.req.attack({
-            uid,
-            card: this.prevCard as number,
-            target: [uid],
+        NetMgr.inst.req.releaseCard({
+            cardId: this.prevCard as number,
+            targetId: uid,
         });
     }
 

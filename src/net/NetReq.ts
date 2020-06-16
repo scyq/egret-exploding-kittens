@@ -76,7 +76,7 @@ class NetReq {
         this.request(msg);
     }
 
-    releaseCard(data: JoinRoom.IJoinRoomRequest): void {
+    releaseCard(data: ReleaseCard.ReleaseCardRequest): void {
         const msg: Msg.IMessage = this.getMsg();
         msg.cmd = Msg.Message.CommandType.RELEASE_CARD_REQ;
         msg.content = "RELEASE_CARD_REQ";

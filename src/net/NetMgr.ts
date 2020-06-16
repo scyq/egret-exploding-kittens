@@ -14,9 +14,10 @@ class NetMgr {
     req: NetReq;
     res: NetRes;
 
-    // 心跳
+    // 心跳timer id
     private hbTimerId: number;
-    private hbTime = 10000;
+    // 心跳间隔时间ms
+    private hbTime = 1000;
 
     private constructor() {
         this.$socket = new egret.WebSocket();
@@ -66,7 +67,7 @@ class NetMgr {
             clearInterval(this.hbTimerId);
             this.hbTimerId
         }
-        this.hbTimerId = setImmediate(() => {
+        this.hbTimerId = setInterval(() => {
             this.req.heartBeat();
         }, this.hbTime)
     }
