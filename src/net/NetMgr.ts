@@ -26,6 +26,7 @@ class NetMgr {
 
         this.req = new NetReq();
         this.res = new NetRes();
+        this.res.initHandlers();
     }
 
     private initSocketListeners(): void {
@@ -93,6 +94,7 @@ class NetMgr {
         const reader = new protobuf.Reader(data.bytes);
 
         const msg = Msg.Message.decode(reader);
+        console.log(msg);
         this.res.response(msg);
     }
 

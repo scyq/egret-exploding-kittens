@@ -1,22 +1,21 @@
 class NetRes {
-    private readonly handlers: {
-        msgType: Msg.Message.CommandType;
-        func: (msg: Msg.IMessage) => void;
-    }[] = [
-        { msgType: Msg.Message.CommandType.HEARTBEAT_RESP, func: this.heartBeat },
-        { msgType: Msg.Message.CommandType.RELEASE_CARD_RESP, func: this.releaseCard },
-        { msgType: Msg.Message.CommandType.ROOM_INFO_NTF, func: this.roomInfo },
-        { msgType: Msg.Message.CommandType.GAME_RANK_NTF, func: this.gameRank },
-        { msgType: Msg.Message.CommandType.ERROR, func: this.error },
-    ];
+    private readonly handlers: any = {};
+
+    initHandlers(): void {
+        this.handlers[Msg.Message.CommandType.HEARTBEAT_RESP] = this.heartBeat;
+        this.handlers[Msg.Message.CommandType.RELEASE_CARD_RESP] = this.releaseCard;
+        this.handlers[Msg.Message.CommandType.ROOM_INFO_NTF] = this.roomInfo;
+        this.handlers[Msg.Message.CommandType.GAME_RANK_NTF] = this.gameRank;
+        this.handlers[Msg.Message.CommandType.ERROR] = this.error;
+    }
 
     response(msg: Msg.IMessage) {
         egret.log(`res: ${msg.content}`);
-        this.handlers[msg.cmd].func(msg);
+        this.handlers[msg.cmd as Msg.Message.CommandType](msg);
     }
 
     heartBeat(msg: Msg.IMessage) {
-        egret.log('HEARTBEAT_RESP')
+        egret.log('HEARTBEAT_RESP');
     }
 
     releaseCard(msg: Msg.IMessage) {
@@ -35,9 +34,9 @@ class NetRes {
     gameRank(msg: Msg.IMessage) {
         if (msg.gameRankingNtf) {
             egret.log(msg.gameRankingNtf);
+            GameMgr.inst.gameover(msg.gameRankingNtf.ranking);
         }
     }
-
 
     error(msg: Msg.IMessage) {
         if (msg.err) {
