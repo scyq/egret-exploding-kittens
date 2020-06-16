@@ -165,11 +165,20 @@ class GameMgr {
             tp = this.$players[i];
             rp = roomInfo.players[i];
             tp.state = rp.state;
-            tp.handsCnt = rp.handsInfo.cardIds.length;
+            if (rp.handsInfo && rp.handsInfo.cardIds) {
+                tp.handsCnt = rp.handsInfo.cardIds.length;
+            } else {
+                tp.handsCnt = 0;
+            }
             // TODO: attack marks
             tp.attackMark = 0;
-            if (tp.uid === User.inst.player.uid && tp.state === PlayerState.DEAD) {
-                NetMgr.inst.disconnect();
+            if (tp.uid === User.inst.player.uid) {
+                User.inst.hands = rp.handsInfo.cardIds;
+                this.$uiMain.setUserHands(User.inst.hands);
+                if (tp.state === PlayerState.DEAD) {
+                    NetMgr.inst.disconnect();
+                }
+
             }
         }
 
