@@ -6,51 +6,50 @@ option java_outer_classname = "Common";
 
 // 玩家
 message PlayerInfo {
-    uint32 uid = 1;
-    bool isBot = 2;
-    uint32 state = 3;
-    string name = 4; // 可选
-    string avatar = 5; // 可选
-    HandsInfo handsInfo = 6; // 手牌信息, JoinRoom 不需要 可选
-    uint32 countDownTime = 7; // 当前操作倒计时 ms 可选
+  uint32 uid = 1;
+  uint32 isBot = 2; // 1:bot, 2:player
+  uint32 state = 3;
+  string name = 4;          // 可选
+  string avatar = 5;        // 可选
+  HandsInfo handsInfo = 6;  // 手牌信息, JoinRoom 不需要 可选
+  uint32 countDownTime = 7; // 当前操作倒计时 ms 可选
+  uint32 attackMark = 8;    // 玩家身上的“甩锅”标记
 }
 
 // 房间
 message RoomInfo {
-    string no = 1; // 房间编号
-    uint32 state = 2; // 房间状态
-    bool clockwise = 3; // 出牌方向 true 右边， false: 左边
-    repeated PlayerInfo players = 4; // 玩家信息
-    DeckInfo deckInfo = 5; // 牌堆信息
+  string no = 1;                   // 房间编号
+  uint32 state = 2;                // 房间状态
+  uint32 clockwise = 3;            // 出牌方向 1:顺时针 2:逆时针
+  repeated PlayerInfo players = 4; // 玩家信息
+  DeckInfo deckInfo = 5;           // 牌堆信息
 }
 
 // 牌堆信息
 message DeckInfo {
-    uint32 leftCount = 1; // 剩余张数
-    uint32 leftBoomCount = 2; // 剩余炸弹数量
+  uint32 leftCount = 1;     // 剩余张数
+  uint32 leftBoomCount = 2; // 剩余炸弹数量
 }
 
 // 玩家手牌
 message HandsInfo {
-    repeated uint32 cardIds = 1; // 玩家手牌
-    uint32 mulliganCnt = 2; // 剩余手牌调度次数
-    uint64 mulliganExpireTime = 3; // 调度手牌过期时间 ms
+  repeated uint32 cardIds = 1;   // 玩家手牌
+  uint32 mulliganCnt = 2;        // 剩余手牌调度次数
+  uint64 mulliganExpireTime = 3; // 调度手牌过期时间 ms
 }
 
 enum ErrorType {
-    ROOM_GAME_STARTED = 0; // 房间游戏开启中
-    ROOM_PLAYER_IS_FULL = 1; // 房间人数已满
-    ADJUST_HANDS_FAIL = 2; // 调整手牌失败
-    RELEASE_CARD_FAIL = 3; // 出牌异常
+  ROOM_GAME_STARTED = 0;   // 房间游戏开启中
+  ROOM_PLAYER_IS_FULL = 1; // 房间人数已满
+  ADJUST_HANDS_FAIL = 2;   // 调整手牌失败
+  RELEASE_CARD_FAIL = 3;   // 出牌异常
 }
 
 message Error {
-    // 错误类型，待定
-    ErrorType type = 1;
-    // 错误描述
-    string msg = 2; // 可选
+  // 错误类型，待定
+  ErrorType type = 1;
+  // 错误描述
+  string msg = 2; // 可选
 }
 
-message GameRankingInfo {
-   repeated uint32 ranking = 1;
-}
+message GameRankingInfo { repeated uint32 ranking = 1; }

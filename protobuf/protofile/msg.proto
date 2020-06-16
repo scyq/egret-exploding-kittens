@@ -9,32 +9,32 @@ option java_package = "com.yess.gameprotocol.protobuf";
 option java_outer_classname = "MessageBase";
 
 message Message {
-    string requestId = 1;
-    uint32 userId = 2; // request 必填，response 不用
-    string roomNo = 3; // request 必填，response 不用
-    string content = 4; // 描述，选填
-    CommandType cmd = 5;
-    enum CommandType {
-        HEARTBEAT_REQ = 0; // 客户端心跳消息 5s
-        HEARTBEAT_RESP = 1; // 服务端心跳消息
-        JOIN_ROOM_REQ = 2; // 加入房间
-        ADJUST_CARD_REQ = 3; // 调整手牌，response用roomInfo
-        PICK_CARD_REQ = 4; // 摸牌
-        RELEASE_CARD_REQ = 5; // 出牌
-        RELEASE_CARD_RESP = 6; // 出牌，技能结果
-        ROOM_INFO_NTF = 7; // 房间信息更新通知
-        GAME_RANK_NTF = 8; // 游戏结果通知
-        ERROR = 9; // 异常错误时
-    }
+  string requestId = 1;
+  uint32 userId = 2;  // request 必填，response 不用
+  string roomNo = 3;  // request 必填，response 不用
+  string content = 4; // 描述，选填
+  CommandType cmd = 5;
+  enum CommandType {
+    HEARTBEAT_REQ = 0;     // 客户端心跳消息 5s
+    HEARTBEAT_RESP = 1;    // 服务端心跳消息
+    JOIN_ROOM_REQ = 2;     // 加入房间
+    ADJUST_CARD_REQ = 3;   // 调整手牌，response用roomInfo
+    PICK_CARD_REQ = 4;     // 摸牌
+    RELEASE_CARD_REQ = 5;  // 出牌
+    RELEASE_CARD_RESP = 6; // 出牌，技能结果
+    ROOM_INFO_NTF = 7;     // 房间信息更新通知
+    GAME_RANK_NTF = 8;     // 游戏结果通知
+    ERROR = 9;             // 异常错误时
+  }
 
-    // 子类作为父类的 optional 字段。从 100 开始记数
-    oneof extension {
-        JoinRoomRequest joinRoomReq = 101;
-        ClearBoomRequest clearBoomReq = 108;
-        ReleaseCardRequest releaseCardReq = 109;
-        ReleaseCardResponese releaseCardResp = 110;
-        RoomInfo roomInfoNtf = 201;
-        GameRankingInfo gameRankingNtf = 202; // 游戏名次uids
-        Error err = 300;
-    }
+  // 子类作为父类的 optional 字段。从 100 开始记数
+  oneof extension {
+    JoinRoomRequest joinRoomReq = 101;
+    ClearBoomRequest clearBoomReq = 108;
+    ReleaseCardRequest releaseCardReq = 109;
+    ReleaseCardResponese releaseCardResp = 110;
+    RoomInfo roomInfoNtf = 201;
+    GameRankingInfo gameRankingNtf = 202; // 游戏名次uids
+    Error err = 300;
+  }
 }

@@ -5,6 +5,6 @@ option java_package = "com.yess.gameprotocol.protobuf";
 option java_outer_classname = "ClearBoom";
 
 message ClearBoomRequest {
-    bool defuse = 1; // true: 拆除, false: 放弃拆除，直接死亡
-    uint32 returnPos = 2; // 放回牌堆位置
+  uint32 defuse = 1;    // 1: 拆除, 2: 放弃拆除，直接死亡
+  uint32 returnPos = 2; // 放回牌堆位置
 }
