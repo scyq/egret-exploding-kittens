@@ -41,6 +41,7 @@ enum ErrorType {
     ROOM_GAME_STARTED = 0; // 房间游戏开启中
     ROOM_PLAYER_IS_FULL = 1; // 房间人数已满
     ADJUST_HANDS_FAIL = 2; // 调整手牌失败
+    RELEASE_CARD_FAIL = 3; // 出牌异常
 }
 
 message Error {
