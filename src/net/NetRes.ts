@@ -21,13 +21,14 @@ class NetRes {
 
     releaseCard(msg: Msg.IMessage) {
         if (msg.releaseCardResp) {
-            console.log(msg.releaseCardResp);
+            egret.log(msg.releaseCardResp);
         }
     }
 
     roomInfo(msg: Msg.IMessage) {
         if (msg.roomInfoNtf) {
-            console.log(msg.roomInfoNtf);
+            egret.log(msg.roomInfoNtf);
+            GameMgr.inst.updateRoomInfo(msg.roomInfoNtf);
         }
     }
 

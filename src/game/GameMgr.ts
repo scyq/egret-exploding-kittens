@@ -155,6 +155,36 @@ class GameMgr {
         }
     }
 
+    updateRoomInfo(roomInfo: Common.IRoomInfo) {
+        this.$roomState = roomInfo.state;
+        this.clockwise = roomInfo.clockwise;
+        this.stackCnt = roomInfo.deckInfo ? roomInfo.deckInfo.leftCount : 0;
+        let tp: Player;
+        let rp: Common.IPlayerInfo;
+        for (let i = 0; i < this.$players.length; i++) {
+            tp = this.$players[i];
+            rp = roomInfo.players[i];
+            tp.state = rp.state;
+            tp.handsCnt = rp.handsInfo.cardIds.length;
+            // TODO: attack marks
+            tp.attackMark = 0;
+            if (tp.uid === User.inst.player.uid && tp.state === PlayerState.DEAD) {
+                NetMgr.inst.disconnect();
+            }
+        }
+
+        this.$uiMain.updateRoomInfo();
+        this.$uiMain.showHandsCnt();
+        this.$uiMain.showStackCnt();
+
+        this.$uiMain.userAction(User.inst.player.state === PlayerState.ACTION);
+        this.$uiMain.userAttack(User.inst.player.state === PlayerState.ATTACK);
+        this.$uiMain.userPredict(
+            User.inst.player.state === PlayerState.PREDICT
+        );
+        this.$uiMain.userXray(User.inst.player.state === PlayerState.XRAY);
+    }
+
     setComRoomInfo(roomInfo: Proto.IComRoomInfo) {
         this.$roomState = roomInfo.state;
         this.clockwise = roomInfo.clockwise;
