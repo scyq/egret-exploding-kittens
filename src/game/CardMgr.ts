@@ -1,17 +1,17 @@
 enum Card {
-    BOOM = 0, // 炸弹 x 5
-    DEFUSE = 1, // 拆除 x 7
-    SHUFFLE = 2, // 洗牌 x 6
-    DRAWBACK = 3, // 抽底 x 6
-    ATTACK = 4, // 甩锅 x 4
-    ATTACK2 = 5, // 甩锅2 x 2
-    PREDICT = 6, // 预言 x 6
-    XRAY = 7, // 透视 x 6
-    REVERSE = 8, // 转向 x 6
-    SKIP = 9, // 跳过 x 6
-    FAVOR = 10, // 索要 x 5
-    SWAP = 11, // 交换 x 5
-    DECK = 12, // 卡背
+    BOOM = 1, // 炸弹 x 5
+    DEFUSE = 2, // 拆除 x 7
+    SHUFFLE = 3, // 洗牌 x 6
+    DRAWBACK = 4, // 抽底 x 6
+    ATTACK = 5, // 甩锅 x 4
+    ATTACK2 = 6, // 甩锅2 x 2
+    PREDICT = 7, // 预言 x 6
+    XRAY = 8, // 透视 x 6
+    REVERSE = 9, // 转向 x 6
+    SKIP = 10, // 跳过 x 6
+    FAVOR = 11, // 索要 x 5
+    SWAP = 12, // 交换 x 5
+    DECK = 13, // 卡背
 }
 
 class CardMgr {

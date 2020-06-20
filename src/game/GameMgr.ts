@@ -1,16 +1,16 @@
 enum GameState {
-    INIT = 0,
-    READY = 1,
+    INIT = 1,
+    READY = 2,
 }
 
 // 和服务器一致
 enum RoomState {
-    SETUP = 0, // 等待玩家加入，全部玩家READY后发牌
-    DEAL = 1, // shuffle，发牌/换手牌，全部结束后游戏开始
-    PLAY = 2, // 游戏阶段
-    RESULT = 3, // 结算
-    OVER = 4, // 结束
-    DONE = 5, // 结束所有操作
+    SETUP = 1, // 等待玩家加入，全部玩家READY后发牌
+    DEAL = 2, // shuffle，发牌/换手牌，全部结束后游戏开始
+    PLAY = 3, // 游戏阶段
+    RESULT = 4, // 结算
+    OVER = 5, // 结束
+    DONE = 6, // 结束所有操作
 }
 
 class GameMgr {
