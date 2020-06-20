@@ -1,3 +1,8 @@
+enum ReleaseMethod {
+    FAVOR = 1,// 因为索要给出
+    NORMAL = 2,// 正常出牌
+}
+
 class User {
     private static $user: User;
     static get inst() {
@@ -36,6 +41,7 @@ class User {
         NetMgr.inst.req.releaseCard({
             cardId: card,
             targetId: target,
+            favorPush: ReleaseMethod.NORMAL,
         });
         this.prevCard = this.hands.splice(cardIdx, 1)[0];
 
@@ -48,6 +54,7 @@ class User {
         NetMgr.inst.req.releaseCard({
             cardId: this.prevCard as number,
             targetId: uid,
+            favorPush: ReleaseMethod.NORMAL,
         });
     }
 

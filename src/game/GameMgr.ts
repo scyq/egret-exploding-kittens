@@ -157,7 +157,7 @@ class GameMgr {
 
     updateRoomInfo(roomInfo: Common.IRoomInfo) {
         this.$roomState = roomInfo.state;
-        this.clockwise = roomInfo.clockwise;
+        this.clockwise = roomInfo.clockwise === 1;
         this.stackCnt = roomInfo.deckInfo ? roomInfo.deckInfo.leftCount : 0;
         let tp: Player;
         let rp: Common.IPlayerInfo;
@@ -281,7 +281,7 @@ class GameMgr {
         for (const p of this.$matchInfo.players) {
             players.push({
                 uid: p.uid,
-                isBot: p.type == 0,
+                isBot: p.type,
                 name: p.nickname,
                 state: 0,
                 avatar: p.avatar,
