@@ -1,6 +1,6 @@
 enum ReleaseMethod {
-    FAVOR = 1,// 因为索要给出
-    NORMAL = 2,// 正常出牌
+    FAVOR = 1, // 因为索要给出
+    NORMAL = 2, // 正常出牌
 }
 
 class User {
@@ -11,7 +11,7 @@ class User {
         }
         return User.$user;
     }
-    private constructor() { }
+    private constructor() {}
 
     player: Player;
     private $hands: Card[] = []; // 手牌

@@ -394,13 +394,13 @@ class UIMain extends eui.Component implements eui.UIComponent {
                 this.deckTween = egret.Tween.get(this.deck);
                 this.deckTween
                     .to(
-                    {
-                        x: x,
-                        y: y,
-                        scaleX: this.cardSmScale,
-                        scaleY: this.cardSmScale,
-                    },
-                    1000
+                        {
+                            x: x,
+                            y: y,
+                            scaleX: this.cardSmScale,
+                            scaleY: this.cardSmScale,
+                        },
+                        1000
                     )
                     .to({ visible: false }, 0);
                 break;
@@ -432,13 +432,13 @@ class UIMain extends eui.Component implements eui.UIComponent {
                 this.deckTween = egret.Tween.get(this.deck);
                 this.deckTween
                     .to(
-                    {
-                        x: this.playArea.x,
-                        y: this.playArea.y,
-                        scaleX: this.playArea.scaleX,
-                        scaleY: this.playArea.scaleY,
-                    },
-                    1000
+                        {
+                            x: this.playArea.x,
+                            y: this.playArea.y,
+                            scaleX: this.playArea.scaleX,
+                            scaleY: this.playArea.scaleY,
+                        },
+                        1000
                     )
                     .to({ visible: false }, 0)
                     .call(() => {
@@ -481,11 +481,11 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.deckTween = egret.Tween.get(this.deck);
         this.deckTween
             .to(
-            {
-                x: x,
-                y: y,
-            },
-            1000
+                {
+                    x: x,
+                    y: y,
+                },
+                1000
             )
             .to({ visible: false }, 0)
             .call(() => {
@@ -524,11 +524,11 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.deckTween = egret.Tween.get(this.deck);
         this.deckTween
             .to(
-            {
-                x: x,
-                y: y,
-            },
-            1000
+                {
+                    x: x,
+                    y: y,
+                },
+                1000
             )
             .to({ visible: false }, 0)
             .call(() => {
@@ -560,8 +560,8 @@ class UIMain extends eui.Component implements eui.UIComponent {
         this.setUserHands(User.inst.hands);
         this.userAction(
             User.inst.player.state === PlayerState.ACTION ||
-            User.inst.player.state === PlayerState.PREDICT ||
-            User.inst.player.state === PlayerState.XRAY
+                User.inst.player.state === PlayerState.PREDICT ||
+                User.inst.player.state === PlayerState.XRAY
         );
     }
 

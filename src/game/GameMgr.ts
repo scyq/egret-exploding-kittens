@@ -24,7 +24,7 @@ class GameMgr {
         }
         return GameMgr.$mgr;
     }
-    private constructor() { }
+    private constructor() {}
 
     private $players: Player[] = [];
     private readonly $user: User = User.inst;
@@ -128,7 +128,6 @@ class GameMgr {
     setMatchInfo(info: Native.IMatchInfo) {
         egret.log(`GameState: ${this.$state}`);
 
-
         if (this.$state === GameState.INIT) {
             this.$matchInfo = info;
             for (let i = 0; i < this.$matchInfo.players.length; ++i) {
@@ -145,13 +144,6 @@ class GameMgr {
         if (this.$state === GameState.INIT) {
             this.$cookie = strCookie;
             this.tryInitGame();
-        }
-    }
-
-    setUserHands(dealHands: Proto.IResDealHands) {
-        if (dealHands.uid === this.uid) {
-            User.inst.hands = dealHands.hands;
-            this.$uiMain.setUserHands(User.inst.hands);
         }
     }
 
@@ -172,44 +164,15 @@ class GameMgr {
             }
             // TODO: attack marks
             tp.attackMark = 0;
-            if (tp.uid === User.inst.player.uid) {
+            if (tp.uid === User.inst.player.uid && rp.handsInfo) {
                 User.inst.hands = rp.handsInfo.cardIds;
                 this.$uiMain.setUserHands(User.inst.hands);
                 if (tp.state === PlayerState.DEAD) {
                     NetMgr.inst.disconnect();
                 }
-
             }
         }
 
-        this.$uiMain.updateRoomInfo();
-        this.$uiMain.showHandsCnt();
-        this.$uiMain.showStackCnt();
-
-        this.$uiMain.userAction(User.inst.player.state === PlayerState.ACTION);
-        this.$uiMain.userAttack(User.inst.player.state === PlayerState.ATTACK);
-        this.$uiMain.userPredict(
-            User.inst.player.state === PlayerState.PREDICT
-        );
-        this.$uiMain.userXray(User.inst.player.state === PlayerState.XRAY);
-    }
-
-    setComRoomInfo(roomInfo: Proto.IComRoomInfo) {
-        this.$roomState = roomInfo.state;
-        this.clockwise = roomInfo.clockwise;
-        this.stackCnt = roomInfo.stackCnt;
-        let tp: Player;
-        let rp: Proto.IComRoomPlayer;
-        for (let i = 0; i < this.$players.length; i++) {
-            tp = this.$players[i];
-            rp = roomInfo.players[i];
-            tp.state = rp.state;
-            tp.handsCnt = rp.handsCnt;
-            tp.attackMark = rp.attackMark;
-            if (tp.uid === User.inst.player.uid && tp.state === PlayerState.DEAD) {
-                NetMgr.inst.disconnect();
-            }
-        }
         this.$uiMain.updateRoomInfo();
         this.$uiMain.showHandsCnt();
         this.$uiMain.showStackCnt();
@@ -267,13 +230,13 @@ class GameMgr {
         this.reqJoinRoom();
     }
 
-    handleError(err: Proto.IResError) {
+    handleError(err: Common.IError) {
         if (err.msg) {
             this.showToast(err.msg);
         }
-        if (err.exit) {
-            this.exitGame();
-        }
+        // if (err.exit) {
+        //     this.exitGame();
+        // }
     }
 
     private reqJoinRoom() {
@@ -298,11 +261,9 @@ class GameMgr {
         NetMgr.inst.req.joinRoom(joinRoomData);
     }
 
-    toDie() {
-    }
+    toDie() {}
 
-    toWin() {
-    }
+    toWin() {}
 
     startGame() {
         egret.log('game start');

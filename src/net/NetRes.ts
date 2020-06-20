@@ -3,7 +3,9 @@ class NetRes {
 
     initHandlers(): void {
         this.handlers[Msg.Message.CommandType.HEARTBEAT_RESP] = this.heartBeat;
-        this.handlers[Msg.Message.CommandType.RELEASE_CARD_RESP] = this.releaseCard;
+        this.handlers[
+            Msg.Message.CommandType.RELEASE_CARD_RESP
+        ] = this.releaseCard;
         this.handlers[Msg.Message.CommandType.ROOM_INFO_NTF] = this.roomInfo;
         this.handlers[Msg.Message.CommandType.GAME_RANK_NTF] = this.gameRank;
         this.handlers[Msg.Message.CommandType.ERROR] = this.error;
@@ -41,6 +43,7 @@ class NetRes {
     error(msg: Msg.IMessage) {
         if (msg.err) {
             egret.log(msg.err);
+            GameMgr.inst.handleError(msg.err);
         }
     }
 }

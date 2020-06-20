@@ -1,9 +1,9 @@
 class NetReq {
-    private $socket: egret.WebSocket
+    private $socket: egret.WebSocket;
     private $userId: number;
     private $roomNo: string;
 
-    constructor() { }
+    constructor() {}
 
     set userId(uid: number) {
         this.$userId = uid;
@@ -23,10 +23,10 @@ class NetReq {
         let sendByte: Uint8Array = Msg.Message.encode(sendData).finish();
         let dataBytes = new egret.ByteArray(sendByte);
 
-        let buf = new egret.ByteArray()
+        let buf = new egret.ByteArray();
         buf.writeByte(1);
         buf.writeShort(dataBytes.length + 4);
-        buf.writeInt(3)
+        buf.writeInt(3);
         buf.writeBytes(dataBytes);
 
         this.$socket.writeBytes(buf);
@@ -42,45 +42,44 @@ class NetReq {
             requestId: this.genRequestId(),
             userId: this.$userId,
             roomNo: this.$roomNo,
-            content: 'VOID'
+            content: 'VOID',
         };
     }
 
     heartBeat(): void {
         const msg: Msg.IMessage = this.getMsg();
         msg.cmd = Msg.Message.CommandType.HEARTBEAT_REQ;
-        msg.content = "HEARTBEAT_REQ";
+        msg.content = 'HEARTBEAT_REQ';
         this.request(msg);
     }
 
     joinRoom(data: JoinRoom.IJoinRoomRequest): void {
         const msg: Msg.IMessage = this.getMsg();
         msg.cmd = Msg.Message.CommandType.JOIN_ROOM_REQ;
-        msg.content = "JOIN_ROOM_REQ";
+        msg.content = 'JOIN_ROOM_REQ';
         msg.joinRoomReq = data;
-        console.log(msg)
+        console.log(msg);
         this.request(msg);
     }
 
     adjustCard(): void {
         const msg: Msg.IMessage = this.getMsg();
         msg.cmd = Msg.Message.CommandType.ADJUST_CARD_REQ;
-        msg.content = "ADJUST_CARD_REQ";
+        msg.content = 'ADJUST_CARD_REQ';
         this.request(msg);
     }
-
 
     pickCard(): void {
         const msg: Msg.IMessage = this.getMsg();
         msg.cmd = Msg.Message.CommandType.PICK_CARD_REQ;
-        msg.content = "PICK_CARD_REQ";
+        msg.content = 'PICK_CARD_REQ';
         this.request(msg);
     }
 
     releaseCard(data: ReleaseCard.ReleaseCardRequest): void {
         const msg: Msg.IMessage = this.getMsg();
         msg.cmd = Msg.Message.CommandType.RELEASE_CARD_REQ;
-        msg.content = "RELEASE_CARD_REQ";
+        msg.content = 'RELEASE_CARD_REQ';
         msg.releaseCardReq = data;
         this.request(msg);
     }
