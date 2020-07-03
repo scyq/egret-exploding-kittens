@@ -12,7 +12,7 @@ class NetRes {
     }
 
     response(msg: Msg.IMessage) {
-        egret.log(`res: ${msg.cmd}`);
+        egret.log(`res: ${msg.content}`);
         this.handlers[msg.cmd as Msg.Message.CommandType](msg);
     }
 
@@ -21,12 +21,14 @@ class NetRes {
     }
 
     releaseCard(msg: Msg.IMessage) {
+        egret.log('res: RELEASE_CARD_RESP');
         if (msg.releaseCardResp) {
             egret.log(msg.releaseCardResp);
         }
     }
 
     roomInfo(msg: Msg.IMessage) {
+        egret.log('res: ROOM_INFO_NTF');
         if (msg.roomInfoNtf) {
             egret.log(msg.roomInfoNtf);
             GameMgr.inst.updateRoomInfo(msg.roomInfoNtf);
@@ -34,6 +36,7 @@ class NetRes {
     }
 
     gameRank(msg: Msg.IMessage) {
+        egret.log('res: GAME_RANK_NTF');
         if (msg.gameRankingNtf) {
             egret.log(msg.gameRankingNtf);
             GameMgr.inst.gameover(msg.gameRankingNtf.ranking);
@@ -41,6 +44,7 @@ class NetRes {
     }
 
     error(msg: Msg.IMessage) {
+        egret.log('res: ERROR');
         if (msg.err) {
             egret.log(msg.err);
             GameMgr.inst.handleError(msg.err);
