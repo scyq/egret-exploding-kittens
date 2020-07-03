@@ -12,12 +12,12 @@ class NetRes {
     }
 
     response(msg: Msg.IMessage) {
-        egret.log(`res: ${msg.content}`);
+        egret.log(`res: ${msg.cmd}`);
         this.handlers[msg.cmd as Msg.Message.CommandType](msg);
     }
 
     heartBeat(msg: Msg.IMessage) {
-        egret.log('HEARTBEAT_RESP');
+        egret.log('res: HEARTBEAT_RESP');
     }
 
     releaseCard(msg: Msg.IMessage) {
