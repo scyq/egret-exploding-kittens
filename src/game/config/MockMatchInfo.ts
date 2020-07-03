@@ -8,10 +8,16 @@ namespace TestMode {
      * -10 => 游戏结算异常
      * 100 => 游戏结束
      */
+
+    function getRamdonMatchId(isRandom = true) {
+        const matchid = isRandom ? Math.random().toString().substr(2, 16) : '1234567890123456';
+        egret.log(`matchid: ${matchid}`);
+        return matchid;
+    }
+
     export const MockMatchInfo: Native.IMatchInfo = {
-        // uid: 101,
         status: 1, // status = 1 参考以上结果
-        matchid: '21234123412341234', // 用后续matchId 去进行游戏结算
+        matchid: getRamdonMatchId(Config.RamdonMatchId), // 用后续matchId 去进行游戏结算
         players: [
             {
                 uid: 101,

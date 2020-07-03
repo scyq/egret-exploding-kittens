@@ -15,6 +15,7 @@ namespace Config {
     }
 
     export const GameId: number = 1;
+    export const RamdonMatchId: boolean = true;
     export const Gm: boolean = false;
 
     // net
