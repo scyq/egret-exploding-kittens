@@ -7,15 +7,12 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
     dead: eui.Rect;
     avatarBg0: eui.Rect;
     attack: eui.Image;
-    favor: eui.Image;
     boom: eui.Image;
     bang: eui.Image;
 
     uiMain: UIMain;
 
     btnAttack: eui.Button;
-    btnFavor: eui.Button;
-    btnSwap: eui.Button;
 
     constructor() {
         super();
@@ -42,18 +39,6 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
             this.onBtnAttackClick,
             this
         );
-
-        this.btnFavor.addEventListener(
-            egret.TouchEvent.TOUCH_TAP,
-            this.onBtnFavorClick,
-            this
-        );
-
-        this.btnSwap.addEventListener(
-            egret.TouchEvent.TOUCH_TAP,
-            this.onBtnSwapClick,
-            this
-        );
     }
 
     setPlayer(player: Player, isUser: boolean = false): void {
@@ -77,35 +62,30 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
 
     updateState(): void {
         // console.log(`${this.player.nickname} ${this.player.state}`)
-        this.bang.visible = false;
-        this.attack.visible = false;
-        this.boom.visible = false;
-        this.favor.visible = false;
         if (this.player.state === PlayerState.DEFUSE) {
             this.boom.visible = true;
+            this.bang.visible = false;
+            this.attack.visible = false;
         } else if (this.player.state === PlayerState.DEAD) {
             this.dead.visible = true;
-            this.bang.visible = true;
             this.avatarBg0.strokeColor = 0xcccccc;
+            this.attack.visible = false;
+            this.boom.visible = false;
+            this.bang.visible = true;
             this.handsBg.visible = false;
             this.handsCnt.visible = false;
-        } else if (this.player.state === PlayerState.FAVOR_2) {
-            this.favor.visible = true;
         } else if (this.player.attackMark > 0) {
+            this.boom.visible = false;
             this.attack.visible = true;
+        } else {
+            this.bang.visible = false;
+            this.attack.visible = false;
+            this.boom.visible = false;
         }
     }
 
     showBtnAttack(show: boolean): void {
         this.btnAttack.visible = show;
-    }
-
-    showBtnFavor(show: boolean): void {
-        this.btnFavor.visible = show;
-    }
-
-    showBtnSwap(show: boolean): void {
-        this.btnSwap.visible = show;
     }
 
     setAvatar(avatar: string): void {
@@ -124,20 +104,6 @@ class UIPlayer extends eui.Component implements eui.UIComponent {
         User.inst.attack(this.player.uid);
         if (this.uiMain) {
             this.uiMain.userAttack(false);
-        }
-    }
-
-    onBtnFavorClick(): void {
-        User.inst.favor(this.player.uid);
-        if (this.uiMain) {
-            this.uiMain.userFavor(false);
-        }
-    }
-
-    onBtnSwapClick(): void {
-        User.inst.swap(this.player.uid);
-        if (this.uiMain) {
-            this.uiMain.userSwap(false);
         }
     }
 }

@@ -1,3 +1,8 @@
+enum ReleaseMethod {
+    FAVOR = 1, // 因为索要给出
+    NORMAL = 2, // 正常出牌
+}
+
 class User {
     private static $user: User;
     static get inst() {
@@ -6,7 +11,7 @@ class User {
         }
         return User.$user;
     }
-    private constructor() { }
+    private constructor() {}
 
     player: Player;
     private $hands: Card[] = []; // 手牌
@@ -28,13 +33,15 @@ class User {
     }
 
     drawACard() {
-        NetMgr.inst.req.drawACard({});
+        NetMgr.inst.req.pickCard();
     }
 
-    playACard(cardIdx: number, target?: number[]) {
-        NetMgr.inst.req.playACard({
-            cardIdx,
-            target: target,
+    playACard(cardIdx: number, target?: number) {
+        const card = this.$hands[cardIdx];
+        NetMgr.inst.req.releaseCard({
+            cardId: card,
+            targetId: target,
+            favorPush: ReleaseMethod.NORMAL,
         });
         this.prevCard = this.hands.splice(cardIdx, 1)[0];
 
@@ -43,50 +50,12 @@ class User {
         );
     }
 
-    giveACard(cardIdx: number, target?: number[]) {
-        const uid = GameMgr.inst.findFavor1().uid;
-        NetMgr.inst.req.giveACard({
-            cardIdx,
-            target: [uid],
-        });
-
-        // TODO: Animation here
-        setTimeout(() => {
-            GameDispatcher.inst.dispatchEvent(
-                new egret.Event(EventName.HANDS_REFRESH, false, false)
-            );
-        }, 300);
-    }
-
     attack(uid: number) {
-        NetMgr.inst.req.attack({
-            uid,
-            card: this.prevCard as number,
-            target: [uid],
+        NetMgr.inst.req.releaseCard({
+            cardId: this.prevCard as number,
+            targetId: uid,
+            favorPush: ReleaseMethod.NORMAL,
         });
-    }
-
-    favor(uid: number) {
-        NetMgr.inst.req.favor({
-            uid,
-            card: this.prevCard as number,
-            target: [uid],
-        })
-    }
-
-    swap(uid: number) {
-        NetMgr.inst.req.swap({
-            uid,
-            card: this.prevCard as number,
-            target: [uid],
-        })
-
-        // TODO: Animation here
-        setTimeout(() => {
-            GameDispatcher.inst.dispatchEvent(
-                new egret.Event(EventName.HANDS_REFRESH, false, false)
-            );
-        }, 300);
     }
 
     getDefuseCard(): number {

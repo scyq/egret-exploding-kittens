@@ -1,0 +1,17 @@
+syntax = "proto3";
+package JoinRoom;
+
+import "common.proto";
+option java_package = "com.yess.gameprotocol.protobuf";
+option java_outer_classname = "JoinRoom";
+
+// 通过 RoomInfo 返回客户端
+message JoinRoomRequest {
+  // h5 前端用户 cookie 信息，与游戏逻辑无关，战报结果使用
+  string cookie = 1;
+  // 武道会id，，与游戏逻辑无关，战报结果使用
+  uint32 wdh = 2;
+  // 进入房间的用户信息列表
+  repeated PlayerInfo players = 3;
+  uint32 gameId = 4;
+}

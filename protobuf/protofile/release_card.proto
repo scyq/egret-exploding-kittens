@@ -1,0 +1,17 @@
+syntax = "proto3";
+package ReleaseCard;
+
+option java_package = "com.yess.gameprotocol.protobuf";
+option java_outer_classname = "ReleaseCard";
+
+// 备注：拆子不能出，双端校验
+message ReleaseCardRequest {
+  uint32 cardId = 1;
+  uint32 targetId = 2; // 卡牌技能影响目标玩家 id 可选
+  uint32 favorPush = 3; // 被索要时给出卡牌 1:因为索要给出, 2:正常出牌
+}
+
+message ReleaseCardResponese {
+  uint32 predictIndex = 1; // 预言：下一张炸弹位置 可选
+  repeated uint32 xrayCards = 2; // 透视：下三张牌（最多三张，最少零张）
+}

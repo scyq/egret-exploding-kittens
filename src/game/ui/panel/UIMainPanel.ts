@@ -16,19 +16,6 @@ class UIMainPanel extends UIBasePanel {
         GameMgr.inst.uiMain = uiMain;
     }
 
-    private sendMessage(msg: string): void {
-        this.trace(`send message: ${msg}`);
-        NetMgr.inst.req.text(msg);
-    }
-
-    private receiveMessage(evt: egret.Event): void {
-        this.trace(`recieve message: ${evt.data.msg}`);
-    }
-
-    private trace(msg: string): void {
-        this.textField.text += '\n' + msg;
-    }
-
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
      * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.

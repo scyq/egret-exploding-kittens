@@ -1,95 +1,53 @@
 class NetRes {
-    public readonly handles: {
-        msg: string;
-        func: (res: Proto.Res) => void;
-    }[] = [
-        { msg: 'text', func: this.text },
-        { msg: 'err', func: this.err },
-        { msg: 'dealHands', func: this.dealHands },
-        { msg: 'startGame', func: this.startGame },
-        { msg: 'overGame', func: this.overGame },
-        { msg: 'roomInfo', func: this.roomInfo },
-        { msg: 'drawCard', func: this.drawCard },
-        { msg: 'playCard', func: this.playCard },
-        { msg: 'predict', func: this.predict },
-        { msg: 'xray', func: this.xray },
-    ];
+    private readonly handlers: any = {};
 
-    public text(res: Proto.Res): void {
-        if (res === undefined || res.text === undefined) {
-            return;
-        }
-        egret.log(res.text);
-        // GameDispatcher.inst.dispatchEvent(
-        //     new egret.Event(EventName.TEST, false, false, { msg: res.text })
-        // );
+    initHandlers(): void {
+        this.handlers[Msg.Message.CommandType.HEARTBEAT_RESP] = this.heartBeat;
+        this.handlers[
+            Msg.Message.CommandType.RELEASE_CARD_RESP
+        ] = this.releaseCard;
+        this.handlers[Msg.Message.CommandType.ROOM_INFO_NTF] = this.roomInfo;
+        this.handlers[Msg.Message.CommandType.GAME_RANK_NTF] = this.gameRank;
+        this.handlers[Msg.Message.CommandType.ERROR] = this.error;
     }
 
-    public err(res: Proto.Res): void {
-        if (res === undefined || res.err === undefined) {
-            return;
-        }
-        GameMgr.inst.handleError(res.err);
+    response(msg: Msg.IMessage) {
+        egret.log(`res: ${msg.content}`);
+        this.handlers[msg.cmd as Msg.Message.CommandType](msg);
     }
 
-    public dealHands(res: Proto.Res): void {
-        if (res === undefined || res.dealHands === undefined) {
-            return;
-        }
-        GameMgr.inst.setUserHands(res.dealHands);
+    heartBeat(msg: Msg.IMessage) {
+        egret.log('res: HEARTBEAT_RESP');
     }
 
-    public roomInfo(res: Proto.Res): void {
-        if (res === undefined || res.roomInfo === undefined) {
-            return;
+    releaseCard(msg: Msg.IMessage) {
+        egret.log('res: RELEASE_CARD_RESP');
+        if (msg.releaseCardResp) {
+            egret.log(msg.releaseCardResp);
         }
-        GameMgr.inst.setComRoomInfo(res.roomInfo);
     }
 
-    public startGame(res: Proto.Res): void {
-        if (res === undefined || res.startGame === undefined) {
-            return;
+    roomInfo(msg: Msg.IMessage) {
+        egret.log('res: ROOM_INFO_NTF');
+        if (msg.roomInfoNtf) {
+            egret.log(msg.roomInfoNtf);
+            GameMgr.inst.updateRoomInfo(msg.roomInfoNtf);
         }
-        GameMgr.inst.startGame();
     }
 
-    public overGame(res: Proto.Res): void {
-        if (res === undefined || res.overGame === undefined) {
-            return;
+    gameRank(msg: Msg.IMessage) {
+        egret.log('res: GAME_RANK_NTF');
+        if (msg.gameRankingNtf) {
+            egret.log(msg.gameRankingNtf);
+            GameMgr.inst.gameover(msg.gameRankingNtf.ranking);
         }
-        GameMgr.inst.gameover(res.overGame);
-        // TODO: check others
     }
 
-    public drawCard(res: Proto.Res): void {
-        if (res === undefined || res.drawCard === undefined) {
-            return;
+    error(msg: Msg.IMessage) {
+        egret.log('res: ERROR');
+        if (msg.err) {
+            egret.log(msg.err);
+            GameMgr.inst.handleError(msg.err);
         }
-        GameMgr.inst.drawCard(res.drawCard.uid, res.drawCard.card);
-    }
-
-    public playCard(res: Proto.Res): void {
-        if (res === undefined || res.playCard === undefined) {
-            return;
-        }
-        GameMgr.inst.playCard(res.playCard.uid, res.playCard.card);
-    }
-
-    public predict(res: Proto.Res): void {
-        if (res === undefined || res.predict === undefined) {
-            return;
-        }
-        User.inst.boomSeq = res.predict.target[0];
-    }
-
-    public xray(res: Proto.Res): void {
-        if (res === undefined || res.xray === undefined) {
-            return;
-        }
-        const card3: Card[] = [];
-        for (let i = 0; i < res.xray.length; i++) {
-            card3.push(res.xray[i].card as Card);
-        }
-        User.inst.card3 = card3;
     }
 }

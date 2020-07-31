@@ -28,6 +28,9 @@ class UICardItem extends eui.ItemRenderer {
     }
 
     private changeCard(): void {
+        if (this.data === undefined) {
+            return;
+        }
         this.card.source = RES.getRes(this.data.img);
 
         if (this.selected && this.scaleX < this.scaleSelected) {

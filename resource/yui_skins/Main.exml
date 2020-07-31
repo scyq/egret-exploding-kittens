@@ -40,7 +40,6 @@
 		<e:HorizontalLayout horizontalAlign="center" verticalAlign="bottom" gap="-50"/>
 		</e:layout>
 	</e:List>
-	<e:Button id="btnGiveCard" label="给出" x="342" y="664" anchorOffsetX="0" width="128" anchorOffsetY="0" height="56" enabled="true" skinName="yui.BtnGreen" visible="false"/>
 	<e:Image id="favorHand" source="Hand_png" anchorOffsetX="0" width="302" anchorOffsetY="0" height="509" top="0" horizontalCenter="0" visible="false"/>
 	<e:Group id="gm" width="200" height="200" right="0" bottom="226" visible="false">
 		<e:Button id="testToast" label="Toast" x="0" y="50" scaleX="1" scaleY="1"/>

@@ -1,80 +1,86 @@
 class NetReq {
-    private $socket: SocketIOClient.Socket;
+    private $socket: egret.WebSocket;
+    private $userId: number;
+    private $roomNo: string;
 
-    public constructor() { }
+    constructor() {}
 
-    public set socket(socket: SocketIOClient.Socket) {
+    set userId(uid: number) {
+        this.$userId = uid;
+    }
+
+    set roomNo(rid: string) {
+        this.$roomNo = rid;
+    }
+
+    set socket(socket: egret.WebSocket) {
         this.$socket = socket;
     }
 
-    private getReq() {
-        const req: Proto.Req = {
-            gameid: GameMgr.inst.gameid,
-            uid: GameMgr.inst.uid,
-            rid: GameMgr.inst.rid,
+    private request(msg: Msg.IMessage): void {
+        egret.log(`req: ${msg.content}`);
+        let sendData = new Msg.Message(msg);
+        let sendByte: Uint8Array = Msg.Message.encode(sendData).finish();
+        let dataBytes = new egret.ByteArray(sendByte);
+
+        let buf = new egret.ByteArray();
+        buf.writeByte(1);
+        buf.writeShort(dataBytes.length + 4);
+        buf.writeInt(3);
+        buf.writeBytes(dataBytes);
+
+        this.$socket.writeBytes(buf);
+        this.$socket.flush();
+    }
+
+    private genRequestId(): string {
+        return Math.floor(Math.random() * Math.floor(99999)).toString();
+    }
+
+    private getMsg(): Msg.IMessage {
+        return {
+            requestId: this.genRequestId(),
+            userId: this.$userId,
+            roomNo: this.$roomNo,
+            content: 'VOID',
         };
-        return req;
     }
 
-    public text(msg: string): void {
-        const req: Proto.Req = this.getReq();
-        req.text = msg;
-        this.$socket.emit('text', req);
+    heartBeat(): void {
+        const msg: Msg.IMessage = this.getMsg();
+        msg.cmd = Msg.Message.CommandType.HEARTBEAT_REQ;
+        msg.content = 'HEARTBEAT_REQ';
+        this.request(msg);
     }
 
-    public joinRoom(msg: Proto.IReqJoinRoom): void {
-        const req: Proto.Req = this.getReq();
-        req.joinRoom = msg;
-        egret.log('joinRoom');
-        egret.log(req.joinRoom);
-        this.$socket.emit('joinRoom', req);
+    joinRoom(data: JoinRoom.IJoinRoomRequest): void {
+        const msg: Msg.IMessage = this.getMsg();
+        msg.cmd = Msg.Message.CommandType.JOIN_ROOM_REQ;
+        msg.content = 'JOIN_ROOM_REQ';
+        msg.joinRoomReq = data;
+        console.log(msg);
+        this.request(msg);
     }
 
-    public die(msg: boolean): void {
-        const req: Proto.Req = this.getReq();
-        req.die = msg;
-        this.$socket.emit('die', req);
+    adjustCard(): void {
+        const msg: Msg.IMessage = this.getMsg();
+        msg.cmd = Msg.Message.CommandType.ADJUST_CARD_REQ;
+        msg.content = 'ADJUST_CARD_REQ';
+        this.request(msg);
     }
 
-    public win(msg: boolean): void {
-        const req: Proto.Req = this.getReq();
-        req.win = msg;
-        this.$socket.emit('win', req);
+    pickCard(): void {
+        const msg: Msg.IMessage = this.getMsg();
+        msg.cmd = Msg.Message.CommandType.PICK_CARD_REQ;
+        msg.content = 'PICK_CARD_REQ';
+        this.request(msg);
     }
 
-    public drawACard(msg: Proto.IReqDrawACard): void {
-        const req: Proto.Req = this.getReq();
-        req.drawACard = msg;
-        this.$socket.emit('drawACard', req);
-    }
-
-    public playACard(msg: Proto.IReqPlayACard): void {
-        const req: Proto.Req = this.getReq();
-        req.playACard = msg;
-        this.$socket.emit('playACard', req);
-    }
-
-    public giveACard(msg: Proto.IReqGiveACard): void {
-        const req: Proto.Req = this.getReq();
-        req.giveACard = msg;
-        this.$socket.emit('giveACard', req);
-    }
-
-    public attack(msg: Proto.IComCard): void {
-        const req: Proto.Req = this.getReq();
-        req.attack = msg;
-        this.$socket.emit('attack', req);
-    }
-
-    public favor(msg: Proto.IComCard): void {
-        const req: Proto.Req = this.getReq();
-        req.favor = msg;
-        this.$socket.emit('favor', req);
-    }
-
-    public swap(msg: Proto.IComCard): void {
-        const req: Proto.Req = this.getReq();
-        req.swap = msg;
-        this.$socket.emit('swap', req);
+    releaseCard(data: ReleaseCard.ReleaseCardRequest): void {
+        const msg: Msg.IMessage = this.getMsg();
+        msg.cmd = Msg.Message.CommandType.RELEASE_CARD_REQ;
+        msg.content = 'RELEASE_CARD_REQ';
+        msg.releaseCardReq = data;
+        this.request(msg);
     }
 }
